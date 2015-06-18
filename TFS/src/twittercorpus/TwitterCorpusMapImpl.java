@@ -36,11 +36,12 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
                 // System.out.println(currentLine);
                 String dayOfTheWeek = currentLine.substring(0, 3);
                 String month = currentLine.substring(4, 7);
-                String dayNum = currentLine.substring(8, 10);
-                String timeOfDay = currentLine.substring(11, 19);
-                String year =  currentLine.substring(20, 25);
+                int dayNum = Integer.parseInt(currentLine.substring(8, 10));
+                int hour = Integer.parseInt(currentLine.substring(11, 13));
+                int min = Integer.parseInt(currentLine.substring(14, 16));
+                int sec = Integer.parseInt(currentLine.substring(17, 19));
+                int year =  Integer.parseInt(currentLine.substring(20, 25));
                 String tweet =  currentLine.substring(25);
-
                 System.out.println("day of the week is "+ dayOfTheWeek +" : month is "+ month +" : day number is "+ dayNum + " : time of day is "+ timeOfDay + " : year is "+ year +" : string text is --> "+ tweet);
 
                 // create new ZonedDateTime object for each row in the file
@@ -63,6 +64,52 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
 
     }
 
+    public int getMonthNum(String mth) {
+        int monthNum = 0;
+        switch (mth.toLowerCase()) {
+            case "jan":
+                monthNum = 1;
+                break;
+            case "feb":
+                monthNum = 2;
+                break;
+            case "mar":
+                monthNum = 3;
+                break;
+            case "apr":
+                monthNum = 4;
+                break;
+            case "may":
+                monthNum = 5;
+                break;
+            case "jun":
+                monthNum = 6;
+                break;
+            case "jul":
+                monthNum = 7;
+                break;
+            case "aug":
+                monthNum = 8;
+                break;
+            case "sep":
+                monthNum = 9;
+                break;
+            case "oct":
+                monthNum = 10;
+                break;
+            case "nov":
+                monthNum = 11;
+                break;
+            case "dec":
+                monthNum = 12;
+                break;
+            default:
+                monthNum = 0;
+                break;
+        }
+        return monthNum;
+    }
+    
     public void labelCorpus(PriceLabelCorpus labels){
 
     }
