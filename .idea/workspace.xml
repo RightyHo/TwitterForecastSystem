@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
@@ -50,38 +48,10 @@
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="112" selection-end-column="55" />
+              <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
               <folding>
                 <element signature="e#1705#1706#0" expanded="true" />
                 <element signature="e#1737#1738#0" expanded="true" />
-                <element signature="e#1794#1795#0" expanded="true" />
-                <element signature="e#1836#1837#0" expanded="true" />
-                <element signature="e#1870#1871#0" expanded="true" />
-                <element signature="e#1902#1903#0" expanded="true" />
-                <element signature="e#1953#1954#0" expanded="true" />
-                <element signature="e#1995#1996#0" expanded="true" />
-                <element signature="e#2030#2031#0" expanded="true" />
-                <element signature="e#2063#2064#0" expanded="true" />
-                <element signature="e#2116#2117#0" expanded="true" />
-                <element signature="e#2160#2161#0" expanded="true" />
-                <element signature="e#2214#2215#0" expanded="true" />
-                <element signature="e#2266#2267#0" expanded="true" />
-                <element signature="e#2475#2476#0" expanded="true" />
-                <element signature="e#2507#2508#0" expanded="true" />
-                <element signature="e#2557#2558#0" expanded="true" />
-                <element signature="e#2599#2600#0" expanded="true" />
-                <element signature="e#2646#2647#0" expanded="true" />
-                <element signature="e#2682#2683#0" expanded="true" />
-                <element signature="e#2747#2748#0" expanded="true" />
-                <element signature="e#2797#2798#0" expanded="true" />
-                <element signature="e#2832#2833#0" expanded="true" />
-                <element signature="e#2864#2865#0" expanded="true" />
-                <element signature="e#2913#2914#0" expanded="true" />
-                <element signature="e#2955#2956#0" expanded="true" />
-                <element signature="e#2994#2995#0" expanded="true" />
-                <element signature="e#3026#3027#0" expanded="true" />
-                <element signature="e#3079#3080#0" expanded="true" />
-                <element signature="e#3121#3122#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterCorpus.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TwitterCorpus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6321839">
+            <state vertical-scroll-proportion="0.0">
               <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -125,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+              <caret line="74" column="87" selection-start-line="74" selection-start-column="61" selection-end-line="74" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#873#874#0" expanded="true" />
@@ -157,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.6034483">
+              <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -207,8 +177,8 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
       </list>
     </option>
   </component>
@@ -724,12 +694,12 @@
       <workItem from="1433798869324" duration="3629000" />
       <workItem from="1434435016729" duration="11146000" />
       <workItem from="1434629194670" duration="51000" />
-      <workItem from="1434629269431" duration="6937000" />
+      <workItem from="1434629269431" duration="7838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21763000" />
+    <option name="totallyTimeSpent" value="22664000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -747,7 +717,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15164521" sideWeight="0.50628364" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.373461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29036143" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28915662" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.49371633" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -831,34 +801,6 @@
           <folding>
             <element signature="e#1705#1706#0" expanded="true" />
             <element signature="e#1737#1738#0" expanded="true" />
-            <element signature="e#1794#1795#0" expanded="true" />
-            <element signature="e#1836#1837#0" expanded="true" />
-            <element signature="e#1870#1871#0" expanded="true" />
-            <element signature="e#1902#1903#0" expanded="true" />
-            <element signature="e#1953#1954#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
-            <element signature="e#2030#2031#0" expanded="true" />
-            <element signature="e#2063#2064#0" expanded="true" />
-            <element signature="e#2116#2117#0" expanded="true" />
-            <element signature="e#2160#2161#0" expanded="true" />
-            <element signature="e#2214#2215#0" expanded="true" />
-            <element signature="e#2266#2267#0" expanded="true" />
-            <element signature="e#2475#2476#0" expanded="true" />
-            <element signature="e#2507#2508#0" expanded="true" />
-            <element signature="e#2557#2558#0" expanded="true" />
-            <element signature="e#2599#2600#0" expanded="true" />
-            <element signature="e#2646#2647#0" expanded="true" />
-            <element signature="e#2682#2683#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#2797#2798#0" expanded="true" />
-            <element signature="e#2832#2833#0" expanded="true" />
-            <element signature="e#2864#2865#0" expanded="true" />
-            <element signature="e#2913#2914#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
-            <element signature="e#2994#2995#0" expanded="true" />
-            <element signature="e#3026#3027#0" expanded="true" />
-            <element signature="e#3079#3080#0" expanded="true" />
-            <element signature="e#3121#3122#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -964,34 +906,6 @@
           <folding>
             <element signature="e#1705#1706#0" expanded="true" />
             <element signature="e#1737#1738#0" expanded="true" />
-            <element signature="e#1794#1795#0" expanded="true" />
-            <element signature="e#1836#1837#0" expanded="true" />
-            <element signature="e#1870#1871#0" expanded="true" />
-            <element signature="e#1902#1903#0" expanded="true" />
-            <element signature="e#1953#1954#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
-            <element signature="e#2030#2031#0" expanded="true" />
-            <element signature="e#2063#2064#0" expanded="true" />
-            <element signature="e#2116#2117#0" expanded="true" />
-            <element signature="e#2160#2161#0" expanded="true" />
-            <element signature="e#2214#2215#0" expanded="true" />
-            <element signature="e#2266#2267#0" expanded="true" />
-            <element signature="e#2475#2476#0" expanded="true" />
-            <element signature="e#2507#2508#0" expanded="true" />
-            <element signature="e#2557#2558#0" expanded="true" />
-            <element signature="e#2599#2600#0" expanded="true" />
-            <element signature="e#2646#2647#0" expanded="true" />
-            <element signature="e#2682#2683#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#2797#2798#0" expanded="true" />
-            <element signature="e#2832#2833#0" expanded="true" />
-            <element signature="e#2864#2865#0" expanded="true" />
-            <element signature="e#2913#2914#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
-            <element signature="e#2994#2995#0" expanded="true" />
-            <element signature="e#3026#3027#0" expanded="true" />
-            <element signature="e#3079#3080#0" expanded="true" />
-            <element signature="e#3121#3122#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1089,34 +1003,6 @@
           <folding>
             <element signature="e#1705#1706#0" expanded="true" />
             <element signature="e#1737#1738#0" expanded="true" />
-            <element signature="e#1794#1795#0" expanded="true" />
-            <element signature="e#1836#1837#0" expanded="true" />
-            <element signature="e#1870#1871#0" expanded="true" />
-            <element signature="e#1902#1903#0" expanded="true" />
-            <element signature="e#1953#1954#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
-            <element signature="e#2030#2031#0" expanded="true" />
-            <element signature="e#2063#2064#0" expanded="true" />
-            <element signature="e#2116#2117#0" expanded="true" />
-            <element signature="e#2160#2161#0" expanded="true" />
-            <element signature="e#2214#2215#0" expanded="true" />
-            <element signature="e#2266#2267#0" expanded="true" />
-            <element signature="e#2475#2476#0" expanded="true" />
-            <element signature="e#2507#2508#0" expanded="true" />
-            <element signature="e#2557#2558#0" expanded="true" />
-            <element signature="e#2599#2600#0" expanded="true" />
-            <element signature="e#2646#2647#0" expanded="true" />
-            <element signature="e#2682#2683#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#2797#2798#0" expanded="true" />
-            <element signature="e#2832#2833#0" expanded="true" />
-            <element signature="e#2864#2865#0" expanded="true" />
-            <element signature="e#2913#2914#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
-            <element signature="e#2994#2995#0" expanded="true" />
-            <element signature="e#3026#3027#0" expanded="true" />
-            <element signature="e#3079#3080#0" expanded="true" />
-            <element signature="e#3121#3122#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1205,53 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="112" selection-end-column="55" />
-          <folding>
-            <element signature="e#1705#1706#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
-            <element signature="e#1794#1795#0" expanded="true" />
-            <element signature="e#1836#1837#0" expanded="true" />
-            <element signature="e#1870#1871#0" expanded="true" />
-            <element signature="e#1902#1903#0" expanded="true" />
-            <element signature="e#1953#1954#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
-            <element signature="e#2030#2031#0" expanded="true" />
-            <element signature="e#2063#2064#0" expanded="true" />
-            <element signature="e#2116#2117#0" expanded="true" />
-            <element signature="e#2160#2161#0" expanded="true" />
-            <element signature="e#2214#2215#0" expanded="true" />
-            <element signature="e#2266#2267#0" expanded="true" />
-            <element signature="e#2475#2476#0" expanded="true" />
-            <element signature="e#2507#2508#0" expanded="true" />
-            <element signature="e#2557#2558#0" expanded="true" />
-            <element signature="e#2599#2600#0" expanded="true" />
-            <element signature="e#2646#2647#0" expanded="true" />
-            <element signature="e#2682#2683#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#2797#2798#0" expanded="true" />
-            <element signature="e#2832#2833#0" expanded="true" />
-            <element signature="e#2864#2865#0" expanded="true" />
-            <element signature="e#2913#2914#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
-            <element signature="e#2994#2995#0" expanded="true" />
-            <element signature="e#3026#3027#0" expanded="true" />
-            <element signature="e#3079#3080#0" expanded="true" />
-            <element signature="e#3121#3122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59659094">
@@ -1294,10 +1133,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+          <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+          <folding>
+            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1737#1738#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1305,7 +1155,7 @@
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+          <caret line="74" column="87" selection-start-line="74" selection-start-column="61" selection-end-line="74" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#873#874#0" expanded="true" />
@@ -1338,11 +1188,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6321839">
+        <state vertical-scroll-proportion="0.0">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6034483">
+          <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>

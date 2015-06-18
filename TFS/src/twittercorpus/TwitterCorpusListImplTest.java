@@ -3,6 +3,10 @@ package twittercorpus;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 import static org.junit.Assert.*;
 
 /**
@@ -20,13 +24,9 @@ public class TwitterCorpusListImplTest {
         tCorpus.extractTweetsFromFile(tFilename);
     }
 
-    /**
-     * first line should match with "Sat Jan 31 23:02:00 2015	#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn"
-     * @throws Exception
-     */
     @Test
     public void testGetUsernameEquivalenceToken() throws Exception {
-        assertEquals(tCorpus.getCorpus().get(0).getTweetText(),"#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn");
+        assertTrue(tCorpus.getUsernameEquivalenceToken().equals("USERNAME"));
     }
 
     @Test
@@ -54,9 +54,15 @@ public class TwitterCorpusListImplTest {
 
     }
 
+    /**
+     * first line should match with "Sat Jan 31 23:02:00 2015	#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn"
+     * second line should match with "Sat Jan 31 23:08:00 2015	rt @mickgeo3: black bmw  convertible hfz 7935 stolen in creeper burglary, glengoland w. belfast in last hour. pls rt and keep an eye out fo?"
+     * @throws Exception
+     */
     @Test
     public void testExtractTweetsFromFile() throws Exception {
-
+        assertEquals(tCorpus.getCorpus().get(0).getTweetText(),"#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn");
+        System.out.println(tCorpus.getCorpus().get(1).getTimeStamp());
     }
 
     @Test
