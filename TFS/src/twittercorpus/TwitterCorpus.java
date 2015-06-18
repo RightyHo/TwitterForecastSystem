@@ -1,24 +1,47 @@
 package twittercorpus;
 
+import java.time.ZonedDateTime;
+import java.util.Map;
+
 /**
  * Created by Andrew on 16/06/15.
  */
 public interface TwitterCorpus {
 
-    /*
-     *  Extract raw tweets from twitter corpus file and store them ready for processing
+     String getUsernameEquivalenceToken();
+
+     String getLinkEquivalenceToken();
+
+     Map<ZonedDateTime, Tweet> getCorpus();
+
+     void setCorpus(Map<ZonedDateTime, Tweet> corpus);
+
+     String getFileName();
+
+     void setFileName(String fileName);
+
+     Tweet getFirstTweet();
+
+     void setFirstTweet(Tweet firstTweet);
+
+     void extractTweetsFromFile(String fileName);
+
+    /**
+     * takes a string depicting a calendar month and returns the corresponding month number
+     * @param mth
+     * @return
      */
-    void extractTweetsFromFile(String fileName);
+     int getMonthNum(String mth);
 
-    void labelCorpus(PriceLabelCorpus labels);
+     void labelCorpus(PriceLabelCorpus labels);
 
-    void removeRetweets();
+     void removeRetweets();
 
-    void replaceLinks(String linkEquivalenceToken);
+     void replaceLinks(String linkEquivalenceToken);
 
-    void replaceUsernames(String usernameEquivalenceToken);
+     void replaceUsernames(String usernameEquivalenceToken);
 
-    void translateAbbreviations(DictionaryTranslator abbreviationDict);
+     void translateAbbreviations(DictionaryTranslator abbreviationDict);
 
-    void checkSpelling(DictionaryTranslator spellingDict);
+     void checkSpelling(DictionaryTranslator spellingDict);
 }

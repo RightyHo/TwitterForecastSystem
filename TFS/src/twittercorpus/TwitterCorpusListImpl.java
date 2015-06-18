@@ -7,26 +7,28 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Created by Andrew on 16/06/15.
+ * Created by Andrew on 18/06/15.
  */
-public class TwitterCorpusMapImpl implements TwitterCorpus {
+public class TwitterCorpusListImpl implements TwitterCorpus {
 
     private static final String usernameEquivalenceToken = "USERNAME";
     private static final String linkEquivalenceToken = "LINK";
-    private Map<ZonedDateTime,Tweet> corpus;
+    private List<Tweet> corpus;
     private String fileName;
     private Tweet firstTweet;
 
-    public TwitterCorpusMapImpl(String fileName) {
-        this.corpus = new TreeMap<ZonedDateTime, Tweet>();
+    public TwitterCorpusListImpl(String fileName) {
+        this.corpus = new ArrayList<>();
         this.fileName = fileName;
         this.firstTweet = null;
     }
-    public TwitterCorpusMapImpl(Map<ZonedDateTime, Tweet> corpus, String fileName, Tweet firstTweet) {
+    public TwitterCorpusListImpl(List<Tweet> corpus, String fileName, Tweet firstTweet) {
         this.corpus = corpus;
         this.fileName = fileName;
         this.firstTweet = firstTweet;
@@ -101,7 +103,7 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
                 // create new Tweet for every row in the file
 
                 Tweet inputTweet = new TweetImpl(ts,tsOutOfXetraMarketHours,tweet);
-                corpus.put(ts,inputTweet);
+                corpus.add(inputTweet);
 
             }
         } catch (IOException e){
@@ -184,4 +186,5 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
     public void checkSpelling(DictionaryTranslator spellingDict){
 
     }
+
 }
