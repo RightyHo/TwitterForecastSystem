@@ -17,16 +17,21 @@ public class TwitterCorpusListImplTest {
     public void setUp() throws Exception {
         tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/feb-15-bmw.txt";
         tCorpus = new TwitterCorpusListImpl(tFilename);
+        tCorpus.extractTweetsFromFile(tFilename);
     }
 
+    /**
+     * first line should match with "Sat Jan 31 23:02:00 2015	#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn"
+     * @throws Exception
+     */
     @Test
     public void testGetUsernameEquivalenceToken() throws Exception {
-        tCorpus.extractTweetsFromFile(tFilename);
+        assertEquals(tCorpus.getCorpus().get(0).getTweetText(),"#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn");
     }
 
     @Test
     public void testGetLinkEquivalenceToken() throws Exception {
-
+        assertTrue(tCorpus.getLinkEquivalenceToken().equals("LINK"));
     }
 
     @Test
@@ -46,16 +51,6 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testSetFileName() throws Exception {
-
-    }
-
-    @Test
-    public void testGetFirstTweet() throws Exception {
-
-    }
-
-    @Test
-    public void testSetFirstTweet() throws Exception {
 
     }
 

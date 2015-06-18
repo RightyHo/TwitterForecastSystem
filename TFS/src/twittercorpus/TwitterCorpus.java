@@ -21,10 +21,6 @@ public interface TwitterCorpus {
 
      void setFileName(String fileName);
 
-     Tweet getFirstTweet();
-
-     void setFirstTweet(Tweet firstTweet);
-
      void extractTweetsFromFile(String fileName);
 
     /**
