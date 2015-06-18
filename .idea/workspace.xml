@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,8 +140,8 @@
       <file leaf-file-name="TwitterCorpusMapImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2545968">
-              <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.42432815">
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -689,12 +688,12 @@
       <workItem from="1433798869324" duration="3629000" />
       <workItem from="1434435016729" duration="11146000" />
       <workItem from="1434629194670" duration="51000" />
-      <workItem from="1434629269431" duration="518000" />
+      <workItem from="1434629269431" duration="925000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15344000" />
+    <option name="totallyTimeSpent" value="15751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="471" y="23" width="969" height="825" extended-state="0" />
@@ -1199,8 +1198,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2545968">
-          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.42432815">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

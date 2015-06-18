@@ -1,12 +1,14 @@
 package twittercorpus;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Andrew on 16/06/15.
@@ -19,7 +21,7 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
     private Tweet firstTweet;
 
     public TwitterCorpusMapImpl(String fileName) {
-        this.corpus = new HashMap<ZonedDateTime, Tweet>();
+        this.corpus = new TreeMap<ZonedDateTime, Tweet>();
         this.fileName = fileName;
         this.firstTweet = null;
     }
@@ -46,17 +48,28 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
 
                 // create new ZonedDateTime object for each row in the file
 
-                //--ZonedDateTime ts = ZonedDateTime.parse();
-                //--ZonedDateTime dateTime = ZonedDateTime.parse("2007-12-03T10:15:30+01:00[Europe/Paris]");
+                LocalDateTime localTS = LocalDateTime.of(year, dayNum, hour, min, sec);
+                ZonedDateTime ts = ZonedDateTime.of(localTS, ZoneId.of("Europe/London"));
 
-                // check if the tweet was published during BMW stock market trading hours
+                // check if the tweet was published during BMW stock market trading hours.
+                // use OffsetTime class if subtraction doesn't work using LocalTime objects.
 
-                //--boolean tsOutOfMarketHours = if()
+                LocalTime bmwXetraOpen = LocalTime.of(8,0,0);		// London time
+                LocalTime bmwXetraClose = LocalTime.of(16,35,0);	// London time
+                LocalTime bmwUSOTCOpen = LocalTime.of(14,30,0);		// London time
+                LocalTime bmwUSOTCClose = LocalTime.of(21, 0, 0);		// London time
+
+                boolean tsOutOfXetraMarketHours = (ts.toLocalTime().compareTo(bmwXetraOpen) < 0
+                        || ts.toLocalTime().compareTo(bmwXetraClose) > 0)
+
+                boolean tsOutOfUSOTCMarketHours = (ts.toLocalTime().compareTo(bmwUSOTCOpen) < 0
+                        || ts.toLocalTime().compareTo(bmwUSOTCClose) > 0)
 
                 // create new Tweet for every row in the file
 
-                //--Tweet inputTweet = new TweetImpl(ts,tsOutOfMarketHours,tweet);
-                //--corpus.put(ts,inputTweet);
+                Tweet inputTweet = new TweetImpl(ts,tsOutOfXetraMarketHours,tweet);
+                corpus.put(ts,inputTweet);
+
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -64,6 +77,11 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
 
     }
 
+    /**
+     * takes a string depicting a calendar month and returns the corresponding month number
+     * @param mth
+     * @return
+     */
     public int getMonthNum(String mth) {
         int monthNum = 0;
         switch (mth.toLowerCase()) {
@@ -109,7 +127,7 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
         }
         return monthNum;
     }
-    
+
     public void labelCorpus(PriceLabelCorpus labels){
 
     }
