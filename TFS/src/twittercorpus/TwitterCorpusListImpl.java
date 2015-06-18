@@ -7,10 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by Andrew on 18/06/15.
@@ -42,11 +39,11 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         return linkEquivalenceToken;
     }
 
-    public Map<ZonedDateTime, Tweet> getCorpus() {
+    public List<Tweet> getCorpus() {
         return corpus;
     }
 
-    public void setCorpus(Map<ZonedDateTime, Tweet> corpus) {
+    public void setCorpus(List<Tweet> corpus) {
         this.corpus = corpus;
     }
 
@@ -70,40 +67,45 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
             String currentLine;
             while ((currentLine = br.readLine()) != null) {
-                // System.out.println(currentLine);
-                String dayOfTheWeek = currentLine.substring(0, 3);
-                String month = currentLine.substring(4, 7);
-                int dayNum = Integer.parseInt(currentLine.substring(8, 10));
-                int hour = Integer.parseInt(currentLine.substring(11, 13));
-                int min = Integer.parseInt(currentLine.substring(14, 16));
-                int sec = Integer.parseInt(currentLine.substring(17, 19));
-                int year =  Integer.parseInt(currentLine.substring(20, 25));
-                String tweet =  currentLine.substring(25);
-                System.out.println("day of the week is "+ dayOfTheWeek +" : month is "+ month +" : day number is "+ dayNum + " : time of day is "+ hour +":" + min +":" + sec + " : year is "+ year +" : string text is --> "+ tweet);
+                Scanner s = new Scanner(currentLine);
+                String dayOfTheWeek = s.next();
+                int month = getMonthNum(s.next());
+                int dayNum = s.nextInt();
+                String timeString = s.next();
+                int year =  s.nextInt();
+                s.useDelimiter("\\z");
+                String tweet =  s.next();
+                Scanner splitTime = new Scanner(timeString).useDelimiter(":");
+                int hour = splitTime.nextInt();
+                int min = splitTime.nextInt();
+                int sec = splitTime.nextInt();
+
+
+                System.out.println("day of the week is "+ dayOfTheWeek +" - month is "+ month +" - day number is "+ dayNum + " - hour is "+ hour +" - min is "+ min +" - sec is "+ sec + " - year is "+ year +" - tweet is "+ tweet);
 
                 // create new ZonedDateTime object for each row in the file
 
-                LocalDateTime localTS = LocalDateTime.of(year, dayNum, hour, min, sec);
-                ZonedDateTime ts = ZonedDateTime.of(localTS, ZoneId.of("Europe/London"));
-
-                // check if the tweet was published during BMW stock market trading hours.
-                // use OffsetTime class if subtraction doesn't work using LocalTime objects.
-
-                LocalTime bmwXetraOpen = LocalTime.of(8,0,0);		// London time
-                LocalTime bmwXetraClose = LocalTime.of(16,35,0);	// London time
-                LocalTime bmwUSOTCOpen = LocalTime.of(14,30,0);		// London time
-                LocalTime bmwUSOTCClose = LocalTime.of(21, 0, 0);		// London time
-
-                boolean tsOutOfXetraMarketHours = (ts.toLocalTime().compareTo(bmwXetraOpen) < 0
-                        || ts.toLocalTime().compareTo(bmwXetraClose) > 0)
-
-                boolean tsOutOfUSOTCMarketHours = (ts.toLocalTime().compareTo(bmwUSOTCOpen) < 0
-                        || ts.toLocalTime().compareTo(bmwUSOTCClose) > 0)
-
-                // create new Tweet for every row in the file
-
-                Tweet inputTweet = new TweetImpl(ts,tsOutOfXetraMarketHours,tweet);
-                corpus.add(inputTweet);
+//                LocalDateTime localTS = LocalDateTime.of(year, month, dayNum, hour, min, sec);
+//                ZonedDateTime ts = ZonedDateTime.of(localTS, ZoneId.of("Europe/London"));
+//
+//                // check if the tweet was published during BMW stock market trading hours.
+//                // use OffsetTime class if subtraction doesn't work using LocalTime objects.
+//
+//                LocalTime bmwXetraOpen = LocalTime.of(8,0,0);		// London time
+//                LocalTime bmwXetraClose = LocalTime.of(16,35,0);	// London time
+//                LocalTime bmwUSOTCOpen = LocalTime.of(14,30,0);		// London time
+//                LocalTime bmwUSOTCClose = LocalTime.of(21, 0, 0);		// London time
+//
+//                boolean tsOutOfXetraMarketHours = (ts.toLocalTime().compareTo(bmwXetraOpen) < 0
+//                        || ts.toLocalTime().compareTo(bmwXetraClose) > 0);
+//
+//                boolean tsOutOfUSOTCMarketHours = (ts.toLocalTime().compareTo(bmwUSOTCOpen) < 0
+//                        || ts.toLocalTime().compareTo(bmwUSOTCClose) > 0);
+//
+//                // create new Tweet for every row in the file
+//
+//                Tweet inputTweet = new TweetImpl(ts,tsOutOfXetraMarketHours,tweet);
+//                corpus.add(inputTweet);
 
             }
         } catch (IOException e){
@@ -164,27 +166,27 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     }
 
     public void labelCorpus(PriceLabelCorpus labels){
-
+        return;
     }
 
     public void removeRetweets(){
-
+        return;
     }
 
     public void replaceLinks(String linkEquivalenceToken){
-
+        return;
     }
 
     public void replaceUsernames(String usernameEquivalenceToken){
-
+        return;
     }
 
     public void translateAbbreviations(DictionaryTranslator abbreviationDict){
-
+        return;
     }
 
     public void checkSpelling(DictionaryTranslator spellingDict){
-
+        return;
     }
 
 }

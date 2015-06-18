@@ -12,8 +12,9 @@ import java.util.TreeMap;
 
 /**
  * Created by Andrew on 16/06/15.
+ * Alternative implementation using a map structure
  */
-public class TwitterCorpusMapImpl implements TwitterCorpus {
+public class TwitterCorpusMapImpl {
 
     private static final String usernameEquivalenceToken = "USERNAME";
     private static final String linkEquivalenceToken = "LINK";
@@ -93,10 +94,10 @@ public class TwitterCorpusMapImpl implements TwitterCorpus {
                 LocalTime bmwUSOTCClose = LocalTime.of(21, 0, 0);		// London time
 
                 boolean tsOutOfXetraMarketHours = (ts.toLocalTime().compareTo(bmwXetraOpen) < 0
-                        || ts.toLocalTime().compareTo(bmwXetraClose) > 0)
+                        || ts.toLocalTime().compareTo(bmwXetraClose) > 0);
 
                 boolean tsOutOfUSOTCMarketHours = (ts.toLocalTime().compareTo(bmwUSOTCOpen) < 0
-                        || ts.toLocalTime().compareTo(bmwUSOTCClose) > 0)
+                        || ts.toLocalTime().compareTo(bmwUSOTCClose) > 0);
 
                 // create new Tweet for every row in the file
 

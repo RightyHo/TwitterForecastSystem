@@ -15,14 +15,14 @@ public class TwitterCorpusMapImplTest {
 
     @Before
     public void setUp() throws Exception {
-        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/feb-15-bmw.txt";
-        tCorpus = new TwitterCorpusMapImpl(tFilename);
+//        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/feb-15-bmw.txt";
+//        tCorpus = new TwitterCorpusMapImpl(tFilename);
 
     }
 
     @Test
     public void testExtractTweetsFromFile() throws Exception {
-        tCorpus.extractTweetsFromFile(tFilename);
+//        tCorpus.extractTweetsFromFile(tFilename);
     }
 
     @Test

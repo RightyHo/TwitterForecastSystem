@@ -1,6 +1,7 @@
 package twittercorpus;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,9 +13,9 @@ public interface TwitterCorpus {
 
      String getLinkEquivalenceToken();
 
-     Map<ZonedDateTime, Tweet> getCorpus();
+     List<Tweet> getCorpus();
 
-     void setCorpus(Map<ZonedDateTime, Tweet> corpus);
+     void setCorpus(List<Tweet> corpus);
 
      String getFileName();
 
