@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Map;
@@ -17,6 +16,27 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
 
     private Map<ZonedDateTime,PriceSnapshot> priceMap;
     private String fileName;
+
+    public PriceLabelCorpusImpl(Map<ZonedDateTime, PriceSnapshot> priceMap, String fileName) {
+        this.priceMap = priceMap;
+        this.fileName = fileName;
+    }
+
+    public Map<ZonedDateTime, PriceSnapshot> getPriceMap() {
+        return priceMap;
+    }
+
+    public void setPriceMap(Map<ZonedDateTime, PriceSnapshot> priceMap) {
+        this.priceMap = priceMap;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public void extractPriceDataFromFile(String fileName){
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){

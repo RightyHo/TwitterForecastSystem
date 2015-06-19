@@ -9,7 +9,7 @@ public class BMWPriceSnapshot implements PriceSnapshot {
 
     private ZonedDateTime timeStamp;
     private double openingSharePrice;
-    private double openingMACDLevel;
+    private double openingMACDLevel;        // do i want the MACD level or the difference between this level and the signal level?
     private double closingSharePrice;
 
     public BMWPriceSnapshot(ZonedDateTime timeStamp, double openingSharePrice, double openingMACDLevel, double closingSharePrice) {
