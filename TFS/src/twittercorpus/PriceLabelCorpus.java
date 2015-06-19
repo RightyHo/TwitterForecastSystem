@@ -18,5 +18,4 @@ public interface PriceLabelCorpus {
 
     void extractPriceDataFromFile(String fileName);
 
-
 }
