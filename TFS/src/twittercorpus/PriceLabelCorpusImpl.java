@@ -38,12 +38,13 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
 
                 // create new ZonedDateTime object for each row in the file
 
-                LocalDateTime localTS = LocalDateTime.of(year, day, hour, min, 0);
+                LocalDateTime localTS = LocalDateTime.of(year, month, day, hour, min, 0);
                 ZonedDateTime ts = ZonedDateTime.of(localTS, ZoneId.of("Europe/London"));
 
                 // create new PriceShapshot for every row in the file
 
                 PriceSnapshot pSnap = new BMWPriceSnapshot(ts,openPrice,macdLevel,closePrice);
+                priceMap.put(ts,pSnap);
             }
         } catch (IOException e){
             e.printStackTrace();

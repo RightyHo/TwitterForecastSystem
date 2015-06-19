@@ -10,6 +10,44 @@ public class BMWPriceSnapshot implements PriceSnapshot {
     private ZonedDateTime timeStamp;
     private double openingSharePrice;
     private double openingMACDLevel;
-    private double price20MinsLater;
+    private double closingSharePrice;
 
+    public BMWPriceSnapshot(ZonedDateTime timeStamp, double openingSharePrice, double openingMACDLevel, double closingSharePrice) {
+        this.timeStamp = timeStamp;
+        this.openingSharePrice = openingSharePrice;
+        this.openingMACDLevel = openingMACDLevel;
+        this.closingSharePrice = closingSharePrice;
+    }
+
+    public ZonedDateTime getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(ZonedDateTime timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public double getOpeningSharePrice() {
+        return openingSharePrice;
+    }
+
+    public void setOpeningSharePrice(double openingSharePrice) {
+        this.openingSharePrice = openingSharePrice;
+    }
+
+    public double getOpeningMACDLevel() {
+        return openingMACDLevel;
+    }
+
+    public void setOpeningMACDLevel(double openingMACDLevel) {
+        this.openingMACDLevel = openingMACDLevel;
+    }
+
+    public double getClosingSharePrice() {
+        return closingSharePrice;
+    }
+
+    public void setClosingSharePrice(double closingSharePrice) {
+        this.closingSharePrice = closingSharePrice;
+    }
 }
