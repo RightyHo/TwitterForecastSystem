@@ -14,9 +14,9 @@ public interface PriceSnapshot {
 
      void setOpeningSharePrice(double openingSharePrice);
 
-     double getOpeningMACDLevel();
+     double getOpeningMACDDirectionSignal();
 
-     void setOpeningMACDLevel(double openingMACDLevel);
+     void setOpeningMACDDirectionSignal(double openingMACDDirectionSignal);
 
      double getClosingSharePrice();
 

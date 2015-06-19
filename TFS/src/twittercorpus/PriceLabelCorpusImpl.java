@@ -54,7 +54,7 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
                 double closePrice = s.nextDouble();
                 double macdLevel = s.nextDouble();
                 double sigLevel = s.nextDouble();
-                double macdDiff = s.nextDouble();
+                double macdDirection = s.nextDouble();
 
                 // create new ZonedDateTime object for each row in the file
 
@@ -63,7 +63,7 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
 
                 // create new PriceShapshot for every row in the file
 
-                PriceSnapshot pSnap = new BMWPriceSnapshot(ts,openPrice,macdLevel,closePrice);
+                PriceSnapshot pSnap = new BMWPriceSnapshot(ts,openPrice,macdDirection,closePrice);
                 priceMap.put(ts,pSnap);
             }
         } catch (IOException e){

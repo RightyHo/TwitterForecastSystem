@@ -9,13 +9,13 @@ public class BMWPriceSnapshot implements PriceSnapshot {
 
     private ZonedDateTime timeStamp;
     private double openingSharePrice;
-    private double openingMACDLevel;        // do i want the MACD level or the difference between this level and the signal level?
+    private double openingMACDDirectionSignal;        // MACD Level minus Signal Level.  A positive signal indicates upward price momentum and vice versa
     private double closingSharePrice;
 
-    public BMWPriceSnapshot(ZonedDateTime timeStamp, double openingSharePrice, double openingMACDLevel, double closingSharePrice) {
+    public BMWPriceSnapshot(ZonedDateTime timeStamp, double openingSharePrice, double openingMACDDirectionSignal, double closingSharePrice) {
         this.timeStamp = timeStamp;
         this.openingSharePrice = openingSharePrice;
-        this.openingMACDLevel = openingMACDLevel;
+        this.openingMACDDirectionSignal = openingMACDDirectionSignal;
         this.closingSharePrice = closingSharePrice;
     }
 
@@ -35,12 +35,12 @@ public class BMWPriceSnapshot implements PriceSnapshot {
         this.openingSharePrice = openingSharePrice;
     }
 
-    public double getOpeningMACDLevel() {
-        return openingMACDLevel;
+    public double getOpeningMACDDirectionSignal() {
+        return openingMACDDirectionSignal;
     }
 
-    public void setOpeningMACDLevel(double openingMACDLevel) {
-        this.openingMACDLevel = openingMACDLevel;
+    public void setOpeningMACDDirectionSignal(double openingMACDDirectionSignal) {
+        this.openingMACDDirectionSignal = openingMACDDirectionSignal;
     }
 
     public double getClosingSharePrice() {
