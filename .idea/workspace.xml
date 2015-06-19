@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpus.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
@@ -699,12 +698,12 @@
       <workItem from="1433798869324" duration="3629000" />
       <workItem from="1434435016729" duration="11146000" />
       <workItem from="1434629194670" duration="51000" />
-      <workItem from="1434629269431" duration="16015000" />
+      <workItem from="1434629269431" duration="17110000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30841000" />
+    <option name="totallyTimeSpent" value="31936000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="652" y="23" width="789" height="824" extended-state="0" />

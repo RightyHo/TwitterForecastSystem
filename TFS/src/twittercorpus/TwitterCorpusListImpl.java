@@ -195,6 +195,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             focus.setInitialSnapshot(openingSnap);
             focus.setPostTweetSnapshot(closingSnap);
             focus.setIsLabelled(true);
+
             // compare the two market snapshots to discern the implied market sentiment of the tweet
             if(focus.getInitialSnapshot().getOpeningSharePrice() > focus.getPostTweetSnapshot().getClosingSharePrice()){
                 focus.setSentiment(Sentiment.NEGATIVE);
@@ -205,7 +206,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             }
         }
     }
-
 
     public void removeRetweets(){
         return;
