@@ -151,9 +151,46 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         return monthNum;
     }
 
+    /**
+     * labels the tweet by setting the price snapshot that corresponds to the timestamp of the tweet as well as
+     * setting the sentiment value of the tweet and marking the isLabelled flag as true.
+     * @param labels
+     */
     public void labelCorpus(PriceLabelCorpus labels){
-        return;
+        LocalTime bmwXetraOpen = LocalTime.of(8,0,0);		// London time
+        LocalTime bmwXetraClose = LocalTime.of(16,35,0);	// London time
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            ZonedDateTime focusTS = focus.getTimeStamp();
+            if(focusTS.minusMinutes(1).toLocalTime().compareTo(bmwXetraOpen) < 0){
+
+                // compare previous day's close to the next day's open price
+
+            } else if(focusTS.plusMinutes(20).toLocalTime().compareTo(bmwXetraClose) > 0){
+
+                // compare previous day's close to the next day's open price
+
+            } else {
+                ZonedDateTime lastPrintBeforeTweet = focusTS.minusMinutes(1);
+                ZonedDateTime twentyMinsAfterTweet = focusTS.plusMinutes(20);
+                PriceSnapshot openingSnap = labels.getPriceMap().get(lastPrintBeforeTweet);
+                PriceSnapshot closingSnap = labels.getPriceMap().get(twentyMinsAfterTweet);
+                focus.setInitialSnapshot(openingSnap);
+                focus.setPostTweetSnapshot(closingSnap);
+                focus.setIsLabelled(true);
+                if(focus.getInitialSnapshot().getOpeningSharePrice() > focus.getPostTweetSnapshot().getClosingSharePrice()){
+                    focus.setSentiment(Sentiment.NEGATIVE);
+                } else if(focus.getInitialSnapshot().getOpeningSharePrice() < focus.getPostTweetSnapshot().getClosingSharePrice()) {
+                    focus.setSentiment(Sentiment.POSITIVE);
+                } else {
+                    focus.setSentiment(Sentiment.NEUTRAL);
+                }
+            }
+
+        }
     }
+
 
     public void removeRetweets(){
         return;
