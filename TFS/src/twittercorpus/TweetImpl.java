@@ -11,7 +11,8 @@ public class TweetImpl implements Tweet {
     private boolean isLabelled;
     private boolean isPublishedOutsideMarketHours;
     private String tweetText;       // split into three variables to separate unabbreviated and spell checked states?
-    private PriceSnapshot priceSnapshot;
+    private PriceSnapshot initialSnapshot;	// last price snapshot before the tweet was published
+    private PriceSnapshot postTweetSnapshot;	// price snapshot 20 minutes after the tweet was published
     private Tweet nextTweet;
     private Sentiment sentiment;    // sentiment object is initially set to unclassified.  Once classified it is set to positive, negative or neutral.
 
@@ -23,18 +24,20 @@ public class TweetImpl implements Tweet {
         this.isLabelled = false;
         this.isPublishedOutsideMarketHours = isPublishedOutsideMarketHours;
         this.tweetText = tweetText;
-        this.priceSnapshot = null;
+        this.initialSnapshot = null;
+        this.postTweetSnapshot = null;
         this.nextTweet = null;
         this.sentiment = Sentiment.UNCLASSIFIED;
     }
 
-    public TweetImpl(ZonedDateTime timeStamp, boolean isRetweet, boolean isLabelled, boolean isPublishedOutsideMarketHours, String tweetText, PriceSnapshot priceSnapshot, Tweet nextTweet, Sentiment sentiment) {
+    public TweetImpl(ZonedDateTime timeStamp, boolean isRetweet, boolean isLabelled, boolean isPublishedOutsideMarketHours, String tweetText,PriceSnapshot initialSnapshot, PriceSnapshot postTweetSnapshot, Tweet nextTweet, Sentiment sentiment) {
         this.timeStamp = timeStamp;
         this.isRetweet = isRetweet;
         this.isLabelled = isLabelled;
         this.isPublishedOutsideMarketHours = isPublishedOutsideMarketHours;
         this.tweetText = tweetText;
-        this.priceSnapshot = priceSnapshot;
+        this.initialSnapshot = initialSnapshot;
+        this.postTweetSnapshot = postTweetSnapshot;
         this.nextTweet = nextTweet;
         this.sentiment = sentiment;
     }
@@ -81,12 +84,20 @@ public class TweetImpl implements Tweet {
         this.tweetText = tweetText;
     }
 
-    public PriceSnapshot getPriceSnapshot() {
-        return priceSnapshot;
+    public PriceSnapshot getInitialSnapshot() {
+        return initialSnapshot;
     }
 
-    public void setPriceSnapshot(PriceSnapshot priceSnapshot) {
-        this.priceSnapshot = priceSnapshot;
+    public void setInitialSnapshot(PriceSnapshot initialSnapshot) {
+        this.initialSnapshot = initialSnapshot;
+    }
+
+    public PriceSnapshot getPostTweetSnapshot() {
+        return postTweetSnapshot;
+    }
+
+    public void setPostTweetSnapshot(PriceSnapshot postTweetSnapshot) {
+        this.postTweetSnapshot = postTweetSnapshot;
     }
 
     public Tweet getNextTweet() {
