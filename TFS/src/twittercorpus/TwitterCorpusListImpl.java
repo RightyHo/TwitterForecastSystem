@@ -17,7 +17,12 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     private static final String USERNAME_EQUIVALENCE_TOKEN = "USERNAME";
     private static final String LINK_EQUIVALENCE_TOKEN = "LINK";
     private static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);	    // London time
-    private static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);	    // London time  *** MAY NEED TO CHANGE TO 16:30 TO IGNORE THE EOD AUCTION AS NO PRICES FOR 5 MINUTES ***
+
+    // *** NEED TO CHANGE CODE TO ACCOUNT FOR THE FACT THAT THERE IS NEVER A 16:30 PRICE TIME STAMP
+    // INSTEAD THERE IS A 5 MINUTE END OF DAY AUCTION AND THEN A FINAL PRICE PRINT FOR THE DAY AT 16:35 ***
+
+    private static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);	    // London time
+
     private static final LocalTime BMW_US_OTC_OPEN = LocalTime.of(14,30,0);	    // London time
     private static final LocalTime BMW_US_OTC_CLOSE = LocalTime.of(21, 0, 0);	// London time
 

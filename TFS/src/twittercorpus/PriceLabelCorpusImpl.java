@@ -17,10 +17,18 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
     private Map<ZonedDateTime,PriceSnapshot> priceMap;
     private String fileName;
 
+    // constructors
+
+    public PriceLabelCorpusImpl(String fileName) {
+        this.fileName = fileName;
+    }
+
     public PriceLabelCorpusImpl(Map<ZonedDateTime, PriceSnapshot> priceMap, String fileName) {
         this.priceMap = priceMap;
         this.fileName = fileName;
     }
+
+    // getters and setters
 
     public Map<ZonedDateTime, PriceSnapshot> getPriceMap() {
         return priceMap;
@@ -39,6 +47,7 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
     }
 
     public void extractPriceDataFromFile(String fileName){
+
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
             String currentLine;
             while ((currentLine = br.readLine()) != null) {

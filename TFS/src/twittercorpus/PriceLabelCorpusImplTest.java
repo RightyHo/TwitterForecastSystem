@@ -10,9 +10,14 @@ import static org.junit.Assert.*;
  */
 public class PriceLabelCorpusImplTest {
 
+    private PriceLabelCorpus plCorpus;
+    private String plFilename;
+
     @Before
     public void setUp() throws Exception {
-
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/BMW Price Data - April 2015";
+        plCorpus = new PriceLabelCorpusImpl(plFilename);
+        plCorpus.extractPriceDataFromFile(plFilename);
     }
 
     @Test
