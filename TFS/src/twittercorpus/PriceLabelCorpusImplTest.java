@@ -47,5 +47,9 @@ public class PriceLabelCorpusImplTest {
     @Test
     public void testExtractPriceDataFromFile() throws Exception {
 
+        // search on data entry: 30/04/15 16:35	106.1	106.1	106.1	106.1	0.0403	0.0584	-0.0181
+        LocalDateTime localPlTS = LocalDateTime.of(2015,4,30,16,35);
+        ZonedDateTime plTS = ZonedDateTime.of(localPlTS, ZoneId.of("Europe/London"));
+        assertTrue(plCorpus.getPriceMap().get(plTS).getClosingSharePrice() - 106.1 < 0.0000001);
     }
 }
