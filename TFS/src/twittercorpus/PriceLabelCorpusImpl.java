@@ -56,31 +56,22 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
                 Scanner s = new Scanner(currentLine);
                 String dateString = s.next().trim();
                 String timeString = s.next().trim();
-                System.out.println("date: " + dateString);
-                System.out.println("time: "+ timeString);
                 double openPrice = s.nextDouble();
-                System.out.println("openPrice: "+ openPrice);
                 double high = s.nextDouble();
-                System.out.println("high: "+ high);
                 double low = s.nextDouble();
-                System.out.println("low: "+ low);
                 double closePrice = s.nextDouble();
-                System.out.println("closePrice: "+ closePrice);
                 double macdLevel = s.nextDouble();
-                System.out.println("macdLevel: "+ macdLevel);
                 double sigLevel = s.nextDouble();
-                System.out.println("sigLevel: "+ sigLevel);
                 double macdDirection = s.nextDouble();
-                System.out.println("macdDirection: "+ macdDirection);
 
                 Scanner splitDate = new Scanner(dateString).useDelimiter("/");
-                int day = s.nextInt();
-                int month = s.nextInt();
-                int year = s.nextInt();
+                int day = splitDate.nextInt();
+                int month = splitDate.nextInt();
+                int year = splitDate.nextInt();
 
                 Scanner splitTime = new Scanner(timeString).useDelimiter(":");
-                int hour =  s.nextInt();
-                int min =  s.nextInt();
+                int hour =  splitTime.nextInt();
+                int min =  splitTime.nextInt();
 
                 // create new ZonedDateTime object for each row in the file
 
