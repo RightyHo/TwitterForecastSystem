@@ -14,12 +14,12 @@ import java.util.*;
  */
 public class TwitterCorpusListImpl implements TwitterCorpus {
 
-    private static final String usernameEquivalenceToken = "USERNAME";
-    private static final String linkEquivalenceToken = "LINK";
-    private LocalTime bmwXetraOpen = LocalTime.of(8,0,0);		// London time
-    private LocalTime bmwXetraClose = LocalTime.of(16,35,0);	// London time
-    private LocalTime bmwUSOTCOpen = LocalTime.of(14,30,0);		// London time
-    private LocalTime bmwUSOTCClose = LocalTime.of(21, 0, 0);	// London time
+    private static final String USERNAME_EQUIVALENCE_TOKEN = "USERNAME";
+    private static final String LINK_EQUIVALENCE_TOKEN = "LINK";
+    private static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);	    // London time
+    private static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);	    // London time  *** MAY NEED TO CHANGE TO 16:30 TO IGNORE THE EOD AUCTION AS NO PRICES FOR 5 MINUTES ***
+    private static final LocalTime BMW_US_OTC_OPEN = LocalTime.of(14,30,0);	    // London time
+    private static final LocalTime BMW_US_OTC_CLOSE = LocalTime.of(21, 0, 0);	// London time
 
     private List<Tweet> corpus;
     private String fileName;
@@ -34,11 +34,11 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     }
 
     public String getUsernameEquivalenceToken() {
-        return usernameEquivalenceToken;
+        return USERNAME_EQUIVALENCE_TOKEN;
     }
 
     public String getLinkEquivalenceToken() {
-        return linkEquivalenceToken;
+        return LINK_EQUIVALENCE_TOKEN;
     }
 
     public List<Tweet> getCorpus() {
@@ -61,14 +61,17 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
             String currentLine;
             while ((currentLine = br.readLine()) != null) {
+
+                // divide current line into its individual constituents
+
                 Scanner s = new Scanner(currentLine);
                 String dayOfTheWeek = s.next().trim();
                 int month = getMonthNum(s.next());
                 int dayNum = s.nextInt();
                 String timeString = s.next().trim();
                 int year =  s.nextInt();
-                s.useDelimiter("\\z");
-                String tweet =  s.next().trim();
+                s.useDelimiter("\\z");              // sets scanner delimiter to ignore all spaces
+                String tweet =  s.next().trim();    // reads in the rest of the current line
                 Scanner splitTime = new Scanner(timeString).useDelimiter(":");
                 int hour = splitTime.nextInt();
                 int min = splitTime.nextInt();
@@ -79,14 +82,13 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 LocalDateTime localTS = LocalDateTime.of(year, month, dayNum, hour, min, sec);
                 ZonedDateTime ts = ZonedDateTime.of(localTS, ZoneId.of("Europe/London"));
 
-                // check if the tweet was published during BMW stock market trading hours.
-                // use OffsetTime class if subtraction doesn't work using LocalTime objects.
+                // check if the tweet was published during BMW stock market trading hours...not 100% sure if this is flag is necessary?
 
-                boolean tsOutOfXetraMarketHours = (ts.toLocalTime().compareTo(bmwXetraOpen) < 0
-                        || ts.toLocalTime().compareTo(bmwXetraClose) > 0);
+                boolean tsOutOfXetraMarketHours = (ts.toLocalTime().compareTo(BMW_XETRA_OPEN) < 0
+                        || ts.toLocalTime().compareTo(BMW_XETRA_CLOSE) > 0);
 
-                boolean tsOutOfUSOTCMarketHours = (ts.toLocalTime().compareTo(bmwUSOTCOpen) < 0
-                        || ts.toLocalTime().compareTo(bmwUSOTCClose) > 0);
+                boolean tsOutOfUSOTCMarketHours = (ts.toLocalTime().compareTo(BMW_US_OTC_OPEN) < 0
+                        || ts.toLocalTime().compareTo(BMW_US_OTC_CLOSE) > 0);
 
                 // create new Tweet for every row in the file
 
@@ -161,42 +163,14 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             ZonedDateTime focusTS = focus.getTimeStamp();
-            ZonedDateTime lastPrintBeforeTweet = null;
-            ZonedDateTime twentyMinsAfterTweet = null;
-            if(focusTS.minusMinutes(1).toLocalTime().compareTo(bmwXetraOpen) < 0){
-                // time stamp of the tweet occurs before or on market open
-                if(focusTS.toLocalTime().plusMinutes(20).compareTo(bmwXetraOpen) >= 0){
-                    // time stamp of the tweet occurs within the 20 minutes prior to the market open --> compare previous day's close to the price 20 mins after the tweet is published
-                    lastPrintBeforeTweet = ZonedDateTime.of(bmwXetraClose.atDate(focusTS.toLocalDate().minusDays(1)),ZoneId.of("Europe/London"));
-                    twentyMinsAfterTweet = focusTS.plusMinutes(20);
-                } else {
-                    // time stamp of the tweet occurs more than 20 minutes prior to the market open --> compare previous day's close to the next day's open price
-                    lastPrintBeforeTweet = ZonedDateTime.of(bmwXetraClose.atDate(focusTS.toLocalDate().minusDays(1)), ZoneId.of("Europe/London"));
-                    twentyMinsAfterTweet = ZonedDateTime.of(bmwXetraOpen.atDate(focusTS.toLocalDate()), ZoneId.of("Europe/London"));
-                }
-            } else if(focusTS.plusMinutes(20).toLocalTime().compareTo(bmwXetraClose) > 0){
-                // time stamp of the tweet occurs at a time later than 20 minutes before the market close
-                if(focusTS.toLocalTime().compareTo(bmwXetraClose) > 0){
-                    // time stamp of the tweet occurs after the market close --> compare  today's close to the next day's open price
-                    lastPrintBeforeTweet = ZonedDateTime.of(bmwXetraClose.atDate(focusTS.toLocalDate()),ZoneId.of("Europe/London"));
-                    twentyMinsAfterTweet = ZonedDateTime.of(bmwXetraOpen.atDate(focusTS.toLocalDate().plusDays(1)),ZoneId.of("Europe/London"));
-                } else {
-                    // time stamp of the tweet occurs within 20 minutes of the market close --> compare the price at time of the tweets release to the next day's open price
-                    lastPrintBeforeTweet = focusTS.minusMinutes(1);
-                    twentyMinsAfterTweet = ZonedDateTime.of(bmwXetraOpen.atDate(focusTS.toLocalDate().plusDays(1)),ZoneId.of("Europe/London"));
-                }
-            } else {
-                // timestamp of the tweet occurs during normal market hours
-                lastPrintBeforeTweet = focusTS.minusMinutes(1);
-                twentyMinsAfterTweet = focusTS.plusMinutes(20);
-            }
-            PriceSnapshot openingSnap = labels.getPriceMap().get(lastPrintBeforeTweet);
-            PriceSnapshot closingSnap = labels.getPriceMap().get(twentyMinsAfterTweet);
+            PriceSnapshot openingSnap = labels.getPriceMap().get(lastPrintBeforeTweet(focusTS));
+            PriceSnapshot closingSnap = labels.getPriceMap().get(twentyMinsAfterTweet(focusTS));
             focus.setInitialSnapshot(openingSnap);
             focus.setPostTweetSnapshot(closingSnap);
             focus.setIsLabelled(true);
 
-            // compare the two market snapshots to discern the implied market sentiment of the tweet
+            // compare the two market price snapshots to discern the implied sentiment of the tweet from the change in price
+
             if(focus.getInitialSnapshot().getOpeningSharePrice() > focus.getPostTweetSnapshot().getClosingSharePrice()){
                 focus.setSentiment(Sentiment.NEGATIVE);
             } else if(focus.getInitialSnapshot().getOpeningSharePrice() < focus.getPostTweetSnapshot().getClosingSharePrice()) {
@@ -204,6 +178,44 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             } else {
                 focus.setSentiment(Sentiment.NEUTRAL);
             }
+        }
+    }
+
+    /**
+     * takes the timestamp of a tweet and returns the time stamp of the last price print before the tweet,
+     * taking into consideration whether or not the tweet was published outside of market trading hours.
+     * @param tweetTimeStamp
+     * @return time stamp of the last price print before the tweet
+     */
+    public ZonedDateTime lastPrintBeforeTweet(ZonedDateTime tweetTimeStamp){
+        if(tweetTimeStamp.toLocalTime().compareTo(BMW_XETRA_OPEN) <= 0){
+            // time stamp of the tweet occurs on or before market open --> compare previous day's close to the price 20 mins after the tweet is published
+            return ZonedDateTime.of(BMW_XETRA_CLOSE.atDate(tweetTimeStamp.toLocalDate().minusDays(1)), ZoneId.of("Europe/London"));
+        } else if(tweetTimeStamp.toLocalTime().compareTo(BMW_XETRA_CLOSE) > 0){
+            // time stamp of the tweet occurs after the market close --> compare today's close to the next day's open price
+            return ZonedDateTime.of(BMW_XETRA_CLOSE.atDate(tweetTimeStamp.toLocalDate()), ZoneId.of("Europe/London"));
+        } else {
+            // timestamp of the tweet occurs during normal market hours
+            return tweetTimeStamp.minusMinutes(1);
+        }
+    }
+
+    /**
+     * takes the timestamp of a tweet and returns the time stamp of the price print 20 minutes after the tweet is published,
+     * taking into consideration whether or not the tweet was published outside of market trading hours.
+     * @param tweetTimeStamp
+     * @return time stamp of the price print 20 minutes after the tweet is published
+     */
+    public ZonedDateTime twentyMinsAfterTweet(ZonedDateTime tweetTimeStamp){
+        if(tweetTimeStamp.toLocalTime().plusMinutes(20).compareTo(BMW_XETRA_OPEN) < 0){
+            // time stamp of the tweet occurs more than 20 minutes prior to the market open --> compare previous day's close to today's open price
+            return ZonedDateTime.of(BMW_XETRA_OPEN.atDate(tweetTimeStamp.toLocalDate()), ZoneId.of("Europe/London"));
+        } else if(tweetTimeStamp.plusMinutes(20).toLocalTime().compareTo(BMW_XETRA_CLOSE) > 0){
+            // time stamp of the tweet occurs at a time later than 20 minutes before the market close --> return the next day's open price
+            return ZonedDateTime.of(BMW_XETRA_OPEN.atDate(tweetTimeStamp.toLocalDate().plusDays(1)),ZoneId.of("Europe/London"));
+        } else {
+            // timestamp of the tweet occurs during normal market hours
+            return tweetTimeStamp.plusMinutes(20);
         }
     }
 

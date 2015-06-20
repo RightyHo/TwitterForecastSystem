@@ -19,8 +19,10 @@ public interface Tweet {
 
      void setIsLabelled(boolean isLabelled);
 
+     // not 100% sure if this is flag is necessary?
      boolean isPublishedOutsideMarketHours();
 
+     // not 100% sure if this is flag is necessary?
      void setIsPublishedOutsideMarketHours(boolean isPublishedOutsideMarketHours);
 
      String getTweetText();

@@ -9,7 +9,7 @@ public class TweetImpl implements Tweet {
     private ZonedDateTime timeStamp;
     private boolean isRetweet;
     private boolean isLabelled;
-    private boolean isPublishedOutsideMarketHours;
+    private boolean isPublishedOutsideMarketHours;  // not 100% sure if this is flag is necessary?
     private String tweetText;       // split into three variables to separate unabbreviated and spell checked states?
     private PriceSnapshot initialSnapshot;	// last price snapshot before the tweet was published
     private PriceSnapshot postTweetSnapshot;	// price snapshot 20 minutes after the tweet was published
@@ -68,10 +68,12 @@ public class TweetImpl implements Tweet {
         this.isLabelled = isLabelled;
     }
 
+    // not 100% sure if this is flag is necessary?
     public boolean isPublishedOutsideMarketHours() {
         return isPublishedOutsideMarketHours;
     }
 
+    // not 100% sure if this is flag is necessary?
     public void setIsPublishedOutsideMarketHours(boolean isPublishedOutsideMarketHours) {
         this.isPublishedOutsideMarketHours = isPublishedOutsideMarketHours;
     }
