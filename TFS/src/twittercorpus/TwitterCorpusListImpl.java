@@ -165,6 +165,9 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             ZonedDateTime focusTS = focus.getTimeStamp();
             PriceSnapshot openingSnap = labels.getPriceMap().get(lastPrintBeforeTweet(focusTS));
             PriceSnapshot closingSnap = labels.getPriceMap().get(twentyMinsAfterTweet(focusTS));
+
+            // set the two price snapshots and labelled flag for the tweet
+
             focus.setInitialSnapshot(openingSnap);
             focus.setPostTweetSnapshot(closingSnap);
             focus.setIsLabelled(true);

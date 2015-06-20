@@ -78,9 +78,13 @@ public class TwitterCorpusListImplTest {
         assertTrue(tCorpus.getMonthNum("auG") == 8);
     }
 
+//    * labels the tweet by setting the price snapshot that corresponds to the timestamp of the tweet as well as
+//    * setting the sentiment value of the tweet and marking the isLabelled flag as true.
+//    public void labelCorpus(PriceLabelCorpus labels)
     @Test
     public void testLabelCorpus() throws Exception {
-
+        PriceLabelCorpus
+        tCorpus.labelCorpus();
     }
 
     @Test
