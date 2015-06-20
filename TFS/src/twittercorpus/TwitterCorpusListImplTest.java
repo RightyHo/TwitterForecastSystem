@@ -61,8 +61,14 @@ public class TwitterCorpusListImplTest {
      */
     @Test
     public void testExtractTweetsFromFile() throws Exception {
+
+        // test first tweet in list
         assertEquals(tCorpus.getCorpus().get(0).getTweetText(),"#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn");
-        System.out.println(tCorpus.getCorpus().get(1).getTimeStamp());
+
+        // test second tweet in list
+        LocalDateTime localExpectedTS = LocalDateTime.of(2015,1,31,23,8,0);
+        ZonedDateTime expectedTS = ZonedDateTime.of(localExpectedTS, ZoneId.of("Europe/London"));
+        assertEquals(tCorpus.getCorpus().get(1).getTimeStamp(),expectedTS);
     }
 
     @Test

@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/BMWClosedMarketSnapshot.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
@@ -42,8 +43,8 @@
       <file leaf-file-name="Tweet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.888889">
-              <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -53,17 +54,7 @@
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="50" selection-start-line="75" selection-start-column="50" selection-end-line="75" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PriceSnapshot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceSnapshot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,9 +85,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterCorpusListImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TwitterCorpusListImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14893617">
-              <caret line="208" column="45" selection-start-line="208" selection-start-column="25" selection-end-line="208" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="70" column="52" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9148#9149#0" expanded="true" />
@@ -135,14 +124,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.27202073">
+              <caret line="14" column="38" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -182,15 +169,15 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/BMWPriceSnapshot.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceSnapshot.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpus.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
       </list>
     </option>
   </component>
@@ -240,7 +227,60 @@
       <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterForecastSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterForecastSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterForecastSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterForecastSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterForecastSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TFS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterForecastSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterForecastSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TFS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twittercorpus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
       <pane id="PackagesPane" />
     </panes>
@@ -656,12 +696,12 @@
       <workItem from="1434435016729" duration="11146000" />
       <workItem from="1434629194670" duration="51000" />
       <workItem from="1434629269431" duration="17138000" />
-      <workItem from="1434794221597" duration="4146000" />
+      <workItem from="1434794221597" duration="4971000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36110000" />
+    <option name="totallyTimeSpent" value="36935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="651" y="23" width="789" height="823" extended-state="0" />
@@ -674,22 +714,22 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15164521" sideWeight="0.50628364" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.373461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28915662" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.49371633" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16452074" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30789825" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43365252" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3819918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22475961" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28915662" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -784,9 +824,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -824,9 +862,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -869,13 +905,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/BMWClosedMarketSnapshot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -927,6 +956,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="37" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -969,13 +999,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/BMWClosedMarketSnapshot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1027,6 +1050,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="37" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,24 +1105,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/BMWClosedMarketSnapshot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/src.zip!/java/io/FileInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3327032">
           <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59659094">
-          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -1135,16 +1145,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceSnapshot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1158,16 +1158,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1189,22 +1179,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="50" selection-start-line="75" selection-start-column="50" selection-end-line="75" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.888889">
-          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1215,10 +1189,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusMapImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39179105">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14893617">
-          <caret line="208" column="45" selection-start-line="208" selection-start-column="25" selection-end-line="208" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="52" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9148#9149#0" expanded="true" />
@@ -1232,6 +1238,14 @@
             <element signature="e#9511#9512#0" expanded="true" />
             <element signature="e#9533#9534#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27202073">
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>

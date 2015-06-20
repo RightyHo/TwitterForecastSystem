@@ -45,10 +45,4 @@ public interface Tweet {
 
      void setSentiment(Sentiment sentiment);
 
-    /**
-     * labels the tweet by setting the price snapshot that corresponds to the timestamp of the tweet as well as
-     * setting the sentiment value of the tweet and marking the isLabelled flag as true.
-     * @param priceSnapshot
-     */
-     void labelTweet(PriceSnapshot priceSnapshot);
 }

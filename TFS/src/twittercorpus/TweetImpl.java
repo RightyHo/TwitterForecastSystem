@@ -6,6 +6,7 @@ import java.time.*;
  * Created by Andrew on 08/06/15.
  */
 public class TweetImpl implements Tweet {
+
     private ZonedDateTime timeStamp;
     private boolean isRetweet;
     private boolean isLabelled;
@@ -118,12 +119,4 @@ public class TweetImpl implements Tweet {
         this.sentiment = sentiment;
     }
 
-    /**
-     * labels the tweet by setting the price snapshot that corresponds to the timestamp of the tweet as well as
-     * setting the sentiment value of the tweet and marking the isLabelled flag as true.
-     * @param priceSnapshot
-     */
-    public void labelTweet(PriceSnapshot priceSnapshot){
-
-    }
 }
