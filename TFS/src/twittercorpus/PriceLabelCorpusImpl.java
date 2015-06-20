@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -20,6 +21,7 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
     // constructors
 
     public PriceLabelCorpusImpl(String fileName) {
+        priceMap = new HashMap<>();
         this.fileName = fileName;
     }
 
@@ -52,11 +54,8 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
             String currentLine;
             while ((currentLine = br.readLine()) != null) {
                 Scanner s = new Scanner(currentLine);
-                int day = s.nextInt();
-                int month = s.nextInt();
-                int year = s.nextInt();
-                int hour =  s.nextInt();
-                int min =  s.nextInt();
+                String dateString = s.next();
+                String timeString = s.next();
                 double openPrice = s.nextDouble();
                 double high = s.nextDouble();
                 double low = s.nextDouble();
@@ -64,6 +63,15 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
                 double macdLevel = s.nextDouble();
                 double sigLevel = s.nextDouble();
                 double macdDirection = s.nextDouble();
+
+                Scanner splitDate = new Scanner(dateString).useDelimiter("/");
+                int day = s.nextInt();
+                int month = s.nextInt();
+                int year = s.nextInt();
+
+                Scanner splitTime = new Scanner(timeString).useDelimiter(":");
+                int hour =  s.nextInt();
+                int min =  s.nextInt();
 
                 // create new ZonedDateTime object for each row in the file
 

@@ -83,8 +83,7 @@ public class TwitterCorpusListImplTest {
 //    public void labelCorpus(PriceLabelCorpus labels)
     @Test
     public void testLabelCorpus() throws Exception {
-        PriceLabelCorpus
-        tCorpus.labelCorpus();
+
     }
 
     @Test
