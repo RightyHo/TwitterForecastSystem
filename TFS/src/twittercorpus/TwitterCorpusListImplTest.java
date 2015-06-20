@@ -36,22 +36,22 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testGetCorpus() throws Exception {
-
+        // not necessary?
     }
 
     @Test
     public void testSetCorpus() throws Exception {
-
+        // not necessary?
     }
 
     @Test
     public void testGetFileName() throws Exception {
-
+        // not necessary?
     }
 
     @Test
     public void testSetFileName() throws Exception {
-
+        // not necessary?
     }
 
     /**
@@ -73,7 +73,9 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testGetMonthNum() throws Exception {
-
+        assertTrue(tCorpus.getMonthNum("apr") == 4);
+        assertTrue(tCorpus.getMonthNum("Oct") == 10);
+        assertTrue(tCorpus.getMonthNum("auG") == 8);
     }
 
     @Test
