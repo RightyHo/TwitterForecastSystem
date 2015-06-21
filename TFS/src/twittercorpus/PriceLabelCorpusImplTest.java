@@ -48,22 +48,36 @@ public class PriceLabelCorpusImplTest {
         assertEquals("this/file/does/not/exist.txt",plCorpus.getFileName());
     }
 
+    /**
+     * test that the output from a couple of price snapshots extracted at random match the input data
+     * @throws Exception
+     */
     @Test
     public void testExtractPriceDataFromFile() throws Exception {
 
-        // search on data entry: 30/04/15 16:35	106.1	106.1	106.1	106.1	0.0403	0.0584	-0.0181
-        LocalDateTime localPlTS = LocalDateTime.of(2015,4,30,16,35,0);
+//        Iterator<ZonedDateTime> it = plCorpus.getPriceMap().keySet().iterator();
+//        if(it.hasNext()){
+//            ZonedDateTime zKey = it.next();
+//            System.out.println(zKey);
+//            System.out.println("day "+zKey.getDayOfMonth());
+//            System.out.println("month "+zKey.getMonthValue());
+//            System.out.println("year "+zKey.getYear());
+//        }
+
+        // search on data entry: 20/01/2015 15:11	94.87	94.91	94.86	94.91	0.0431	0.0191	0.024
+        LocalDateTime localPlTS = LocalDateTime.of(2015,1,20,15,11,0);
         ZonedDateTime plTS = ZonedDateTime.of(localPlTS, ZoneId.of("Europe/London"));
         assertNotNull(plCorpus.getPriceMap().get(plTS));
+        System.out.println(plCorpus.getPriceMap().get(plTS));
         if(plCorpus.getPriceMap().get(plTS) != null)
-            assertTrue(Math.abs(plCorpus.getPriceMap().get(plTS).getClosingSharePrice() - 106.1) < 0.0000001);
+            assertTrue(Math.abs(plCorpus.getPriceMap().get(plTS).getClosingSharePrice() - 94.91) < 0.0000000000000001);
 
-        // search on data entry:  07/04/15 08:32	115.65	115.7	115.5	115.6	0.0443	0.0049	0.0394
-        localPlTS = LocalDateTime.of(2015,4,7,8,32,0);
+        // search on data entry:  19/01/2015 10:34	94.04	94.04	93.99	93.99	-0.0011	0.0001	-0.0012
+        localPlTS = LocalDateTime.of(2015,1,19,10,34,0);
         plTS = ZonedDateTime.of(localPlTS, ZoneId.of("Europe/London"));
         assertNotNull(plCorpus.getPriceMap().get(plTS));
         if(plCorpus.getPriceMap().get(plTS) != null)
-            assertTrue(Math.abs(plCorpus.getPriceMap().get(plTS).getOpeningMACDDirectionSignal() - 0.0394) < 0.0000001);
+            assertTrue(Math.abs(plCorpus.getPriceMap().get(plTS).getOpeningMACDDirectionSignal() - (-0.0012)) < 0.0000000000000001);
     }
 
 }
