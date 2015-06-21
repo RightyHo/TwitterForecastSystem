@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PriceLabelCorpusImplTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PriceLabelCorpusImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.34160304">
+              <caret line="51" column="44" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -115,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24705882">
-              <caret line="90" column="31" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -167,8 +168,8 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" />
       </list>
     </option>
   </component>
@@ -187,10 +188,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="469" />
-    <option name="y" value="23" />
-    <option name="width" value="971" />
-    <option name="height" value="823" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -289,7 +288,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="recentsLimit" value="5" />
@@ -718,15 +717,15 @@
       <workItem from="1434794221597" duration="6540000" />
       <workItem from="1434811291264" duration="3885000" />
       <workItem from="1434816161374" duration="2121000" />
-      <workItem from="1434882140014" duration="4494000" />
+      <workItem from="1434882140014" duration="4879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49004000" />
+    <option name="totallyTimeSpent" value="49389000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="469" y="23" width="971" height="823" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -746,8 +745,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.49371633" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21636169" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38030097" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14377682" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33493975" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1232,18 +1231,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java">
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24705882">
-          <caret line="90" column="31" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.34160304">
+          <caret line="51" column="44" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="44" />
           <folding />
         </state>
       </provider>
