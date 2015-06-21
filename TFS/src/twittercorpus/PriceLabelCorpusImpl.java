@@ -15,6 +15,7 @@ import java.util.Scanner;
  */
 public class PriceLabelCorpusImpl implements PriceLabelCorpus {
 
+    private static final int MILLENIUM = 2000;
     private Map<ZonedDateTime,PriceSnapshot> priceMap;
     private String fileName;
 
@@ -67,7 +68,7 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
                 Scanner splitDate = new Scanner(dateString).useDelimiter("/");
                 int day = splitDate.nextInt();
                 int month = splitDate.nextInt();
-                int year = splitDate.nextInt();
+                int year = splitDate.nextInt() + MILLENIUM;
 
                 Scanner splitTime = new Scanner(timeString).useDelimiter(":");
                 int hour =  splitTime.nextInt();
