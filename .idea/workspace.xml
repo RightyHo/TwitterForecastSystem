@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,8 +84,8 @@
       <file leaf-file-name="PriceLabelCorpusImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24705882">
-              <caret line="15" column="37" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.35058823">
+              <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -169,8 +167,8 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" />
       </list>
     </option>
   </component>
@@ -720,12 +718,12 @@
       <workItem from="1434794221597" duration="6540000" />
       <workItem from="1434811291264" duration="3885000" />
       <workItem from="1434816161374" duration="2121000" />
-      <workItem from="1434882140014" duration="2284000" />
+      <workItem from="1434882140014" duration="2790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46794000" />
+    <option name="totallyTimeSpent" value="47300000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="469" y="23" width="971" height="823" extended-state="0" />
@@ -1221,6 +1219,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/BMWPriceSnapshot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1232,20 +1240,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24705882">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.35058823">
+          <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
           <folding />
         </state>
       </provider>
