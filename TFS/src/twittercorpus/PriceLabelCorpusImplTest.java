@@ -30,21 +30,6 @@ public class PriceLabelCorpusImplTest {
         assertFalse(plCorpus.getPriceMap().isEmpty());
     }
 
-//    @Test
-//    public void testSetPriceMap() throws Exception {
-//        // not necessary?
-//    }
-//
-//    @Test
-//    public void testGetFileName() throws Exception {
-//        // not necessary?
-//    }
-//
-//    @Test
-//    public void testSetFileName() throws Exception {
-//        // not necessary?
-//    }
-
     @Test
     public void testExtractPriceDataFromFile() throws Exception {
 
@@ -75,4 +60,20 @@ public class PriceLabelCorpusImplTest {
         plTS = ZonedDateTime.of(localPlTS, ZoneId.of("Europe/London"));
         assertTrue(Math.abs(plCorpus.getPriceMap().get(plTS).getOpeningMACDDirectionSignal() - 0.0394) < 0.0000001);
     }
+
+//    @Test
+//    public void testSetPriceMap() throws Exception {
+//        // not necessary?
+//    }
+//
+//    @Test
+//    public void testGetFileName() throws Exception {
+//        // not necessary?
+//    }
+//
+//    @Test
+//    public void testSetFileName() throws Exception {
+//        // not necessary?
+//    }
+
 }

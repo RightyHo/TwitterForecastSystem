@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -36,22 +38,24 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testGetCorpus() throws Exception {
-        // not necessary?
+        assertFalse(tCorpus.getCorpus().isEmpty());
     }
 
     @Test
     public void testSetCorpus() throws Exception {
-        // not necessary?
+        tCorpus.setCorpus(new ArrayList<>());
+        assertTrue(tCorpus.getCorpus().isEmpty());
     }
 
     @Test
     public void testGetFileName() throws Exception {
-        // not necessary?
+        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/feb-15-bmw.txt",tCorpus.getFileName());
     }
 
     @Test
     public void testSetFileName() throws Exception {
-        // not necessary?
+        tCorpus.setFileName("this/file/does/not/exist.txt");
+        assertEquals("this/file/does/not/exist.txt",tCorpus.getFileName());
     }
 
     /**
@@ -68,7 +72,7 @@ public class TwitterCorpusListImplTest {
         // test second tweet in list
         LocalDateTime localExpectedTS = LocalDateTime.of(2015,1,31,23,8,0);
         ZonedDateTime expectedTS = ZonedDateTime.of(localExpectedTS, ZoneId.of("Europe/London"));
-        assertEquals(tCorpus.getCorpus().get(1).getTimeStamp(),expectedTS);
+        assertEquals(expectedTS,tCorpus.getCorpus().get(1).getTimeStamp());
     }
 
     @Test
