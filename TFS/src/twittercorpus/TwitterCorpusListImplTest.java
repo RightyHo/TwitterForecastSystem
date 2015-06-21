@@ -22,10 +22,10 @@ public class TwitterCorpusListImplTest {
 
     @Before
     public void setUp() throws Exception {
-        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/feb-15-bmw.txt";
+        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt";
         tCorpus = new TwitterCorpusListImpl(tFilename);
         tCorpus.extractTweetsFromFile(tFilename);
-        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/BMW Price Data - April 2015.txt";
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
     }
 
     @Test
@@ -51,7 +51,7 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testGetFileName() throws Exception {
-        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/feb-15-bmw.txt",tCorpus.getFileName());
+        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt",tCorpus.getFileName());
     }
 
     @Test
@@ -61,18 +61,18 @@ public class TwitterCorpusListImplTest {
     }
 
     /**
-     * first line should match with "Sat Jan 31 23:02:00 2015	#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn"
-     * second line should match with "Sat Jan 31 23:08:00 2015	rt @mickgeo3: black bmw  convertible hfz 7935 stolen in creeper burglary, glengoland w. belfast in last hour. pls rt and keep an eye out fo?"
+     * first line should match with "Fri Jan 16 00:04:00 2015	#usedcars used 2003 bmw z4 2.5i in gainesville, fl 32601 for sale at autoflex llc http://t.co/fxbqiiu6rr http://t.co/rok2iyoh0c"
+     * second line should match with "Fri Jan 16 00:18:00 2015	a new beemer http://t.co/uaff540vdf"
      * @throws Exception
      */
     @Test
     public void testExtractTweetsFromFile() throws Exception {
 
         // test first tweet in list
-        assertEquals(tCorpus.getCorpus().get(0).getTweetText(),"#dautoperfection detailed ready for sale 15 bmw 640i $87k http://t.co/wwba75rzpn");
+        assertEquals(tCorpus.getCorpus().get(0).getTweetText(),"#usedcars used 2003 bmw z4 2.5i in gainesville, fl 32601 for sale at autoflex llc http://t.co/fxbqiiu6rr http://t.co/rok2iyoh0c");
 
         // test second tweet in list
-        LocalDateTime localExpectedTS = LocalDateTime.of(2015,1,31,23,8,0);
+        LocalDateTime localExpectedTS = LocalDateTime.of(2015,1,16,0,18,0);
         ZonedDateTime expectedTS = ZonedDateTime.of(localExpectedTS, ZoneId.of("Europe/London"));
         assertEquals(expectedTS,tCorpus.getCorpus().get(1).getTimeStamp());
     }
