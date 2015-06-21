@@ -18,12 +18,14 @@ public class TwitterCorpusListImplTest {
 
     private TwitterCorpus tCorpus;
     private String tFilename;
+    private String plFilename;
 
     @Before
     public void setUp() throws Exception {
         tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/feb-15-bmw.txt";
         tCorpus = new TwitterCorpusListImpl(tFilename);
         tCorpus.extractTweetsFromFile(tFilename);
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/BMW Price Data - April 2015.txt";
     }
 
     @Test
@@ -87,7 +89,10 @@ public class TwitterCorpusListImplTest {
 //    public void labelCorpus(PriceLabelCorpus labels)
     @Test
     public void testLabelCorpus() throws Exception {
-
+        PriceLabelCorpus plCorpus = new PriceLabelCorpusImpl(plFilename);
+        plCorpus.extractPriceDataFromFile(plFilename);
+        tCorpus.labelCorpus(plCorpus);
+        tCorpus.getCorpus().get(0).getInitialSnapshot().getOpeningSharePrice();     // need to get a test twitter corpus that matches times with test price data
     }
 
     @Test
