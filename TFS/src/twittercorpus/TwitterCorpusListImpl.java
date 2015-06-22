@@ -3,10 +3,7 @@ package twittercorpus;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.util.*;
 
 /**
@@ -168,14 +165,50 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             ZonedDateTime focusTS = focus.getTimeStamp();
-            PriceSnapshot openingSnap = labels.getPriceMap().get(lastPrintBeforeTweet(focusTS));
-            PriceSnapshot closingSnap = labels.getPriceMap().get(twentyMinsAfterTweet(focusTS));
+            PriceSnapshot openingSnap = null;
+
+            // Amend labelCorpus() method to account for the following:
+            // 1.  Missing price data at particular time stamps during normal trading hours.
+            // 2.  Tweets that occur during a weekend (including the previous evening and following morning).
+            // 3.  Tweets that occur during a market holiday (including the previous evening and following morning):
+            //	--> Non Trading Days are 1 Jan, 3 Apr, 6 Apr, 1 May, 25 May, 24 Dec, 25 Dec, 31 Dec
+
+            ZonedDateTime preTweetTime = lastPrintBeforeTweet(focusTS);
+
+            if(labels.getPriceMap().containsKey(preTweetTime)){
+                // timestamp key exists in map
+                PriceSnapshot openingSnap = labels.getPriceMap().get(preTweetTime);
+            } else if(notValidTradeDate(lastPrintBeforeTweet(focusTS))){
+                // timestamp key does not exist in map because it falls on a weekend or a market holiday
+
+            } else {
+                // exception situation in which timestamp does not appear in priceLabel corpus but should
+
+            }
+            if(focusTS.getDayOfWeek().equals(DayOfWeek.SATURDAY) || focusTS.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
+                // timestamp key does not exist in map because it falls on a weekend or a market holiday
+            }
+
+            ZonedDateTime postTweetTime = twentyMinsAfterTweet(focusTS);
+            PriceSnapshot closingSnap = labels.getPriceMap().get(postTweetTime);
 
             // set the two price snapshots and labelled flag for the tweet
 
             focus.setInitialSnapshot(openingSnap);
             focus.setPostTweetSnapshot(closingSnap);
             focus.setIsLabelled(true);
+
+            // *** change initial snapshot to the previous minutes closing price (or this minutes open price ***
+            // *** need to account for gaps in the price data for example the following gap is currently producing a null pointer when we look up 9:27 ***
+            // *** can we check if not found then search for next valid price? ***
+            // *** also holidays and weekends to take into account ***
+            // 16/01/2015 09:29	91.13	91.18	91.08	91.16	-0.0005	0.0009	-0.0014
+            // 16/01/2015 09:26	91.15	91.17	91.14	91.15	0.0008	0.0012	-0.0004
+
+            if(focus.getInitialSnapshot() != null)
+                System.out.println(focus.getTimeStamp() +" -->"+"opening share price: "+ focus.getInitialSnapshot().getClosingSharePrice());
+            if(focus.getPostTweetSnapshot() != null)
+                System.out.println(focus.getTimeStamp() +" -->"+"closing share price: " + focus.getPostTweetSnapshot().getClosingSharePrice());
 
             // compare the two market price snapshots to discern the implied sentiment of the tweet from the change in price
 
