@@ -19,7 +19,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     // INSTEAD THERE IS A 5 MINUTE END OF DAY AUCTION AND THEN A FINAL PRICE PRINT FOR THE DAY AT 16:35 ***
 
     public static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);	    // London time
-
     public static final LocalTime BMW_US_OTC_OPEN = LocalTime.of(14,30,0);	    // London time
     public static final LocalTime BMW_US_OTC_CLOSE = LocalTime.of(21, 0, 0);	// London time
     public static final int THIS_YEAR = 2015;
@@ -32,6 +31,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                                                                 LocalDate.of(THIS_YEAR,12,25),
                                                                 LocalDate.of(THIS_YEAR,12,31)};
     public static final Set<LocalDate> MARKET_HOLIDAY = new HashSet<>(Arrays.asList(SET_VALUES));
+    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 1, 1, 0, 0, 0, 0, ZoneId.of("Europe/London"));
 
     private List<Tweet> corpus;
     private String fileName;
