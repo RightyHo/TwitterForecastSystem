@@ -11,17 +11,27 @@ import java.util.*;
  */
 public class TwitterCorpusListImpl implements TwitterCorpus {
 
-    private static final String USERNAME_EQUIVALENCE_TOKEN = "USERNAME";
-    private static final String LINK_EQUIVALENCE_TOKEN = "LINK";
-    private static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);	    // London time
+    public static final String USERNAME_EQUIVALENCE_TOKEN = "USERNAME";
+    public static final String LINK_EQUIVALENCE_TOKEN = "LINK";
+    public static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);	    // London time
 
     // *** NEED TO CHANGE CODE TO ACCOUNT FOR THE FACT THAT THERE IS NEVER A 16:30 PRICE TIME STAMP
     // INSTEAD THERE IS A 5 MINUTE END OF DAY AUCTION AND THEN A FINAL PRICE PRINT FOR THE DAY AT 16:35 ***
 
-    private static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);	    // London time
+    public static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);	    // London time
 
-    private static final LocalTime BMW_US_OTC_OPEN = LocalTime.of(14,30,0);	    // London time
-    private static final LocalTime BMW_US_OTC_CLOSE = LocalTime.of(21, 0, 0);	// London time
+    public static final LocalTime BMW_US_OTC_OPEN = LocalTime.of(14,30,0);	    // London time
+    public static final LocalTime BMW_US_OTC_CLOSE = LocalTime.of(21, 0, 0);	// London time
+    public static final int THIS_YEAR = 2015;
+    public static final LocalDate[] SET_VALUES = new LocalDate[]{LocalDate.of(THIS_YEAR,1,1),
+                                                                LocalDate.of(THIS_YEAR,4,3),
+                                                                LocalDate.of(THIS_YEAR,4,6),
+                                                                LocalDate.of(THIS_YEAR,5,1),
+                                                                LocalDate.of(THIS_YEAR,5,25),
+                                                                LocalDate.of(THIS_YEAR,12,24),
+                                                                LocalDate.of(THIS_YEAR,12,25),
+                                                                LocalDate.of(THIS_YEAR,12,31)};
+    public static final Set<LocalDate> MARKET_HOLIDAY = new HashSet<>(Arrays.asList(SET_VALUES));
 
     private List<Tweet> corpus;
     private String fileName;
@@ -166,6 +176,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             Tweet focus = corpusIterator.next();
             ZonedDateTime focusTS = focus.getTimeStamp();
             PriceSnapshot openingSnap = null;
+            ZonedDateTime postTweetTime = null;
 
             // Amend labelCorpus() method to account for the following:
             // 1.  Missing price data at particular time stamps during normal trading hours.
@@ -177,7 +188,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
             if(labels.getPriceMap().containsKey(preTweetTime)){
                 // timestamp key exists in map
-                PriceSnapshot openingSnap = labels.getPriceMap().get(preTweetTime);
+                openingSnap = labels.getPriceMap().get(preTweetTime);
             } else if(notValidTradeDate(lastPrintBeforeTweet(focusTS))){
                 // timestamp key does not exist in map because it falls on a weekend or a market holiday
 
@@ -189,7 +200,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 // timestamp key does not exist in map because it falls on a weekend or a market holiday
             }
 
-            ZonedDateTime postTweetTime = twentyMinsAfterTweet(focusTS);
+            postTweetTime = twentyMinsAfterTweet(focusTS);
             PriceSnapshot closingSnap = labels.getPriceMap().get(postTweetTime);
 
             // set the two price snapshots and labelled flag for the tweet
