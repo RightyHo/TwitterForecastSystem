@@ -141,8 +141,8 @@
       <file leaf-file-name="TwitterCorpusListImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70412517">
-              <caret line="33" column="64" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.4694168">
+              <caret line="229" column="46" selection-start-line="229" selection-start-column="46" selection-end-line="229" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2399#2400#0" expanded="true" />
@@ -157,16 +157,16 @@
                 <element signature="e#2758#2759#0" expanded="true" />
                 <element signature="e#2806#2807#0" expanded="true" />
                 <element signature="e#2846#2847#0" expanded="true" />
-                <element signature="e#14586#14587#0" expanded="true" />
-                <element signature="e#14608#14609#0" expanded="true" />
-                <element signature="e#14668#14669#0" expanded="true" />
-                <element signature="e#14690#14691#0" expanded="true" />
-                <element signature="e#14758#14759#0" expanded="true" />
-                <element signature="e#14780#14781#0" expanded="true" />
-                <element signature="e#14860#14861#0" expanded="true" />
-                <element signature="e#14882#14883#0" expanded="true" />
-                <element signature="e#14949#14950#0" expanded="true" />
-                <element signature="e#14971#14972#0" expanded="true" />
+                <element signature="e#13649#13650#0" expanded="true" />
+                <element signature="e#13671#13672#0" expanded="true" />
+                <element signature="e#13731#13732#0" expanded="true" />
+                <element signature="e#13753#13754#0" expanded="true" />
+                <element signature="e#13821#13822#0" expanded="true" />
+                <element signature="e#13843#13844#0" expanded="true" />
+                <element signature="e#13923#13924#0" expanded="true" />
+                <element signature="e#13945#13946#0" expanded="true" />
+                <element signature="e#14012#14013#0" expanded="true" />
+                <element signature="e#14034#14035#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -775,12 +775,12 @@
       <workItem from="1434794221597" duration="6540000" />
       <workItem from="1434811291264" duration="3885000" />
       <workItem from="1434816161374" duration="2121000" />
-      <workItem from="1434882140014" duration="15581000" />
+      <workItem from="1434882140014" duration="17257000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60091000" />
+    <option name="totallyTimeSpent" value="61767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="13" y="23" width="1427" height="823" extended-state="0" />
@@ -977,16 +977,16 @@
             <element signature="e#2758#2759#0" expanded="true" />
             <element signature="e#2806#2807#0" expanded="true" />
             <element signature="e#2846#2847#0" expanded="true" />
-            <element signature="e#14586#14587#0" expanded="true" />
-            <element signature="e#14608#14609#0" expanded="true" />
-            <element signature="e#14668#14669#0" expanded="true" />
-            <element signature="e#14690#14691#0" expanded="true" />
-            <element signature="e#14758#14759#0" expanded="true" />
-            <element signature="e#14780#14781#0" expanded="true" />
-            <element signature="e#14860#14861#0" expanded="true" />
-            <element signature="e#14882#14883#0" expanded="true" />
-            <element signature="e#14949#14950#0" expanded="true" />
-            <element signature="e#14971#14972#0" expanded="true" />
+            <element signature="e#13649#13650#0" expanded="true" />
+            <element signature="e#13671#13672#0" expanded="true" />
+            <element signature="e#13731#13732#0" expanded="true" />
+            <element signature="e#13753#13754#0" expanded="true" />
+            <element signature="e#13821#13822#0" expanded="true" />
+            <element signature="e#13843#13844#0" expanded="true" />
+            <element signature="e#13923#13924#0" expanded="true" />
+            <element signature="e#13945#13946#0" expanded="true" />
+            <element signature="e#14012#14013#0" expanded="true" />
+            <element signature="e#14034#14035#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1114,16 +1114,16 @@
             <element signature="e#2758#2759#0" expanded="true" />
             <element signature="e#2806#2807#0" expanded="true" />
             <element signature="e#2846#2847#0" expanded="true" />
-            <element signature="e#14586#14587#0" expanded="true" />
-            <element signature="e#14608#14609#0" expanded="true" />
-            <element signature="e#14668#14669#0" expanded="true" />
-            <element signature="e#14690#14691#0" expanded="true" />
-            <element signature="e#14758#14759#0" expanded="true" />
-            <element signature="e#14780#14781#0" expanded="true" />
-            <element signature="e#14860#14861#0" expanded="true" />
-            <element signature="e#14882#14883#0" expanded="true" />
-            <element signature="e#14949#14950#0" expanded="true" />
-            <element signature="e#14971#14972#0" expanded="true" />
+            <element signature="e#13649#13650#0" expanded="true" />
+            <element signature="e#13671#13672#0" expanded="true" />
+            <element signature="e#13731#13732#0" expanded="true" />
+            <element signature="e#13753#13754#0" expanded="true" />
+            <element signature="e#13821#13822#0" expanded="true" />
+            <element signature="e#13843#13844#0" expanded="true" />
+            <element signature="e#13923#13924#0" expanded="true" />
+            <element signature="e#13945#13946#0" expanded="true" />
+            <element signature="e#14012#14013#0" expanded="true" />
+            <element signature="e#14034#14035#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1551,8 +1551,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70412517">
-          <caret line="33" column="64" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.4694168">
+          <caret line="229" column="46" selection-start-line="229" selection-start-column="46" selection-end-line="229" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2399#2400#0" expanded="true" />
@@ -1567,16 +1567,16 @@
             <element signature="e#2758#2759#0" expanded="true" />
             <element signature="e#2806#2807#0" expanded="true" />
             <element signature="e#2846#2847#0" expanded="true" />
-            <element signature="e#14586#14587#0" expanded="true" />
-            <element signature="e#14608#14609#0" expanded="true" />
-            <element signature="e#14668#14669#0" expanded="true" />
-            <element signature="e#14690#14691#0" expanded="true" />
-            <element signature="e#14758#14759#0" expanded="true" />
-            <element signature="e#14780#14781#0" expanded="true" />
-            <element signature="e#14860#14861#0" expanded="true" />
-            <element signature="e#14882#14883#0" expanded="true" />
-            <element signature="e#14949#14950#0" expanded="true" />
-            <element signature="e#14971#14972#0" expanded="true" />
+            <element signature="e#13649#13650#0" expanded="true" />
+            <element signature="e#13671#13672#0" expanded="true" />
+            <element signature="e#13731#13732#0" expanded="true" />
+            <element signature="e#13753#13754#0" expanded="true" />
+            <element signature="e#13821#13822#0" expanded="true" />
+            <element signature="e#13843#13844#0" expanded="true" />
+            <element signature="e#13923#13924#0" expanded="true" />
+            <element signature="e#13945#13946#0" expanded="true" />
+            <element signature="e#14012#14013#0" expanded="true" />
+            <element signature="e#14034#14035#0" expanded="true" />
           </folding>
         </state>
       </provider>
