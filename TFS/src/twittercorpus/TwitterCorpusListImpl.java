@@ -14,10 +14,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     public static final String USERNAME_EQUIVALENCE_TOKEN = "USERNAME";
     public static final String LINK_EQUIVALENCE_TOKEN = "LINK";
     public static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);	    // London time
-
-    // *** NEED TO CHANGE CODE TO ACCOUNT FOR THE FACT THAT THERE IS NEVER A 16:30 PRICE TIME STAMP
-    // INSTEAD THERE IS A 5 MINUTE END OF DAY AUCTION AND THEN A FINAL PRICE PRINT FOR THE DAY AT 16:35 ***
-
     public static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);	    // London time
     public static final LocalTime BMW_US_OTC_OPEN = LocalTime.of(14,30,0);	    // London time
     public static final LocalTime BMW_US_OTC_CLOSE = LocalTime.of(21, 0, 0);	// London time
@@ -175,19 +171,18 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
      * @param labels
      */
     public void labelCorpus(PriceLabelCorpus labels){
+
+        // *** MAY NEED TO CHANGE CODE TO ACCOUNT FOR THE FACT THAT THERE IS NEVER A 16:30 PRICE TIME STAMP,
+        // INSTEAD THERE IS A 5 MINUTE END OF DAY AUCTION AND THEN A FINAL PRICE PRINT FOR THE DAY AT 16:35.
+        // BUT THIS ISSUE IS PROBABLY RESOLVED BY THE getPriorPrices() AND getPrice20MinsAfterTweet() FUNCTIONS
+        // THAT RECURSIVELY STEP THROUGH GAPS IN THE MARKET DATA CORPUS BY SEARCHING FOR PRICE DATA IN THE
+        // MINUTES BEFORE OR AFTER THE TIMESTAMP WITH THE MISSING PRICE SNAPSHOT. ***
+
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             ZonedDateTime focusTS = focus.getTimeStamp();
-
-            // Amend labelCorpus() method to account for the following:
-            // 1.  Missing price data at particular time stamps during normal trading hours.
-            // 2.  Tweets that occur during a weekend (including the previous evening and following morning).
-            // 3.  Tweets that occur during a market holiday (including the previous evening and following morning):
-            //	--> Non Trading Days are 1 Jan, 3 Apr, 6 Apr, 1 May, 25 May, 24 Dec, 25 Dec, 31 Dec
-
             PriceSnapshot openingSnap = getPriorPrices(labels,focusTS);
-
             PriceSnapshot closingSnap = getPrice20MinsAfterTweet(labels, focusTS);
 
             // set the two price snapshots and labelled flag for the tweet
@@ -195,13 +190,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             focus.setInitialSnapshot(openingSnap);
             focus.setPostTweetSnapshot(closingSnap);
             focus.setIsLabelled(true);
-
-            // *** change initial snapshot to the previous minutes closing price (or this minutes open price ***
-            // *** need to account for gaps in the price data for example the following gap is currently producing a null pointer when we look up 9:27 ***
-            // *** can we check if not found then search for next valid price? ***
-            // *** also holidays and weekends to take into account ***
-            // 16/01/2015 09:29	91.13	91.18	91.08	91.16	-0.0005	0.0009	-0.0014
-            // 16/01/2015 09:26	91.15	91.17	91.14	91.15	0.0008	0.0012	-0.0004
 
             if(focus.getInitialSnapshot() != null)
                 System.out.println(focus.getTimeStamp() +" -->"+"opening share price: "+ focus.getInitialSnapshot().getClosingSharePrice());
