@@ -198,9 +198,9 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
             // compare the two market price snapshots to discern the implied sentiment of the tweet from the change in price
 
-            if(focus.getInitialSnapshot().getOpeningSharePrice() > focus.getPostTweetSnapshot().getClosingSharePrice()){
+            if(focus.getInitialSnapshot().getClosingSharePrice() > focus.getPostTweetSnapshot().getClosingSharePrice()){
                 focus.setSentiment(Sentiment.NEGATIVE);
-            } else if(focus.getInitialSnapshot().getOpeningSharePrice() < focus.getPostTweetSnapshot().getClosingSharePrice()) {
+            } else if(focus.getInitialSnapshot().getClosingSharePrice() < focus.getPostTweetSnapshot().getClosingSharePrice()) {
                 focus.setSentiment(Sentiment.POSITIVE);
             } else {
                 focus.setSentiment(Sentiment.NEUTRAL);
