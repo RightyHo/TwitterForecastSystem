@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
@@ -152,7 +153,7 @@
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="202" column="72" selection-start-line="202" selection-start-column="72" selection-end-line="202" selection-end-column="72" />
+              <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="196" selection-end-column="145" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2433#2434#0" expanded="true" />
@@ -167,16 +168,16 @@
                 <element signature="e#2792#2793#0" expanded="true" />
                 <element signature="e#2840#2841#0" expanded="true" />
                 <element signature="e#2880#2881#0" expanded="true" />
-                <element signature="e#15886#15887#0" expanded="true" />
-                <element signature="e#15908#15909#0" expanded="true" />
-                <element signature="e#15968#15969#0" expanded="true" />
-                <element signature="e#15990#15991#0" expanded="true" />
-                <element signature="e#16058#16059#0" expanded="true" />
-                <element signature="e#16080#16081#0" expanded="true" />
-                <element signature="e#16160#16161#0" expanded="true" />
-                <element signature="e#16182#16183#0" expanded="true" />
-                <element signature="e#16249#16250#0" expanded="true" />
-                <element signature="e#16271#16272#0" expanded="true" />
+                <element signature="e#15894#15895#0" expanded="true" />
+                <element signature="e#15916#15917#0" expanded="true" />
+                <element signature="e#15976#15977#0" expanded="true" />
+                <element signature="e#15998#15999#0" expanded="true" />
+                <element signature="e#16066#16067#0" expanded="true" />
+                <element signature="e#16088#16089#0" expanded="true" />
+                <element signature="e#16168#16169#0" expanded="true" />
+                <element signature="e#16190#16191#0" expanded="true" />
+                <element signature="e#16257#16258#0" expanded="true" />
+                <element signature="e#16279#16280#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -185,7 +186,7 @@
       <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.5331491">
+            <state vertical-scroll-proportion="0.20718232">
               <caret line="90" column="31" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="31" />
               <folding />
             </state>
@@ -233,8 +234,8 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/BMWPriceSnapshot.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
       </list>
     </option>
@@ -787,12 +788,12 @@
       <workItem from="1434794221597" duration="6540000" />
       <workItem from="1434811291264" duration="3885000" />
       <workItem from="1434816161374" duration="2121000" />
-      <workItem from="1434882140014" duration="25393000" />
+      <workItem from="1434882140014" duration="26539000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69903000" />
+    <option name="totallyTimeSpent" value="71049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="606" y="23" width="834" height="825" extended-state="6" />
@@ -989,16 +990,16 @@
             <element signature="e#2792#2793#0" expanded="true" />
             <element signature="e#2840#2841#0" expanded="true" />
             <element signature="e#2880#2881#0" expanded="true" />
-            <element signature="e#15886#15887#0" expanded="true" />
-            <element signature="e#15908#15909#0" expanded="true" />
-            <element signature="e#15968#15969#0" expanded="true" />
-            <element signature="e#15990#15991#0" expanded="true" />
-            <element signature="e#16058#16059#0" expanded="true" />
-            <element signature="e#16080#16081#0" expanded="true" />
-            <element signature="e#16160#16161#0" expanded="true" />
-            <element signature="e#16182#16183#0" expanded="true" />
-            <element signature="e#16249#16250#0" expanded="true" />
-            <element signature="e#16271#16272#0" expanded="true" />
+            <element signature="e#15894#15895#0" expanded="true" />
+            <element signature="e#15916#15917#0" expanded="true" />
+            <element signature="e#15976#15977#0" expanded="true" />
+            <element signature="e#15998#15999#0" expanded="true" />
+            <element signature="e#16066#16067#0" expanded="true" />
+            <element signature="e#16088#16089#0" expanded="true" />
+            <element signature="e#16168#16169#0" expanded="true" />
+            <element signature="e#16190#16191#0" expanded="true" />
+            <element signature="e#16257#16258#0" expanded="true" />
+            <element signature="e#16279#16280#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1126,16 +1127,16 @@
             <element signature="e#2792#2793#0" expanded="true" />
             <element signature="e#2840#2841#0" expanded="true" />
             <element signature="e#2880#2881#0" expanded="true" />
-            <element signature="e#15886#15887#0" expanded="true" />
-            <element signature="e#15908#15909#0" expanded="true" />
-            <element signature="e#15968#15969#0" expanded="true" />
-            <element signature="e#15990#15991#0" expanded="true" />
-            <element signature="e#16058#16059#0" expanded="true" />
-            <element signature="e#16080#16081#0" expanded="true" />
-            <element signature="e#16160#16161#0" expanded="true" />
-            <element signature="e#16182#16183#0" expanded="true" />
-            <element signature="e#16249#16250#0" expanded="true" />
-            <element signature="e#16271#16272#0" expanded="true" />
+            <element signature="e#15894#15895#0" expanded="true" />
+            <element signature="e#15916#15917#0" expanded="true" />
+            <element signature="e#15976#15977#0" expanded="true" />
+            <element signature="e#15998#15999#0" expanded="true" />
+            <element signature="e#16066#16067#0" expanded="true" />
+            <element signature="e#16088#16089#0" expanded="true" />
+            <element signature="e#16168#16169#0" expanded="true" />
+            <element signature="e#16190#16191#0" expanded="true" />
+            <element signature="e#16257#16258#0" expanded="true" />
+            <element signature="e#16279#16280#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1517,38 +1518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="202" column="72" selection-start-line="202" selection-start-column="72" selection-end-line="202" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2433#2434#0" expanded="true" />
-            <element signature="e#2482#2483#0" expanded="true" />
-            <element signature="e#2529#2530#0" expanded="true" />
-            <element signature="e#2574#2575#0" expanded="true" />
-            <element signature="e#2612#2613#0" expanded="true" />
-            <element signature="e#2641#2642#0" expanded="true" />
-            <element signature="e#2690#2691#0" expanded="true" />
-            <element signature="e#2726#2727#0" expanded="true" />
-            <element signature="e#2761#2762#0" expanded="true" />
-            <element signature="e#2792#2793#0" expanded="true" />
-            <element signature="e#2840#2841#0" expanded="true" />
-            <element signature="e#2880#2881#0" expanded="true" />
-            <element signature="e#15886#15887#0" expanded="true" />
-            <element signature="e#15908#15909#0" expanded="true" />
-            <element signature="e#15968#15969#0" expanded="true" />
-            <element signature="e#15990#15991#0" expanded="true" />
-            <element signature="e#16058#16059#0" expanded="true" />
-            <element signature="e#16080#16081#0" expanded="true" />
-            <element signature="e#16160#16161#0" expanded="true" />
-            <element signature="e#16182#16183#0" expanded="true" />
-            <element signature="e#16249#16250#0" expanded="true" />
-            <element signature="e#16271#16272#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1586,9 +1555,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="196" selection-end-column="145" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2433#2434#0" expanded="true" />
+            <element signature="e#2482#2483#0" expanded="true" />
+            <element signature="e#2529#2530#0" expanded="true" />
+            <element signature="e#2574#2575#0" expanded="true" />
+            <element signature="e#2612#2613#0" expanded="true" />
+            <element signature="e#2641#2642#0" expanded="true" />
+            <element signature="e#2690#2691#0" expanded="true" />
+            <element signature="e#2726#2727#0" expanded="true" />
+            <element signature="e#2761#2762#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
+            <element signature="e#2840#2841#0" expanded="true" />
+            <element signature="e#2880#2881#0" expanded="true" />
+            <element signature="e#15894#15895#0" expanded="true" />
+            <element signature="e#15916#15917#0" expanded="true" />
+            <element signature="e#15976#15977#0" expanded="true" />
+            <element signature="e#15998#15999#0" expanded="true" />
+            <element signature="e#16066#16067#0" expanded="true" />
+            <element signature="e#16088#16089#0" expanded="true" />
+            <element signature="e#16168#16169#0" expanded="true" />
+            <element signature="e#16190#16191#0" expanded="true" />
+            <element signature="e#16257#16258#0" expanded="true" />
+            <element signature="e#16279#16280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5331491">
+        <state vertical-scroll-proportion="0.20718232">
           <caret line="90" column="31" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="31" />
           <folding />
         </state>

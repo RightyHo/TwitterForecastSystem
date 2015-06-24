@@ -191,10 +191,10 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             focus.setPostTweetSnapshot(closingSnap);
             focus.setIsLabelled(true);
 
-            if(focus.getInitialSnapshot() != null)
-                System.out.println(focus.getTimeStamp() +" -->"+"opening share price: "+ focus.getInitialSnapshot().getClosingSharePrice());
-            if(focus.getPostTweetSnapshot() != null)
-                System.out.println(focus.getTimeStamp() +" -->"+"closing share price: " + focus.getPostTweetSnapshot().getClosingSharePrice());
+//            if(focus.getInitialSnapshot() != null)
+//                System.out.println(focus.getTimeStamp() +" -->"+"opening share price: "+ focus.getInitialSnapshot().getClosingSharePrice());
+//            if(focus.getPostTweetSnapshot() != null)
+//                System.out.println(focus.getTimeStamp() +" -->"+"closing share price: " + focus.getPostTweetSnapshot().getClosingSharePrice());
 
             // compare the two market price snapshots to discern the implied sentiment of the tweet from the change in price
 

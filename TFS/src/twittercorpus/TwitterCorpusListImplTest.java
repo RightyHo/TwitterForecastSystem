@@ -132,11 +132,11 @@ public class TwitterCorpusListImplTest {
         // SCENARIO 5: TWEET IS PUBLISHED DURING 5 MINUTE END OF DAY AUCTION - test a tweet published during the end of day auction during which there is no price print between 16:29 and 16:35
         // Tue Jan 20 16:33:00 2015	new genuine bmw e36 (93-99) impact strip rear bumper trim lt oem + warranty http://t.co/yywgidoksg http://t.co/q8eutedegt
         // so initial snapshot should be Tue Jan 20 16:29
-        //
-        // and post Tweet snapshot should be Tue Jan 20 16:35
-        //
-        assertTrue(Math.abs(tCorpus.getCorpus().get(657).getInitialSnapshot().getClosingSharePrice() - 93.59) < 0.0000000000000001);
-        assertTrue(Math.abs(tCorpus.getCorpus().get(657).getPostTweetSnapshot().getClosingSharePrice() - 94.05) < 0.0000000000000001);
+        // 20/01/2015 16:29	94.62	94.7	94.62	94.68	-0.0155	-0.0044	-0.0111
+        // and post Tweet snapshot should be Wed Jan 21 08:00 because 20 minutes aftr the tweet is published the market will be closed
+        // 21/01/2015 08:00	94.49	94.5	94.48	94.49	-0.027	-0.01	-0.0171
+        assertTrue(Math.abs(tCorpus.getCorpus().get(663).getInitialSnapshot().getClosingSharePrice() - 94.68) < 0.0000000000000001);
+        assertTrue(Math.abs(tCorpus.getCorpus().get(663).getPostTweetSnapshot().getClosingSharePrice() - 94.49) < 0.0000000000000001);
 
     }
 
