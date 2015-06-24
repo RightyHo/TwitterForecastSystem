@@ -29,7 +29,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     public static final Set<LocalDate> MARKET_HOLIDAY = new HashSet<>(Arrays.asList(SET_VALUES));
     public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 1, 1, 0, 0, 0, 0, ZoneId.of("Europe/London"));
 
-    // *** NEED TO ADJUST LATEST_CORPUS_TIME_STAMP TO THE LAST PRICE TIMESTAMP WE HAVE IN THE CORPUS
+    // *** NEED TO ADJUST LATEST_CORPUS_TIME_STAMP TO THE LAST PRICE TIMESTAMP WE HAVE IN THE CORPUS ***
 
     public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 6, 23, 0, 0, 0, 0, ZoneId.of("Europe/London"));
 
@@ -111,7 +111,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         } catch (IOException e){
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -172,12 +171,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
      */
     public void labelCorpus(PriceLabelCorpus labels){
 
-        // *** MAY NEED TO CHANGE CODE TO ACCOUNT FOR THE FACT THAT THERE IS NEVER A 16:30 PRICE TIME STAMP,
-        // INSTEAD THERE IS A 5 MINUTE END OF DAY AUCTION AND THEN A FINAL PRICE PRINT FOR THE DAY AT 16:35.
-        // BUT THIS ISSUE IS PROBABLY RESOLVED BY THE getPriorPrices() AND getPrice20MinsAfterTweet() FUNCTIONS
-        // THAT RECURSIVELY STEP THROUGH GAPS IN THE MARKET DATA CORPUS BY SEARCHING FOR PRICE DATA IN THE
-        // MINUTES BEFORE OR AFTER THE TIMESTAMP WITH THE MISSING PRICE SNAPSHOT. ***
-
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
@@ -191,12 +184,11 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             focus.setPostTweetSnapshot(closingSnap);
             focus.setIsLabelled(true);
 
-//            if(focus.getInitialSnapshot() != null)
-//                System.out.println(focus.getTimeStamp() +" -->"+"opening share price: "+ focus.getInitialSnapshot().getClosingSharePrice());
-//            if(focus.getPostTweetSnapshot() != null)
-//                System.out.println(focus.getTimeStamp() +" -->"+"closing share price: " + focus.getPostTweetSnapshot().getClosingSharePrice());
-
             // compare the two market price snapshots to discern the implied sentiment of the tweet from the change in price
+
+            // *** DOES IT MAKE MORE SENSE TO USE THE focus.getPostTweetSnapshot().getOpeningSharePrice() FOR THIS COMPARISON? ***
+            // *** IT DEFINITELY SEEMS TO BE MORE APPROPRIATE IN THE CASE WHERE THE postTweetSnapshot HAS BEEN ADJUSTED TO BE ***
+            // *** THE FIRST TIME STAMP OF THE DAY BECAUSE THE TWEET WAS PUBLISHED OVERNIGHT OR DURING A WEEKEND ***
 
             if(focus.getInitialSnapshot().getClosingSharePrice() > focus.getPostTweetSnapshot().getClosingSharePrice()){
                 focus.setSentiment(Sentiment.NEGATIVE);
