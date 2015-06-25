@@ -15,6 +15,9 @@ import java.util.Scanner;
  */
 public class PriceLabelCorpusImpl implements PriceLabelCorpus {
 
+    // *** Need to account for the fact that the twitter time stamps are in GMT and the chart time stamps are in London time ***
+    // *** Run {TZDF} {39<GO} to convert to GMT and then download the price data ***
+
     private static final int MILLENIUM = 0;             // needs to be changed to 2000 if the input data date is of the form 23/11/15
     private Map<ZonedDateTime,PriceSnapshot> priceMap;
     private String fileName;

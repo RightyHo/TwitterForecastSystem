@@ -143,6 +143,54 @@ public class TwitterCorpusListImplTest {
     @Test
     public void testRemoveRetweets() throws Exception {
 
+        // test that retweets are present in the corpus prior to running the removeRetweets method:
+
+        // Fri Jan 16 01:58:00 2015	rt @bmw: packed with innovations ? the #bmwi8 and #bmwi3: gorilla-glas, ologic-technology and bmw laserlight. @bmwi http://t.co/yshqauivo9
+        Tweet retweetA = tCorpus.getCorpus().get(4);
+
+        // Fri Jan 16 02:31:00 2015	rt @johnspatricc: ? http://t.co/iivulyxuc5 674 designed to resist ak-47s: tony abbotts new bulletproof bmw #tonyabbott deputy prime mi? htt?
+        Tweet retweetB = tCorpus.getCorpus().get(9);
+
+        // Fri Jan 16 03:23:00 2015	rt @khalidkarim: 2014...audi, bmw &amp; merc sold 0.7 cars for every 1000 citizens of the world.malaysia lagged the global average with only 0.?
+        Tweet retweetC = tCorpus.getCorpus().get(13);
+
+        assertTrue(tCorpus.getCorpus().contains(retweetA));
+        assertTrue(tCorpus.getCorpus().contains(retweetB));
+        assertTrue(tCorpus.getCorpus().contains(retweetC));
+
+        // test that some normal tweets are present in the corpus prior to running the removeRetweets method as a control:
+
+        // Fri Jan 16 02:55:00 2015	led angel eye halo light bmw 3-series e90 e91 06-08 oem http://t.co/ewij4o6ecf http://t.co/efjsry3q66
+        Tweet normalTweetA = tCorpus.getCorpus().get(11);
+
+        // Fri Jan 16 03:46:00 2015	set of o2 oxygen sensor combo package 234-4672 234-4683 for bmw 323i 528i z3 x5 http://t.co/rxhzwpatvy http://t.co/0qbfagomeo
+        Tweet normalTweetB = tCorpus.getCorpus().get(15);
+
+        assertTrue(tCorpus.getCorpus().contains(normalTweetA));
+        assertTrue(tCorpus.getCorpus().contains(normalTweetB));
+
+        int totalBeforeRemoval = tCorpus.getCorpus().size();
+        tCorpus.removeRetweets();
+        int totalAfterRemoval = tCorpus.getCorpus().size();
+
+        // test that the corpus of tweets reduces in size when we remove retweets from the corpus
+        assertTrue(totalAfterRemoval < totalBeforeRemoval);
+
+        // test that retweets are no longer in the corpus:
+
+        // Fri Jan 16 01:58:00 2015	rt @bmw: packed with innovations ? the #bmwi8 and #bmwi3: gorilla-glas, ologic-technology and bmw laserlight. @bmwi http://t.co/yshqauivo9
+        assertFalse(tCorpus.getCorpus().contains(retweetA));
+        // Fri Jan 16 02:31:00 2015	rt @johnspatricc: ? http://t.co/iivulyxuc5 674 designed to resist ak-47s: tony abbotts new bulletproof bmw #tonyabbott deputy prime mi? htt?
+        assertFalse(tCorpus.getCorpus().contains(retweetB));
+        // Fri Jan 16 03:23:00 2015	rt @khalidkarim: 2014...audi, bmw &amp; merc sold 0.7 cars for every 1000 citizens of the world.malaysia lagged the global average with only 0.?
+        assertFalse(tCorpus.getCorpus().contains(retweetC));
+
+        // test that the normal tweets are still present in the corpus after running the removeRetweets method as a control:
+
+        // Fri Jan 16 02:55:00 2015	led angel eye halo light bmw 3-series e90 e91 06-08 oem http://t.co/ewij4o6ecf http://t.co/efjsry3q66
+        assertTrue(tCorpus.getCorpus().contains(normalTweetA));
+        // Fri Jan 16 03:46:00 2015	set of o2 oxygen sensor combo package 234-4672 234-4683 for bmw 323i 528i z3 x5 http://t.co/rxhzwpatvy http://t.co/0qbfagomeo
+        assertTrue(tCorpus.getCorpus().contains(normalTweetB));
     }
 
     @Test
