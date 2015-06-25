@@ -303,11 +303,31 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     }
 
     public void removeRetweets(){
-        return;
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            if(tText.charAt(0) == 'r' && tText.charAt(1) == 't'){
+                corpusIterator.remove();
+            }
+        }
     }
 
     public void replaceLinks(String linkEquivalenceToken){
-        return;
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            Scanner scanText = new Scanner(tText);
+            String replacementText = "";
+            while (scanText.hasNext()){
+                String focusWord = scanText.next();
+                if(!focusWord.startsWith("http://")){
+                    replacementText += " " + focusWord;
+                }
+            }
+            focus.setTweetText(replacementText);
+        }
     }
 
     public void replaceUsernames(String usernameEquivalenceToken){
