@@ -322,8 +322,10 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             String replacementText = "";
             while (scanText.hasNext()){
                 String focusWord = scanText.next();
-                if(!focusWord.startsWith("http://")){
-                    replacementText += " " + focusWord;
+                if(focusWord.startsWith("http://")){
+                    replacementText += LINK_EQUIVALENCE_TOKEN + " ";
+                } else {
+                    replacementText += focusWord + " ";
                 }
             }
             focus.setTweetText(replacementText);
@@ -331,7 +333,22 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     }
 
     public void replaceUsernames(String usernameEquivalenceToken){
-        return;
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            Scanner scanText = new Scanner(tText);
+            String replacementText = "";
+            while (scanText.hasNext()){
+                String focusWord = scanText.next();
+                if(focusWord.startsWith("@")){
+                    replacementText += USERNAME_EQUIVALENCE_TOKEN + " ";
+                } else {
+                    replacementText += focusWord + " ";
+                }
+            }
+            focus.setTweetText(replacementText);
+        }
     }
 
     public void translateAbbreviations(DictionaryTranslator abbreviationDict){
