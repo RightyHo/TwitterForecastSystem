@@ -6,4 +6,6 @@ package twittercorpus;
 public class SpellingDictionary implements DictionaryTranslator {
 
     private String dictionaryAPI;
+
+
 }

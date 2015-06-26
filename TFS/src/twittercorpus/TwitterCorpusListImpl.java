@@ -13,7 +13,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
     public static final String USERNAME_EQUIVALENCE_TOKEN = "USERNAME";
     public static final String LINK_EQUIVALENCE_TOKEN = "LINK";
-    public static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);	    // London time
+    public static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);	        // London time
     public static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);	    // London time
     public static final LocalTime BMW_US_OTC_OPEN = LocalTime.of(14,30,0);	    // London time
     public static final LocalTime BMW_US_OTC_CLOSE = LocalTime.of(21, 0, 0);	// London time
@@ -352,7 +352,22 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     }
 
     public void translateAbbreviations(DictionaryTranslator abbreviationDict){
-        return;
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            Scanner scanText = new Scanner(tText);
+            String replacementText = "";
+            while (scanText.hasNext()){
+                String focusWord = scanText.next();
+                if(checkSpelling(focusWord)){
+                    replacementText += abbreviationDict.convertAbbrev(focusWord) + " ";
+                } else if(abbreviationDict.convertAbbrev(focusWord) != null){
+                    replacementText += focusWord + " ";
+                }
+            }
+            focus.setTweetText(replacementText);
+        }
     }
 
     public void checkSpelling(DictionaryTranslator spellingDict){
