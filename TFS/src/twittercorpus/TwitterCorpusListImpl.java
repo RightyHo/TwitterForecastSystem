@@ -313,7 +313,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         }
     }
 
-    public void replaceLinks(String linkEquivalenceToken){
+    public void replaceLinks(){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
@@ -332,7 +332,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         }
     }
 
-    public void replaceUsernames(String usernameEquivalenceToken){
+    public void replaceUsernames(){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();

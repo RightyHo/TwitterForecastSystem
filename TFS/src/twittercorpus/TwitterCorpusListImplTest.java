@@ -169,6 +169,7 @@ public class TwitterCorpusListImplTest {
         assertTrue(tCorpus.getCorpus().contains(normalTweetA));
         assertTrue(tCorpus.getCorpus().contains(normalTweetB));
 
+        // remove retweets from the corpus
         int totalBeforeRemoval = tCorpus.getCorpus().size();
         tCorpus.removeRetweets();
         int totalAfterRemoval = tCorpus.getCorpus().size();
@@ -196,6 +197,42 @@ public class TwitterCorpusListImplTest {
     @Test
     public void testReplaceLinks() throws Exception {
 
+        // test that tweets contain URL links prior to running the replaceLinks method:
+
+        // Fri Jan 16 01:58:00 2015	rt @bmw: packed with innovations ? the #bmwi8 and #bmwi3: gorilla-glas, ologic-technology and bmw laserlight. @bmwi http://t.co/yshqauivo9
+        Tweet urlTweetA = tCorpus.getCorpus().get(4);
+
+        // Fri Jan 16 02:31:00 2015	rt @johnspatricc: ? http://t.co/iivulyxuc5 674 designed to resist ak-47s: tony abbotts new bulletproof bmw #tonyabbott deputy prime mi? htt?
+        Tweet urlTweetB = tCorpus.getCorpus().get(9);
+
+        // Fri Jan 16 02:55:00 2015	led angel eye halo light bmw 3-series e90 e91 06-08 oem http://t.co/ewij4o6ecf http://t.co/efjsry3q66
+        Tweet urlTweetC = tCorpus.getCorpus().get(11);
+
+        assertTrue(urlTweetA.getTweetText().contains("http://"));
+        assertTrue(urlTweetB.getTweetText().contains("http://"));
+        assertTrue(urlTweetC.getTweetText().contains("http://"));
+
+        // test that tweet does not contain URL links prior to running the replaceLinks method as a control:
+
+        // Fri Jan 16 03:23:00 2015	rt @khalidkarim: 2014...audi, bmw &amp; merc sold 0.7 cars for every 1000 citizens of the world.malaysia lagged the global average with only 0.?
+        Tweet unlinkedTweet = tCorpus.getCorpus().get(13);
+
+        assertFalse(unlinkedTweet.getTweetText().contains("http://"));
+
+        // replace links found in the corpus with an equivalence token
+        tCorpus.replaceLinks();
+
+        // test that the URL links have been replaced by the equivalence token in the tweets that previously contained links:
+        assertTrue(urlTweetA.getTweetText().contains("LINK"));
+        assertFalse(urlTweetA.getTweetText().contains("http://"));
+        assertTrue(urlTweetB.getTweetText().contains("LINK"));
+        assertFalse(urlTweetB.getTweetText().contains("http://"));
+        assertTrue(urlTweetC.getTweetText().contains("LINK"));
+        assertFalse(urlTweetC.getTweetText().contains("http://"));
+
+        // test that tweet which originally did not contain URL links prior to running the replaceLinks method is unchanged as a control:
+        assertFalse(unlinkedTweet.getTweetText().contains("LINK"));
+        assertFalse(unlinkedTweet.getTweetText().contains("http://"));
     }
 
     @Test

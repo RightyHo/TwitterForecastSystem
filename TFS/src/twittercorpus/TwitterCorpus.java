@@ -34,9 +34,9 @@ public interface TwitterCorpus {
 
      void removeRetweets();
 
-     void replaceLinks(String linkEquivalenceToken);
+     void replaceLinks();
 
-     void replaceUsernames(String usernameEquivalenceToken);
+     void replaceUsernames();
 
      void translateAbbreviations(DictionaryTranslator abbreviationDict);
 
