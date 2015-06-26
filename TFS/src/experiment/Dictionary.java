@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
-
 import com.swabunga.spell.engine.SpellDictionaryHashMap;
 import com.swabunga.spell.engine.Word;
 import com.swabunga.spell.event.SpellCheckEvent;
@@ -27,8 +25,7 @@ public class Dictionary implements SpellCheckListener {
      * @param text
      */
     public List<String> getMisspelledWords(String text) {
-        StringWordTokenizer texTok = new StringWordTokenizer(text,
-                new TeXWordFinder());
+        StringWordTokenizer texTok = new StringWordTokenizer(text, new TeXWordFinder());
         spellChecker.checkSpelling(texTok);
         return misspelledWords;
     }
@@ -37,7 +34,7 @@ public class Dictionary implements SpellCheckListener {
 
     static{
 
-        File dict = new File("dictionary/dictionary.txt");
+        File dict = new File("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/dictionary.txt");
         try {
             dictionaryHashMap = new SpellDictionaryHashMap(dict);
         } catch (FileNotFoundException e) {
@@ -59,56 +56,6 @@ public class Dictionary implements SpellCheckListener {
         initialize();
     }
 
-    /**
-     * correct the misspelled words in the input string and return the result
-     */
-    public String getCorrectedLine(String line){
-        List<String> misSpelledWords = getMisspelledWords(line);
-
-        for (String misSpelledWord : misSpelledWords){
-            List<String> suggestions = getSuggestions(misSpelledWord);
-            if (suggestions.size() == 0)
-                continue;
-            String bestSuggestion = suggestions.get(0);
-            line = line.replace(misSpelledWord, bestSuggestion);
-        }
-        return line;
-    }
-
-    public String getCorrectedText(String line){
-        StringBuilder builder = new StringBuilder();
-        String[] tempWords = line.split(" ");
-        for (String tempWord : tempWords){
-            if (!spellChecker.isCorrect(tempWord)){
-                List<Word> suggestions = spellChecker.getSuggestions(tempWord, 0);
-                if (suggestions.size() > 0){
-                    builder.append(spellChecker.getSuggestions(tempWord, 0).get(0).toString());
-                }
-                else
-                    builder.append(tempWord);
-            }
-            else {
-                builder.append(tempWord);
-            }
-            builder.append(" ");
-        }
-        return builder.toString().trim();
-    }
-
-
-    public List<String> getSuggestions(String misspelledWord){
-
-        @SuppressWarnings("unchecked")
-        List<Word> su99esti0ns = spellChecker.getSuggestions(misspelledWord, 0);
-        List<String> suggestions = new ArrayList<String>();
-        for (Word suggestion : su99esti0ns){
-            suggestions.add(suggestion.getWord());
-        }
-
-        return suggestions;
-    }
-
-
     @Override
     public void spellingError(SpellCheckEvent event) {
         event.ignoreWord(true);
@@ -117,10 +64,10 @@ public class Dictionary implements SpellCheckListener {
 
     public static void main(String[] args) {
         Dictionary spellChecker = new Dictionary();
-        String line = spellChecker.getCorrectedLine("This is a boook");
-        System.out.println(line);
-        List<String> misspeltList = spellChecker.getMisspelledWords("you bettr recognize aav");
-        Iterator<String> poorSpelling = new Iterator<String>();
-
+        List<String> misspelt = spellChecker.getMisspelledWords("you bettr recognize aav or iss it recognise?");
+        Iterator<String> poorSpelling = misspelt.iterator();
+        while (poorSpelling.hasNext()){
+            System.out.println(poorSpelling.next());
+        }
     }
 }

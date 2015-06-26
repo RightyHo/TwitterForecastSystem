@@ -352,22 +352,22 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     }
 
     public void translateAbbreviations(DictionaryTranslator abbreviationDict){
-        Iterator<Tweet> corpusIterator = corpus.iterator();
-        while(corpusIterator.hasNext()){
-            Tweet focus = corpusIterator.next();
-            String tText = focus.getTweetText();
-            Scanner scanText = new Scanner(tText);
-            String replacementText = "";
-            while (scanText.hasNext()){
-                String focusWord = scanText.next();
-                if(checkSpelling(focusWord)){
-                    replacementText += abbreviationDict.convertAbbrev(focusWord) + " ";
-                } else if(abbreviationDict.convertAbbrev(focusWord) != null){
-                    replacementText += focusWord + " ";
-                }
-            }
-            focus.setTweetText(replacementText);
-        }
+//        Iterator<Tweet> corpusIterator = corpus.iterator();
+//        while(corpusIterator.hasNext()){
+//            Tweet focus = corpusIterator.next();
+//            String tText = focus.getTweetText();
+//            Scanner scanText = new Scanner(tText);
+//            String replacementText = "";
+//            while (scanText.hasNext()){
+//                String focusWord = scanText.next();
+//                if(checkSpelling(focusWord)){
+//                    replacementText += abbreviationDict.convertAbbrev(focusWord) + " ";
+//                } else if(abbreviationDict.convertAbbrev(focusWord) != null){
+//                    replacementText += focusWord + " ";
+//                }
+//            }
+//            focus.setTweetText(replacementText);
+//        }
     }
 
     public void checkSpelling(DictionaryTranslator spellingDict){
