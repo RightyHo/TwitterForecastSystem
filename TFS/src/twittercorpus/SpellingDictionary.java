@@ -73,17 +73,13 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
      * @return
      */
     public String processString(String input){
-        String result = "";
-        System.out.println("Sentence before processing: " + input);
+        String result = input;
         List<String> misspelt = getMisspelledWords(input);
         Iterator<String> poorSpelling = misspelt.iterator();
-        System.out.println("Removing the following words: ");
         while (poorSpelling.hasNext()){
             String focus = poorSpelling.next();
-            result = input.replace(focus,"").replaceAll("\\s+", " ");
-            System.out.println(focus);
+            result = result.replace(focus,"").replaceAll("\\s+", " ");
         }
-        System.out.println("Remaining text after removing misspelt words: " + result);
         return result;
     }
 }

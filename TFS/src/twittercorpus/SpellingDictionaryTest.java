@@ -19,7 +19,16 @@ public class SpellingDictionaryTest {
 
     @Test
     public void testProcessString() throws Exception {
+
+        // processes strings as expected
         String actual = testDT.processString("you bettr recognize aav or iss it recognise?");
         assertEquals("you or it recognise?",actual);
+
+        String actualSecond = testDT.processString("it's tough bng a ttalg legggend take tz from moi");
+        assertEquals("it's tough a take from moi",actualSecond);
+
+        // process leaves numbers unchanged
+        String actualThird = testDT.processString("345 455 55 73");
+        assertEquals("345 455 55 73",actualThird);
     }
 }
