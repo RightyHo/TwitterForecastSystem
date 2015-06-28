@@ -6,4 +6,13 @@ package twittercorpus;
 public class AbbreviationDictionary implements DictionaryTranslator {
 
     private String dictionaryAPI;
+
+    /**
+     * takes a string as input and returns a new string after applying a pre-analysis cleaning process to the input.
+     * @param input
+     * @return
+     */
+    public String processString(String input){
+        return null;
+    }
 }
