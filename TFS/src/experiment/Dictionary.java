@@ -64,10 +64,16 @@ public class Dictionary implements SpellCheckListener {
 
     public static void main(String[] args) {
         Dictionary spellChecker = new Dictionary();
-        List<String> misspelt = spellChecker.getMisspelledWords("you bettr recognize aav or iss it recognise?");
+        String input = "you bettr recognize aav or iss it recognise?";
+        System.out.println("Sentance before processing: " + input);
+        List<String> misspelt = spellChecker.getMisspelledWords(input);
         Iterator<String> poorSpelling = misspelt.iterator();
+        System.out.println("Removing the following words: ");
         while (poorSpelling.hasNext()){
-            System.out.println(poorSpelling.next());
+            String focus = poorSpelling.next();
+            input = input.replace(focus,"").replaceAll("\\s+", " ");
+            System.out.println(focus);
         }
+        System.out.println("Remaining text after removing misspelt words: " + input);
     }
 }
