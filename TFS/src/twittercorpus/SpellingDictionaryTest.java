@@ -35,5 +35,8 @@ public class SpellingDictionaryTest {
         String actualFourth = testDT.processString("i want a BMW #greatcar");
         assertEquals("i want a BMW #greatcar",actualFourth);
 
+        // process leaves #hashtags unchanged with multiple #hashtags in the text while still removing misspelt words
+        String actualFifth = testDT.processString("i want a BMW #greatcar it's a nehgt of a car #birthdayprezzyforme");
+        assertEquals("i want a BMW #greatcar it's a of a car #birthdayprezzyforme",actualFifth);
     }
 }
