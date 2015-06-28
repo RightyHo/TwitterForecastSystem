@@ -30,5 +30,10 @@ public class SpellingDictionaryTest {
         // process leaves numbers unchanged
         String actualThird = testDT.processString("345 455 55 73");
         assertEquals("345 455 55 73",actualThird);
+
+        // process leaves #hashtags unchanged
+        String actualFourth = testDT.processString("i want a BMW #greatcar");
+        assertEquals("i want a BMW #greatcar",actualFourth);
+
     }
 }

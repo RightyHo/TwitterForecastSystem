@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 import com.swabunga.spell.engine.SpellDictionaryHashMap;
 import com.swabunga.spell.event.SpellCheckEvent;
@@ -73,12 +74,38 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
      * @return
      */
     public String processString(String input){
-        String result = input;
-        List<String> misspelt = getMisspelledWords(input);
+        String result = "";
+        if(input.contains("#")){
+            String[] strParts = input.split("#");
+            // process words before the hashtag normally
+            result = getCorrectlySpeltWords(strParts[0]);
+            // keep the hashtag message even though it is likely spelt incorrectly
+            for(int i=1;i < strParts.length;i++){
+                Scanner sc = new Scanner(strParts[i]);
+                if(sc.hasNext()){
+                    // retain the hashtag message including the #
+                    result = result + " #" + sc.next();
+                }
+                // process the rest of the message (if any) after the hashtag and before the next hashtag (if any)
+                String restOfLine = "";
+                while(sc.hasNext()){
+                    restOfLine = restOfLine + " " + sc.next();
+                }
+                result = result + " " + getCorrectlySpeltWords(restOfLine);
+            }
+        } else {
+            result = getCorrectlySpeltWords(input);
+        }
+        return result.replaceAll("\\s+", " ").trim();
+    }
+
+    private String getCorrectlySpeltWords(String str){
+        String result = str;
+        List<String> misspelt = getMisspelledWords(str);
         Iterator<String> poorSpelling = misspelt.iterator();
         while (poorSpelling.hasNext()){
             String focus = poorSpelling.next();
-            result = result.replace(focus,"").replaceAll("\\s+", " ");
+            result = result.replace(focus, "").replaceAll("\\s+", " ");
         }
         return result;
     }
