@@ -22,7 +22,7 @@ public class AbbreviationDictionaryTest {
         String actual = testAD.processString("this one should apply because FOMO is a common abbreviation!");
         assertEquals("this one should apply because fear of missing out is a common abbreviation!",actual);
 
-        String actualTwo = testAD.processString("this one should apply because FOMO is a common abbreviation!");
-        assertEquals("this one should apply because fear of missing out is a common abbreviation!",actualTwo);
+        String actualTwo = testAD.processString("this one should apply because PRT is a common abbreviation!");
+        assertEquals("this one should apply because please retweet is a common abbreviation!",actualTwo);
     }
 }

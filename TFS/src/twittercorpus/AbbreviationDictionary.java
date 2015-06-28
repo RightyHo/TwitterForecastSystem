@@ -49,7 +49,7 @@ public class AbbreviationDictionary implements DictionaryTranslator {
         while (sc.hasNext()){
             String focus = sc.next();
             if(abbreviations.containsKey(focus.toLowerCase())){
-                result = result + " " + abbreviations.get(focus);
+                result = result + " " + abbreviations.get(focus.toLowerCase());
             } else {
                 result = result + " " + focus;
             }
