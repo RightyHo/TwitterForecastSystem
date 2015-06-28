@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * Created by Andrew on 16/06/15.
@@ -36,6 +37,16 @@ public class AbbreviationDictionary implements DictionaryTranslator {
      * @return
      */
     public String processString(String input){
-        return null;
+        String result = "";
+        Scanner sc = new Scanner(input);
+        while (sc.hasNext()){
+            String focus = sc.next();
+            if(abbreviations.containsKey(focus)){
+                result = result + " " + abbreviations.get(focus);
+            } else {
+                result = result + " " + focus;
+            }
+        }
+        return result;
     }
 }

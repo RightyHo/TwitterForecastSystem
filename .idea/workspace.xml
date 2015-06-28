@@ -83,12 +83,10 @@
       <file leaf-file-name="AbbreviationDictionary.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/AbbreviationDictionary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2347084">
-              <caret line="11" column="35" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.70128024">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1278#1279#0" expanded="true" />
-                <element signature="e#1305#1306#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -810,12 +808,12 @@
       <workItem from="1434816161374" duration="2121000" />
       <workItem from="1434882140014" duration="34236000" />
       <workItem from="1435351280334" duration="2712000" />
-      <workItem from="1435490213674" duration="8680000" />
+      <workItem from="1435490213674" duration="8936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90138000" />
+    <option name="totallyTimeSpent" value="90394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="397" y="23" width="1043" height="823" extended-state="0" />
@@ -1305,12 +1303,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/AbbreviationDictionary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2347084">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.70128024">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1278#1279#0" expanded="true" />
-            <element signature="e#1305#1306#0" expanded="true" />
           </folding>
         </state>
       </provider>
