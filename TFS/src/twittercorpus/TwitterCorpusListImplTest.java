@@ -278,11 +278,30 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testTranslateAbbreviations() throws Exception {
+        // check the tweet of the text is as expected before we run the translateAbbreviations method on the corpus
+        // Tweet #592 Tue Jan 20 02:16:00 2015	@jd_bimmer vroom vroom to my casa with da food.
+        assertEquals("@jd_bimmer vroom vroom to my casa with da food.",tCorpus.getCorpus().get(591).getTweetText());
 
+        // check the tweet of the text is as expected before we run the translateAbbreviations method on the corpus
+        // Tweet #436 Mon Jan 19 03:37:00 2015	rt @bimmerella: @willyginpdx @helpfulatheist3 @ydanasmithdutra @hostileurbanist love u guys! ?????
+        assertEquals("rt @bimmerella: @willyginpdx @helpfulatheist3 @ydanasmithdutra @hostileurbanist love u guys! ?????",tCorpus.getCorpus().get(435).getTweetText());
+
+        DictionaryTranslator testAbbrev = new AbbreviationDictionary();
+        tCorpus.translateAbbreviations(testAbbrev);
+
+        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
+        // Tweet #592 Tue Jan 20 02:16:00 2015	@jd_bimmer vroom vroom to my casa with da food. --> 'da' should be converted to 'the'
+        assertEquals("@jd_bimmer vroom vroom to my casa with the food.",tCorpus.getCorpus().get(591).getTweetText());
+
+        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
+        // Tweet #436 Mon Jan 19 03:37:00 2015	rt @bimmerella: @willyginpdx @helpfulatheist3 @ydanasmithdutra @hostileurbanist love u guys! ????? --> 'u' should be converted to 'you'
+        assertEquals("rt @bimmerella: @willyginpdx @helpfulatheist3 @ydanasmithdutra @hostileurbanist love you guys! ?????",tCorpus.getCorpus().get(435).getTweetText());
     }
 
     @Test
     public void testCheckSpelling() throws Exception {
+        DictionaryTranslator testSpell = new SpellingDictionary();
+        tCorpus.checkSpelling(testSpell);
 
     }
 }
