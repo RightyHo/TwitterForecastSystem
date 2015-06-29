@@ -320,10 +320,10 @@ public class TwitterCorpusListImplTest {
 
         // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
         // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
-        assertEquals("check out tools (2) hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
+        assertEquals("check out tools (2) hub fan holder repair parts for bmw LINK via USERNAME #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
 
         // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
         // Tweet #588 Tue Jan 20 01:50:00 2015	lol ceo yako bmw ko facebook be posting status like: grade 8 here i come :d
-//        assertEquals("lol bmw  facebook be posting status like: grade 8 here i come :d",tCorpus.getCorpus().get(587).getTweetText());
+        assertEquals("laugh out loud ceo bmw ko be posting status like: grade 8 here i come :d",tCorpus.getCorpus().get(587).getTweetText());
     }
 }

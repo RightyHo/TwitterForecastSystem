@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionary.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionary.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/dictionary.txt" afterPath="$PROJECT_DIR$/TFS/dictionary.txt" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -117,8 +115,8 @@
       <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.83264464">
-              <caret line="318" column="29" selection-start-line="318" selection-start-column="16" selection-end-line="318" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.9566116">
+              <caret line="326" column="94" selection-start-line="326" selection-start-column="94" selection-end-line="326" selection-end-column="94" />
               <folding />
             </state>
           </provider>
@@ -127,7 +125,7 @@
       <file leaf-file-name="dictionary.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/dictionary.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.111111">
+            <state vertical-scroll-proportion="-173331.67">
               <caret line="311997" column="8" selection-start-line="311997" selection-start-column="8" selection-end-line="311997" selection-end-column="8" />
               <folding />
             </state>
@@ -181,8 +179,8 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/AbbreviationDictionaryTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionary.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/dictionary.txt" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
       </list>
     </option>
   </component>
@@ -809,12 +807,12 @@
       <workItem from="1434816161374" duration="2121000" />
       <workItem from="1434882140014" duration="34236000" />
       <workItem from="1435351280334" duration="2712000" />
-      <workItem from="1435490213674" duration="18123000" />
+      <workItem from="1435490213674" duration="18525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99581000" />
+    <option name="totallyTimeSpent" value="99983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="397" y="23" width="1043" height="823" extended-state="0" />
@@ -1311,7 +1309,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/dictionary.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.111111">
+        <state vertical-scroll-proportion="-173331.67">
           <caret line="311997" column="8" selection-start-line="311997" selection-start-column="8" selection-end-line="311997" selection-end-column="8" />
           <folding />
         </state>
@@ -1319,8 +1317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83264464">
-          <caret line="318" column="29" selection-start-line="318" selection-start-column="16" selection-end-line="318" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.9566116">
+          <caret line="326" column="94" selection-start-line="326" selection-start-column="94" selection-end-line="326" selection-end-column="94" />
           <folding />
         </state>
       </provider>
