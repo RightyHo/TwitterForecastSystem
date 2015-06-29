@@ -278,6 +278,7 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testTranslateAbbreviations() throws Exception {
+
         // check the tweet of the text is as expected before we run the translateAbbreviations method on the corpus
         // Tweet #592 Tue Jan 20 02:16:00 2015	@jd_bimmer vroom vroom to my casa with da food.
         assertEquals("@jd_bimmer vroom vroom to my casa with da food.",tCorpus.getCorpus().get(591).getTweetText());
@@ -300,8 +301,24 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testCheckSpelling() throws Exception {
+
+        // check the tweet of the text is as expected before we run the checkSpelling method on the corpus
+        // Tweet #618 Tue Jan 20 05:49:00 2015	@scooterheil it's all bout that rolls-royce life.
+        assertEquals("@scooterheil it's all bout that rolls-royce life.",tCorpus.getCorpus().get(617).getTweetText());
+
+        // check the tweet of the text is as expected before we run the checkSpelling method on the corpus
+        // Tweet #588 Tue Jan 20 01:50:00 2015	lol ceo yako bmw ko facebook be posting status like: grade 8 here i come :d
+        assertEquals("lol ceo yako bmw ko facebook be posting status like: grade 8 here i come :d",tCorpus.getCorpus().get(587).getTweetText());
+
         DictionaryTranslator testSpell = new SpellingDictionary();
         tCorpus.checkSpelling(testSpell);
 
+        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
+        // Tweet #618 Tue Jan 20 05:49:00 2015	@scooterheil it's all bout that rolls-royce life. 'bout' removed from the text?  hold on its a ligit word?
+        assertEquals("@scooterheil it's all bout that rolls-royce life.",tCorpus.getCorpus().get(617).getTweetText());
+
+        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
+        // Tweet #588 Tue Jan 20 01:50:00 2015	lol ceo yako bmw ko facebook be posting status like: grade 8 here i come :d
+        assertEquals("lol bmw  facebook be posting status like: grade 8 here i come :d",tCorpus.getCorpus().get(587).getTweetText());
     }
 }

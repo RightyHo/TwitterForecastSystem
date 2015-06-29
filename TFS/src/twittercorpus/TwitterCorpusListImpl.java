@@ -362,7 +362,13 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     }
 
     public void checkSpelling(DictionaryTranslator spellingDict){
-        return;
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            String replacementText = spellingDict.processString(tText);
+            focus.setTweetText(replacementText);
+        }
     }
 
 }
