@@ -3,10 +3,7 @@ package twittercorpus;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import com.swabunga.spell.engine.SpellDictionaryHashMap;
 import com.swabunga.spell.event.SpellCheckEvent;
@@ -24,6 +21,8 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
     private SpellChecker spellChecker;
     private List<String> misspelledWords;
     private static SpellDictionaryHashMap dictionaryHashMap;
+    public static final String[] SPECIAL_PREFIX = new String[]{"#","@","-"};
+    private static final Set<String> PREFIX_SET = new HashSet<>(Arrays.asList(SPECIAL_PREFIX));
 
     static{
 
