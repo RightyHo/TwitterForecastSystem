@@ -117,6 +117,7 @@ public class TweetImpl implements Tweet {
      * @param text
      */
     public void extractNGramFeatures(int numGrams,String text){
+        features.clear();
         String[] tokens = tokenizeString(text);
         int len = tokens.length;
         int focus = 0;

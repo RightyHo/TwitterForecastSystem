@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -29,10 +30,14 @@ public class TweetImplTest {
 
         // check whether unigram features are extracted as expected
         testTw.extractNGramFeatures(1,testTw.getTweetText());
-
+        assertEquals("my",testTw.getFeatures().get(0));
+        assertEquals("family",testTw.getFeatures().get(1));
+        assertEquals("beemer.",testTw.getFeatures().get(9));
 
         // check whether bigram features are extracted as expected
-        testTw.extractNGramFeatures(1,testTw.getTweetText());
-
+        testTw.extractNGramFeatures(2,testTw.getTweetText());
+        assertEquals("my,family",testTw.getFeatures().get(0));
+        assertEquals("family,doesn't",testTw.getFeatures().get(1));
+        assertEquals("a,beemer.",testTw.getFeatures().get(8));
     }
 }
