@@ -45,4 +45,6 @@ public interface Tweet {
 
      void setSentiment(Sentiment sentiment);
 
+     void extractNGramFeatures(int numGrams,String[] tokens);
+
 }

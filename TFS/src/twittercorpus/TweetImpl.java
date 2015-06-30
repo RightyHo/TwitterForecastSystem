@@ -1,6 +1,8 @@
 package twittercorpus;
 
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Andrew on 08/06/15.
@@ -16,19 +18,20 @@ public class TweetImpl implements Tweet {
     private PriceSnapshot postTweetSnapshot;	// price snapshot 20 minutes after the tweet was published
     private Tweet nextTweet;
     private Sentiment sentiment;    // sentiment object is initially set to unclassified.  Once classified it is set to positive, negative or neutral.
-
+    private List<String> features;
     // constructors
 
     public TweetImpl(ZonedDateTime timeStamp, boolean isPublishedOutsideMarketHours, String tweetText) {
         this.timeStamp = timeStamp;
-        this.isRetweet = false;
-        this.isLabelled = false;
+        isRetweet = false;
+        isLabelled = false;
         this.isPublishedOutsideMarketHours = isPublishedOutsideMarketHours;
         this.tweetText = tweetText;
-        this.initialSnapshot = null;
-        this.postTweetSnapshot = null;
-        this.nextTweet = null;
-        this.sentiment = Sentiment.UNCLASSIFIED;
+        initialSnapshot = null;
+        postTweetSnapshot = null;
+        nextTweet = null;
+        sentiment = Sentiment.UNCLASSIFIED;
+        features = new ArrayList<>();
     }
 
     public TweetImpl(ZonedDateTime timeStamp, boolean isRetweet, boolean isLabelled, boolean isPublishedOutsideMarketHours, String tweetText,PriceSnapshot initialSnapshot, PriceSnapshot postTweetSnapshot, Tweet nextTweet, Sentiment sentiment) {
@@ -41,6 +44,7 @@ public class TweetImpl implements Tweet {
         this.postTweetSnapshot = postTweetSnapshot;
         this.nextTweet = nextTweet;
         this.sentiment = sentiment;
+        features = new ArrayList<>();
     }
 
     // getters and setters
@@ -119,4 +123,36 @@ public class TweetImpl implements Tweet {
         this.sentiment = sentiment;
     }
 
+    /**
+     * takes the number of ngrams and a tokenized form of the tweet text as input and returns a list of features
+     * on which to train the TFS classifier
+     * @param numGrams
+     * @param text
+     */
+    public void extractNGramFeatures(int numGrams,String text){
+        String[] tokens = tokenizeString(text);
+        int len = tokens.length;
+        int focus = 0;
+        while(focus + numGrams <= len) {
+            StringBuilder s = new StringBuilder();
+            for (int i = focus; i < focus + numGrams; i++) {
+                if (i > focus) {
+                    s.append("," + tokens[i]);
+                } else {
+                    s.append(tokens[i]);
+                }
+            }
+            features.add(s.toString());
+            focus++;
+        }
+    }
+
+    /**
+     * returns a tokenized form of the input string
+     * @param input
+     * @return
+     */
+    private String[] tokenizeString(String input){
+        return input.split("\\s");
+    }
 }
