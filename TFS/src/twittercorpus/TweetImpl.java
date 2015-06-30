@@ -142,4 +142,8 @@ public class TweetImpl implements Tweet {
     private String[] tokenizeString(String input){
         return input.split("\\s");
     }
+
+    public List<String> getFeatures(){
+        return this.features;
+    }
 }

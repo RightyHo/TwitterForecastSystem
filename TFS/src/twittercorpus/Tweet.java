@@ -1,6 +1,7 @@
 package twittercorpus;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 /**
  * Created by Andrew on 08/06/15.
@@ -40,5 +41,7 @@ public interface Tweet {
      void setSentiment(Sentiment sentiment);
 
      void extractNGramFeatures(int numGrams,String text);
+
+     List<String> getFeatures();
 
 }
