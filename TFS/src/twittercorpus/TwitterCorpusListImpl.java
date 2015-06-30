@@ -104,7 +104,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
                 // create new Tweet for every row in the file
 
-                Tweet inputTweet = new TweetImpl(ts,tsOutOfXetraMarketHours,tweet);
+                Tweet inputTweet = new TweetImpl(ts,tweet);
                 corpus.add(inputTweet);
 
             }
