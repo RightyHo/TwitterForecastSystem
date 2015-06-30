@@ -19,12 +19,6 @@ public interface Tweet {
 
      void setIsLabelled(boolean isLabelled);
 
-     // not 100% sure if this is flag is necessary?
-     boolean isPublishedOutsideMarketHours();
-
-     // not 100% sure if this is flag is necessary?
-     void setIsPublishedOutsideMarketHours(boolean isPublishedOutsideMarketHours);
-
      String getTweetText();
 
      void setTweetText(String tweetText);
@@ -45,6 +39,6 @@ public interface Tweet {
 
      void setSentiment(Sentiment sentiment);
 
-     void extractNGramFeatures(int numGrams,String[] tokens);
+     void extractNGramFeatures(int numGrams,String text);
 
 }

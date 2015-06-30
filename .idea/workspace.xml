@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFS/English Stop Words.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -27,16 +27,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TweetImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TweetImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.92745376">
-              <caret line="154" column="35" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4875#4876#0" expanded="true" />
-                <element signature="e#4916#4917#0" expanded="true" />
+                <element signature="e#4165#4166#0" expanded="true" />
+                <element signature="e#4206#4207#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TwitterCorpusListImplTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="343" column="76" selection-start-line="343" selection-start-column="76" selection-end-line="343" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TweetImplTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImplTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tweet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Tweet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.3553616">
+              <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -163,8 +183,9 @@
         <option value="$PROJECT_DIR$/TFS/dictionary.txt" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/English Stop Words.txt" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
       </list>
     </option>
   </component>
@@ -183,10 +204,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="502" />
-    <option name="y" value="23" />
-    <option name="width" value="938" />
-    <option name="height" value="823" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -289,7 +308,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="recentsLimit" value="5" />
@@ -301,11 +320,11 @@
     <property name="Repository.Attach.Sources" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="twittercorpus" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TwitterCorpusListImplTest">
@@ -770,15 +789,15 @@
       <workItem from="1434882140014" duration="34236000" />
       <workItem from="1435351280334" duration="2712000" />
       <workItem from="1435490213674" duration="20741000" />
-      <workItem from="1435696668217" duration="1501000" />
+      <workItem from="1435696668217" duration="1974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103700000" />
+    <option name="totallyTimeSpent" value="104173000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="502" y="23" width="938" height="823" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -788,6 +807,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15164521" sideWeight="0.50628364" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -796,13 +816,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.49371633" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44642857" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28612304" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2554217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22475961" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28674698" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -854,16 +873,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="58" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpusImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -910,8 +919,8 @@
           <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4875#4876#0" expanded="true" />
-            <element signature="e#4916#4917#0" expanded="true" />
+            <element signature="e#4165#4166#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -995,8 +1004,8 @@
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="112" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4875#4876#0" expanded="true" />
-            <element signature="e#4916#4917#0" expanded="true" />
+            <element signature="e#4165#4166#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1055,8 +1064,8 @@
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="112" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4875#4876#0" expanded="true" />
-            <element signature="e#4916#4917#0" expanded="true" />
+            <element signature="e#4165#4166#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1107,8 +1116,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4875#4876#0" expanded="true" />
-            <element signature="e#4916#4917#0" expanded="true" />
+            <element signature="e#4165#4166#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1141,14 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68204486">
-          <caret line="343" column="76" selection-start-line="343" selection-start-column="76" selection-end-line="343" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/AbbreviationDictionaryTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28054863">
@@ -1161,6 +1162,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1264,23 +1268,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java">
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="61" />
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="343" column="76" selection-start-line="343" selection-start-column="76" selection-end-line="343" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TweetImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.92745376">
-          <caret line="154" column="35" selection-start-line="154" selection-start-column="21" selection-end-line="154" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4875#4876#0" expanded="true" />
-            <element signature="e#4916#4917#0" expanded="true" />
+            <element signature="e#4165#4166#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3553616">
+          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
