@@ -40,6 +40,8 @@ public interface Tweet {
 
      void setSentiment(Sentiment sentiment);
 
+     void removeStopWords(String fileName);
+
      void extractNGramFeatures(int numGrams,String text);
 
      List<String> getFeatures();

@@ -1,8 +1,12 @@
 package twittercorpus;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Andrew on 08/06/15.
@@ -108,6 +112,31 @@ public class TweetImpl implements Tweet {
 
     public void setSentiment(Sentiment sentiment) {
         this.sentiment = sentiment;
+    }
+
+    public void removeStopWords(String fileName){
+        List<String> stopWords = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
+            String currentLine;
+            while ((currentLine = br.readLine()) != null) {
+                Scanner s = new Scanner(currentLine);
+                s.useDelimiter(",");
+                while(s.hasNext()){
+                    stopWords.add(s.next());
+                }
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Scanner textScan = new Scanner(tweetText);
+        StringBuilder revisedTweetText = new StringBuilder();
+        while (textScan.hasNext()){
+            String focus = textScan.next();
+            if(!stopWords.contains(focus)){
+                revisedTweetText.append(" " + focus);
+            }
+        }
+        tweetText = revisedTweetText.toString().trim();
     }
 
     /**
