@@ -22,6 +22,7 @@ public class TweetImpl implements Tweet {
     private Tweet nextTweet;
     private Sentiment sentiment;    // sentiment object is initially set to unclassified.  Once classified it is set to positive, negative or neutral.
     private List<String> features;
+
     // constructors
 
     public TweetImpl(ZonedDateTime timeStamp, String tweetText) {
@@ -140,14 +141,13 @@ public class TweetImpl implements Tweet {
     }
 
     /**
-     * takes the number of ngrams and a tokenized form of the tweet text as input and returns a list of features
+     * takes the number of ngrams and draws in a tokenized form of the tweet text as input and returns a list of features
      * on which to train the TFS classifier
      * @param numGrams
-     * @param text
      */
-    public void extractNGramFeatures(int numGrams,String text){
+    public void extractNGramFeatures(int numGrams){
         features.clear();
-        String[] tokens = tokenizeString(text);
+        String[] tokens = tokenizeString(tweetText);
         int len = tokens.length;
         int focus = 0;
         while(focus + numGrams <= len) {
