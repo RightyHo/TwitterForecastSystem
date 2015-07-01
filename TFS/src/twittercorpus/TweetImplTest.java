@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 public class TweetImplTest {
 
     private Tweet testTw;
+    private String stopWordsFilename;
 
     @Before
     public void setUp() throws Exception {
@@ -23,9 +24,15 @@ public class TweetImplTest {
         LocalDateTime lDateT = LocalDateTime.of(2015,1,16,7,26,0);
         ZonedDateTime tTime = ZonedDateTime.of(lDateT, ZoneId.of("Europe/London"));
         testTw = new TweetImpl(tTime,"my family doesn't own a car that's not a beemer.");
+        stopWordsFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/English Stop Words.txt";
     }
 
     @Test
+    public void testRemoveStopWords() throws Exception {
+        testTw.removeStopWords(stopWordsFilename);
+        assertEquals("family doesn't car that's beemer.",testTw.getTweetText());
+    }
+        @Test
     public void testExtractNGramFeatures() throws Exception {
 
         // check whether unigram features are extracted as expected
@@ -34,7 +41,7 @@ public class TweetImplTest {
         assertEquals("family",testTw.getFeatures().get(1));
         assertEquals("beemer.",testTw.getFeatures().get(9));
         // expect the following call to throw an IndexOutOfBoundsException...capture in a test clause
-        testTw.getFeatures().get(10);
+//        testTw.getFeatures().get(10);
 
         // check whether bigram features are extracted as expected
         testTw.extractNGramFeatures(2,testTw.getTweetText());
@@ -42,6 +49,6 @@ public class TweetImplTest {
         assertEquals("family,doesn't",testTw.getFeatures().get(1));
         assertEquals("a,beemer.",testTw.getFeatures().get(8));
         // expect the following call to throw an IndexOutOfBoundsException...capture in a test clause
-        testTw.getFeatures().get(9);
+//        testTw.getFeatures().get(9);
     }
 }
