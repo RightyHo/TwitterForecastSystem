@@ -41,4 +41,8 @@ public interface TwitterCorpus {
      void translateAbbreviations(DictionaryTranslator abbreviationDict);
 
      void checkSpelling(DictionaryTranslator spellingDict);
+
+     void filterOutStopWords();
+
+     void extractFeatures();
 }

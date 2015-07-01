@@ -35,6 +35,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
     private List<Tweet> corpus;
     private String fileName;
+    public static final String STOP_WORDS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/English Stop Words.txt";
 
     public TwitterCorpusListImpl(String fileName) {
         this.corpus = new ArrayList<>();
@@ -371,4 +372,13 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         }
     }
 
+    public void filterOutStopWords(){
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            focus.removeStopWords(STOP_WORDS_FILENAME);
+        }
+    }
+
+    public void extractFeatures();
 }
