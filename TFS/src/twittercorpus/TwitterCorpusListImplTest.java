@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -389,19 +390,70 @@ public class TwitterCorpusListImplTest {
         // Tweet #291 Sat Jan 17 23:54:00 2015	the mini cooper on the detroit car show on snapchat ??
         assertEquals("the mini cooper on the detroit car show on snapchat ??",tCorpus.getCorpus().get(290).getTweetText());
 
-        tCorpus.extractFeatures(0);
+        // test using bigrams as features
+        tCorpus.extractFeatures(2);
 
-        // check the features list held by the tweet matches expectations after we run the extractFeatures method on the corpus
+        // check the features list held by the tweet matches expectations after we run the extractFeatures(2) method on the corpus
         // Tweet #174 Sat Jan 17 04:10:00 2015	i'm online in my bmw with bmw connected.
-        List<String> actualFeaturesOne =tCorpus.getCorpus().get(173).getFeatures();
-        List<String> expectedFeaturesOne = new ArrayList<>();
-        expectedFeaturesOne.add("i'm,online");
-        expectedFeaturesOne.add("online,in");
-        expectedFeaturesOne.add("in,my");
-        expectedFeaturesOne.add("my,bmw");
-        expectedFeaturesOne.add("bmw,with");
-        expectedFeaturesOne.add("with,bmw");
-        expectedFeaturesOne.add("bmw,connected");
-        assertEquals(expectedFeaturesOne,actualFeaturesOne);
+        List<String> actualFeaturesOneBi = tCorpus.getCorpus().get(173).getFeatures();
+        List<String> expectedFeaturesOneBi = new ArrayList<>();
+        expectedFeaturesOneBi.add("i'm,online");
+        expectedFeaturesOneBi.add("online,in");
+        expectedFeaturesOneBi.add("in,my");
+        expectedFeaturesOneBi.add("my,bmw");
+        expectedFeaturesOneBi.add("bmw,with");
+        expectedFeaturesOneBi.add("with,bmw");
+        expectedFeaturesOneBi.add("bmw,connected.");
+        assertEquals(expectedFeaturesOneBi,actualFeaturesOneBi);
+
+        // check the features list held by the tweet matches expectations after we run the extractFeatures(2) method on the corpus
+        // Tweet #291 Sat Jan 17 23:54:00 2015	the mini cooper on the detroit car show on snapchat ??
+        List<String> actualFeaturesTwoBi = tCorpus.getCorpus().get(290).getFeatures();
+        List<String> expectedFeaturesTwoBi = new ArrayList<>();
+        expectedFeaturesTwoBi.add("the,mini");
+        expectedFeaturesTwoBi.add("mini,cooper");
+        expectedFeaturesTwoBi.add("cooper,on");
+        expectedFeaturesTwoBi.add("on,the");
+        expectedFeaturesTwoBi.add("the,detroit");
+        expectedFeaturesTwoBi.add("detroit,car");
+        expectedFeaturesTwoBi.add("car,show");
+        expectedFeaturesTwoBi.add("show,on");
+        expectedFeaturesTwoBi.add("on,snapchat");
+        expectedFeaturesTwoBi.add("snapchat,??");
+        assertEquals(expectedFeaturesTwoBi,actualFeaturesTwoBi);
+
+        // test using unigrams as features
+        tCorpus.extractFeatures(1);
+
+        // check the features list held by the tweet matches expectations after we run the extractFeatures(1) method on the corpus
+        // Tweet #174 Sat Jan 17 04:10:00 2015	i'm online in my bmw with bmw connected.
+        List<String> actualFeaturesOneUni = tCorpus.getCorpus().get(173).getFeatures();
+        List<String> expectedFeaturesOneUni = new ArrayList<>();
+        expectedFeaturesOneUni.add("i'm");
+        expectedFeaturesOneUni.add("online");
+        expectedFeaturesOneUni.add("in");
+        expectedFeaturesOneUni.add("my");
+        expectedFeaturesOneUni.add("bmw");
+        expectedFeaturesOneUni.add("with");
+        expectedFeaturesOneUni.add("bmw");
+        expectedFeaturesOneUni.add("connected.");
+        assertEquals(expectedFeaturesOneUni, actualFeaturesOneUni);
+
+        // check the features list held by the tweet matches expectations after we run the extractFeatures(2) method on the corpus
+        // Tweet #291 Sat Jan 17 23:54:00 2015	the mini cooper on the detroit car show on snapchat ??
+        List<String> actualFeaturesTwoUni = tCorpus.getCorpus().get(290).getFeatures();
+        List<String> expectedFeaturesTwoUni = new ArrayList<>();
+        expectedFeaturesTwoUni.add("the");
+        expectedFeaturesTwoUni.add("mini");
+        expectedFeaturesTwoUni.add("cooper");
+        expectedFeaturesTwoUni.add("on");
+        expectedFeaturesTwoUni.add("the");
+        expectedFeaturesTwoUni.add("detroit");
+        expectedFeaturesTwoUni.add("car");
+        expectedFeaturesTwoUni.add("show");
+        expectedFeaturesTwoUni.add("on");
+        expectedFeaturesTwoUni.add("snapchat");
+        expectedFeaturesTwoUni.add("??");
+        assertEquals(expectedFeaturesTwoUni, actualFeaturesTwoUni);
     }
 }
