@@ -141,7 +141,7 @@ public class TweetImpl implements Tweet {
     }
 
     /**
-     * takes the number of ngrams and draws in a tokenized form of the tweet text as input and returns a list of features
+     * takes the number of ngrams and draws in a tokenized form of the tweet text as input and returns a list of features separated by comma's
      * on which to train the TFS classifier
      * @param numGrams
      */

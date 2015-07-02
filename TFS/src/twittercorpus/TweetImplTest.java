@@ -1,7 +1,9 @@
 package twittercorpus;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -27,12 +29,14 @@ public class TweetImplTest {
         stopWordsFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/English Stop Words.txt";
     }
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
     @Test
     public void testRemoveStopWords() throws Exception {
         testTw.removeStopWords(stopWordsFilename);
         assertEquals("family doesn't car that's beemer.",testTw.getTweetText());
     }
-        @Test
+    @Test
     public void testExtractNGramFeatures() throws Exception {
 
         // check whether unigram features are extracted as expected
@@ -40,15 +44,19 @@ public class TweetImplTest {
         assertEquals("my",testTw.getFeatures().get(0));
         assertEquals("family",testTw.getFeatures().get(1));
         assertEquals("beemer.",testTw.getFeatures().get(9));
-        // expect the following call to throw an IndexOutOfBoundsException...capture in a test clause
-//        testTw.getFeatures().get(10);
+
+        // expect the following call to throw an IndexOutOfBoundsException
+        thrown.expect(IndexOutOfBoundsException.class);
+        testTw.getFeatures().get(10);
 
         // check whether bigram features are extracted as expected
         testTw.extractNGramFeatures(2);
         assertEquals("my,family",testTw.getFeatures().get(0));
         assertEquals("family,doesn't",testTw.getFeatures().get(1));
         assertEquals("a,beemer.",testTw.getFeatures().get(8));
-        // expect the following call to throw an IndexOutOfBoundsException...capture in a test clause
-//        testTw.getFeatures().get(9);
+
+        // expect the following call to throw an IndexOutOfBoundsException
+        thrown.expect(IndexOutOfBoundsException.class);
+        testTw.getFeatures().get(9);
     }
 }

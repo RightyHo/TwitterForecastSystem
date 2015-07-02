@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -380,5 +381,27 @@ public class TwitterCorpusListImplTest {
     @Test
     public void testExtractFeatures() throws Exception {
 
+        // check the tweet of the text is as expected before we run the extractFeatures method on the corpus
+        // Tweet #174 Sat Jan 17 04:10:00 2015	i'm online in my bmw with bmw connected.
+        assertEquals("i'm online in my bmw with bmw connected.",tCorpus.getCorpus().get(173).getTweetText());
+
+        // check the tweet of the text is as expected before we run the extractFeatures method on the corpus
+        // Tweet #291 Sat Jan 17 23:54:00 2015	the mini cooper on the detroit car show on snapchat ??
+        assertEquals("the mini cooper on the detroit car show on snapchat ??",tCorpus.getCorpus().get(290).getTweetText());
+
+        tCorpus.extractFeatures(0);
+
+        // check the features list held by the tweet matches expectations after we run the extractFeatures method on the corpus
+        // Tweet #174 Sat Jan 17 04:10:00 2015	i'm online in my bmw with bmw connected.
+        List<String> actualFeaturesOne =tCorpus.getCorpus().get(173).getFeatures();
+        List<String> expectedFeaturesOne = new ArrayList<>();
+        expectedFeaturesOne.add("i'm,online");
+        expectedFeaturesOne.add("online,in");
+        expectedFeaturesOne.add("in,my");
+        expectedFeaturesOne.add("my,bmw");
+        expectedFeaturesOne.add("bmw,with");
+        expectedFeaturesOne.add("with,bmw");
+        expectedFeaturesOne.add("bmw,connected");
+        assertEquals(expectedFeaturesOne,actualFeaturesOne);
     }
 }
