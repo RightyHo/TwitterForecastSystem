@@ -42,7 +42,7 @@ public interface Tweet {
 
      void removeStopWords(String fileName);
 
-     void extractNGramFeatures(int numGrams,String text);
+     void extractNGramFeatures(int numGrams);
 
      List<String> getFeatures();
 

@@ -44,5 +44,5 @@ public interface TwitterCorpus {
 
      void filterOutStopWords();
 
-     void extractFeatures();
+     void extractFeatures(int numGrams);
 }

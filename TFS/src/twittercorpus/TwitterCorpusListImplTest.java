@@ -352,4 +352,24 @@ public class TwitterCorpusListImplTest {
         // Tweet #223 Sat Jan 17 12:07:00 2015	i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari
 //        assertEquals("i will legit get more excited seeing a 25year old plus bmw or rather than a or",tCorpus.getCorpus().get(222).getTweetText());
     }
+
+    @Test
+    public void testFilterOutStopWords() throws Exception {
+
+        // check the tweet of the text is as expected before we run the filterOutStopWords method on the corpus
+        // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
+        assertEquals("check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
+
+        tCorpus.filterOutStopWords();
+
+        // check the tweet of the text is as expected after we run the filterOutStopWords method on the corpus
+        // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
+        assertEquals("check out tools (2) waterpump hub fan holder repair parts bmw http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
+
+    }
+
+    @Test
+    public void testExtractFeatures() throws Exception {
+
+    }
 }

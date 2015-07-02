@@ -372,6 +372,11 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         }
     }
 
+    /**
+     * iterates through the corpus of tweets calling the removeStopWords() method to
+     * filter out the most common (and least informative) English words from the
+     * text of each tweet.  This should help reduce noise when extracting features for classification.
+     */
     public void filterOutStopWords(){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
@@ -380,5 +385,16 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         }
     }
 
-    public void extractFeatures();
+    /**
+     * iterates through the corpus of tweets calling the extractNGramFeatures() method to
+     * initialize the tweet ready for classification
+     * @param numGrams
+     */
+    public void extractFeatures(int numGrams){
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            focus.extractNGramFeatures(numGrams);
+        }
+    }
 }

@@ -36,7 +36,7 @@ public class TweetImplTest {
     public void testExtractNGramFeatures() throws Exception {
 
         // check whether unigram features are extracted as expected
-        testTw.extractNGramFeatures(1,testTw.getTweetText());
+        testTw.extractNGramFeatures(1);
         assertEquals("my",testTw.getFeatures().get(0));
         assertEquals("family",testTw.getFeatures().get(1));
         assertEquals("beemer.",testTw.getFeatures().get(9));
@@ -44,7 +44,7 @@ public class TweetImplTest {
 //        testTw.getFeatures().get(10);
 
         // check whether bigram features are extracted as expected
-        testTw.extractNGramFeatures(2,testTw.getTweetText());
+        testTw.extractNGramFeatures(2);
         assertEquals("my,family",testTw.getFeatures().get(0));
         assertEquals("family,doesn't",testTw.getFeatures().get(1));
         assertEquals("a,beemer.",testTw.getFeatures().get(8));
