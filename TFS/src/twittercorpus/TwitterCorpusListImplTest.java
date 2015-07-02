@@ -356,9 +356,15 @@ public class TwitterCorpusListImplTest {
     @Test
     public void testFilterOutStopWords() throws Exception {
 
+        // *** SHOULD I REMOVE THE WORD 'NOT' FROM THE STOP WORDS LIST SINCE IT COULD HAVE BIG LOGICAL SIGNIFICANCE FOR THE SENTIMENT OF THE TEXT? ***
+
         // check the tweet of the text is as expected before we run the filterOutStopWords method on the corpus
         // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
         assertEquals("check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
+
+        // check the tweet of the text is as expected before we run the filterOutStopWords method on the corpus
+        // Tweet #37 Fri Jan 16 07:37:00 2015	#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?
+        assertEquals("#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?",tCorpus.getCorpus().get(36).getTweetText());
 
         tCorpus.filterOutStopWords();
 
@@ -366,6 +372,9 @@ public class TwitterCorpusListImplTest {
         // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
         assertEquals("check out tools (2) waterpump hub fan holder repair parts bmw http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
 
+        // check the tweet of the text is as expected after we run the filterOutStopWords method on the corpus
+        // Tweet #37 Fri Jan 16 07:37:00 2015	#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?
+        assertEquals("#safmradio. nzimande bought r1.5m bmw became min higher ed. years sacp. govt /sacp time audit?",tCorpus.getCorpus().get(36).getTweetText());
     }
 
     @Test
