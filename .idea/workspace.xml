@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/Classification.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/Classification.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/ClassificationImpl.java" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +46,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Classification.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Classification.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Classification.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7254623">
-              <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassificationImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/ClassificationImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.27738264">
+              <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -61,9 +71,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -108,6 +118,7 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TweetImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Classification.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/ClassificationImpl.java" />
       </list>
     </option>
   </component>
@@ -721,15 +732,15 @@
       <workItem from="1435490213674" duration="20741000" />
       <workItem from="1435696668217" duration="3800000" />
       <workItem from="1435733796157" duration="8003000" />
-      <workItem from="1436030887414" duration="851000" />
+      <workItem from="1436030887414" duration="1000000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114853000" />
+    <option name="totallyTimeSpent" value="115002000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="642" y="23" width="798" height="823" extended-state="0" />
+    <frame x="642" y="23" width="798" height="823" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -747,7 +758,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.49371633" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33932585" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6269841" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25421688" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -805,16 +816,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1216,8 +1217,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Classification.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7254623">
-          <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/ClassificationImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27738264">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
           <folding />
         </state>
       </provider>
