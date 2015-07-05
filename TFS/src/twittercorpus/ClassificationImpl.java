@@ -29,7 +29,7 @@ public class ClassificationImpl implements Classification {
      * @return the list of features held in the classification object
      */
     public List<String> getListOfFeatures(){
-        return null;
+        return listOfFeatures;
     }
 
     /**
@@ -53,6 +53,7 @@ public class ClassificationImpl implements Classification {
      * returns a nicely formatted string
      * @return a formatted string depicting the object
      */
+    @Override
     public String toString(){
         return null;
     }
