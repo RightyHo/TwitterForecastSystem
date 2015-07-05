@@ -47,7 +47,7 @@ public class ClassificationImplTest {
 
     @Test
     public void testToString() throws Exception {
-        String expected = "The Feature List --> [(this,project),(project,is),(is,very),(very,good)] is classified as falling in the positive category with a probability of 100%";
+        String expected = "[[The Feature List --> [(This,project),(project,is),(is,very),(very,good)] is classified as falling in the positive category with a probability of 100%]]";
         assertEquals(expected,tClass.toString());
     }
 }

@@ -1,5 +1,6 @@
 package twittercorpus;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ public class ClassificationImpl implements Classification {
      *
      */
     public Sentiment getSentimentCategory(){
-        return null;
+        return sentimentCategory;
     }
 
     /**
@@ -46,7 +47,7 @@ public class ClassificationImpl implements Classification {
      * @return the probability that the list of features has been classified in the correct category
      */
     public double getClassificationCertainty(){
-        return 0.0;
+        return classificationCertainty;
     }
 
     /**
@@ -55,6 +56,28 @@ public class ClassificationImpl implements Classification {
      */
     @Override
     public String toString(){
-        return null;
+        StringBuilder result = new StringBuilder();
+        result.append("[[The Feature List --> [");
+
+        // add feature list elements
+        Iterator<String> listIt = listOfFeatures.listIterator();
+        // take care of first element special case
+        if (listIt.hasNext()) result.append("(" + listIt.next() + ")");
+        // take care of the rest of the list
+        while (listIt.hasNext()){
+            result.append(",(" + listIt.next() + ")");
+        }
+        result.append("] is classified as falling in the ");
+
+        // add classification
+        result.append(sentimentCategory.toString().toLowerCase());
+
+        result.append(" category with a probability of ");
+
+        //add certainty number
+        int percent = (int)(classificationCertainty * 100);
+        result.append(String.valueOf(percent) + "%]]");
+
+        return result.toString();
     }
 }
