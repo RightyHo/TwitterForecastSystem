@@ -4,9 +4,6 @@ import java.util.List;
 
 /**
  * Created by Andrew on 04/07/15.
- */
-
-/**
  * Wrapper class to hold a list of features and the sentiment classification for this list.
  */
 public interface Classification {
