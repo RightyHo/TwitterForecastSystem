@@ -1,8 +1,6 @@
 package twittercorpus;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Andrew on 07/07/15.
@@ -26,10 +24,15 @@ public class NaiveBayesClassifier implements Classifier {
     Map<Sentiment,Map<String,Integer>> featureAppearanceCategoryCount;
 
     /**
-     * Constructor returns a Classifier with no memory and all fields initialised
+     * Constructor returns a Classifier with no memory, all fields initialised, and the memory queue storage limit set by the parameter
+     * @param classificationStorageLimit
      */
-    public NaiveBayesClassifier(){
-        // ADD CODE
+    public NaiveBayesClassifier(int classificationStorageLimit){
+        this.classificationStorageLimit = classificationStorageLimit;
+        classificationHistoryQueue = new ArrayList<>();
+        featureTotalCount = new HashMap<>();
+        categoryTotalCount = new HashMap<>();
+        featureAppearanceCategoryCount = new HashMap<>();
     }
 
     /**
