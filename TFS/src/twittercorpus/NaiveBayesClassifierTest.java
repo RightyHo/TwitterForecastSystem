@@ -3,6 +3,8 @@ package twittercorpus;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Set;
+
 import static org.junit.Assert.*;
 
 /**
@@ -19,28 +21,29 @@ public class NaiveBayesClassifierTest {
 
     @Test
     public void testGetClassificationStorageLimit() throws Exception {
-        int expected = tClassifier.getClassificationStorageLimit();
-        assertEquals(expected,1000);
+        int actual = tClassifier.getClassificationStorageLimit();
+        assertEquals(1000,actual);
     }
 
     @Test
     public void testGetFeatures() throws Exception {
-
+        Set<String> actualFeatures = tClassifier.getFeatures();
     }
 
     @Test
     public void testGetCategories() throws Exception {
-
+        Set<Sentiment> actualCategories = tClassifier.getCategories();
     }
 
     @Test
     public void testGetTotalNumCategories() throws Exception {
-
+        int actualNumCategories = tClassifier.getTotalNumCategories();
     }
 
     @Test
     public void testSetClassificationStorageLimit() throws Exception {
-
+        tClassifier.setClassificationStorageLimit(500);
+        assertEquals(500,tClassifier.getClassificationStorageLimit());
     }
 
     @Test
