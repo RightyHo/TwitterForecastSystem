@@ -28,16 +28,19 @@ public class NaiveBayesClassifierTest {
     @Test
     public void testGetFeatures() throws Exception {
         Set<String> actualFeatures = tClassifier.getFeatures();
+        // ADD CODE
     }
 
     @Test
     public void testGetCategories() throws Exception {
         Set<Sentiment> actualCategories = tClassifier.getCategories();
+        // ADD CODE
     }
 
     @Test
     public void testGetTotalNumCategories() throws Exception {
         int actualNumCategories = tClassifier.getTotalNumCategories();
+        // ADD CODE
     }
 
     @Test
@@ -103,13 +106,18 @@ public class NaiveBayesClassifierTest {
     // confirm that method returns the number of times the given feature appears in the given category
     @Test
     public void testFCountInCategory() throws Exception {
-
+        String tFeature = "ADD A VALID FEATURE STRING HERE";                // ADD CODE
+        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        int expectedFeatureCount = 20;                                      // ADJUST AS NECESSARY
+        assertEquals(expectedFeatureCount,tClassifier.fCountInCategory(tFeature,tCategory));
     }
 
     // confirm that method returns the total number of features in the given category
     @Test
     public void testGetCategoryCount() throws Exception {
-
+        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        int expectedCategoryCount = 200;                                    // ADJUST AS NECESSARY
+        assertEquals(expectedCategoryCount,tClassifier.getCategoryCount(tCategory));
     }
 
     @Test

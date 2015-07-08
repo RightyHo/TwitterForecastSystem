@@ -147,8 +147,8 @@
       <file leaf-file-name="NaiveBayesClassifierTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34139404">
-              <caret line="64" column="36" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.84210527">
+              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -842,12 +842,12 @@
       <workItem from="1435733796157" duration="8003000" />
       <workItem from="1436030887414" duration="4183000" />
       <workItem from="1436198441886" duration="1960000" />
-      <workItem from="1436251761963" duration="4077000" />
+      <workItem from="1436251761963" duration="4729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124222000" />
+    <option name="totallyTimeSpent" value="124874000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="654" y="23" width="786" height="823" extended-state="0" />
@@ -1388,8 +1388,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34139404">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.84210527">
+          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding />
         </state>
       </provider>
