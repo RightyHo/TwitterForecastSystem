@@ -46,31 +46,67 @@ public class NaiveBayesClassifierTest {
         assertEquals(500,tClassifier.getClassificationStorageLimit());
     }
 
+    // confirm that method increases the count of the given feature in the given category by one
     @Test
     public void testIncrementFeature() throws Exception {
+        String tFeature = "ADD A VALID FEATURE STRING HERE";                // ADD CODE
+        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        int actualBefore = tClassifier.fCountInCategory(tFeature,tCategory);
 
+        // run incrementFeature method
+        tClassifier.incrementFeature(tFeature,tCategory);
+
+        int actualAfter = tClassifier.fCountInCategory(tFeature,tCategory);
+        assert(actualAfter - 1 == actualBefore);
     }
 
+    // confirm that method decreases the count of the given feature in the given category by one
     @Test
     public void testDecrementFeature() throws Exception {
+        String tFeature = "ADD A VALID FEATURE STRING HERE";                // ADD CODE
+        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        int actualBefore = tClassifier.fCountInCategory(tFeature,tCategory);
 
+        // run incrementFeature method
+        tClassifier.decrementFeature(tFeature,tCategory);
+
+        int actualAfter = tClassifier.fCountInCategory(tFeature,tCategory);
+        assert(actualAfter + 1 == actualBefore);
     }
 
+    // confirm that method increases the count of the given category by one
     @Test
     public void testIncrementCategory() throws Exception {
+        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        int actualBefore = tClassifier.getCategoryCount(tCategory);
 
+        // run incrementCategory method
+        tClassifier.incrementCategory(tCategory);
+
+        int actualAfter = tClassifier.getCategoryCount(tCategory);
+        assert(actualAfter - 1 == actualBefore);
     }
 
+    // confirm that method decreases the count of the given category by one
     @Test
     public void testDecrementCategory() throws Exception {
+        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        int actualBefore = tClassifier.getCategoryCount(tCategory);
 
+        // run incrementCategory method
+        tClassifier.decrementCategory(tCategory);
+
+        int actualAfter = tClassifier.getCategoryCount(tCategory);
+        assert(actualAfter + 1 == actualBefore);
     }
 
+    // confirm that method returns the number of times the given feature appears in the given category
     @Test
     public void testFCountInCategory() throws Exception {
 
     }
 
+    // confirm that method returns the total number of features in the given category
     @Test
     public void testGetCategoryCount() throws Exception {
 
