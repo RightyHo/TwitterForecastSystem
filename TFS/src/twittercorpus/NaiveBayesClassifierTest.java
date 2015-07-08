@@ -120,23 +120,27 @@ public class NaiveBayesClassifierTest {
         assertEquals(expectedCategoryCount,tClassifier.getCategoryCount(tCategory));
     }
 
+    // confirm that method returns the probability that the given feature belongs in the given category
     @Test
     public void testCalcFeatureProbability() throws Exception {
-
+        // ADD CODE
     }
 
+    // confirm that method returns the weighted average probability that the given feature belongs to the given category
     @Test
     public void testCalcFeatureWeightedAverage() throws Exception {
-
+        // ADD CODE
     }
 
+    // confirm that method trains the classifier by displaying that the given features resulted in the given
     @Test
     public void testLearn() throws Exception {
-
+        // ADD CODE
     }
 
+    // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
     @Test
     public void testClassify() throws Exception {
-
+        // ADD CODE
     }
 }
