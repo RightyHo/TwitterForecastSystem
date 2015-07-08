@@ -72,7 +72,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @param numClassificationsRetained
      */
     public void setClassificationStorageLimit(int numClassificationsRetained){
-        return;
+        this.classificationStorageLimit = numClassificationsRetained;
     }
 
     /**
