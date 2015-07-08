@@ -40,7 +40,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public int getClassificationStorageLimit(){
-        return 0;
+        return classificationStorageLimit;
     }
 
     /**
