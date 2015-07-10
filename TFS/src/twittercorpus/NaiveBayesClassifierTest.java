@@ -163,15 +163,26 @@ public class NaiveBayesClassifierTest {
     // confirm that method decreases the count of the given feature in the given category by one
     @Test
     public void testDecrementFeature() throws Exception {
-        String tFeature = "ADD A VALID FEATURE STRING HERE";                // ADD CODE
-        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+
+        // test on a feature with initial count of 1 in the category
+        String tFeature = "I,will";
+        Sentiment tCategory = Sentiment.NEGATIVE;
         int actualBefore = tClassifier.fCountInCategory(tFeature,tCategory);
+
+        // test on a feature with initial count of 2 in the category
+        String tFeatureB = "very,good";
+        Sentiment tCategoryB = Sentiment.POSITIVE;
+        int actualBeforeB = tClassifier.fCountInCategory(tFeatureB,tCategoryB);
 
         // run incrementFeature method
         tClassifier.decrementFeature(tFeature,tCategory);
+        tClassifier.decrementFeature(tFeatureB,tCategoryB);
 
         int actualAfter = tClassifier.fCountInCategory(tFeature,tCategory);
         assert(actualAfter + 1 == actualBefore);
+
+        int actualAfterB = tClassifier.fCountInCategory(tFeatureB,tCategoryB);
+        assert(actualAfterB + 1 == actualBeforeB);
     }
 
     // confirm that method increases the count of the given category by one
