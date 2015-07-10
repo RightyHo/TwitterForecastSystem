@@ -132,12 +132,14 @@ public class NaiveBayesClassifierTest {
         assertFalse(actualCategories.contains(Sentiment.UNCLASSIFIED));
     }
 
+    // Confirm that the method returns the total number distinct categories contained in the classifier memory
     @Test
     public void testGetTotalNumCategories() throws Exception {
         int actualNumCategories = tClassifier.getTotalNumCategories();
-        // ADD CODE
+        assertTrue(actualNumCategories == 2);
     }
 
+    // Confirm that the method r
     @Test
     public void testSetClassificationStorageLimit() throws Exception {
         tClassifier.setClassificationStorageLimit(500);

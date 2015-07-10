@@ -28,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="75" />
+              <caret line="70" column="86" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="86" />
               <folding>
                 <element signature="e#1536#1537#0" expanded="true" />
                 <element signature="e#1585#1586#0" expanded="true" />
@@ -68,8 +68,8 @@
       <file leaf-file-name="NaiveBayesClassifierTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4054054">
-              <caret line="126" column="33" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.38406828">
+              <caret line="136" column="41" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -763,12 +763,12 @@
       <workItem from="1435733796157" duration="8003000" />
       <workItem from="1436030887414" duration="4183000" />
       <workItem from="1436198441886" duration="1960000" />
-      <workItem from="1436251761963" duration="10031000" />
+      <workItem from="1436251761963" duration="10169000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130176000" />
+    <option name="totallyTimeSpent" value="130314000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="234" y="23" width="1206" height="823" extended-state="0" />
@@ -1260,7 +1260,7 @@
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="75" />
+          <caret line="70" column="86" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="86" />
           <folding>
             <element signature="e#1536#1537#0" expanded="true" />
             <element signature="e#1585#1586#0" expanded="true" />
@@ -1298,8 +1298,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4054054">
-          <caret line="126" column="33" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.38406828">
+          <caret line="136" column="41" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="41" />
           <folding />
         </state>
       </provider>
