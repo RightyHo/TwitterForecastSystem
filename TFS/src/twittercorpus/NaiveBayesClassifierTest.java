@@ -3,6 +3,8 @@ package twittercorpus;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -17,6 +19,91 @@ public class NaiveBayesClassifierTest {
     @Before
     public void setUp() throws Exception {
         tClassifier = new NaiveBayesClassifier(1000);
+
+        // test classification A
+        List<String> featureListA = new ArrayList<>();
+        featureListA.add("This,project");
+        featureListA.add("project,is");
+        featureListA.add("is,very");
+        featureListA.add("very,good");
+        Sentiment sentimentA = Sentiment.POSITIVE;
+        double certaintyA = 0.8;
+        Classification tClassificationA = new ClassificationImpl(featureListA,sentimentA,certaintyA);
+
+        // test classification B
+        List<String> featureListB = new ArrayList<>();
+        featureListB.add("The,report");
+        featureListB.add("report,was");
+        featureListB.add("was,a");
+        featureListB.add("a,great");
+        featureListB.add("great,read");
+        Sentiment sentimentB = Sentiment.POSITIVE;
+        double certaintyB = 0.9;
+        Classification tClassificationB = new ClassificationImpl(featureListB,sentimentB,certaintyB);
+
+        // test classification C
+        List<String> featureListC = new ArrayList<>();
+        featureListC.add("rainy,days");
+        featureListC.add("days,can");
+        featureListC.add("can,be");
+        featureListC.add("be,boring");
+        Sentiment sentimentC = Sentiment.NEGATIVE;
+        double certaintyC = 0.6;
+        Classification tClassificationC = new ClassificationImpl(featureListC,sentimentC,certaintyC);
+
+        // test classification D
+        List<String> featureListD = new ArrayList<>();
+        featureListD.add("sentiment,analysis");
+        featureListD.add("analysis,is");
+        featureListD.add("is,an");
+        featureListD.add("an,interesting");
+        featureListD.add("interesting,subject");
+        Sentiment sentimentD = Sentiment.POSITIVE;
+        double certaintyD = 0.7;
+        Classification tClassificationD = new ClassificationImpl(featureListD,sentimentD,certaintyD);
+
+        // test classification E
+        List<String> featureListE = new ArrayList<>();
+        featureListE.add("I,will");
+        featureListE.add("will,not");
+        featureListE.add("not,miss");
+        featureListE.add("miss,working");
+        featureListE.add("working,on");
+        featureListE.add("on,assignments");
+        featureListE.add("assignments,after");
+        featureListE.add("after,a");
+        featureListE.add("a,long");
+        featureListE.add("long,day");
+        featureListE.add("day,at");
+        featureListE.add("at,the");
+        featureListE.add("the,office");
+        Sentiment sentimentE = Sentiment.NEGATIVE;
+        double certaintyE = 0.5;
+        Classification tClassificationE = new ClassificationImpl(featureListE,sentimentE,certaintyE);
+
+        // test classification F
+        List<String> featureListF = new ArrayList<>();
+        featureListF.add("I,will");
+        featureListF.add("will,be");
+        featureListF.add("be,happy");
+        featureListF.add("happy,if");
+        featureListF.add("if,this");
+        featureListF.add("this,system");
+        featureListF.add("system,generates");
+        featureListF.add("generates,very");
+        featureListF.add("very,good");
+        featureListF.add("good,results");
+        Sentiment sentimentF = Sentiment.NEGATIVE;
+        double certaintyF = 0.7;
+        Classification tClassificationF = new ClassificationImpl(featureListF,sentimentF,certaintyF);
+
+        // train the classifier on the test classifications
+        tClassifier.learn(tClassificationA);
+        tClassifier.learn(tClassificationB);
+        tClassifier.learn(tClassificationC);
+        tClassifier.learn(tClassificationD);
+        tClassifier.learn(tClassificationE);
+        tClassifier.learn(tClassificationF);
     }
 
     @Test
@@ -25,10 +112,13 @@ public class NaiveBayesClassifierTest {
         assertEquals(1000,actual);
     }
 
+    // Returns the set of all features the classifier contains
     @Test
     public void testGetFeatures() throws Exception {
         Set<String> actualFeatures = tClassifier.getFeatures();
-        // ADD CODE
+        assertTrue(actualFeatures.contains("this,project"));
+        assertTrue(actualFeatures.contains("happy,if"));
+        assertFalse(actualFeatures.contains("red,herring"));
     }
 
     @Test
