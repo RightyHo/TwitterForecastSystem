@@ -229,8 +229,8 @@ public class NaiveBayesClassifierTest {
     // confirm that method returns the total number of features in the given category
     @Test
     public void testGetCategoryCount() throws Exception {
-        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
-        int expectedCategoryCount = 200;                                    // ADJUST AS NECESSARY
+        Sentiment tCategory = Sentiment.NEGATIVE;
+        int expectedCategoryCount = 17;
         assertEquals(expectedCategoryCount,tClassifier.getCategoryCount(tCategory));
     }
 
