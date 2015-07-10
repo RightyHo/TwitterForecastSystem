@@ -136,10 +136,10 @@ public class NaiveBayesClassifierTest {
     @Test
     public void testGetTotalNumCategories() throws Exception {
         int actualNumCategories = tClassifier.getTotalNumCategories();
-        assertTrue(actualNumCategories == 2);
+        assertTrue(actualNumCategories == 2);           // only POSITIVE & NEGATIVE categories should exist at this stage
     }
 
-    // Confirm that the method r
+    // Confirm that the method sets the history queue limit correctly
     @Test
     public void testSetClassificationStorageLimit() throws Exception {
         tClassifier.setClassificationStorageLimit(500);
@@ -149,8 +149,8 @@ public class NaiveBayesClassifierTest {
     // confirm that method increases the count of the given feature in the given category by one
     @Test
     public void testIncrementFeature() throws Exception {
-        String tFeature = "ADD A VALID FEATURE STRING HERE";                // ADD CODE
-        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        String tFeature = "rainy,days";
+        Sentiment tCategory = Sentiment.NEGATIVE;
         int actualBefore = tClassifier.fCountInCategory(tFeature,tCategory);
 
         // run incrementFeature method
