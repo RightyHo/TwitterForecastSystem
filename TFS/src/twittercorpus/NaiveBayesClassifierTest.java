@@ -93,8 +93,8 @@ public class NaiveBayesClassifierTest {
         featureListF.add("generates,very");
         featureListF.add("very,good");
         featureListF.add("good,results");
-        Sentiment sentimentF = Sentiment.NEGATIVE;
-        double certaintyF = 0.7;
+        Sentiment sentimentF = Sentiment.POSITIVE;
+        double certaintyF = 1.0;
         Classification tClassificationF = new ClassificationImpl(featureListF,sentimentF,certaintyF);
 
         // train the classifier on the test classifications
@@ -112,7 +112,7 @@ public class NaiveBayesClassifierTest {
         assertEquals(1000,actual);
     }
 
-    // Returns the set of all features the classifier contains
+    // Confirm that the method returns the set of all features the classifier contains
     @Test
     public void testGetFeatures() throws Exception {
         Set<String> actualFeatures = tClassifier.getFeatures();
@@ -122,10 +122,14 @@ public class NaiveBayesClassifierTest {
         // *** CURRENTLY GETTING NULLPOINTEREXECPTION BECAUSE LEARN() METHOD HAS NOT BEEN IMPLEMENTED ***
     }
 
+    // Confirm that the method returns the set of all categories contained in the classifier memory
     @Test
     public void testGetCategories() throws Exception {
         Set<Sentiment> actualCategories = tClassifier.getCategories();
-        // ADD CODE
+        assertTrue(actualCategories.contains(Sentiment.NEGATIVE));
+        assertTrue(actualCategories.contains(Sentiment.POSITIVE));
+        assertFalse(actualCategories.contains(Sentiment.NEUTRAL));
+        assertFalse(actualCategories.contains(Sentiment.UNCLASSIFIED));
     }
 
     @Test
