@@ -249,7 +249,14 @@ public class NaiveBayesClassifierTest {
     // confirm that method trains the classifier by displaying that the given features resulted in the given
     @Test
     public void testLearn() throws Exception {
-        // ADD CODE
+        assertFalse(tClassifier.getFeatures().contains("red,herring"));
+        List<String> addListFeatures = new ArrayList<>();
+        addListFeatures.add("red,herring");
+
+        Classification addClass = new ClassificationImpl(addListFeatures,Sentiment.NEGATIVE,0.3);
+        tClassifier.learn(addClass);
+
+        assertTrue(tClassifier.getFeatures().contains("red,herring"));
     }
 
     // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
