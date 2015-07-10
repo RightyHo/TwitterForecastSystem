@@ -188,7 +188,7 @@ public class NaiveBayesClassifierTest {
     // confirm that method increases the count of the given category by one
     @Test
     public void testIncrementCategory() throws Exception {
-        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        Sentiment tCategory = Sentiment.NEGATIVE;
         int actualBefore = tClassifier.getCategoryCount(tCategory);
 
         // run incrementCategory method
@@ -201,7 +201,7 @@ public class NaiveBayesClassifierTest {
     // confirm that method decreases the count of the given category by one
     @Test
     public void testDecrementCategory() throws Exception {
-        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
+        Sentiment tCategory = Sentiment.NEGATIVE;
         int actualBefore = tClassifier.getCategoryCount(tCategory);
 
         // run incrementCategory method
@@ -214,10 +214,16 @@ public class NaiveBayesClassifierTest {
     // confirm that method returns the number of times the given feature appears in the given category
     @Test
     public void testFCountInCategory() throws Exception {
-        String tFeature = "ADD A VALID FEATURE STRING HERE";                // ADD CODE
-        Sentiment tCategory = Sentiment.NEGATIVE;                           // ADJUST AS NECESSARY
-        int expectedFeatureCount = 20;                                      // ADJUST AS NECESSARY
-        assertEquals(expectedFeatureCount,tClassifier.fCountInCategory(tFeature,tCategory));
+        String tFeatureA = "sentiment,analysis";        // appears once in test history under positive category
+        String tFeatureB = "very,good";                 // appears twice in test history under positive category
+        String tFeatureC = "red,herring";               // never appears in test history under positive category
+        Sentiment tCategory = Sentiment.POSITIVE;
+        int expectedFeatureCountA = 1;
+        int expectedFeatureCountB = 2;
+        int expectedFeatureCountC = 0;
+        assertEquals(expectedFeatureCountA,tClassifier.fCountInCategory(tFeatureA,tCategory));
+        assertEquals(expectedFeatureCountB,tClassifier.fCountInCategory(tFeatureB,tCategory));
+        assertEquals(expectedFeatureCountC,tClassifier.fCountInCategory(tFeatureC,tCategory));
     }
 
     // confirm that method returns the total number of features in the given category
