@@ -48,7 +48,15 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public Set<String> getFeatures(){
-        return null;
+        Set<String> result = new HashSet<>();
+        Iterator<Classification> classIt = classificationHistoryQueue.iterator();
+        while(classIt.hasNext()){
+            Iterator<String> stringIterator = classIt.next().getListOfFeatures().iterator();
+            while(stringIterator.hasNext()){
+                result.add(stringIterator.next());
+            }
+        }
+        return result;
     }
 
     /**
