@@ -252,11 +252,13 @@ public class NaiveBayesClassifierTest {
         assertFalse(tClassifier.getFeatures().contains("red,herring"));
         List<String> addListFeatures = new ArrayList<>();
         addListFeatures.add("red,herring");
+        int preLearn = tClassifier.getCategoryCount(Sentiment.NEGATIVE);
 
         Classification addClass = new ClassificationImpl(addListFeatures,Sentiment.NEGATIVE,0.3);
         tClassifier.learn(addClass);
 
         assertTrue(tClassifier.getFeatures().contains("red,herring"));
+        assertTrue(tClassifier.getCategoryCount(Sentiment.NEGATIVE) - 1 == preLearn);
     }
 
     // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
