@@ -27,8 +27,8 @@
       <file leaf-file-name="NaiveBayesClassifier.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41935483">
-              <caret line="97" column="101" selection-start-line="97" selection-start-column="101" selection-end-line="97" selection-end-column="101" />
+            <state vertical-scroll-proportion="0.19354838">
+              <caret line="90" column="32" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="32" />
               <folding>
                 <element signature="e#1533#1534#0" expanded="true" />
                 <element signature="e#1582#1583#0" expanded="true" />
@@ -740,12 +740,12 @@
       <workItem from="1436030887414" duration="4183000" />
       <workItem from="1436198441886" duration="1960000" />
       <workItem from="1436251761963" duration="12150000" />
-      <workItem from="1436622313934" duration="3348000" />
+      <workItem from="1436622313934" duration="3678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135643000" />
+    <option name="totallyTimeSpent" value="135973000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="234" y="23" width="1206" height="823" extended-state="0" />
@@ -1184,8 +1184,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41935483">
-          <caret line="97" column="101" selection-start-line="97" selection-start-column="101" selection-end-line="97" selection-end-column="101" />
+        <state vertical-scroll-proportion="0.19354838">
+          <caret line="90" column="32" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="32" />
           <folding>
             <element signature="e#1533#1534#0" expanded="true" />
             <element signature="e#1582#1583#0" expanded="true" />

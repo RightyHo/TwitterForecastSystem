@@ -92,17 +92,16 @@ public class NaiveBayesClassifier implements Classifier {
         if(featureTotalCount.containsKey(feature)){
             // add one to existing feature count mapping
             featureTotalCount.put(feature,featureTotalCount.get(feature) + 1);                      // *** MIGHT NEED TO CAST FROM INTEGER TO int? ***
-            if(featureAppearanceCategoryCount.get(sentimentCategory).containsKey(feature)){
+            Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
+            if(mapInSelectedCategory.containsKey(feature)){
                 // add one to existing feature count mapping under the given category
-                int prevCount = featureAppearanceCategoryCount.get(sentimentCategory).get(feature);
-                Map<String,Integer> focusMap = featureAppearanceCategoryCount.get(sentimentCategory);
-                focusMap.put(feature,prevCount + 1);
-                featureAppearanceCategoryCount.put(sentimentCategory,focusMap);
+                int prevCount = mapInSelectedCategory.get(feature);
+                mapInSelectedCategory.put(feature,prevCount + 1);
+                featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
             } else {
                 // create a new feature count mapping under the given category with a count value of one
-                Map<String,Integer> focusMap = featureAppearanceCategoryCount.get(sentimentCategory);
-                focusMap.put(feature,1);
-                featureAppearanceCategoryCount.put(sentimentCategory,focusMap);
+                mapInSelectedCategory.put(feature,1);
+                featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
             }
         }
     }
