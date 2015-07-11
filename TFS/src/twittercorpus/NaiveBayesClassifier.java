@@ -72,7 +72,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public int getTotalNumCategories(){
-        return 0;
+        return categoryTotalCount.keySet().size();
     }
 
     /**
