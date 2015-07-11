@@ -118,7 +118,31 @@ public class NaiveBayesClassifier implements Classifier {
      * @param sentimentCategory
      */
     public void decrementFeature(String feature,Sentiment sentimentCategory){
-        return;
+        Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
+        if(featureTotalCount.containsKey(feature)){
+            // subtract one from existing feature count mapping or remove from the map if the count value is initially only one
+            if(featureTotalCount.get(feature) == 1){
+                featureTotalCount.remove(feature);
+            } else {
+                featureTotalCount.put(feature, featureTotalCount.get(feature) - 1);                  // *** MIGHT NEED TO CAST FROM INTEGER TO int? ***
+            } // *** UP TO HERE REFACTOR FOLLOWING CODE! ***
+            if(mapInSelectedCategory.containsKey(feature)){
+                // add one to existing feature count mapping under the given category
+                int prevCount = mapInSelectedCategory.get(feature);
+                mapInSelectedCategory.put(feature,prevCount + 1);
+                featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
+            } else {
+                // create a new feature count mapping under the given category with a count value of one
+                mapInSelectedCategory.put(feature,1);
+                featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
+            }
+        } else {
+            // create a new feature count mapping with a count value of one
+            featureTotalCount.put(feature,1);
+            // create a new feature count mapping under the given category with a count value of one
+            mapInSelectedCategory.put(feature,1);
+            featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
+        }
     }
 
     /**
