@@ -64,7 +64,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public Set<Sentiment> getCategories(){
-        return null;
+        return categoryTotalCount.keySet();
     }
 
     /**
