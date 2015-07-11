@@ -17,7 +17,7 @@ public class NaiveBayesClassifier implements Classifier {
     // Map of the total number of occurences of each feature
     Map<String,Integer> featureTotalCount;
 
-    // Map that pairs each category with it the total number of features they contain
+    // Map that pairs each category with the total number of features they contain
     Map<Sentiment,Integer> categoryTotalCount;
 
     // Map connecting a feature to the number of times it appears in each category
@@ -164,7 +164,17 @@ public class NaiveBayesClassifier implements Classifier {
      * @param classification
      */
     public void learn(Classification classification){
-        return;
+        // check that there is room in the history queue, if not then delete the oldest classification to make room
+        if(classificationHistoryQueue.size() >= classificationStorageLimit){
+
+        } else {
+            classificationHistoryQueue.add(classification);
+            Iterator<String> stringIterator = classification.getListOfFeatures().iterator();
+            while (stringIterator.hasNext()){
+                incrementFeature(stringIterator.next(),classification.getSentimentCategory());
+                incrementCategory(classification.getSentimentCategory());
+            }
+        }
     }
 
     /**
