@@ -89,10 +89,10 @@ public class NaiveBayesClassifier implements Classifier {
      * @param sentimentCategory
      */
     public void incrementFeature(String feature,Sentiment sentimentCategory){
+        Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
         if(featureTotalCount.containsKey(feature)){
             // add one to existing feature count mapping
             featureTotalCount.put(feature,featureTotalCount.get(feature) + 1);                      // *** MIGHT NEED TO CAST FROM INTEGER TO int? ***
-            Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
             if(mapInSelectedCategory.containsKey(feature)){
                 // add one to existing feature count mapping under the given category
                 int prevCount = mapInSelectedCategory.get(feature);
@@ -103,6 +103,12 @@ public class NaiveBayesClassifier implements Classifier {
                 mapInSelectedCategory.put(feature,1);
                 featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
             }
+        } else {
+            // create a new feature count mapping with a count value of one
+            featureTotalCount.put(feature,1);
+            // create a new feature count mapping under the given category with a count value of one
+            mapInSelectedCategory.put(feature,1);
+            featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
         }
     }
 
