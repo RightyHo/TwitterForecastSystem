@@ -150,7 +150,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @param sentimentCategory
      */
     public void incrementCategory(Sentiment sentimentCategory){
-        return;
+        categoryTotalCount.put(sentimentCategory,categoryTotalCount.get(sentimentCategory) + 1);
     }
 
     /**
@@ -158,7 +158,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @param sentimentCategory
      */
     public void decrementCategory(Sentiment sentimentCategory){
-        return;
+        categoryTotalCount.put(sentimentCategory,categoryTotalCount.get(sentimentCategory) - 1);
     }
 
     /**
