@@ -27,15 +27,15 @@
       <file leaf-file-name="NaiveBayesClassifier.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5053192">
-              <caret line="164" column="47" selection-start-line="164" selection-start-column="22" selection-end-line="164" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.68085104">
+              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
               <folding>
-                <element signature="e#1533#1534#0" expanded="true" />
-                <element signature="e#1582#1583#0" expanded="true" />
-                <element signature="e#2270#2271#0" expanded="true" />
-                <element signature="e#2320#2321#0" expanded="true" />
-                <element signature="e#2479#2480#0" expanded="true" />
-                <element signature="e#2536#2537#0" expanded="true" />
+                <element signature="e#1716#1717#0" expanded="true" />
+                <element signature="e#1765#1766#0" expanded="true" />
+                <element signature="e#2453#2454#0" expanded="true" />
+                <element signature="e#2503#2504#0" expanded="true" />
+                <element signature="e#2662#2663#0" expanded="true" />
+                <element signature="e#2719#2720#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -738,12 +738,12 @@
       <workItem from="1436030887414" duration="4183000" />
       <workItem from="1436198441886" duration="1960000" />
       <workItem from="1436251761963" duration="12150000" />
-      <workItem from="1436622313934" duration="8623000" />
+      <workItem from="1436622313934" duration="9210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140918000" />
+    <option name="totallyTimeSpent" value="141505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1182,15 +1182,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5053192">
-          <caret line="164" column="47" selection-start-line="164" selection-start-column="22" selection-end-line="164" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.68085104">
+          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
           <folding>
-            <element signature="e#1533#1534#0" expanded="true" />
-            <element signature="e#1582#1583#0" expanded="true" />
-            <element signature="e#2270#2271#0" expanded="true" />
-            <element signature="e#2320#2321#0" expanded="true" />
-            <element signature="e#2479#2480#0" expanded="true" />
-            <element signature="e#2536#2537#0" expanded="true" />
+            <element signature="e#1716#1717#0" expanded="true" />
+            <element signature="e#1765#1766#0" expanded="true" />
+            <element signature="e#2453#2454#0" expanded="true" />
+            <element signature="e#2503#2504#0" expanded="true" />
+            <element signature="e#2662#2663#0" expanded="true" />
+            <element signature="e#2719#2720#0" expanded="true" />
           </folding>
         </state>
       </provider>

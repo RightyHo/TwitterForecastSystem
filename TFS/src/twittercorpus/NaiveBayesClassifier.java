@@ -32,7 +32,10 @@ public class NaiveBayesClassifier implements Classifier {
         classificationHistoryQueue = new ArrayList<>();
         featureTotalCount = new HashMap<>();
         categoryTotalCount = new HashMap<>();
+        HashMap<String,Integer>
         featureAppearanceCategoryCount = new HashMap<>();
+        // initialise all sentiment categories with Maps
+        featureAppearanceCategoryCount.put(Sentiment.NEGATIVE,new HashMap<String,Integer>());
     }
 
     /**
