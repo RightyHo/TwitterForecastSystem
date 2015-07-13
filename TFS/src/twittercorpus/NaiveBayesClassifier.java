@@ -32,10 +32,14 @@ public class NaiveBayesClassifier implements Classifier {
         classificationHistoryQueue = new ArrayList<>();
         featureTotalCount = new HashMap<>();
         categoryTotalCount = new HashMap<>();
-        HashMap<String,Integer>
+//        Map<String,Integer> emptyNegativeMap = new HashMap<>();
+//        Map<String,Integer> emptyPositiveMap = new HashMap<>();
+//        Map<String,Integer> emptyNeutralMap = new HashMap<>();
         featureAppearanceCategoryCount = new HashMap<>();
         // initialise all sentiment categories with Maps
         featureAppearanceCategoryCount.put(Sentiment.NEGATIVE,new HashMap<String,Integer>());
+        featureAppearanceCategoryCount.put(Sentiment.POSITIVE,new HashMap<String,Integer>());
+        featureAppearanceCategoryCount.put(Sentiment.NEUTRAL,new HashMap<String,Integer>());
     }
 
     /**
@@ -155,8 +159,12 @@ public class NaiveBayesClassifier implements Classifier {
      * Increases the count of the given category by one
      * @param sentimentCategory
      */
-    public void incrementCategory(Sentiment sentimentCategory){
-        categoryTotalCount.put(sentimentCategory,categoryTotalCount.get(sentimentCategory) + 1);
+    public void incrementCategory(Sentiment sentimentCategory) {
+        if (categoryTotalCount.get(sentimentCategory) == null) {
+            categoryTotalCount.put(sentimentCategory, 1);
+        } else {
+            categoryTotalCount.put(sentimentCategory, categoryTotalCount.get(sentimentCategory) + 1);
+        }
     }
 
     /**
