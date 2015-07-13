@@ -202,7 +202,11 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public int getCategoryCount(Sentiment sentimentCategory){
-        return 0;
+        if(categoryTotalCount.get(sentimentCategory) == null){
+            return 0;
+        } else {
+            return categoryTotalCount.get(sentimentCategory);
+        }
     }
 
     /**
