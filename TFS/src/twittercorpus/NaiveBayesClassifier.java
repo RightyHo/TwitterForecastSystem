@@ -127,21 +127,24 @@ public class NaiveBayesClassifier implements Classifier {
                     // remove existing feature count mapping under the given category since the initial count will be one
                     mapInSelectedCategory.remove(feature);
                     featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
+                } else {
+                    throw new NoSuchElementException("The feature you tried to decrement exists in the total feature set but is not present in the category you gave!");
                 }
             } else {
+                // initial feature count is greater than one
                 featureTotalCount.put(feature, featureTotalCount.get(feature) - 1);                  // *** MIGHT NEED TO CAST FROM INTEGER TO int? ***
                 if(mapInSelectedCategory.containsKey(feature)){
                     // subtract one from feature count mapping under the given category
-
+                    int prevCount = mapInSelectedCategory.get(feature);
+                    mapInSelectedCategory.put(feature,prevCount - 1);
+                    featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
+                } else {
+                    throw new NoSuchElementException("The feature you tried to decrement exists in the total feature set but is not present in the category you gave!");
                 }
             }
-
         } else {
-            // create a new feature count mapping with a count value of one
-            featureTotalCount.put(feature,1);
-            // create a new feature count mapping under the given category with a count value of one
-            mapInSelectedCategory.put(feature,1);
-            featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
+            // the given feature doesn't appear in the total feature set
+            throw new NoSuchElementException("The feature you attempted to decrement does not exist in the total feature set!");
         }
     }
 
