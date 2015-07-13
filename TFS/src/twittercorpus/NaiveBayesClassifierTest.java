@@ -116,7 +116,7 @@ public class NaiveBayesClassifierTest {
     @Test
     public void testGetFeatures() throws Exception {
         Set<String> actualFeatures = tClassifier.getFeatures();
-        assertTrue(actualFeatures.contains("this,project"));
+        assertTrue(actualFeatures.contains("This,project"));
         assertTrue(actualFeatures.contains("happy,if"));
         assertFalse(actualFeatures.contains("red,herring"));
         // *** CURRENTLY GETTING NULLPOINTEREXECPTION BECAUSE LEARN() METHOD HAS NOT BEEN IMPLEMENTED ***
