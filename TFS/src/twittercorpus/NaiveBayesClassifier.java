@@ -161,7 +161,11 @@ public class NaiveBayesClassifier implements Classifier {
      * @param sentimentCategory
      */
     public void decrementCategory(Sentiment sentimentCategory){
-        categoryTotalCount.put(sentimentCategory,categoryTotalCount.get(sentimentCategory) - 1);
+        if(categoryTotalCount.get(sentimentCategory) < 1){
+            throw new IndexOutOfBoundsException("Cannot decrement a category count with an initial value less than one!");
+        } else {
+            categoryTotalCount.put(sentimentCategory, categoryTotalCount.get(sentimentCategory) - 1);
+        }
     }
 
     /**
