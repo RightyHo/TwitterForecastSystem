@@ -32,9 +32,6 @@ public class NaiveBayesClassifier implements Classifier {
         classificationHistoryQueue = new ArrayList<>();
         featureTotalCount = new HashMap<>();
         categoryTotalCount = new HashMap<>();
-//        Map<String,Integer> emptyNegativeMap = new HashMap<>();
-//        Map<String,Integer> emptyPositiveMap = new HashMap<>();
-//        Map<String,Integer> emptyNeutralMap = new HashMap<>();
         featureAppearanceCategoryCount = new HashMap<>();
         // initialise all sentiment categories with Maps
         featureAppearanceCategoryCount.put(Sentiment.NEGATIVE,new HashMap<String,Integer>());
@@ -97,6 +94,7 @@ public class NaiveBayesClassifier implements Classifier {
      */
     public void incrementFeature(String feature,Sentiment sentimentCategory){
         Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
+        if(mapInSelectedCategory == null) throw new NullPointerException("The map in the selected category is not initialised properly");
         if(featureTotalCount.containsKey(feature)){
             // add one to existing feature count mapping
             featureTotalCount.put(feature,featureTotalCount.get(feature) + 1);                      // *** MIGHT NEED TO CAST FROM INTEGER TO int? ***
@@ -126,6 +124,7 @@ public class NaiveBayesClassifier implements Classifier {
      */
     public void decrementFeature(String feature,Sentiment sentimentCategory){
         Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
+        if(mapInSelectedCategory == null) throw new NullPointerException("The map in the selected category is not initialised properly");
         if(featureTotalCount.containsKey(feature)){
             // subtract one from existing feature count mapping or remove from the map if the count value is initially only one
             if(featureTotalCount.get(feature) == 1){
@@ -171,8 +170,10 @@ public class NaiveBayesClassifier implements Classifier {
      * Decreases the count of the given category by one
      * @param sentimentCategory
      */
-    public void decrementCategory(Sentiment sentimentCategory){
-        if(categoryTotalCount.get(sentimentCategory) < 1){
+    public void decrementCategory(Sentiment sentimentCategory) {
+        if (categoryTotalCount.get(sentimentCategory) == null) {
+            throw new IndexOutOfBoundsException("Cannot decrement a null category!");
+        } else if (categoryTotalCount.get(sentimentCategory) < 1) {
             throw new IndexOutOfBoundsException("Cannot decrement a category count with an initial value less than one!");
         } else {
             categoryTotalCount.put(sentimentCategory, categoryTotalCount.get(sentimentCategory) - 1);
@@ -186,7 +187,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public int fCountInCategory(String feature,Sentiment sentimentCategory){
-        return 0;
+        Map<>
     }
 
     /**
