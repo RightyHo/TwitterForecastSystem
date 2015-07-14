@@ -248,7 +248,6 @@ public class NaiveBayesClassifierTest {
         assertTrue(Math.abs(expectedProbPositiveA - tClassifier.calcFeatureProbability(tFeatureA,Sentiment.POSITIVE)) < 0.000000001);
         assertTrue(Math.abs(expectedProbPositiveB - tClassifier.calcFeatureProbability(tFeatureB,Sentiment.POSITIVE)) < 0.000000001);
         assertTrue(Math.abs(expectedProbPositiveC - tClassifier.calcFeatureProbability(tFeatureC,Sentiment.POSITIVE)) < 0.000000001);
-        System.out.println(tClassifier.calcFeatureProbability(tFeatureD,Sentiment.POSITIVE));
         assertTrue(Math.abs(expectedProbPositiveD - tClassifier.calcFeatureProbability(tFeatureD,Sentiment.POSITIVE)) < 0.000000001);
     }
 
