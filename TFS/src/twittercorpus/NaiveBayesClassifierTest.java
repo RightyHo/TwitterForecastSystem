@@ -119,7 +119,6 @@ public class NaiveBayesClassifierTest {
         assertTrue(actualFeatures.contains("This,project"));
         assertTrue(actualFeatures.contains("happy,if"));
         assertFalse(actualFeatures.contains("red,herring"));
-        // *** CURRENTLY GETTING NULLPOINTEREXECPTION BECAUSE LEARN() METHOD HAS NOT BEEN IMPLEMENTED ***
     }
 
     // Confirm that the method returns the set of all categories contained in the classifier memory
