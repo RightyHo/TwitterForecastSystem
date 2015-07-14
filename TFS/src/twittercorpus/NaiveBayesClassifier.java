@@ -221,7 +221,7 @@ public class NaiveBayesClassifier implements Classifier {
             if(getTotalNumCategories() == 0){
                 throw new NoSuchElementException("No categories have been properly initialised!");
             } else {
-                return 1 / getTotalNumCategories();
+                return 1.0 / getTotalNumCategories();
             }
         } else {
             return fCountInCategory(feature,sentimentCategory) / featureTotalCount.get(feature);

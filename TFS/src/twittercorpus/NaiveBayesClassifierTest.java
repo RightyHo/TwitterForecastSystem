@@ -236,7 +236,20 @@ public class NaiveBayesClassifierTest {
     // confirm that method returns the probability that the given feature belongs in the given category
     @Test
     public void testCalcFeatureProbability() throws Exception {
-        // ADD CODE
+        String tFeatureA = "sentiment,analysis";        // appears once in test history under positive category and doesn't appear in any other category
+        String tFeatureB = "very,good";                 // appears twice in test history under positive category and doesn't appear in any other category
+        String tFeatureC = "red,herring";               // never appears in test history under positive category and doesn't appear in any other category either
+        String tFeatureD = "I,will";                    // appears once in test history under positive category and also appears once in the negative category
+        // Formula:  Feature Count in Category / Total Feature Count
+        double expectedProbPositiveA = 1.0 / 1.0;
+        double expectedProbPositiveB = 2.0 / 2.0;
+        double expectedProbPositiveC = 1.0 / 2.0;       // 1 divided by number of categories
+        double expectedProbPositiveD = 1.0 / 2.0;
+        assertTrue(Math.abs(expectedProbPositiveA - tClassifier.calcFeatureProbability(tFeatureA,Sentiment.POSITIVE)) < 0.000000001);
+        assertTrue(Math.abs(expectedProbPositiveB - tClassifier.calcFeatureProbability(tFeatureB,Sentiment.POSITIVE)) < 0.000000001);
+        assertTrue(Math.abs(expectedProbPositiveC - tClassifier.calcFeatureProbability(tFeatureC,Sentiment.POSITIVE)) < 0.000000001);
+        System.out.println(tClassifier.calcFeatureProbability(tFeatureD,Sentiment.POSITIVE));
+        assertTrue(Math.abs(expectedProbPositiveD - tClassifier.calcFeatureProbability(tFeatureD,Sentiment.POSITIVE)) < 0.000000001);
     }
 
     // confirm that method returns the weighted average probability that the given feature belongs to the given category
