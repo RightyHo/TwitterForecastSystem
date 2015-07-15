@@ -142,7 +142,7 @@ public class NaiveBayesClassifierTest {
     @Test
     public void testSetClassificationStorageLimit() throws Exception {
         tClassifier.setClassificationStorageLimit(500);
-        assertEquals(500,tClassifier.getClassificationStorageLimit());
+        assertEquals(500, tClassifier.getClassificationStorageLimit());
     }
 
     // confirm that method increases the count of the given feature in the given category by one
@@ -153,7 +153,7 @@ public class NaiveBayesClassifierTest {
         int actualBefore = tClassifier.fCountInCategory(tFeature,tCategory);
 
         // run incrementFeature method
-        tClassifier.incrementFeature(tFeature,tCategory);
+        tClassifier.incrementFeature(tFeature, tCategory);
 
         int actualAfter = tClassifier.fCountInCategory(tFeature,tCategory);
         assert(actualAfter - 1 == actualBefore);
@@ -221,7 +221,7 @@ public class NaiveBayesClassifierTest {
         int expectedFeatureCountB = 2;
         int expectedFeatureCountC = 0;
         assertEquals(expectedFeatureCountA,tClassifier.fCountInCategory(tFeatureA,tCategory));
-        assertEquals(expectedFeatureCountB,tClassifier.fCountInCategory(tFeatureB,tCategory));
+        assertEquals(expectedFeatureCountB, tClassifier.fCountInCategory(tFeatureB, tCategory));
         assertEquals(expectedFeatureCountC,tClassifier.fCountInCategory(tFeatureC,tCategory));
     }
 
@@ -248,7 +248,7 @@ public class NaiveBayesClassifierTest {
         assertTrue(Math.abs(expectedProbPositiveA - tClassifier.calcFeatureProbability(tFeatureA,Sentiment.POSITIVE)) < 0.000000001);
         assertTrue(Math.abs(expectedProbPositiveB - tClassifier.calcFeatureProbability(tFeatureB,Sentiment.POSITIVE)) < 0.000000001);
         assertTrue(Math.abs(expectedProbPositiveC - tClassifier.calcFeatureProbability(tFeatureC,Sentiment.POSITIVE)) < 0.000000001);
-        assertTrue(Math.abs(expectedProbPositiveD - tClassifier.calcFeatureProbability(tFeatureD,Sentiment.POSITIVE)) < 0.000000001);
+        assertTrue(Math.abs(expectedProbPositiveD - tClassifier.calcFeatureProbability(tFeatureD, Sentiment.POSITIVE)) < 0.000000001);
     }
 
     // confirm that method returns the weighted average probability that the given feature belongs to the given category
@@ -275,6 +275,27 @@ public class NaiveBayesClassifierTest {
     // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
     @Test
     public void testClassify() throws Exception {
+        // ADD CODE
+    }
+
+    // confirm that method returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
+    // *** NEED TO MAKE THE UNDERLYING METHOD PUBLIC TEMPORARILY DURING TESTING ***
+    @Test
+    public void testCalcProductOfFeatureProbs() throws Exception {
+        // ADD CODE
+    }
+
+    // confirm that method calculates the probability that the features belong in the given category
+    // *** NEED TO MAKE THE UNDERLYING METHOD PUBLIC TEMPORARILY DURING TESTING ***
+    @Test
+    public void testProbabilityFeatureInCategory() throws Exception {
+        // ADD CODE
+    }
+
+    // confirm that method returns a sorted list of classifications ordered by the probability that the given set of features belongs to each category
+    // *** NEED TO MAKE THE UNDERLYING METHOD PUBLIC TEMPORARILY DURING TESTING ***
+    @Test
+    public void testCategoryOrderOfProbability() throws Exception {
         // ADD CODE
     }
 }

@@ -212,6 +212,7 @@ public class NaiveBayesClassifier implements Classifier {
     /**
      * Returns the probability that the given feature belongs in the given category
      * Formula:  Feature Count in Category / Total Feature Count
+     * *** DOUBLE CHECK FORMULA AS I MIGHT NEED TO USE THE CATEGORY TOTAL COUNT INSTEAD OF THE TOTAL FEATURE COUNT IN THIS SITUATION ***
      * @param feature
      * @param sentimentCategory
      * @return
