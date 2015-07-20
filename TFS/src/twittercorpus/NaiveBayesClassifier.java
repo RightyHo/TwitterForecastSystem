@@ -14,7 +14,7 @@ public class NaiveBayesClassifier implements Classifier {
     // The classifiers trained memory - a list of historic classifications
     private List<Classification> classificationHistoryQueue;
 
-    // Map of the total number of occurences of each feature
+    // Map of the total number of occurrences of each feature
     Map<String,Integer> featureTotalCount;
 
     // Map that pairs each category with the total number of features they contain
@@ -102,7 +102,7 @@ public class NaiveBayesClassifier implements Classifier {
                 // add one to existing feature count mapping under the given category
                 int prevCount = mapInSelectedCategory.get(feature);
                 mapInSelectedCategory.put(feature,prevCount + 1);
-                featureAppearanceCategoryCount.put(sentimentCategory,mapInSelectedCategory);
+                featureAppearanceCategoryCount.put(sentimentCategory, mapInSelectedCategory);
             } else {
                 // create a new feature count mapping under the given category with a count value of one
                 mapInSelectedCategory.put(feature,1);
@@ -234,7 +234,14 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public double calcFeatureWeightedAverage(String feature,Sentiment sentimentCategory,double weight,double assumedProbability){
-        return 0.0;
+        double result = 0.0;
+        Integer numOccurrencesOfFeature = featureTotalCount.get(feature);
+        if(numOccurrencesOfFeature == null){
+            numOccurrencesOfFeature = 0;
+        }
+        double likelihood = calcFeatureLikelihood(feature,sentimentCategory);
+        result = (assumedProbability * weight + numOccurrencesOfFeature * likelihood) / (numOccurrencesOfFeature + weight);
+        return result;
     }
 
     /**
