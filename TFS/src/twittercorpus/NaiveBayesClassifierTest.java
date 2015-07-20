@@ -297,7 +297,16 @@ public class NaiveBayesClassifierTest {
     // *** NEED TO MAKE THE UNDERLYING METHOD PUBLIC TEMPORARILY DURING TESTING ***
     @Test
     public void testCalcProductOfFeatureProbs() throws Exception {
-        // ADD CODE
+        List<String> tFeatureLst = new ArrayList<>();
+        tFeatureLst.add("the,report");
+        tFeatureLst.add("generates,very");
+        tFeatureLst.add("rainy,days");
+        Sentiment tSenti = Sentiment.POSITIVE;
+        double featProbA = tClassifier.calcFeatureLikelihood("the,report",tSenti);
+        double featProbB = tClassifier.calcFeatureLikelihood("generates,very",tSenti);
+        double featProbC = tClassifier.calcFeatureLikelihood("rainy,days",tSenti);
+        double actualProductOfProbs = tClassifier.calcProductOfFeatureProbs(tFeatureLst,tSenti);
+        assertTrue(Math.abs((featProbA * featProbB * featProbC) - actualProductOfProbs) < 0.000000001);
     }
 
     // confirm that method calculates the probability that the features belong in the given category
@@ -328,7 +337,7 @@ public class NaiveBayesClassifierTest {
         assertTrue(tClassifier.getFeatures().contains("red,herring"));
         assertTrue(tClassifier.getCategoryCount(Sentiment.NEGATIVE) - 1 == preLearn);
     }
-    
+
     // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
     @Test
     public void testClassify() throws Exception {
