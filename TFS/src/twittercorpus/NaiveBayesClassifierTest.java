@@ -282,14 +282,13 @@ public class NaiveBayesClassifierTest {
         System.out.println("The likelihood of feature - " + tFeature + " given the probability of category + " + tSenti + " is: " + tLikelihood);
         System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
 
-        numOccurrencesOfFeature = 0;
+        numOccurrencesOfFeature = 1;
         tFeature = "interesting,subject";
         tSenti = Sentiment.NEGATIVE;
         tLikelihood = tClassifier.calcFeatureLikelihood(tFeature, tSenti);
         actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
-        System.out.println("expected WA Probability = "+ expectedWAProb);
-        //assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
+        assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
         System.out.println("The likelihood of feature - " + tFeature + " given the probability of category + " + tSenti + " is: " + tLikelihood);
         System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
     }
