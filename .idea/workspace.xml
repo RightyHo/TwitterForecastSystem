@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="" />
+    <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/Classifier.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/Classifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java" />
+    </list>
     <ignored path="TwitterForecastSystem.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -26,17 +30,27 @@
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="293" column="130" selection-start-line="293" selection-start-column="8" selection-end-line="293" selection-end-column="130" />
+              <caret line="212" column="5" selection-start-line="212" selection-start-column="5" selection-end-line="214" selection-end-column="91" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NaiveBayesClassifierTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Classifier.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Classifier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4793741">
+              <caret line="91" column="32" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NaiveBayesClassifierTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14651494">
-              <caret line="263" column="57" selection-start-line="263" selection-start-column="57" selection-end-line="263" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="236" column="6" selection-start-line="236" selection-start-column="6" selection-end-line="236" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -106,9 +120,9 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/ClassificationImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/ClassificationImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Classification.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Classifier.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Classifier.java" />
       </list>
     </option>
   </component>
@@ -155,7 +169,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -216,8 +230,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -734,12 +748,12 @@
       <workItem from="1436622313934" duration="11797000" />
       <workItem from="1436855045545" duration="625000" />
       <workItem from="1436889378204" duration="120000" />
-      <workItem from="1436889532670" duration="4164000" />
+      <workItem from="1436889532670" duration="6546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149001000" />
+    <option name="totallyTimeSpent" value="151383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="605" y="23" width="835" height="823" extended-state="0" />
@@ -762,7 +776,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.49371633" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33676976" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39596468" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3255814" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1140,13 +1154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Classifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.021337127">
@@ -1162,18 +1169,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="293" column="130" selection-start-line="293" selection-start-column="8" selection-end-line="293" selection-end-column="130" />
+          <caret line="236" column="6" selection-start-line="236" selection-start-column="6" selection-end-line="236" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifierTest.java">
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/NaiveBayesClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14651494">
-          <caret line="263" column="57" selection-start-line="263" selection-start-column="57" selection-end-line="263" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="212" column="5" selection-start-line="212" selection-start-column="5" selection-end-line="214" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/Classifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4793741">
+          <caret line="91" column="32" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="32" />
           <folding />
         </state>
       </provider>

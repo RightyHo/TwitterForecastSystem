@@ -233,7 +233,8 @@ public class NaiveBayesClassifierTest {
         assertEquals(expectedCategoryCount,tClassifier.getCategoryCount(tCategory));
     }
 
-    // confirm that method returns the probability that the given feature belongs in the given category
+    // confirm that method returns the likelihood P(f|c) -  the probability of event A (feature f occurring) given that event B has occurred (category c)
+    // Formula:  Feature Count in Category / Total number of features in the given category
     @Test
     public void testCalcFeatureProbability() throws Exception {
         String tFeatureA = "sentiment,analysis";        // appears once in test history under positive category and doesn't appear in any other category

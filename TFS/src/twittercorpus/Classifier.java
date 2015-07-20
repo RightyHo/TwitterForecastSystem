@@ -82,12 +82,14 @@ public interface Classifier {
     int getCategoryCount(Sentiment sentimentCategory);
 
     /**
-     * Returns the probability that the given feature belongs in the given category
+     * Returns the likelihood P(f|c) of a feature f occurring given that we know the occurrence is in category c
+     * Posterior Probability P(A|B) - the probability of event A (feature f occurring) given that event B has occurred (category c)
+     * Formula:  Feature Count in Category / Total number of features in the given category
      * @param feature
      * @param sentimentCategory
      * @return
      */
-    double calcFeatureProbability(String feature,Sentiment sentimentCategory);
+    double calcFeatureLikelihood(String feature,Sentiment sentimentCategory);
 
     /**
      * Returns the weighted average probability that the given feature belongs to the given category

@@ -210,22 +210,18 @@ public class NaiveBayesClassifier implements Classifier {
     }
 
     /**
-     * Returns the probability that the given feature belongs in the given category
-     * Formula:  Feature Count in Category / Total Feature Count
-     * *** DOUBLE CHECK FORMULA AS I MIGHT NEED TO USE THE CATEGORY TOTAL COUNT INSTEAD OF THE TOTAL FEATURE COUNT IN THIS SITUATION ***
+     * Returns the likelihood P(f|c) of a feature f occurring given that we know the occurrence is in category c
+     * Posterior Probability P(A|B) - the probability of event A (feature f occurring) given that event B has occurred (category c)
+     * Formula:  Feature Count in Category / Total number of features in the given category
      * @param feature
      * @param sentimentCategory
      * @return
      */
-    public double calcFeatureProbability(String feature,Sentiment sentimentCategory){
-        if(featureTotalCount.get(feature) == null){
-            if(getTotalNumCategories() == 0){
-                throw new NoSuchElementException("No categories have been properly initialised!");
-            } else {
-                return 1.0 / (double) getTotalNumCategories();
-            }
+    public double calcFeatureLikelihood(String feature,Sentiment sentimentCategory){
+        if(getCategoryCount(sentimentCategory) == 0){
+            return 0.0;
         } else {
-            return (double) fCountInCategory(feature,sentimentCategory) / (double) featureTotalCount.get(feature);
+            return (double) fCountInCategory(feature,sentimentCategory) / (double) getCategoryCount(sentimentCategory);
         }
     }
 
