@@ -255,9 +255,15 @@ public class NaiveBayesClassifierTest {
     }
 
     // confirm that method returns the weighted average probability that the given feature belongs to the given category
+    // Formula:  Weighted average of [P(f \ c)]
+    // Initially let weight be 1.0 and assumedProbability be 0.5
     @Test
     public void testCalcFeatureWeightedAverage() throws Exception {
-        // ADD CODE
+        double assumeProb = 0.5;
+        double weighting = 1.0;
+        String tFeature = "project,is";
+        double tWAProb = tClassifier.calcFeatureWeightedAverage("project,is",Sentiment.POSITIVE,weighting,assumeProb);
+        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the positive category of: " + tWAProb);
     }
 
     // confirm that method trains the classifier by displaying that the given features resulted in the given
@@ -273,12 +279,6 @@ public class NaiveBayesClassifierTest {
 
         assertTrue(tClassifier.getFeatures().contains("red,herring"));
         assertTrue(tClassifier.getCategoryCount(Sentiment.NEGATIVE) - 1 == preLearn);
-    }
-
-    // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
-    @Test
-    public void testClassify() throws Exception {
-        // ADD CODE
     }
 
     // confirm that method returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
@@ -299,6 +299,12 @@ public class NaiveBayesClassifierTest {
     // *** NEED TO MAKE THE UNDERLYING METHOD PUBLIC TEMPORARILY DURING TESTING ***
     @Test
     public void testCategoryOrderOfProbability() throws Exception {
+        // ADD CODE
+    }
+
+    // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
+    @Test
+    public void testClassify() throws Exception {
         // ADD CODE
     }
 }

@@ -227,6 +227,7 @@ public class NaiveBayesClassifier implements Classifier {
 
     /**
      * Returns the weighted average probability that the given feature belongs to the given category
+     * Formula:  Weighted average of P(f \ c)
      * @param feature
      * @param sentimentCategory
      * @param weight - default to 1.0
@@ -264,22 +265,12 @@ public class NaiveBayesClassifier implements Classifier {
     }
 
     /**
-     * Returns the most likely category for the given features based upon the knowledge
-     * learnt from training on historic classifications.
-     * @param features
-     * @return
-     */
-    public Classification classify(List<String> features){
-        return null;
-    }
-
-    /**
      * Returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
      * @param features
      * @param sentimentCategory
      * @return
      */
-    private double calcProductOfFeatureProbs(List<String> features,Sentiment sentimentCategory) {
+    public double calcProductOfFeatureProbs(List<String> features,Sentiment sentimentCategory) {
         return 0.0;
     }
 
@@ -289,7 +280,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @param sentimentCategory
      * @return
      */
-    private double probabilityFeatureInCategory(List<String> features,Sentiment sentimentCategory){
+    public double probabilityFeatureInCategory(List<String> features,Sentiment sentimentCategory){
         return 0.0;
     }
 
@@ -298,7 +289,17 @@ public class NaiveBayesClassifier implements Classifier {
      * @param features
      * @return
      */
-    private List<Classification> categoryOrderOfProbability(List<String> features){
+    public List<Classification> categoryOrderOfProbability(List<String> features){
+        return null;
+    }
+
+    /**
+     * Returns the most likely category for the given features based upon the knowledge
+     * learnt from training on historic classifications.
+     * @param features
+     * @return
+     */
+    public Classification classify(List<String> features){
         return null;
     }
 }

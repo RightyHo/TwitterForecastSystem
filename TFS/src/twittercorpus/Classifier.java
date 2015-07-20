@@ -108,6 +108,30 @@ public interface Classifier {
      */
     void learn(Classification classification);
 
+
+    /**
+     * Returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
+     * @param features
+     * @param sentimentCategory
+     * @return
+     */
+    double calcProductOfFeatureProbs(List<String> features,Sentiment sentimentCategory);
+
+    /**
+     * Calculates the probability that the features belong in the given category
+     * @param features
+     * @param sentimentCategory
+     * @return
+     */
+    double probabilityFeatureInCategory(List<String> features,Sentiment sentimentCategory);
+
+    /**
+     * Returns a sorted list of classifications ordered by the probability that the given set of features belongs to each category
+     * @param features
+     * @return
+     */
+    List<Classification> categoryOrderOfProbability(List<String> features);
+
     /**
      * Returns the most likely category for the given features based upon the knowledge
      * learnt from training on historic classifications.
