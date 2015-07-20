@@ -102,14 +102,6 @@ public interface Classifier {
     double calcFeatureWeightedAverage(String feature,Sentiment sentimentCategory,double weight,double assumedProbability);
 
     /**
-     * Trains the classifier by displaying that the given features resulted in the given
-     * category classification.
-     * @param classification
-     */
-    void learn(Classification classification);
-
-
-    /**
      * Returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
      * @param features
      * @param sentimentCategory
@@ -131,6 +123,13 @@ public interface Classifier {
      * @return
      */
     List<Classification> categoryOrderOfProbability(List<String> features);
+
+    /**
+     * Trains the classifier by displaying that the given features resulted in the given
+     * category classification.
+     * @param classification
+     */
+    void learn(Classification classification);
 
     /**
      * Returns the most likely category for the given features based upon the knowledge

@@ -269,7 +269,7 @@ public class NaiveBayesClassifierTest {
         double actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         double expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
-        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category + " + tSenti + " is: " + tLikelihood);
+        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
         System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
 
         numOccurrencesOfFeature = 2;
@@ -279,7 +279,7 @@ public class NaiveBayesClassifierTest {
         actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
-        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category + " + tSenti + " is: " + tLikelihood);
+        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
         System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
 
         numOccurrencesOfFeature = 1;
@@ -289,23 +289,8 @@ public class NaiveBayesClassifierTest {
         actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
-        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category + " + tSenti + " is: " + tLikelihood);
+        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
         System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
-    }
-
-    // confirm that method trains the classifier by displaying that the given features resulted in the given
-    @Test
-    public void testLearn() throws Exception {
-        assertFalse(tClassifier.getFeatures().contains("red,herring"));
-        List<String> addListFeatures = new ArrayList<>();
-        addListFeatures.add("red,herring");
-        int preLearn = tClassifier.getCategoryCount(Sentiment.NEGATIVE);
-
-        Classification addClass = new ClassificationImpl(addListFeatures,Sentiment.NEGATIVE,0.3);
-        tClassifier.learn(addClass);
-
-        assertTrue(tClassifier.getFeatures().contains("red,herring"));
-        assertTrue(tClassifier.getCategoryCount(Sentiment.NEGATIVE) - 1 == preLearn);
     }
 
     // confirm that method returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
@@ -329,6 +314,21 @@ public class NaiveBayesClassifierTest {
         // ADD CODE
     }
 
+    // confirm that method trains the classifier by displaying that the given features resulted in the given
+    @Test
+    public void testLearn() throws Exception {
+        assertFalse(tClassifier.getFeatures().contains("red,herring"));
+        List<String> addListFeatures = new ArrayList<>();
+        addListFeatures.add("red,herring");
+        int preLearn = tClassifier.getCategoryCount(Sentiment.NEGATIVE);
+
+        Classification addClass = new ClassificationImpl(addListFeatures,Sentiment.NEGATIVE,0.3);
+        tClassifier.learn(addClass);
+
+        assertTrue(tClassifier.getFeatures().contains("red,herring"));
+        assertTrue(tClassifier.getCategoryCount(Sentiment.NEGATIVE) - 1 == preLearn);
+    }
+    
     // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
     @Test
     public void testClassify() throws Exception {

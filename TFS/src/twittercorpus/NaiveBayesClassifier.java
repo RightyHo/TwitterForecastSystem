@@ -246,25 +246,6 @@ public class NaiveBayesClassifier implements Classifier {
     }
 
     /**
-     * Trains the classifier by displaying that the given features resulted in the given
-     * category classification.
-     * @param classification
-     */
-    public void learn(Classification classification){
-        // check that there is room in the history queue, if not then delete the oldest classification to make room
-        if(classificationHistoryQueue.size() >= classificationStorageLimit){
-
-        } else {
-            classificationHistoryQueue.add(classification);
-            Iterator<String> stringIterator = classification.getListOfFeatures().iterator();
-            while (stringIterator.hasNext()){
-                incrementFeature(stringIterator.next(),classification.getSentimentCategory());
-                incrementCategory(classification.getSentimentCategory());
-            }
-        }
-    }
-
-    /**
      * Returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
      * @param features
      * @param sentimentCategory
@@ -291,6 +272,25 @@ public class NaiveBayesClassifier implements Classifier {
      */
     public List<Classification> categoryOrderOfProbability(List<String> features){
         return null;
+    }
+
+    /**
+     * Trains the classifier by displaying that the given features resulted in the given
+     * category classification.
+     * @param classification
+     */
+    public void learn(Classification classification){
+        // check that there is room in the history queue, if not then delete the oldest classification to make room
+        if(classificationHistoryQueue.size() >= classificationStorageLimit){
+
+        } else {
+            classificationHistoryQueue.add(classification);
+            Iterator<String> stringIterator = classification.getListOfFeatures().iterator();
+            while (stringIterator.hasNext()){
+                incrementFeature(stringIterator.next(),classification.getSentimentCategory());
+                incrementCategory(classification.getSentimentCategory());
+            }
+        }
     }
 
     /**
