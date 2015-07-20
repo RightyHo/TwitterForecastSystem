@@ -227,7 +227,7 @@ public class NaiveBayesClassifier implements Classifier {
 
     /**
      * Returns the weighted average probability that the given feature belongs to the given category
-     * Formula:  Weighted average of P(f \ c)
+     * Formula:  Weighted average of P(f | c)
      * @param feature
      * @param sentimentCategory
      * @param weight - default to 1.0

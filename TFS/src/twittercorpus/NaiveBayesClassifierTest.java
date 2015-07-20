@@ -261,9 +261,37 @@ public class NaiveBayesClassifierTest {
     public void testCalcFeatureWeightedAverage() throws Exception {
         double assumeProb = 0.5;
         double weighting = 1.0;
+
+        int numOccurrencesOfFeature = 1;
         String tFeature = "project,is";
-        double tWAProb = tClassifier.calcFeatureWeightedAverage("project,is",Sentiment.POSITIVE,weighting,assumeProb);
-        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the positive category of: " + tWAProb);
+        Sentiment tSenti = Sentiment.POSITIVE;
+        double tLikelihood = tClassifier.calcFeatureLikelihood(tFeature, tSenti);
+        double actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
+        double expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
+        assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
+        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category + " + tSenti + " is: " + tLikelihood);
+        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
+
+        numOccurrencesOfFeature = 2;
+        tFeature = "very,good";
+        tSenti = Sentiment.POSITIVE;
+        tLikelihood = tClassifier.calcFeatureLikelihood(tFeature, tSenti);
+        actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
+        expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
+        assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
+        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category + " + tSenti + " is: " + tLikelihood);
+        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
+
+        numOccurrencesOfFeature = 0;
+        tFeature = "interesting,subject";
+        tSenti = Sentiment.NEGATIVE;
+        tLikelihood = tClassifier.calcFeatureLikelihood(tFeature, tSenti);
+        actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
+        expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
+        System.out.println("expected WA Probability = "+ expectedWAProb);
+        //assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
+        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category + " + tSenti + " is: " + tLikelihood);
+        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
     }
 
     // confirm that method trains the classifier by displaying that the given features resulted in the given
