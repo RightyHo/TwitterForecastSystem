@@ -246,7 +246,8 @@ public class NaiveBayesClassifier implements Classifier {
     }
 
     /**
-     * Returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
+     * Returns the product of all feature probabilities
+     * Formula: [PRODUCT OF (PROBABILITY(feature_i|category)]
      * @param features
      * @param sentimentCategory
      * @return
@@ -257,6 +258,8 @@ public class NaiveBayesClassifier implements Classifier {
 
     /**
      * Calculates the probability that the features belong in the given category
+     * Formula: (total number of features in the given category / total number distinct categories contained in the classifier memory) * product of all feature probabilities
+     * Formula: (getCategoryCount / getTotalNumCategories) * calcProductOfFeatureProbs
      * @param features
      * @param sentimentCategory
      * @return

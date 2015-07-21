@@ -329,7 +329,23 @@ public class NaiveBayesClassifierTest {
     // *** NEED TO MAKE THE UNDERLYING METHOD PUBLIC TEMPORARILY DURING TESTING ***
     @Test
     public void testCategoryOrderOfProbability() throws Exception {
-        // ADD CODE
+        List<String> tFeatureLst = new ArrayList<>();
+        tFeatureLst.add("the,report");
+        tFeatureLst.add("generates,very");
+        tFeatureLst.add("rainy,days");
+        List<Classification> actualOrder = tClassifier.categoryOrderOfProbability(tFeatureLst);
+        List<Classification> expectedOrder = new ArrayList<>();
+        Classification positiveClass = new ClassificationImpl(tFeatureLst,Sentiment.POSITIVE,tClassifier.probabilityFeatureInCategory(tFeatureLst,Sentiment.POSITIVE));
+        Classification negativeClass = new ClassificationImpl(tFeatureLst,Sentiment.NEGATIVE,tClassifier.probabilityFeatureInCategory(tFeatureLst,Sentiment.NEGATIVE));
+        if(positiveClass.getClassificationCertainty() >= negativeClass.getClassificationCertainty()){
+            expectedOrder.add(positiveClass);
+            expectedOrder.add(negativeClass);
+        } else {
+            expectedOrder.add(negativeClass);
+            expectedOrder.add(positiveClass);
+        }
+        assertEquals(expectedOrder.get(0),actualOrder.get(0));
+        assertEquals(expectedOrder.get(1),actualOrder.get(1));
     }
 
     // confirm that method trains the classifier by displaying that the given features resulted in the given
