@@ -385,6 +385,7 @@ public class NaiveBayesClassifierTest {
                 expectedClass = c;
             }
         }
-        assertEquals(expectedClass,tClassifier.classify(tFeatureLst));
+        assertEquals(expectedClass.getSentimentCategory(),tClassifier.classify(tFeatureLst).getSentimentCategory());
+        assert(Math.abs(expectedClass.getClassificationCertainty() - tClassifier.classify(tFeatureLst).getClassificationCertainty()) < 0.000000001);
     }
 }
