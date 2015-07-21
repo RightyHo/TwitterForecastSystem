@@ -274,7 +274,11 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public double probabilityFeatureInCategory(List<String> features,Sentiment sentimentCategory){
-        return 0.0;
+        if(features == null || sentimentCategory == null){
+            throw new IllegalArgumentException("Null parameters passed to calcProductOfFeatureProbs method");
+        } else {
+            return (getCategoryCount(sentimentCategory) / getTotalNumCategories()) * calcProductOfFeatureProbs(features,sentimentCategory);
+        }
     }
 
     /**
