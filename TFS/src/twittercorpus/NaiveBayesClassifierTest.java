@@ -302,18 +302,27 @@ public class NaiveBayesClassifierTest {
         tFeatureLst.add("generates,very");
         tFeatureLst.add("rainy,days");
         Sentiment tSenti = Sentiment.POSITIVE;
-        double featProbA = tClassifier.calcFeatureWeightedAverage("the,report",tSenti,1.0,0.5);
-        double featProbB = tClassifier.calcFeatureWeightedAverage("generates,very",tSenti,1.0,0.5);
-        double featProbC = tClassifier.calcFeatureWeightedAverage("rainy,days",tSenti,1.0,0.5);
+        double featProbA = tClassifier.calcFeatureWeightedAverage("the,report", tSenti, 1.0, 0.5);
+        double featProbB = tClassifier.calcFeatureWeightedAverage("generates,very", tSenti, 1.0, 0.5);
+        double featProbC = tClassifier.calcFeatureWeightedAverage("rainy,days", tSenti, 1.0, 0.5);
         double actualProductOfProbs = tClassifier.calcProductOfFeatureProbs(tFeatureLst,tSenti);
         assertTrue(Math.abs((featProbA * featProbB * featProbC) - actualProductOfProbs) < 0.000000001);
     }
 
     // confirm that method calculates the probability that the features belong in the given category
+    // Formula: (total number of features in the given category / total number distinct categories contained in the classifier memory) * product of all feature probabilities
+    // Formula: (getCategoryCount / getTotalNumCategories) * calcProductOfFeatureProbs
     // *** NEED TO MAKE THE UNDERLYING METHOD PUBLIC TEMPORARILY DURING TESTING ***
     @Test
     public void testProbabilityFeatureInCategory() throws Exception {
-        // ADD CODE
+        List<String> tFeatureLst = new ArrayList<>();
+        tFeatureLst.add("the,report");
+        tFeatureLst.add("generates,very");
+        tFeatureLst.add("rainy,days");
+        Sentiment tSenti = Sentiment.POSITIVE;
+        double actualProb = tClassifier.probabilityFeatureInCategory(tFeatureLst,tSenti);
+        double expectedProb = ((double) tClassifier.getCategoryCount(tSenti) / (double) tClassifier.getTotalNumCategories()) * tClassifier.calcProductOfFeatureProbs(tFeatureLst,tSenti);
+        assertTrue(Math.abs(expectedProb - actualProb) < 0.000000001);
     }
 
     // confirm that method returns a sorted list of classifications ordered by the probability that the given set of features belongs to each category
