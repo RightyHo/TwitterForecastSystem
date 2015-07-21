@@ -269,8 +269,8 @@ public class NaiveBayesClassifierTest {
         double actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         double expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
-        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
-        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
+//        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
+//        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
 
         numOccurrencesOfFeature = 2;
         tFeature = "very,good";
@@ -279,8 +279,8 @@ public class NaiveBayesClassifierTest {
         actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
-        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
-        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
+//        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
+//        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
 
         numOccurrencesOfFeature = 1;
         tFeature = "interesting,subject";
@@ -289,8 +289,8 @@ public class NaiveBayesClassifierTest {
         actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
-        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
-        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
+//        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
+//        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
     }
 
     // confirm that method returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
@@ -344,8 +344,12 @@ public class NaiveBayesClassifierTest {
             expectedOrder.add(negativeClass);
             expectedOrder.add(positiveClass);
         }
-        assertEquals(expectedOrder.get(0),actualOrder.get(0));
-        assertEquals(expectedOrder.get(1),actualOrder.get(1));
+        System.out.println("***expected first classification***: "+expectedOrder.get(0));
+        System.out.println("***actual first classification***: "+ actualOrder.get(0));
+        System.out.println("***expected second classification***: "+expectedOrder.get(1));
+        System.out.println("***actual second classification***: "+ actualOrder.get(1));
+        assertEquals(expectedOrder.get(0).getSentimentCategory(),actualOrder.get(0).getSentimentCategory());
+        assertEquals(expectedOrder.get(1).getSentimentCategory(),actualOrder.get(1).getSentimentCategory());
     }
 
     // confirm that method trains the classifier by displaying that the given features resulted in the given
