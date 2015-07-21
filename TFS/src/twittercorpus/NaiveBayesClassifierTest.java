@@ -344,12 +344,14 @@ public class NaiveBayesClassifierTest {
             expectedOrder.add(negativeClass);
             expectedOrder.add(positiveClass);
         }
-        System.out.println("***expected first classification***: "+expectedOrder.get(0));
-        System.out.println("***actual first classification***: "+ actualOrder.get(0));
-        System.out.println("***expected second classification***: "+expectedOrder.get(1));
-        System.out.println("***actual second classification***: "+ actualOrder.get(1));
+        // test sentiment category order is correct
         assertEquals(expectedOrder.get(0).getSentimentCategory(),actualOrder.get(0).getSentimentCategory());
         assertEquals(expectedOrder.get(1).getSentimentCategory(),actualOrder.get(1).getSentimentCategory());
+
+        // test classification certainty order is correct
+        assert(Math.abs(expectedOrder.get(0).getClassificationCertainty() - actualOrder.get(0).getClassificationCertainty()) < 0.000000001);
+        assert(Math.abs(expectedOrder.get(1).getClassificationCertainty() - actualOrder.get(1).getClassificationCertainty()) < 0.000000001);
+        assert(actualOrder.get(0).getClassificationCertainty() > actualOrder.get(1).getClassificationCertainty());
     }
 
     // confirm that method trains the classifier by displaying that the given features resulted in the given
