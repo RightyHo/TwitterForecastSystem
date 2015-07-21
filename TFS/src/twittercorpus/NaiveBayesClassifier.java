@@ -275,7 +275,7 @@ public class NaiveBayesClassifier implements Classifier {
      */
     public double probabilityFeatureInCategory(List<String> features,Sentiment sentimentCategory){
         if(features == null || sentimentCategory == null){
-            throw new IllegalArgumentException("Null parameters passed to calcProductOfFeatureProbs method");
+            throw new IllegalArgumentException("Null parameter passed to probabilityFeatureInCategory method");
         } else {
             return (getCategoryCount(sentimentCategory) / getTotalNumCategories()) * calcProductOfFeatureProbs(features,sentimentCategory);
         }
@@ -287,37 +287,41 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public List<Classification> categoryOrderOfProbability(List<String> features){
-        List<Classification> result = new ArrayList<>();
-        List<Double> certaintyList = new ArrayList<>();
+        if(features == null){
+            throw new IllegalArgumentException("Null parameter passed to categoryOrderOfProbability method");
+        } else {
+            List<Classification> result = new ArrayList<>();
+            List<Double> certaintyList = new ArrayList<>();
 
-        double negativeClassCertainty = probabilityFeatureInCategory(features,Sentiment.NEGATIVE);
-        Classification negativeClass = new ClassificationImpl(features,Sentiment.NEGATIVE,negativeClassCertainty);
+            double negativeClassCertainty = probabilityFeatureInCategory(features, Sentiment.NEGATIVE);
+            Classification negativeClass = new ClassificationImpl(features, Sentiment.NEGATIVE, negativeClassCertainty);
 
-        double positiveClassCertainty = probabilityFeatureInCategory(features,Sentiment.POSITIVE);
-        Classification positiveClass = new ClassificationImpl(features,Sentiment.POSITIVE,positiveClassCertainty);
+            double positiveClassCertainty = probabilityFeatureInCategory(features, Sentiment.POSITIVE);
+            Classification positiveClass = new ClassificationImpl(features, Sentiment.POSITIVE, positiveClassCertainty);
 
-        double neutralClassCertainty = probabilityFeatureInCategory(features,Sentiment.NEUTRAL);
-        Classification neutralClass = new ClassificationImpl(features,Sentiment.NEUTRAL,neutralClassCertainty);
+            double neutralClassCertainty = probabilityFeatureInCategory(features, Sentiment.NEUTRAL);
+            Classification neutralClass = new ClassificationImpl(features, Sentiment.NEUTRAL, neutralClassCertainty);
 
-        // add certainties to list in order to order them in descending order
-        certaintyList.add(negativeClassCertainty);
-        certaintyList.add(positiveClassCertainty);
-        certaintyList.add(neutralClassCertainty);
-        Collections.sort(certaintyList);
-        Collections.reverse(certaintyList);
+            // add certainties to list in order to order them in descending order
+            certaintyList.add(negativeClassCertainty);
+            certaintyList.add(positiveClassCertainty);
+            certaintyList.add(neutralClassCertainty);
+            Collections.sort(certaintyList);
+            Collections.reverse(certaintyList);
 
-        for(Double d : certaintyList){
-            if(Math.abs(d - negativeClass.getClassificationCertainty()) < 0.000000001){
-                result.add(negativeClass);
-            } else if(Math.abs(d - positiveClass.getClassificationCertainty()) < 0.000000001){
-                result.add(positiveClass);
-            } else if(Math.abs(d - neutralClass.getClassificationCertainty()) < 0.000000001){
-                result.add(neutralClass);
-            } else {
-                throw new IllegalArgumentException("probabilityFeatureInCategory calculation is inconsistent");
+            for (Double d : certaintyList) {
+                if (Math.abs(d - negativeClass.getClassificationCertainty()) < 0.000000001) {
+                    result.add(negativeClass);
+                } else if (Math.abs(d - positiveClass.getClassificationCertainty()) < 0.000000001) {
+                    result.add(positiveClass);
+                } else if (Math.abs(d - neutralClass.getClassificationCertainty()) < 0.000000001) {
+                    result.add(neutralClass);
+                } else {
+                    throw new IllegalArgumentException("probabilityFeatureInCategory calculation is inconsistent");
+                }
             }
+            return result;
         }
-        return result;
     }
 
     /**
@@ -346,6 +350,15 @@ public class NaiveBayesClassifier implements Classifier {
      * @return
      */
     public Classification classify(List<String> features){
-        return null;
+        if(features == null){
+            throw new IllegalArgumentException("Null parameter passed to classify method");
+        } else {
+            List<Classification> categoryOrder = categoryOrderOfProbability(features);
+            if(categoryOrder == null){
+                throw new NullPointerException("category order of probability method is returning a null value for this list of features");
+            } else {
+                return categoryOrder.get(0);
+            }
+        }
     }
 }
