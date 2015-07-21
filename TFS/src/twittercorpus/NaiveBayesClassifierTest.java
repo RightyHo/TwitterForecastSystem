@@ -302,9 +302,9 @@ public class NaiveBayesClassifierTest {
         tFeatureLst.add("generates,very");
         tFeatureLst.add("rainy,days");
         Sentiment tSenti = Sentiment.POSITIVE;
-        double featProbA = tClassifier.calcFeatureLikelihood("the,report",tSenti);
-        double featProbB = tClassifier.calcFeatureLikelihood("generates,very",tSenti);
-        double featProbC = tClassifier.calcFeatureLikelihood("rainy,days",tSenti);
+        double featProbA = tClassifier.calcFeatureWeightedAverage("the,report",tSenti,1.0,0.5);
+        double featProbB = tClassifier.calcFeatureWeightedAverage("generates,very",tSenti,1.0,0.5);
+        double featProbC = tClassifier.calcFeatureWeightedAverage("rainy,days",tSenti,1.0,0.5);
         double actualProductOfProbs = tClassifier.calcProductOfFeatureProbs(tFeatureLst,tSenti);
         assertTrue(Math.abs((featProbA * featProbB * featProbC) - actualProductOfProbs) < 0.000000001);
     }
