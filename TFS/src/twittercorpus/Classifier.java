@@ -102,7 +102,8 @@ public interface Classifier {
     double calcFeatureWeightedAverage(String feature,Sentiment sentimentCategory,double weight,double assumedProbability);
 
     /**
-     * Returns the product of all feature probabilities: [PRODUCT OF (PROBABILITY(feature_i|category)]
+     * Returns the product of all weighted average feature probabilities under the given category
+     * Formula: [PRODUCT OF (PROBABILITY(feature_i|category)]
      * @param features
      * @param sentimentCategory
      * @return

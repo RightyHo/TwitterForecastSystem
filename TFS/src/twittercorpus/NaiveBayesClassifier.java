@@ -246,14 +246,23 @@ public class NaiveBayesClassifier implements Classifier {
     }
 
     /**
-     * Returns the product of all feature probabilities
+     * Returns the product of all weighted average feature probabilities under the given category
      * Formula: [PRODUCT OF (PROBABILITY(feature_i|category)]
      * @param features
      * @param sentimentCategory
      * @return
      */
     public double calcProductOfFeatureProbs(List<String> features,Sentiment sentimentCategory) {
-        return 0.0;
+        if(features == null || sentimentCategory == null){
+            throw new IllegalArgumentException("Null parameters passed to calcProductOfFeatureProbs method");
+        } else {
+            double result = 1.0;
+            for(String f : features) {
+                // using 1.0 as a default weighting and 0.5 as the default assumed probability for our calculations
+                result *= calcFeatureWeightedAverage(f,sentimentCategory,1.0,0.5);
+            }
+            return result;
+        }
     }
 
     /**
