@@ -366,6 +366,19 @@ public class NaiveBayesClassifierTest {
     // confirm that method returns the most likely category for the given features based upon the knowledge learnt from training on historic classifications.
     @Test
     public void testClassify() throws Exception {
-        // ADD CODE
+        List<String> tFeatureLst = new ArrayList<>();
+        tFeatureLst.add("the,report");
+        tFeatureLst.add("generates,very");
+        tFeatureLst.add("rainy,days");
+        List<Classification> orderList = tClassifier.categoryOrderOfProbability(tFeatureLst);
+        Classification expectedClass = null;
+        for(Classification c : orderList){
+            if(expectedClass == null){
+                expectedClass = c;
+            } else if(c.getClassificationCertainty() > expectedClass.getClassificationCertainty()) {
+                expectedClass = c;
+            }
+        }
+        assertEquals(expectedClass,tClassifier.classify(tFeatureLst));
     }
 }
