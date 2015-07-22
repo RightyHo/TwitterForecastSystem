@@ -80,7 +80,7 @@ public class NaiveBayesClassifier implements Classifier {
     }
 
     /**
-     * Setter
+     * Setter that first checks if new limit is less than number of classifications currently stored and reduces history queue accordingly
      * @param numClassificationsRetained
      */
     public void setClassificationStorageLimit(int numClassificationsRetained){
@@ -98,7 +98,7 @@ public class NaiveBayesClassifier implements Classifier {
     }
 
     /**
-     * Increases the count of the given feature in the given category by one
+     * Increases the count of the given feature in the given category by one while also incrementing the total count for the feature across all categories
      * @param feature
      * @param sentimentCategory
      */
@@ -128,7 +128,7 @@ public class NaiveBayesClassifier implements Classifier {
     }
 
     /**
-     * Decreases the count of the given feature in the given category by one
+     * Decreases the count of the given feature in the given category by one while also decrementing the total count for the feature across all categories
      * @param feature
      * @param sentimentCategory
      */
@@ -183,8 +183,8 @@ public class NaiveBayesClassifier implements Classifier {
     public void decrementCategory(Sentiment sentimentCategory) {
         if (categoryTotalCount.get(sentimentCategory) == null) {
             throw new IndexOutOfBoundsException("Cannot decrement a null category!");
-        } else if (categoryTotalCount.get(sentimentCategory) < 1) {
-            throw new IndexOutOfBoundsException("Cannot decrement a category count with an initial value less than one!");
+        } else if (categoryTotalCount.get(sentimentCategory) <= 1) {
+            categoryTotalCount.remove(sentimentCategory);
         } else {
             categoryTotalCount.put(sentimentCategory, categoryTotalCount.get(sentimentCategory) - 1);
         }
