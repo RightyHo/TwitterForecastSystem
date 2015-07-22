@@ -15,13 +15,13 @@ public class NaiveBayesClassifier implements Classifier {
     private List<Classification> classificationHistoryQueue;
 
     // Map of the total number of occurrences of each feature
-    Map<String,Integer> featureTotalCount;
+    private Map<String,Integer> featureTotalCount;
 
     // Map that pairs each category with the total number of features they contain
-    Map<Sentiment,Integer> categoryTotalCount;
+    private Map<Sentiment,Integer> categoryTotalCount;
 
     // Map connecting a feature to the number of times it appears in each category
-    Map<Sentiment,Map<String,Integer>> featureAppearanceCategoryCount;
+    private Map<Sentiment,Map<String,Integer>> featureAppearanceCategoryCount;
 
     /**
      * Constructor returns a Classifier with no memory, all fields initialised, and the memory queue storage limit set by the parameter
@@ -29,7 +29,7 @@ public class NaiveBayesClassifier implements Classifier {
      */
     public NaiveBayesClassifier(int classificationStorageLimit){
         this.classificationStorageLimit = classificationStorageLimit;
-        classificationHistoryQueue = new ArrayList<>();
+        classificationHistoryQueue = new LinkedList<>();
         featureTotalCount = new HashMap<>();
         categoryTotalCount = new HashMap<>();
         featureAppearanceCategoryCount = new HashMap<>();
@@ -84,6 +84,16 @@ public class NaiveBayesClassifier implements Classifier {
      * @param numClassificationsRetained
      */
     public void setClassificationStorageLimit(int numClassificationsRetained){
+        // check if new limit is less than number of classifications currently stored and reduce history queue accordingly
+        while(numClassificationsRetained < classificationHistoryQueue.size()){
+            Classification oldClass = classificationHistoryQueue.remove(0);
+            Sentiment oldSentiment = oldClass.getSentimentCategory();
+            Iterator<String> oldStringIterator = oldClass.getListOfFeatures().iterator();
+            while(oldStringIterator.hasNext()){
+                decrementFeatureCount(oldStringIterator.next(), oldSentiment);
+                decrementCategory(oldSentiment);
+            }
+        }
         this.classificationStorageLimit = numClassificationsRetained;
     }
 
@@ -92,7 +102,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @param feature
      * @param sentimentCategory
      */
-    public void incrementFeature(String feature,Sentiment sentimentCategory){
+    public void incrementFeatureCount(String feature,Sentiment sentimentCategory){
         Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
         if(mapInSelectedCategory == null) throw new NullPointerException("The map in the selected category is not initialised properly");
         if(featureTotalCount.containsKey(feature)){
@@ -122,7 +132,7 @@ public class NaiveBayesClassifier implements Classifier {
      * @param feature
      * @param sentimentCategory
      */
-    public void decrementFeature(String feature,Sentiment sentimentCategory){
+    public void decrementFeatureCount(String feature,Sentiment sentimentCategory){
         Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
         if(mapInSelectedCategory == null) throw new NullPointerException("The map in the selected category is not initialised properly");
         if(featureTotalCount.containsKey(feature)){
@@ -336,14 +346,14 @@ public class NaiveBayesClassifier implements Classifier {
             Sentiment oldSentiment = oldClass.getSentimentCategory();
             Iterator<String> oldStringIterator = oldClass.getListOfFeatures().iterator();
             while(oldStringIterator.hasNext()){
-                decrementFeature(oldStringIterator.next(),oldSentiment);
+                decrementFeatureCount(oldStringIterator.next(), oldSentiment);
                 decrementCategory(oldSentiment);
             }
         } else {
             classificationHistoryQueue.add(classification);
             Iterator<String> stringIterator = classification.getListOfFeatures().iterator();
             while (stringIterator.hasNext()) {
-                incrementFeature(stringIterator.next(),classification.getSentimentCategory());
+                incrementFeatureCount(stringIterator.next(), classification.getSentimentCategory());
                 incrementCategory(classification.getSentimentCategory());
             }
         }

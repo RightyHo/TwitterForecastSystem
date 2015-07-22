@@ -45,14 +45,14 @@ public interface Classifier {
      * @param feature
      * @param sentimentCategory
      */
-    void incrementFeature(String feature,Sentiment sentimentCategory);
+    void incrementFeatureCount(String feature,Sentiment sentimentCategory);
 
     /**
      * Decreases the count of the given feature in the given category by one
      * @param feature
      * @param sentimentCategory
      */
-    void decrementFeature(String feature,Sentiment sentimentCategory);
+    void decrementFeatureCount(String feature,Sentiment sentimentCategory);
 
     /**
      * Increases the count of the given category by one

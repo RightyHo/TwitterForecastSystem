@@ -153,7 +153,7 @@ public class NaiveBayesClassifierTest {
         int actualBefore = tClassifier.fCountInCategory(tFeature,tCategory);
 
         // run incrementFeature method
-        tClassifier.incrementFeature(tFeature, tCategory);
+        tClassifier.incrementFeatureCount(tFeature, tCategory);
 
         int actualAfter = tClassifier.fCountInCategory(tFeature,tCategory);
         assert(actualAfter - 1 == actualBefore);
@@ -174,8 +174,8 @@ public class NaiveBayesClassifierTest {
         int actualBeforeB = tClassifier.fCountInCategory(tFeatureB,tCategoryB);
 
         // run incrementFeature method
-        tClassifier.decrementFeature(tFeature,tCategory);
-        tClassifier.decrementFeature(tFeatureB,tCategoryB);
+        tClassifier.decrementFeatureCount(tFeature,tCategory);
+        tClassifier.decrementFeatureCount(tFeatureB,tCategoryB);
 
         int actualAfter = tClassifier.fCountInCategory(tFeature,tCategory);
         assert(actualAfter + 1 == actualBefore);
