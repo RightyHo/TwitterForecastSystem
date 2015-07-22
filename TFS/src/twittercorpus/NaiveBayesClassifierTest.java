@@ -186,12 +186,12 @@ public class NaiveBayesClassifierTest {
 
     // confirm that method increases the count of the given category by one
     @Test
-    public void testIncrementCategory() throws Exception {
+    public void testincrementCategoryCount() throws Exception {
         Sentiment tCategory = Sentiment.NEGATIVE;
         int actualBefore = tClassifier.getCategoryCount(tCategory);
 
-        // run incrementCategory method
-        tClassifier.incrementCategory(tCategory);
+        // run incrementCategoryCount method
+        tClassifier.incrementCategoryCount(tCategory);
 
         int actualAfter = tClassifier.getCategoryCount(tCategory);
         assert(actualAfter - 1 == actualBefore);
@@ -199,12 +199,12 @@ public class NaiveBayesClassifierTest {
 
     // confirm that method decreases the count of the given category by one
     @Test
-    public void testDecrementCategory() throws Exception {
+    public void testdecrementCategoryCount() throws Exception {
         Sentiment tCategory = Sentiment.NEGATIVE;
         int actualBefore = tClassifier.getCategoryCount(tCategory);
 
-        // run incrementCategory method
-        tClassifier.decrementCategory(tCategory);
+        // run incrementCategoryCount method
+        tClassifier.decrementCategoryCount(tCategory);
 
         int actualAfter = tClassifier.getCategoryCount(tCategory);
         assert(actualAfter + 1 == actualBefore);

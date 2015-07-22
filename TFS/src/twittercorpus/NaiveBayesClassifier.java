@@ -91,7 +91,7 @@ public class NaiveBayesClassifier implements Classifier {
             Iterator<String> oldStringIterator = oldClass.getListOfFeatures().iterator();
             while(oldStringIterator.hasNext()){
                 decrementFeatureCount(oldStringIterator.next(), oldSentiment);
-                decrementCategory(oldSentiment);
+                decrementCategoryCount(oldSentiment);
             }
         }
         this.classificationStorageLimit = numClassificationsRetained;
@@ -168,7 +168,7 @@ public class NaiveBayesClassifier implements Classifier {
      * Increases the count of the given category by one
      * @param sentimentCategory
      */
-    public void incrementCategory(Sentiment sentimentCategory) {
+    public void incrementCategoryCount(Sentiment sentimentCategory) {
         if (categoryTotalCount.get(sentimentCategory) == null) {
             categoryTotalCount.put(sentimentCategory, 1);
         } else {
@@ -180,7 +180,7 @@ public class NaiveBayesClassifier implements Classifier {
      * Decreases the count of the given category by one
      * @param sentimentCategory
      */
-    public void decrementCategory(Sentiment sentimentCategory) {
+    public void decrementCategoryCount(Sentiment sentimentCategory) {
         if (categoryTotalCount.get(sentimentCategory) == null) {
             throw new IndexOutOfBoundsException("Cannot decrement a null category!");
         } else if (categoryTotalCount.get(sentimentCategory) <= 1) {
@@ -347,14 +347,14 @@ public class NaiveBayesClassifier implements Classifier {
             Iterator<String> oldStringIterator = oldClass.getListOfFeatures().iterator();
             while(oldStringIterator.hasNext()){
                 decrementFeatureCount(oldStringIterator.next(), oldSentiment);
-                decrementCategory(oldSentiment);
+                decrementCategoryCount(oldSentiment);
             }
         } else {
             classificationHistoryQueue.add(classification);
             Iterator<String> stringIterator = classification.getListOfFeatures().iterator();
             while (stringIterator.hasNext()) {
                 incrementFeatureCount(stringIterator.next(), classification.getSentimentCategory());
-                incrementCategory(classification.getSentimentCategory());
+                incrementCategoryCount(classification.getSentimentCategory());
             }
         }
     }

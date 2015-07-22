@@ -58,13 +58,13 @@ public interface Classifier {
      * Increases the count of the given category by one
      * @param sentimentCategory
      */
-    void incrementCategory(Sentiment sentimentCategory);
+    void incrementCategoryCount(Sentiment sentimentCategory);
 
     /**
      * Decreases the count of the given category by one
      * @param sentimentCategory
      */
-    void decrementCategory(Sentiment sentimentCategory);
+    void decrementCategoryCount(Sentiment sentimentCategory);
 
     /**
      * Returns the number of times the given feature appears in the given category
