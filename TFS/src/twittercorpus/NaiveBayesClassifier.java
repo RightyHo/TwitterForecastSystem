@@ -198,7 +198,7 @@ public class NaiveBayesClassifier implements Classifier {
      */
     public int fCountInCategory(String feature,Sentiment sentimentCategory){
         Map<String,Integer> mapInSelectedCategory = featureAppearanceCategoryCount.get(sentimentCategory);
-        if(mapInSelectedCategory == null) throw new NullPointerException("The map in the selected category is not initialised properly");
+        if(mapInSelectedCategory == null) return 0;
         if(mapInSelectedCategory.containsKey(feature)){
             return mapInSelectedCategory.get(feature);             
         } else {
