@@ -334,17 +334,17 @@ public class NaiveBayesClassifier implements Classifier {
         if(classificationHistoryQueue.size() >= classificationStorageLimit){
             Classification oldClass = classificationHistoryQueue.remove(0);
             Sentiment oldSentiment = oldClass.getSentimentCategory();
-            decrementCategory(oldSentiment);
             Iterator<String> oldStringIterator = oldClass.getListOfFeatures().iterator();
             while(oldStringIterator.hasNext()){
                 decrementFeature(oldStringIterator.next(),oldSentiment);
+                decrementCategory(oldSentiment);
             }
         } else {
             classificationHistoryQueue.add(classification);
-            incrementCategory(classification.getSentimentCategory());
             Iterator<String> stringIterator = classification.getListOfFeatures().iterator();
             while (stringIterator.hasNext()) {
                 incrementFeature(stringIterator.next(),classification.getSentimentCategory());
+                incrementCategory(classification.getSentimentCategory());
             }
         }
     }
