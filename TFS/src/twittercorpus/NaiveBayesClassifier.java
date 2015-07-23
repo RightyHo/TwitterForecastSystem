@@ -287,7 +287,7 @@ public class NaiveBayesClassifier implements Classifier {
         if(features == null || sentimentCategory == null){
             throw new IllegalArgumentException("Null parameter passed to probabilityFeatureInCategory method");
         } else {
-            return (getCategoryCount(sentimentCategory) / getTotalNumCategories()) * calcProductOfFeatureProbs(features,sentimentCategory);
+            return ((double) getCategoryCount(sentimentCategory) / (double) getTotalNumCategories()) * calcProductOfFeatureProbs(features,sentimentCategory);
         }
     }
 
