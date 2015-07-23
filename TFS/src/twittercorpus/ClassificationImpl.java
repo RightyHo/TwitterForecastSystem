@@ -10,7 +10,7 @@ public class ClassificationImpl implements Classification {
 
     private List<String> listOfFeatures;
     private Sentiment sentimentCategory;
-    double classificationCertainty;
+    private double classificationCertainty;
 
     /**
      * Constructor with all parameters passed to it.  Might be worthwhile adding a constructor
