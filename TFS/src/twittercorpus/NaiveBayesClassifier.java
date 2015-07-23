@@ -312,7 +312,7 @@ public class NaiveBayesClassifier implements Classifier {
             double neutralClassCertainty = probabilityFeatureInCategory(features, Sentiment.NEUTRAL);
             Classification neutralClass = new ClassificationImpl(features, Sentiment.NEUTRAL, neutralClassCertainty);
 
-            // add certainties to list in order to order them in descending order
+            // add certainties to list and order them in descending order
             certaintyList.add(negativeClassCertainty);
             certaintyList.add(positiveClassCertainty);
             certaintyList.add(neutralClassCertainty);
