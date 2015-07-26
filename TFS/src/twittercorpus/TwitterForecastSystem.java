@@ -40,6 +40,9 @@ public class TwitterForecastSystem {
         splitUpTrainingAndTestData(tCorpus);
         classifier = new NaiveBayesClassifier(1000);     // set storage limit to adjust for forgetful learning effect
         trainTFS();
+
+        // Classify the test data set
+        setTestDataSentimentToUnclassified();
     }
 
     /**
@@ -71,6 +74,12 @@ public class TwitterForecastSystem {
             } else {
                 throw new IllegalArgumentException("Cannot train the TFS on a tweet whose sentiment is unclassified!");
             }
+        }
+    }
+
+    public void setTestDataSentimentToUnclassified(){
+        for(Tweet t : testData){
+            t.setSentiment(Sentiment.UNCLASSIFIED);
         }
     }
 }
