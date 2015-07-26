@@ -8,6 +8,7 @@ import java.util.List;
 public class TwitterForecastSystem {
     private List<Tweet> trainingData = null;
     private List<Tweet> testData = null;
+    private Classifier classifier = null;
 
     public static void main(String[] args) {
         TwitterForecastSystem tfs = new TwitterForecastSystem();
@@ -37,14 +38,8 @@ public class TwitterForecastSystem {
 
         // Train the TFS classifier on the labelled data set
         splitUpTrainingAndTestData(tCorpus);
-        Classifier classifier = new NaiveBayesClassifier(1000);     // set storage limit to adjust for forgetful learning effect
-        for(Tweet t : trainingData){
-            if(!t.isLabelled()){
-                throw new IllegalArgumentException("Cannot train the TFS on a tweet that has not been labelled yet!");
-            } else if(){
-
-            }
-        }
+        classifier = new NaiveBayesClassifier(1000);     // set storage limit to adjust for forgetful learning effect
+        trainTFS();
     }
 
     /**
@@ -61,5 +56,21 @@ public class TwitterForecastSystem {
         testData = tc.getCorpus().subList(sizeOfTrainingSet,totalNumTweets);
         System.out.println("Size of training data list = " +trainingData.size());
         System.out.println("Size of test data list = " + testData.size());
+    }
+
+    public void trainTFS(){
+        for(Tweet t : trainingData){
+            if(!t.isLabelled()){
+                throw new IllegalArgumentException("Cannot train the TFS on a tweet that has not been labelled yet!");
+            } else if(t.getSentiment() == Sentiment.NEGATIVE){
+                classifier.learn(new ClassificationImpl(t.getFeatures(),Sentiment.NEGATIVE,1.0));   // setting classification certainty to 1.0 because we know that the price went down after the tweet was published
+            } else if(t.getSentiment() == Sentiment.POSITIVE){
+                classifier.learn(new ClassificationImpl(t.getFeatures(),Sentiment.POSITIVE,1.0));   // setting classification certainty to 1.0 because we know that the price went up after the tweet was published
+            } else if(t.getSentiment() == Sentiment.NEUTRAL){
+                classifier.learn(new ClassificationImpl(t.getFeatures(),Sentiment.NEUTRAL,1.0));   // setting classification certainty to 1.0 because we know that the price was unchanged after the tweet was published
+            } else {
+                throw new IllegalArgumentException("Cannot train the TFS on a tweet whose sentiment is unclassified!");
+            }
+        }
     }
 }
