@@ -29,7 +29,7 @@ public class TwitterForecastSystem {
         tCorpus.filterOutStopWords();
         tCorpus.extractFeatures(1);         // extract uni-grams as features change to 2 for bi-grams
 
-        // Label the training data set
+        // Label the entire data set
         String priceDataFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
         PriceLabelCorpus pCorpus = new PriceLabelCorpusImpl(priceDataFilename);
         pCorpus.extractPriceDataFromFile(priceDataFilename);
@@ -37,6 +37,14 @@ public class TwitterForecastSystem {
 
         // Train the TFS classifier on the labelled data set
         splitUpTrainingAndTestData(tCorpus);
+        Classifier classifier = new NaiveBayesClassifier(1000);     // set storage limit to adjust for forgetful learning effect
+        for(Tweet t : trainingData){
+            if(!t.isLabelled()){
+                throw new IllegalArgumentException("Cannot train the TFS on a tweet that has not been labelled yet!");
+            } else if(){
+
+            }
+        }
     }
 
     /**
