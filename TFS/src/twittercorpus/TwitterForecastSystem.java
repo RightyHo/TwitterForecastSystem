@@ -10,11 +10,20 @@ public class TwitterForecastSystem {
         tfs.launchSystem();
     }
 
-    private void launchSystem(){
+    private void launchSystem() {
+        // Build corpus of tweets
         String twitterFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt";
-        TwitterCorpus tc = new TwitterCorpusListImpl(twitterFilename);
-        tc.extractTweetsFromFile(twitterFilename);
+        TwitterCorpus tCorpus = new TwitterCorpusListImpl(twitterFilename);
+        tCorpus.extractTweetsFromFile(twitterFilename);
+
+        // Tweets cleaning process
+        tCorpus.removeRetweets();
+        tCorpus.replaceLinks();
+        tCorpus.replaceUsernames();
+        tCorpus.translateAbbreviations();
+        // Label the training data set
         String priceDataFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
-        PriceLabelCorpus plCorpus = new PriceLabelCorpusImpl(priceDataFilename);
+        PriceLabelCorpus pCorpus = new PriceLabelCorpusImpl(priceDataFilename);
+
     }
 }
