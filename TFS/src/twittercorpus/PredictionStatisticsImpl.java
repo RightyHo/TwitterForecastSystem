@@ -18,6 +18,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
     private int incorrectSentiWordNetCount = 0;
 
     public void calculateTFSAccuracy(List<Tweet> testData){
+        if(testData == null) throw new IllegalArgumentException("Test data list is null!");
         sizeOfTestDataSet = testData.size();
 
         // reset counts
@@ -26,6 +27,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
         // compare each tweets classification with the actual price move during the twenty minutes after the tweet is published
         for(Tweet t : testData){
+            if(t == null) throw new NullPointerException("testData is returning null tweets!");
             if(t.getSentiment() == Sentiment.NEGATIVE){
                 if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
                     correctTFSCount++;
@@ -51,10 +53,41 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
     }
 
     public void calculateMACDAccuracy(List<Tweet> testData){
+        if(testData == null) throw new IllegalArgumentException("Test data list is null!");
+        sizeOfTestDataSet = testData.size();
 
+        // reset counts
+        correctMACDCount = 0;
+        incorrectMACDCount = 0;
+
+        // compare the MACD direction indicator prior to the release of each tweets with the actual price move during the twenty minutes after the tweet is published
+        for(Tweet t : testData){
+            if(t == null) throw new NullPointerException("testData is returning null tweets!");
+            // Signal Line Crossovers:  MACD Level minus Signal Level.  A positive signal indicates upward price momentum and vice versa
+            if(t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0){
+                if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()){
+                    correctMACDCount++;
+                } else {
+                    incorrectMACDCount++;
+                }
+            } else if(t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0){
+                if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
+                    correctMACDCount++;
+                } else {
+                    incorrectMACDCount++;
+                }
+            } else {
+                if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
+                    correctMACDCount++;
+                } else {
+                    incorrectMACDCount++;
+                }
+            }
+        }
     }
 
     public void calculateSentiWordNetAccuracy(List<Tweet> testData){
+        if(testData == null) throw new IllegalArgumentException("Test data list is null!");
 
     }
 
