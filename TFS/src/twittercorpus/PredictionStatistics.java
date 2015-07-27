@@ -12,4 +12,6 @@ public interface PredictionStatistics {
     void calculateMACDAccuracy(List<Tweet> testData);
 
     void calculateSentiWordNetAccuracy(List<Tweet> testData);
+
+    void printResults();
 }
