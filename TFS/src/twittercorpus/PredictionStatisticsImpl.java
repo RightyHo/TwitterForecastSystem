@@ -6,16 +6,29 @@ import java.util.List;
  * Created by Andrew on 27/07/15.
  */
 public class PredictionStatisticsImpl implements PredictionStatistics {
-    private int sizeOfTestDataSet = 0;
-    private boolean madeTFSCalcs = false;
-    private boolean madeMACDCalcs = false;
-    private boolean madeSentiWordNetCalcs = false;
-    private int correctTFSCount = 0;
-    private int incorrectTFSCount = 0;
-    private int correctMACDCount = 0;
-    private int incorrectMACDCount = 0;
-    private int correctSentiWordNetCount = 0;
-    private int incorrectSentiWordNetCount = 0;
+    private int sizeOfTestDataSet;
+    private boolean madeTFSCalcs;
+    private boolean madeMACDCalcs;
+    private boolean madeSentiWordNetCalcs;
+    private int correctTFSCount;
+    private int incorrectTFSCount;
+    private int correctMACDCount;
+    private int incorrectMACDCount;
+    private int correctSentiWordNetCount;
+    private int incorrectSentiWordNetCount;
+
+    public PredictionStatisticsImpl(){
+        sizeOfTestDataSet = 0;
+        madeTFSCalcs = false;
+        madeMACDCalcs = false;
+        madeSentiWordNetCalcs = false;
+        correctTFSCount = 0;
+        incorrectTFSCount = 0;
+        correctMACDCount = 0;
+        incorrectMACDCount = 0;
+        correctSentiWordNetCount = 0;
+        incorrectSentiWordNetCount = 0;
+    }
 
     public void calculateTFSAccuracy(List<Tweet> testData){
         if(testData == null) throw new IllegalArgumentException("Test data list is null!");

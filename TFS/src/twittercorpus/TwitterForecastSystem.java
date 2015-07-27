@@ -44,6 +44,16 @@ public class TwitterForecastSystem {
         // Classify the test data set
         setTestDataSentimentToUnclassified();
         classifyTestData();
+
+        // Analyse Results
+        PredictionStatistics pStats = new PredictionStatisticsImpl();
+        pStats.calculateTFSAccuracy(testData);
+        pStats.calculateMACDAccuracy(testData);
+        /*
+        String swnFileName = "";
+        SentiWordNet swn = new SentiWordNet();
+        getSentiWordNetPredictions(swn);
+         */
     }
 
     /**
@@ -89,5 +99,13 @@ public class TwitterForecastSystem {
             Classification freshClassification = classifier.classify(t.getFeatures());
             t.setSentiment(freshClassification.getSentimentCategory());
         }
+    }
+
+    public void getSentiWordNetPredictions(SentiWordNet swn){
+        for(Tweet t : testData){
+            t.setSentiWordNetClassification(swn.classify(t.getFeatures()));
+        }
+
+
     }
 }
