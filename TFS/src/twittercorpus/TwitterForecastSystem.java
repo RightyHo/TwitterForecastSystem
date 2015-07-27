@@ -49,11 +49,12 @@ public class TwitterForecastSystem {
         PredictionStatistics pStats = new PredictionStatisticsImpl();
         pStats.calculateTFSAccuracy(testData);
         pStats.calculateMACDAccuracy(testData);
-        /*
+
         String swnFileName = "";
-        SentiWordNet swn = new SentiWordNet();
+        SentiWordNet swn = new SentiWordNet(swnFileName);
         getSentiWordNetPredictions(swn);
-         */
+        pStats.calculateSentiWordNetAccuracy(testData);
+        pStats.printResults();
     }
 
     /**
