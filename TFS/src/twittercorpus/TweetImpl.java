@@ -118,6 +118,10 @@ public class TweetImpl implements Tweet {
         this.sentiment = sentiment;
     }
 
+    public Sentiment getSentiWordNetClassification() {return sentiWordNetClassification; }
+
+    public void setSentiWordNetClassification(Sentiment sentiWordNetClassification) { this.sentiWordNetClassification = sentiWordNetClassification; }
+
     public void removeStopWords(String fileName){
         List<String> stopWords = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){

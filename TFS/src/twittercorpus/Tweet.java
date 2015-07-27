@@ -40,6 +40,10 @@ public interface Tweet {
 
      void setSentiment(Sentiment sentiment);
 
+     Sentiment getSentiWordNetClassification();
+
+     void setSentiWordNetClassification(Sentiment sentiWordNetClassification);
+
      void removeStopWords(String fileName);
 
      void extractNGramFeatures(int numGrams);
