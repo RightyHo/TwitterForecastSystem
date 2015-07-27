@@ -43,6 +43,7 @@ public class TwitterForecastSystem {
 
         // Classify the test data set
         setTestDataSentimentToUnclassified();
+        classifyTestData();
     }
 
     /**
@@ -80,6 +81,13 @@ public class TwitterForecastSystem {
     public void setTestDataSentimentToUnclassified(){
         for(Tweet t : testData){
             t.setSentiment(Sentiment.UNCLASSIFIED);
+        }
+    }
+
+    public void classifyTestData(){
+        for(Tweet t : testData) {
+            Classification freshClassification = classifier.classify(t.getFeatures());
+            t.setSentiment(freshClassification.getSentimentCategory());
         }
     }
 }
