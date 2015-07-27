@@ -21,6 +21,7 @@ public class TweetImpl implements Tweet {
     private PriceSnapshot postTweetSnapshot;	// price snapshot 20 minutes after the tweet was published
     private Tweet nextTweet;
     private Sentiment sentiment;    // sentiment object is initially set to unclassified.  Once classified it is set to positive, negative or neutral.
+    private Sentiment sentiWordNetClassification;
     private List<String> features;
 
     // constructors
@@ -34,6 +35,7 @@ public class TweetImpl implements Tweet {
         postTweetSnapshot = null;
         nextTweet = null;
         sentiment = Sentiment.UNCLASSIFIED;
+        sentiWordNetClassification = Sentiment.UNCLASSIFIED;
         features = new ArrayList<>();
     }
 
@@ -46,6 +48,7 @@ public class TweetImpl implements Tweet {
         this.postTweetSnapshot = postTweetSnapshot;
         this.nextTweet = nextTweet;
         this.sentiment = sentiment;
+        sentiWordNetClassification = Sentiment.UNCLASSIFIED;
         features = new ArrayList<>();
     }
 
