@@ -22,6 +22,23 @@ public class SentiWordNetImpl implements SentiWordNet {
         buildDictionary();
     }
 
+    /**
+     * Example Lines of Input:
+     * POS	ID	        PosScore	NegScore	SynsetTerms	                Gloss
+     * a	00005473	0.75	    0	        direct#10	                lacking compromising or mitigating elements; exact; "the direct opposite"
+     * a	00005599	0.5	        0.5	        unquestioning#2 implicit#2	being without doubt or reserve; "implicit trust"
+     * a	00005718	0.125	    0	        infinite#4	                total and all-embracing; "God's infinite wisdom"
+     *
+     * The number notation comes form Wordnet. It represents the rank in which the given word is commonly used.
+     * So rank#5 refers to the context in which rank is used 5th most commonly. Similarly rank#1 refers to the meaning
+     * of rank most commonly used. The following are the POS notations:
+     *
+     *  n - NOUN
+     *  v - VERB
+     *  a - ADJECTIVE
+     *  s - ADJECTIVE SATELLITE
+     *  r - ADVERB
+     */
     public void buildDictionary(){
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
             String currentLine;
@@ -29,11 +46,23 @@ public class SentiWordNetImpl implements SentiWordNet {
 
                 // divide current line into its individual constituents
                 Scanner s = new Scanner(currentLine);
-                String word = s.next().trim();
-                double sentimentScore = s.nextDouble();
+                s.useDelimiter("\t");
+                String typeOfWord = s.next().trim();
 
-                // add new mapping for every row in the file
-                swnDictionary.put(word,sentimentScore);
+                // ignore comments in the file that are preceeded by a '#'
+                if(typeOfWord.charAt(0) != '#') {
+                    int ignore
+
+
+
+
+
+
+                    double sentimentScore = s.nextDouble();
+
+                    // add new mapping for every row in the file
+                    swnDictionary.put(word, sentimentScore);
+                }
             }
         } catch (IOException e){
             e.printStackTrace();
