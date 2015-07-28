@@ -47,12 +47,12 @@
       <file leaf-file-name="SentiWordNetImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/SentiWordNetImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72761196">
-              <caret line="41" column="31" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.34042552">
+              <caret line="42" column="31" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2402#2403#0" expanded="true" />
-                <element signature="e#2429#2430#0" expanded="true" />
+                <element signature="e#2960#2961#0" expanded="true" />
+                <element signature="e#2987#2988#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,8 +150,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="651" />
+    <option name="y" value="23" />
+    <option name="width" value="789" />
+    <option name="height" value="823" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -250,7 +252,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="FullScreen" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="recentsLimit" value="5" />
@@ -750,15 +752,15 @@
       <workItem from="1437680248927" duration="21000" />
       <workItem from="1437680301165" duration="3369000" />
       <workItem from="1437759801555" duration="17927000" />
-      <workItem from="1438064432770" duration="3037000" />
+      <workItem from="1438064432770" duration="4959000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197189000" />
+    <option name="totallyTimeSpent" value="199111000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="651" y="23" width="789" height="823" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1202,12 +1204,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/SentiWordNetImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72761196">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.34042552">
+          <caret line="42" column="31" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2402#2403#0" expanded="true" />
-            <element signature="e#2429#2430#0" expanded="true" />
+            <element signature="e#2960#2961#0" expanded="true" />
+            <element signature="e#2987#2988#0" expanded="true" />
           </folding>
         </state>
       </provider>

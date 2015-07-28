@@ -24,6 +24,7 @@ public class SentiWordNetImpl implements SentiWordNet {
 
     /**
      * Example Lines of Input:
+     *
      * POS	ID	        PosScore	NegScore	SynsetTerms	                Gloss
      * a	00005473	0.75	    0	        direct#10	                lacking compromising or mitigating elements; exact; "the direct opposite"
      * a	00005599	0.5	        0.5	        unquestioning#2 implicit#2	being without doubt or reserve; "implicit trust"
@@ -51,12 +52,18 @@ public class SentiWordNetImpl implements SentiWordNet {
 
                 // ignore comments in the file that are preceeded by a '#'
                 if(typeOfWord.charAt(0) != '#') {
-                    int ignore
+                    int synsetID = s.nextInt();
+                    double posScore = s.nextDouble();
+                    double negScore = s.nextDouble();
+                    String synsetTerms = s.next();
+                    // ignore gloss definition string
+                    double totalScore = posScore - negScore;
+                    // split up synset member words
+                    String[] setMemberWords = synsetTerms.split(" ");
+                    for(String word : setMemberWords){
+                        String[] wordWithRank = word.split("#");
 
-
-
-
-
+                    }
 
                     double sentimentScore = s.nextDouble();
 
