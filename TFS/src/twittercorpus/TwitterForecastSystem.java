@@ -51,7 +51,7 @@ public class TwitterForecastSystem {
         pStats.calculateMACDAccuracy(testData);
 
         String swnFileName = "";
-        SentiWordNet swn = new SentiWordNet(swnFileName);
+        SentiWordNet swn = new SentiWordNetImpl(swnFileName);
         getSentiWordNetPredictions(swn);
         pStats.calculateSentiWordNetAccuracy(testData);
         pStats.printResults();
@@ -104,7 +104,7 @@ public class TwitterForecastSystem {
 
     public void getSentiWordNetPredictions(SentiWordNet swn){
         for(Tweet t : testData){
-            t.setSentiWordNetClassification(swn.classify(t.getFeatures()));
+            t.setSentiWordNetClassification(swn.classifySentiment(t.getFeatures()));
         }
 
 
