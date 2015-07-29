@@ -3,10 +3,7 @@ package twittercorpus;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Andrew on 28/07/15.
@@ -41,6 +38,7 @@ public class SentiWordNetImpl implements SentiWordNet {
      *  r - ADVERB
      */
     public void buildDictionary(){
+        HashMap<String,HashMap<Integer,Double>> auxDict = new HashMap<>();
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
             String currentLine;
             while ((currentLine = br.readLine()) != null) {
@@ -60,9 +58,15 @@ public class SentiWordNetImpl implements SentiWordNet {
                     double totalScore = posScore - negScore;
                     // split up synset member words
                     String[] setMemberWords = synsetTerms.split(" ");
-                    for(String word : setMemberWords){
+                    for (String word : setMemberWords) {
                         String[] wordWithRank = word.split("#");
-
+                        String wordWithType = wordWithRank[0] + "#" + typeOfWord;
+                        int wordWithTypeRanking = Integer.parseInt(wordWithRank[1]);
+                        if (!auxDict.containsKey(wordWithType)) {
+                            HashMap<Integer, Double> addMapping = new HashMap<>();
+                            addMapping.put(wordWithTypeRanking, totalScore);
+                            auxDict.put(wordWithType, addMapping);
+                        }
                     }
 
                     double sentimentScore = s.nextDouble();

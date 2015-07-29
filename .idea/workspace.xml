@@ -47,12 +47,12 @@
       <file leaf-file-name="SentiWordNetImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/SentiWordNetImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34042552">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.021276595">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2960#2961#0" expanded="true" />
-                <element signature="e#2987#2988#0" expanded="true" />
+                <element signature="e#3445#3446#0" expanded="true" />
+                <element signature="e#3472#3473#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -752,12 +752,12 @@
       <workItem from="1437680248927" duration="21000" />
       <workItem from="1437680301165" duration="3369000" />
       <workItem from="1437759801555" duration="17927000" />
-      <workItem from="1438064432770" duration="4959000" />
+      <workItem from="1438064432770" duration="6585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199111000" />
+    <option name="totallyTimeSpent" value="200737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="651" y="23" width="789" height="823" extended-state="0" />
@@ -1204,12 +1204,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/SentiWordNetImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34042552">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.021276595">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2960#2961#0" expanded="true" />
-            <element signature="e#2987#2988#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3472#3473#0" expanded="true" />
           </folding>
         </state>
       </provider>
