@@ -59,9 +59,9 @@ public class SentiWordNetImpl implements SentiWordNet {
                     // split up synset member words
                     String[] setMemberWords = synsetTerms.split(" ");
                     for (String word : setMemberWords) {
-                        String[] wordWithRank = word.split("#");
-                        String wordWithType = wordWithRank[0] + "#" + typeOfWord;
-                        int wordWithTypeRanking = Integer.parseInt(wordWithRank[1]);
+                        String[] wordsWithRank = word.split("#");
+                        String wordWithType = wordsWithRank[0] + "#" + typeOfWord;
+                        int wordWithTypeRanking = Integer.parseInt(wordsWithRank[1]);
                         if (!auxDict.containsKey(wordWithType)) {
                             auxDict.put(wordWithType,new HashMap<>());
                         }
@@ -70,7 +70,25 @@ public class SentiWordNetImpl implements SentiWordNet {
                     }
                 }
             }
+            // traverse all word/type combinations and calculate their corresponding overall weighted average sentiment score
+            Set<String> wordPosSet = auxDict.keySet();
+            for(String wordAndPos : wordPosSet){
+                double totalScore = 0.0;
+                double sum = 0.0;
+                HashMap<Integer, Double> wordRankToSentiScoreMap = auxDict.get(wordAndPos);
 
+                // calc weighted average score for the wordAndPos combination
+                Set<Integer> wordDefinitionRankingSet = wordRankToSentiScoreMap.keySet();
+                for(Integer wordDefinitionRank : wordDefinitionRankingSet){
+                    Double sentiScore = wordRankToSentiScoreMap.get(wordDefinitionRank);
+                    totalScore += sentiScore / (double) wordDefinitionRank;
+                    sum += 1.0 / (double) wordDefinitionRank;
+                }
+                double overallScoreForWordAndPos = totalScore / sum;
+                // calc average of the non-zero scores of the various POS versions of the word (sum of all non-zero
+                // sentiment scores divided by the number of non-zero sentiment scores)
+                swnDictionary.put();
+            }
         } catch (IOException e){
             e.printStackTrace();
         }
