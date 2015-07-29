@@ -63,18 +63,14 @@ public class SentiWordNetImpl implements SentiWordNet {
                         String wordWithType = wordWithRank[0] + "#" + typeOfWord;
                         int wordWithTypeRanking = Integer.parseInt(wordWithRank[1]);
                         if (!auxDict.containsKey(wordWithType)) {
-                            HashMap<Integer, Double> addMapping = new HashMap<>();
-                            addMapping.put(wordWithTypeRanking, totalScore);
-                            auxDict.put(wordWithType, addMapping);
+                            auxDict.put(wordWithType,new HashMap<>());
                         }
+                        HashMap<Integer,Double> focusMap = auxDict.get(wordWithType);
+                        focusMap.put(wordWithTypeRanking,totalScore);
                     }
-
-                    double sentimentScore = s.nextDouble();
-
-                    // add new mapping for every row in the file
-                    swnDictionary.put(word, sentimentScore);
                 }
             }
+
         } catch (IOException e){
             e.printStackTrace();
         }
