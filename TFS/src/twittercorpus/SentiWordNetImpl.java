@@ -105,7 +105,7 @@ public class SentiWordNetImpl implements SentiWordNet {
         for(String ngram : features){
             String[] featureWords = ngram.split(" ");
             for(String word : featureWords) {
-                double ngramScore = getFeatureSentimentScore(ngram);
+                double ngramScore = getFeatureSentimentScore(word);
                 overallSentiScore += ngramScore;
             }
         }
@@ -137,7 +137,7 @@ public class SentiWordNetImpl implements SentiWordNet {
         String keyString = word + "#" + "n";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
-            // include only non-zero featureTypeScores in our
+            // include only non-zero featureTypeScores in our overall average sentiment score for the word
             if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
                 totalScore += featureTypeScore;
                 nonZeroCount++;
@@ -148,7 +148,7 @@ public class SentiWordNetImpl implements SentiWordNet {
         keyString = word + "#" + "v";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
-            // include only non-zero featureTypeScores in our
+            // include only non-zero featureTypeScores in our overall average sentiment score for the word
             if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
                 totalScore += featureTypeScore;
                 nonZeroCount++;
@@ -159,7 +159,7 @@ public class SentiWordNetImpl implements SentiWordNet {
         keyString = word + "#" + "a";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
-            // include only non-zero featureTypeScores in our
+            // include only non-zero featureTypeScores in our overall average sentiment score for the word
             if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
                 totalScore += featureTypeScore;
                 nonZeroCount++;
@@ -170,7 +170,7 @@ public class SentiWordNetImpl implements SentiWordNet {
         keyString = word + "#" + "s";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
-            // include only non-zero featureTypeScores in our
+            // include only non-zero featureTypeScores in our overall average sentiment score for the word
             if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
                 totalScore += featureTypeScore;
                 nonZeroCount++;
@@ -181,11 +181,12 @@ public class SentiWordNetImpl implements SentiWordNet {
         keyString = word + "#" + "r";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
-            // include only non-zero featureTypeScores in our
+            // include only non-zero featureTypeScores in our overall average sentiment score for the word
             if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
                 totalScore += featureTypeScore;
                 nonZeroCount++;
             }
         }
+        return totalScore / (double) nonZeroCount;
     }
 }
