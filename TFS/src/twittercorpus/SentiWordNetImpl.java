@@ -103,8 +103,11 @@ public class SentiWordNetImpl implements SentiWordNet {
     public Sentiment classifySentiment(List<String> features){
         double overallSentiScore = 0.0;
         for(String ngram : features){
-            double ngramScore = getFeatureSentimentScore(ngram);
-            overallSentiScore += ngramScore;
+            String[] featureWords = ngram.split(" ");
+            for(String word : featureWords) {
+                double ngramScore = getFeatureSentimentScore(ngram);
+                overallSentiScore += ngramScore;
+            }
         }
         if(overallSentiScore > 0){
             return Sentiment.POSITIVE;
@@ -123,14 +126,15 @@ public class SentiWordNetImpl implements SentiWordNet {
      *  a - ADJECTIVE
      *  s - ADJECTIVE SATELLITE
      *  r - ADVERB
-     * @param feature
+     * @param word
      * @return
      */
-    public double getFeatureSentimentScore(String feature){
+    public double getFeatureSentimentScore(String word){
         double totalScore = 0.0;
         int nonZeroCount = 0;
+
         // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
-        String keyString = feature + "#" + "n";
+        String keyString = word + "#" + "n";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
             // include only non-zero featureTypeScores in our
@@ -140,8 +144,8 @@ public class SentiWordNetImpl implements SentiWordNet {
             }
         }
 
-        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
-        String keyString = feature + "#" + "n";
+        // search for verb definition of the feature word in the SentiWordNet3.0 dictionary
+        keyString = word + "#" + "v";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
             // include only non-zero featureTypeScores in our
@@ -151,8 +155,8 @@ public class SentiWordNetImpl implements SentiWordNet {
             }
         }
 
-        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
-        String keyString = feature + "#" + "n";
+        // search for adjective definition of the feature word in the SentiWordNet3.0 dictionary
+        keyString = word + "#" + "a";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
             // include only non-zero featureTypeScores in our
@@ -162,8 +166,8 @@ public class SentiWordNetImpl implements SentiWordNet {
             }
         }
 
-        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
-        String keyString = feature + "#" + "n";
+        // search for adjective satellite definition of the feature word in the SentiWordNet3.0 dictionary
+        keyString = word + "#" + "s";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
             // include only non-zero featureTypeScores in our
@@ -173,8 +177,8 @@ public class SentiWordNetImpl implements SentiWordNet {
             }
         }
 
-        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
-        String keyString = feature + "#" + "n";
+        // search for adverb definition of the feature word in the SentiWordNet3.0 dictionary
+        keyString = word + "#" + "r";
         if(swnDictionary.containsKey(keyString)) {
             double featureTypeScore = swnDictionary.get(keyString);
             // include only non-zero featureTypeScores in our

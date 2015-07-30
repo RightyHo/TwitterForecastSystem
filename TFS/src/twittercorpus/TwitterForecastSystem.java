@@ -28,6 +28,7 @@ public class TwitterForecastSystem {
         tCorpus.translateAbbreviations(new AbbreviationDictionary());
         tCorpus.checkSpelling(new SpellingDictionary());
         tCorpus.filterOutStopWords();
+        // *** CHECK THAT THE TWEET IS NOT EMPTY NOW!!! ***
         tCorpus.extractFeatures(1);         // extract uni-grams as features change to 2 for bi-grams
 
         // Label the entire data set
