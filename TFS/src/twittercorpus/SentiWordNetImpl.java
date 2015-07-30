@@ -87,6 +87,7 @@ public class SentiWordNetImpl implements SentiWordNet {
                     sum += 1.0 / (double) wordDefinitionRank;
                 }
                 double overallScoreForWordAndPos = totalScore / sum;
+
                 // add entry to sentiwordnet dictionary map
                 swnDictionary.put(wordAndPos,overallScoreForWordAndPos);
             }

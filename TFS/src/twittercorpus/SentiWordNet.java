@@ -7,5 +7,10 @@ import java.util.List;
  */
 public interface SentiWordNet {
 
+    void buildDictionary();
+
     Sentiment classifySentiment(List<String> features);
+
+    double getFeatureSentimentScore(String word);
+
 }

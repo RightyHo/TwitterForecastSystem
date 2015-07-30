@@ -54,6 +54,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
                     incorrectTFSCount++;
                 }
             } else if(t.getSentiment() == Sentiment.NEUTRAL){
+                // If time permits it may be worth experimenting by widening a range of prices to fall under neutral category
                 if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
                     correctTFSCount++;
                 } else {
@@ -74,7 +75,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         correctMACDCount = 0;
         incorrectMACDCount = 0;
 
-        // compare the MACD direction indicator prior to the release of each tweets with the actual price move during the twenty minutes after the tweet is published
+        // compare the MACD direction indicator prior to the release of each tweet with the actual price move during the twenty minutes after the tweet is published
         for(Tweet t : testData){
             if(t == null) throw new NullPointerException("testData is returning null tweets!");
             // Signal Line Crossovers:  MACD Level minus Signal Level.  A positive signal indicates upward price momentum and vice versa
@@ -91,6 +92,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
                     incorrectMACDCount++;
                 }
             } else {
+                // Sentiment is NEUTRAL - if time permits it may be worth experimenting by widening a range of prices to fall under neutral category
                 if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
                     correctMACDCount++;
                 } else {
@@ -103,7 +105,40 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
     public void calculateSentiWordNetAccuracy(List<Tweet> testData){
         if(testData == null) throw new IllegalArgumentException("Test data list is null!");
+        sizeOfTestDataSet = testData.size();
 
+        // reset counts
+        correctSentiWordNetCount = 0;
+        incorrectSentiWordNetCount = 0;
+
+        // compare the SentiWordNet3.0 direction indicator prior to the release of each tweet with the actual price move during the twenty minutes after the tweet is published
+        for(Tweet t : testData){
+            if(t == null) throw new NullPointerException("testData is returning null tweets!");
+            // Get the sentiment classification attributed to the Tweet's list of features by SentiWordNet3.0
+            if(t.getSentiWordNetClassification() == Sentiment.POSITIVE){
+                if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()){
+                    correctSentiWordNetCount++;
+                } else {
+                    incorrectSentiWordNetCount++;
+                }
+            } else if(t.getSentiWordNetClassification() == Sentiment.NEGATIVE){
+                if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
+                    correctSentiWordNetCount++;
+                } else {
+                    incorrectSentiWordNetCount++;
+                }
+            } else if(t.getSentiWordNetClassification() == Sentiment.NEUTRAL){
+                // If time permits it may be worth experimenting by widening a range of prices to fall under neutral category
+                if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
+                    correctSentiWordNetCount++;
+                } else {
+                    incorrectSentiWordNetCount++;
+                }
+            } else {
+                throw new IllegalArgumentException("The test data has not been correctly classified");
+            }
+        }
+        madeSentiWordNetCalcs = true;
     }
 
     public void printResults(){
