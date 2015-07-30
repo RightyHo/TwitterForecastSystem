@@ -47,8 +47,8 @@
       <file leaf-file-name="SentiWordNetImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/SentiWordNetImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7201493">
-              <caret line="102" column="38" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.5522388">
+              <caret line="128" column="42" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -750,12 +750,12 @@
       <workItem from="1437759801555" duration="17927000" />
       <workItem from="1438064432770" duration="7364000" />
       <workItem from="1438193621505" duration="2754000" />
-      <workItem from="1438239220354" duration="1071000" />
+      <workItem from="1438239220354" duration="1951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205341000" />
+    <option name="totallyTimeSpent" value="206221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1189,8 +1189,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/SentiWordNetImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7201493">
-          <caret line="102" column="38" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.5522388">
+          <caret line="128" column="42" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

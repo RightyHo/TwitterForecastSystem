@@ -111,7 +111,77 @@ public class SentiWordNetImpl implements SentiWordNet {
         } else if(overallSentiScore < 0){
             return Sentiment.NEGATIVE;
         } else {
-            return Sentiment.NEUTRAL
+            return Sentiment.NEUTRAL;
+        }
+    }
+
+    /**
+     * The following are the POS notations:
+     *
+     *  n - NOUN
+     *  v - VERB
+     *  a - ADJECTIVE
+     *  s - ADJECTIVE SATELLITE
+     *  r - ADVERB
+     * @param feature
+     * @return
+     */
+    public double getFeatureSentimentScore(String feature){
+        double totalScore = 0.0;
+        int nonZeroCount = 0;
+        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
+        String keyString = feature + "#" + "n";
+        if(swnDictionary.containsKey(keyString)) {
+            double featureTypeScore = swnDictionary.get(keyString);
+            // include only non-zero featureTypeScores in our
+            if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
+                totalScore += featureTypeScore;
+                nonZeroCount++;
+            }
+        }
+
+        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
+        String keyString = feature + "#" + "n";
+        if(swnDictionary.containsKey(keyString)) {
+            double featureTypeScore = swnDictionary.get(keyString);
+            // include only non-zero featureTypeScores in our
+            if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
+                totalScore += featureTypeScore;
+                nonZeroCount++;
+            }
+        }
+
+        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
+        String keyString = feature + "#" + "n";
+        if(swnDictionary.containsKey(keyString)) {
+            double featureTypeScore = swnDictionary.get(keyString);
+            // include only non-zero featureTypeScores in our
+            if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
+                totalScore += featureTypeScore;
+                nonZeroCount++;
+            }
+        }
+
+        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
+        String keyString = feature + "#" + "n";
+        if(swnDictionary.containsKey(keyString)) {
+            double featureTypeScore = swnDictionary.get(keyString);
+            // include only non-zero featureTypeScores in our
+            if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
+                totalScore += featureTypeScore;
+                nonZeroCount++;
+            }
+        }
+
+        // search for noun definition of the feature word in the SentiWordNet3.0 dictionary
+        String keyString = feature + "#" + "n";
+        if(swnDictionary.containsKey(keyString)) {
+            double featureTypeScore = swnDictionary.get(keyString);
+            // include only non-zero featureTypeScores in our
+            if(Math.abs(featureTypeScore - 0.0) > 0.000000001){
+                totalScore += featureTypeScore;
+                nonZeroCount++;
+            }
         }
     }
 }
