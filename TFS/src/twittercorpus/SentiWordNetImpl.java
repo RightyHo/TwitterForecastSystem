@@ -81,20 +81,37 @@ public class SentiWordNetImpl implements SentiWordNet {
                 Set<Integer> wordDefinitionRankingSet = wordRankToSentiScoreMap.keySet();
                 for(Integer wordDefinitionRank : wordDefinitionRankingSet){
                     Double sentiScore = wordRankToSentiScoreMap.get(wordDefinitionRank);
+                    // totalScore = sentiScore1 / 1 + sentiScore2 / 2 + sentiScore3 / 3 + ...
                     totalScore += sentiScore / (double) wordDefinitionRank;
+                    // sum = 1/1 + 1/2 + 1/3 + ...
                     sum += 1.0 / (double) wordDefinitionRank;
                 }
                 double overallScoreForWordAndPos = totalScore / sum;
-                // calc average of the non-zero scores of the various POS versions of the word (sum of all non-zero
-                // sentiment scores divided by the number of non-zero sentiment scores)
-                swnDictionary.put();
+                // add entry to sentiwordnet dictionary map
+                swnDictionary.put(wordAndPos,overallScoreForWordAndPos);
             }
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
+    /**
+     * Get the sentiment classification attributed to this list of features by SentiWordNet3.0
+     * @param features
+     * @return
+     */
     public Sentiment classifySentiment(List<String> features){
-        return null;
+        double overallSentiScore = 0.0;
+        for(String ngram : features){
+            double ngramScore = getFeatureSentimentScore(ngram);
+            overallSentiScore += ngramScore;
+        }
+        if(overallSentiScore > 0){
+            return Sentiment.POSITIVE;
+        } else if(overallSentiScore < 0){
+            return Sentiment.NEGATIVE;
+        } else {
+            return Sentiment.NEUTRAL
+        }
     }
 }
