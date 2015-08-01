@@ -42,7 +42,7 @@ public interface TwitterCorpus {
 
      void checkSpelling(DictionaryTranslator spellingDict);
 
-     void filterOutStopWords();
+     void filterOutStopWords(String stopWordsList);
 
      void extractFeatures(int numGrams);
 

@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,23 +16,21 @@ import java.util.Scanner;
  */
 public class PriceLabelCorpusImpl implements PriceLabelCorpus {
 
-    // *** Need to account for the fact that the twitter time stamps are in GMT and the chart time stamps are in London time ***
-    // *** Run {TZDF} {39<GO} to convert to GMT and then download the price data ***
+    // *** British Summer Time ended on 26 October 2014 begins again on 29 March 2015 ***
+    // *** The data set we are using for this project runs from 1 January 2015 until 24 March 2015 during which time London will be using GMT ***
 
-    private static final int MILLENIUM = 0;             // needs to be changed to 2000 if the input data date is of the form 23/11/15
     private Map<ZonedDateTime,PriceSnapshot> priceMap;
     private String fileName;
+    private ZoneOffset timeZone;
+    private int millennium;
 
-    // constructors
+    // constructor
 
-    public PriceLabelCorpusImpl(String fileName) {
+    public PriceLabelCorpusImpl(String fileName,ZoneOffset timeZone,int millennium) {
         priceMap = new HashMap<>();
         this.fileName = fileName;
-    }
-
-    public PriceLabelCorpusImpl(Map<ZonedDateTime, PriceSnapshot> priceMap, String fileName) {
-        this.priceMap = priceMap;
-        this.fileName = fileName;
+        this.timeZone = timeZone;
+        this.millennium = millennium;
     }
 
     // getters and setters
@@ -71,7 +70,7 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
                 Scanner splitDate = new Scanner(dateString).useDelimiter("/");
                 int day = splitDate.nextInt();
                 int month = splitDate.nextInt();
-                int year = splitDate.nextInt() + MILLENIUM;
+                int year = splitDate.nextInt() + millennium;
 
                 Scanner splitTime = new Scanner(timeString).useDelimiter(":");
                 int hour =  splitTime.nextInt();
@@ -80,7 +79,7 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
                 // create new ZonedDateTime object for each row in the file
 
                 LocalDateTime localTS = LocalDateTime.of(year, month, day, hour, min, 0);
-                ZonedDateTime ts = ZonedDateTime.of(localTS, ZoneId.of("Europe/London"));
+                ZonedDateTime ts = ZonedDateTime.of(localTS,timeZone);
 
                 // create new PriceShapshot for every row in the file
 

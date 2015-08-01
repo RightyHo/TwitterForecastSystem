@@ -27,15 +27,14 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                                                                 LocalDate.of(THIS_YEAR,12,25),
                                                                 LocalDate.of(THIS_YEAR,12,31)};
     public static final Set<LocalDate> MARKET_HOLIDAY = new HashSet<>(Arrays.asList(SET_VALUES));
-    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 1, 1, 0, 0, 0, 0, ZoneId.of("Europe/London"));
+    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 1, 1, 0, 0, 0, 0, ZoneOffset.of("Z"));
 
     // *** NEED TO ADJUST LATEST_CORPUS_TIME_STAMP TO THE LAST PRICE TIMESTAMP WE HAVE IN THE CORPUS ***
 
-    public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 6, 23, 0, 0, 0, 0, ZoneId.of("Europe/London"));
+    public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 6, 23, 0, 0, 0, 0, ZoneOffset.of("Z"));
 
     private List<Tweet> corpus;
     private String fileName;
-    public static final String STOP_WORDS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/English Stop Words.txt";
 
     public TwitterCorpusListImpl(String fileName) {
         this.corpus = new ArrayList<>();
@@ -381,11 +380,11 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
      * filter out the most common (and least informative) English words from the
      * text of each tweet.  This should help reduce noise when extracting features for classification.
      */
-    public void filterOutStopWords(){
+    public void filterOutStopWords(String stopWordsList){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
-            focus.removeStopWords(STOP_WORDS_FILENAME);
+            focus.removeStopWords(stopWordsList);
         }
     }
 

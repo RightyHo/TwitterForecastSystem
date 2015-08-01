@@ -17,7 +17,7 @@ import com.swabunga.spell.event.TeXWordFinder;
  */
 public class SpellingDictionary implements DictionaryTranslator, SpellCheckListener {
 
-    private static final String DICTIONARY_FILE = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/dictionary.txt";
+    private static String spellingDictionary;
     private SpellChecker spellChecker;
     private List<String> misspelledWords;
     private static SpellDictionaryHashMap dictionaryHashMap;
@@ -26,7 +26,7 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
 
     static{
 
-        File dict = new File(DICTIONARY_FILE);
+        File dict = new File(spellingDictionary);
         try {
             dictionaryHashMap = new SpellDictionaryHashMap(dict);
         } catch (FileNotFoundException e) {
@@ -41,8 +41,9 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
         spellChecker.addSpellCheckListener(this);
     }
 
-    public SpellingDictionary() {
+    public SpellingDictionary(String spellingDictionary) {
         misspelledWords = new ArrayList<String>();
+        this.spellingDictionary = spellingDictionary;
         initialize();
     }
 

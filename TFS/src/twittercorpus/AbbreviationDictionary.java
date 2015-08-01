@@ -12,16 +12,17 @@ import java.util.Scanner;
  */
 public class AbbreviationDictionary implements DictionaryTranslator {
 
-    private static final String ABBREVIATION_FILE = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
+    private String dictionaryFilename;
     private Map<String,String> abbreviations;
 
-    public AbbreviationDictionary(){
+    public AbbreviationDictionary(String dictionaryFilename){
         abbreviations = new HashMap<>();
+        this.dictionaryFilename = dictionaryFilename;
         initialize();
     }
 
     private void initialize(){
-        try(BufferedReader br = new BufferedReader(new FileReader(ABBREVIATION_FILE))){
+        try(BufferedReader br = new BufferedReader(new FileReader(dictionaryFilename))){
             String currentLine;
             while ((currentLine = br.readLine()) != null) {
                 String[] lineParts = currentLine.split(": ");
