@@ -26,8 +26,8 @@ public class TwitterCorpusListImplTest {
     public void setUp() throws Exception {
         tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt";
         abbDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
-        spellDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/dictionary.txt";
-        stopWordFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/English Stop Words.txt";
+        spellDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
+        stopWordFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
         timeZone = ZoneOffset.of("Z");              // set time zone for date information used in the TFS to GMT/UTC
         millennium = 0;                             // needs to be changed to 2000 if the date format of input data is 23/11/15
         int thisYear = 2015;
@@ -100,7 +100,7 @@ public class TwitterCorpusListImplTest {
 
         // test second tweet in list
         LocalDateTime localExpectedTS = LocalDateTime.of(2015,1,16,0,18,0);
-        ZonedDateTime expectedTS = ZonedDateTime.of(localExpectedTS, ZoneId.of("Europe/London"));
+        ZonedDateTime expectedTS = ZonedDateTime.of(localExpectedTS,timeZone);
         assertEquals(expectedTS,tCorpus.getCorpus().get(1).getTimeStamp());
     }
 

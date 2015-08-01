@@ -24,8 +24,13 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
     public static final String[] SPECIAL_PREFIX = new String[]{"#","@","-"};
     private static final Set<String> PREFIX_SET = new HashSet<>(Arrays.asList(SPECIAL_PREFIX));
 
-    static{
+    public SpellingDictionary(String spellingDictionary) {
+        misspelledWords = new ArrayList<String>();
+        this.spellingDictionary = spellingDictionary;
+        initialize();
+    }
 
+    private void initialize(){
         File dict = new File(spellingDictionary);
         try {
             dictionaryHashMap = new SpellDictionaryHashMap(dict);
@@ -34,17 +39,8 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void initialize(){
         spellChecker = new SpellChecker(dictionaryHashMap);
         spellChecker.addSpellCheckListener(this);
-    }
-
-    public SpellingDictionary(String spellingDictionary) {
-        misspelledWords = new ArrayList<String>();
-        this.spellingDictionary = spellingDictionary;
-        initialize();
     }
 
     /**

@@ -14,7 +14,7 @@ public class SpellingDictionaryTest {
 
     @Before
     public void setUp() throws Exception {
-        String spellDicFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/dictionary.txt";
+        String spellDicFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
         testDT = new SpellingDictionary(spellDicFilename);
     }
 

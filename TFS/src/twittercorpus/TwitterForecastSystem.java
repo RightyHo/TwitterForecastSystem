@@ -22,8 +22,8 @@ public class TwitterForecastSystem {
     public static final String PRICE_DATA_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
     public static final String SENTIWORDNET_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/SentiWordNet_3.0.txt";
     public static final String ABBREVIATION_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
-    public static final String SPELLING_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/dictionary.txt";
-    public static final String STOP_WORDS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/English Stop Words.txt";
+    public static final String SPELLING_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
+    public static final String STOP_WORDS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
 
     public static final int NGRAM_COUNT = 1;                        // set to 1 to use unigrams or 2 to use bigrams as features for the classifier
     public static final int CLASSIFIER_STORAGE_LIMIT = 1000;        // set storage limit to adjust for forgetful learning effect
