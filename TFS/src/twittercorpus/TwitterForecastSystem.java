@@ -20,16 +20,19 @@ public class TwitterForecastSystem {
         String twitterFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt";
         TwitterCorpus tCorpus = new TwitterCorpusListImpl(twitterFilename);
         tCorpus.extractTweetsFromFile(twitterFilename);
+        System.out.println("*******************************************************************************************");
+        System.out.println("Extracted Twitter Corpus From File.  Corpus contains a total of " + tCorpus.getCorpus().size() + " tweets.");
 
         // Tweets cleaning process
         tCorpus.removeRetweets();
+        System.out.println("\nRemoved Retweets from the Twitter Corpus --> Number of tweets remaining in corpus: " + tCorpus.getCorpus().size());
         tCorpus.replaceLinks();
         tCorpus.replaceUsernames();
         tCorpus.translateAbbreviations(new AbbreviationDictionary());
         tCorpus.checkSpelling(new SpellingDictionary());
         tCorpus.filterOutStopWords();
-        // *** CHECK THAT THE TWEET IS NOT EMPTY NOW!!! ***
         tCorpus.extractFeatures(1);         // extract uni-grams as features change to 2 for bi-grams
+        tCorpus.removeFilteredTweetsWithNoFeatures(); // if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
 
         // Label the entire data set
         String priceDataFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";

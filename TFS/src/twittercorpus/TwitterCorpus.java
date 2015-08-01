@@ -45,4 +45,9 @@ public interface TwitterCorpus {
      void filterOutStopWords();
 
      void extractFeatures(int numGrams);
+
+     /**
+     *  if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
+     */
+     void removeFilteredTweetsWithNoFeatures();
 }

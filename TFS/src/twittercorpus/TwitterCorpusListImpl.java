@@ -397,4 +397,17 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             focus.extractNGramFeatures(numGrams);
         }
     }
+
+    /**
+     *  if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
+     */
+    public void removeFilteredTweetsWithNoFeatures(){
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            if(focus.getFeatures().size() == 0){
+                corpusIterator.remove();
+            }
+        }
+    }
 }
