@@ -14,7 +14,8 @@ public class AbbreviationDictionaryTest {
 
     @Before
     public void setUp() throws Exception {
-        testAD = new AbbreviationDictionary();
+        String abbDicFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
+        testAD = new AbbreviationDictionary(abbDicFilename);
     }
 
     @Test

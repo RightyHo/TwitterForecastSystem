@@ -209,13 +209,13 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             return labels.getPriceMap().get(preTweetTime);
         } else if(marketHoliday.contains(preTweetTime.toLocalDate())){
             // timestamp key does not exist in map because it falls on a market holiday --> try the previous days closing price
-            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), BMW_XETRA_CLOSE.plusMinutes(30)),timeZone));
+            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(30)),timeZone));
         } else if (preTweetTime.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
             // timestamp key does not exist in map because it falls on a Saturday  --> try the previous days closing price
-            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), BMW_XETRA_CLOSE.plusMinutes(30)),timeZone));
+            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(30)),timeZone));
         } else if (preTweetTime.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
             // timestamp key does not exist in map because it falls on a Sunday  --> try the closing price two days previous
-            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(2), BMW_XETRA_CLOSE.plusMinutes(30)),timeZone));
+            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(2), stockMarketCloseTime.plusMinutes(30)),timeZone));
         } else {
             // exception situation in which timestamp does not appear in priceLabel corpus but should be in the corpus --> try the previous minute
             return getPriorPrices(labels, preTweetTime);
@@ -241,13 +241,13 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             return labels.getPriceMap().get(postTweetTime);
         } else if(marketHoliday.contains(postTweetTime.toLocalDate())){
             // timestamp key does not exist in map because it falls on a market holiday --> try the next days opening price
-            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(1), BMW_XETRA_OPEN.minusMinutes(30)),timeZone));
+            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(1), stockMarketOpenTime.minusMinutes(30)),timeZone));
         } else if (postTweetTime.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
             // timestamp key does not exist in map because it falls on a Saturday  --> try the opening price in two days time
-            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(2), BMW_XETRA_OPEN.minusMinutes(30)),timeZone));
+            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(2), stockMarketOpenTime.minusMinutes(30)),timeZone));
         } else if (postTweetTime.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
             // timestamp key does not exist in map because it falls on a Sunday  --> try the next days opening price
-            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(1), BMW_XETRA_OPEN.minusMinutes(30)),timeZone));
+            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(1), stockMarketOpenTime.minusMinutes(30)),timeZone));
         } else {
             // exception situation in which timestamp does not appear in priceLabel corpus but should be in the corpus --> try the next minute
             return getPriorPrices(labels, postTweetTime.minusMinutes(19));
@@ -261,15 +261,21 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
      * @return time stamp of the last price print before the tweet
      */
     private ZonedDateTime lastTimePrintBeforeTweet(ZonedDateTime tweetTimeStamp){
-        if(tweetTimeStamp.toLocalTime().compareTo(BMW_XETRA_OPEN) <= 0){
+        if(tweetTimeStamp.toLocalTime().compareTo(stockMarketOpenTime) <= 0){
+
             // time stamp of the tweet occurs on or before market open --> return the previous day's closing price
-            return ZonedDateTime.of(BMW_XETRA_CLOSE.atDate(tweetTimeStamp.toLocalDate().minusDays(1)),timeZone);
-        } else if(tweetTimeStamp.toLocalTime().compareTo(BMW_XETRA_CLOSE) > 0){
+            return ZonedDateTime.of(stockMarketCloseTime.atDate(tweetTimeStamp.toLocalDate().minusDays(1)),timeZone);
+
+        } else if(tweetTimeStamp.toLocalTime().compareTo(stockMarketCloseTime) > 0){
+
             // time stamp of the tweet occurs after the market close --> return today's closing price
-            return ZonedDateTime.of(BMW_XETRA_CLOSE.atDate(tweetTimeStamp.toLocalDate()),timeZone);
+            return ZonedDateTime.of(stockMarketCloseTime.atDate(tweetTimeStamp.toLocalDate()),timeZone);
+
         } else {
+
             // timestamp of the tweet occurs during normal market hours
             return tweetTimeStamp.minusMinutes(1);
+
         }
     }
 
@@ -280,15 +286,21 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
      * @return time stamp of the price print 20 minutes after the tweet is published
      */
     private ZonedDateTime getTimeAfterTweet(ZonedDateTime tweetTimeStamp){
-        if(tweetTimeStamp.toLocalTime().plusMinutes(20).compareTo(BMW_XETRA_OPEN) < 0){
+        if(tweetTimeStamp.toLocalTime().plusMinutes(20).compareTo(stockMarketOpenTime) < 0){
+
             // time stamp of the tweet occurs more than 20 minutes prior to the market open --> return today's open price
-            return ZonedDateTime.of(BMW_XETRA_OPEN.atDate(tweetTimeStamp.toLocalDate()),timeZone);
-        } else if(tweetTimeStamp.plusMinutes(20).toLocalTime().compareTo(BMW_XETRA_CLOSE) > 0){
+            return ZonedDateTime.of(stockMarketOpenTime.atDate(tweetTimeStamp.toLocalDate()),timeZone);
+
+        } else if(tweetTimeStamp.plusMinutes(20).toLocalTime().compareTo(stockMarketCloseTime) > 0){
+
             // time stamp of the tweet occurs at a time later than 20 minutes before the market close --> return the next day's open price
-            return ZonedDateTime.of(BMW_XETRA_OPEN.atDate(tweetTimeStamp.toLocalDate().plusDays(1)),timeZone);
+            return ZonedDateTime.of(stockMarketOpenTime.atDate(tweetTimeStamp.toLocalDate().plusDays(1)),timeZone);
+
         } else {
+
             // timestamp of the tweet occurs during normal market hours
             return tweetTimeStamp.plusMinutes(20);
+            
         }
     }
 

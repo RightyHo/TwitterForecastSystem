@@ -60,7 +60,7 @@ public class TwitterForecastSystem {
     public void launchSystem() {
         // Build corpus of tweets
 
-        TwitterCorpus tCorpus = new TwitterCorpusListImpl(TWITTER_CORPUS_FILENAME);
+        TwitterCorpus tCorpus = new TwitterCorpusListImpl(TWITTER_CORPUS_FILENAME,TIME_ZONE,MARKET_HOLIDAY,EARLIEST_CORPUS_TIME_STAMP,LATEST_CORPUS_TIME_STAMP,BMW_XETRA_OPEN,BMW_XETRA_CLOSE);
         tCorpus.extractTweetsFromFile(TWITTER_CORPUS_FILENAME);
         System.out.println("\n******************************************************************************************");
         System.out.println("\nExtracted Twitter corpus from file.");

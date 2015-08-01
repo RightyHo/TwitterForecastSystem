@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,11 +19,13 @@ public class PriceLabelCorpusImplTest {
 
     private PriceLabelCorpus plCorpus;
     private String plFilename;
+    public static final ZoneOffset TIME_ZONE = ZoneOffset.of("Z");  // set time zone for date information used in the TFS to GMT/UTC
+    public static final int MILLENNIUM = 0;                          // needs to be changed to 2000 if the date format of input data is 23/11/15
 
     @Before
     public void setUp() throws Exception {
         plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
-        plCorpus = new PriceLabelCorpusImpl(plFilename);
+        plCorpus = new PriceLabelCorpusImpl(plFilename,TIME_ZONE,MILLENNIUM);
         plCorpus.extractPriceDataFromFile(plFilename);
     }
 

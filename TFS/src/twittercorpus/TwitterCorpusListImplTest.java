@@ -3,12 +3,8 @@ package twittercorpus;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.time.*;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -20,11 +16,41 @@ public class TwitterCorpusListImplTest {
     private TwitterCorpus tCorpus;
     private String tFilename;
     private String plFilename;
+    private String abbDicFile;
+    private String spellDicFile;
+    private String stopWordFile;
+    private int millennium;                          // needs to be changed to 2000 if the date format of input data is 23/11/15
+    private ZoneOffset timeZone;
 
     @Before
     public void setUp() throws Exception {
         tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt";
-        tCorpus = new TwitterCorpusListImpl(tFilename);
+        abbDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
+        spellDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/dictionary.txt";
+        stopWordFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/TwitterForecastSystem/TFS/English Stop Words.txt";
+        timeZone = ZoneOffset.of("Z");              // set time zone for date information used in the TFS to GMT/UTC
+        millennium = 0;                             // needs to be changed to 2000 if the date format of input data is 23/11/15
+        int thisYear = 2015;
+
+        // initialise set of local market holidays at the exchange on which the stock is traded
+        LocalDate[] setValues = new LocalDate[]{
+                LocalDate.of(thisYear,1,1),
+                LocalDate.of(thisYear,4,3),
+                LocalDate.of(thisYear,4,6),
+                LocalDate.of(thisYear,5,1),
+                LocalDate.of(thisYear,5,25),
+                LocalDate.of(thisYear,12,24),
+                LocalDate.of(thisYear,12,25),
+                LocalDate.of(thisYear,12,31)
+        };
+        Set<LocalDate> marketHoliday = new HashSet<>(Arrays.asList(setValues));
+
+        // set the market open and close times in GMT
+        LocalTime bmwOpenTime = LocalTime.of(8,0,0);
+        LocalTime bmwClosingTime = LocalTime.of(16,35,0);
+        ZonedDateTime earliestCorpusTimeStamp = ZonedDateTime.of(thisYear, 1, 1, 0, 0, 0, 0,timeZone);
+        ZonedDateTime latestCorpusTimeStamp = ZonedDateTime.of(thisYear, 3, 24, 0, 0, 0, 0, timeZone);
+        tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime);
         tCorpus.extractTweetsFromFile(tFilename);
         plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
     }
@@ -90,7 +116,7 @@ public class TwitterCorpusListImplTest {
 //    public void labelCorpus(PriceLabelCorpus labels)
     @Test
     public void testLabelCorpus() throws Exception {
-        PriceLabelCorpus plCorpus = new PriceLabelCorpusImpl(plFilename);
+        PriceLabelCorpus plCorpus = new PriceLabelCorpusImpl(plFilename,timeZone,millennium);
         plCorpus.extractPriceDataFromFile(plFilename);
         tCorpus.labelCorpus(plCorpus);
 
@@ -288,7 +314,7 @@ public class TwitterCorpusListImplTest {
         // Tweet #436 Mon Jan 19 03:37:00 2015	rt @bimmerella: @willyginpdx @helpfulatheist3 @ydanasmithdutra @hostileurbanist love u guys! ?????
         assertEquals("rt @bimmerella: @willyginpdx @helpfulatheist3 @ydanasmithdutra @hostileurbanist love u guys! ?????",tCorpus.getCorpus().get(435).getTweetText());
 
-        DictionaryTranslator testAbbrev = new AbbreviationDictionary();
+        DictionaryTranslator testAbbrev = new AbbreviationDictionary(abbDicFile);
         tCorpus.translateAbbreviations(testAbbrev);
 
         // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
@@ -326,9 +352,9 @@ public class TwitterCorpusListImplTest {
 
         tCorpus.replaceLinks();
         tCorpus.replaceUsernames();
-        DictionaryTranslator tAbbreviations = new AbbreviationDictionary();
+        DictionaryTranslator tAbbreviations = new AbbreviationDictionary(abbDicFile);
         tCorpus.translateAbbreviations(tAbbreviations);
-        DictionaryTranslator testSpell = new SpellingDictionary();
+        DictionaryTranslator testSpell = new SpellingDictionary(spellDicFile);
         tCorpus.checkSpelling(testSpell);
 
         // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
@@ -368,7 +394,7 @@ public class TwitterCorpusListImplTest {
         // Tweet #37 Fri Jan 16 07:37:00 2015	#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?
         assertEquals("#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?",tCorpus.getCorpus().get(36).getTweetText());
 
-        tCorpus.filterOutStopWords();
+        tCorpus.filterOutStopWords(stopWordFile);
 
         // check the tweet of the text is as expected after we run the filterOutStopWords method on the corpus
         // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
