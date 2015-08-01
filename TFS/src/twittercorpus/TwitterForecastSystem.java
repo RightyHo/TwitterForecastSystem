@@ -9,6 +9,8 @@ public class TwitterForecastSystem {
     private List<Tweet> trainingData = null;
     private List<Tweet> testData = null;
     private Classifier classifier = null;
+    public static final int NGRAM_COUNT = 1;        // set to 1 to use unigrams or 2 to use bigrams as features for the classifier
+    public static final int CLASSIFIER_STORAGE_LIMIT = 1000;    // set storage limit to adjust for forgetful learning effect
 
     public static void main(String[] args) {
         TwitterForecastSystem tfs = new TwitterForecastSystem();
@@ -20,34 +22,45 @@ public class TwitterForecastSystem {
         String twitterFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt";
         TwitterCorpus tCorpus = new TwitterCorpusListImpl(twitterFilename);
         tCorpus.extractTweetsFromFile(twitterFilename);
-        System.out.println("*******************************************************************************************");
-        System.out.println("Extracted Twitter Corpus From File.  Corpus contains a total of " + tCorpus.getCorpus().size() + " tweets.");
+        System.out.println("\n******************************************************************************************");
+        System.out.println("\nExtracted Twitter corpus from file.");
+        System.out.println("--> Corpus contains a total of " + tCorpus.getCorpus().size() + " tweets.");
 
         // Tweets cleaning process
         tCorpus.removeRetweets();
-        System.out.println("\nRemoved Retweets from the Twitter Corpus --> Number of tweets remaining in corpus: " + tCorpus.getCorpus().size());
-        tCorpus.replaceLinks();
-        tCorpus.replaceUsernames();
+        System.out.println("Removed Retweets from the Twitter corpus.");
+        System.out.println("--> Number of tweets remaining in corpus: " + tCorpus.getCorpus().size());
+        tCorpus.replaceLinks();     // *** CONSIDER DELETING LINKS FROM THE TWEET TEXT INSTEAD OF SUBSTITUTING IT FOR A TOKEN AS WE DO CURRENTLY ***
+        tCorpus.replaceUsernames(); // *** CONSIDER DELETING LINKS FROM THE TWEET TEXT INSTEAD OF SUBSTITUTING IT FOR A TOKEN AS WE DO CURRENTLY ***
         tCorpus.translateAbbreviations(new AbbreviationDictionary());
         tCorpus.checkSpelling(new SpellingDictionary());
         tCorpus.filterOutStopWords();
-        tCorpus.extractFeatures(1);         // extract uni-grams as features change to 2 for bi-grams
+        tCorpus.extractFeatures(NGRAM_COUNT);         // extract uni-grams as features change to 2 for bi-grams
         tCorpus.removeFilteredTweetsWithNoFeatures(); // if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
+        System.out.println("Removed mispelled words and 'stop' words.");
+        System.out.println("Removed tweets with no features remaining from the Twitter corpus.");
+        System.out.println("--> Number of tweets remaining in corpus after filtering process: " + tCorpus.getCorpus().size());
 
         // Label the entire data set
         String priceDataFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
         PriceLabelCorpus pCorpus = new PriceLabelCorpusImpl(priceDataFilename);
         pCorpus.extractPriceDataFromFile(priceDataFilename);
         tCorpus.labelCorpus(pCorpus);
+        System.out.println("\n******************************************************************************************");
+        System.out.println("\nLabelled the Twitter corpus with stock market price data.");
 
         // Train the TFS classifier on the labelled data set
         splitUpTrainingAndTestData(tCorpus);
-        classifier = new NaiveBayesClassifier(1000);     // set storage limit to adjust for forgetful learning effect
+        classifier = new NaiveBayesClassifier(CLASSIFIER_STORAGE_LIMIT);     // set storage limit to adjust for forgetful learning effect
         trainTFS();
+        System.out.println("\n******************************************************************************************");
+        System.out.println("\nTrained the Twitter Forecast System on the labelled training data corpus of tweets.");
 
         // Classify the test data set
         setTestDataSentimentToUnclassified();
         classifyTestData();
+        System.out.println("\n******************************************************************************************");
+        System.out.println("\nClassified the test data corpus tweets of tweets using the knoweldge base of the TFS.");
 
         // Analyse Results
         PredictionStatistics pStats = new PredictionStatisticsImpl();

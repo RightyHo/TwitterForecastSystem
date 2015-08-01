@@ -142,14 +142,15 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
     }
 
     public void printResults(){
-        System.out.println("");
+        System.out.println("\n******************************************************************************************");
+        System.out.println("*********************************** EXPERIMENT RESULTS ***********************************");
         System.out.println("******************************************************************************************\n");
         if(madeTFSCalcs) {
             System.out.println("Number of Correct TFS Predictions: " + correctTFSCount);
             System.out.println("Number of Incorrect TFS Predictions: " + incorrectTFSCount);
             double successRate = (double) correctTFSCount / (double) sizeOfTestDataSet;
             System.out.printf("Overall Accuracy of TFS Predictions - Proportion of correct predictions: %.2f\n",successRate);
-            System.out.println("******************************************************************************************\n");
+            System.out.println("\n******************************************************************************************\n");
             if (correctTFSCount + incorrectTFSCount != sizeOfTestDataSet)
                 throw new IllegalArgumentException("TFS calculations are inconsistent");
         }
@@ -158,7 +159,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
             System.out.println("Number of Incorrect MACD Predictions: " + incorrectMACDCount);
             double successRate = (double) correctMACDCount / (double) sizeOfTestDataSet;
             System.out.printf("Overall Accuracy of MACD Predictions - Proportion of correct predictions: %.2f\n",successRate);
-            System.out.println("******************************************************************************************\n");
+            System.out.println("\n******************************************************************************************\n");
             if (correctMACDCount + incorrectMACDCount != sizeOfTestDataSet) throw new IllegalArgumentException("MACD calculations are inconsistent");
         }
         if(madeSentiWordNetCalcs) {
@@ -166,7 +167,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
             System.out.println("Number of Incorrect SentiWordNet Predictions: " + incorrectSentiWordNetCount);
             double successRate = (double) correctSentiWordNetCount / (double) sizeOfTestDataSet;
             System.out.printf("Overall Accuracy of SentiWordNet Predictions - Proportion of correct predictions: %.2f\n", successRate);
-            System.out.println("******************************************************************************************\n");
+            System.out.println("\n******************************************************************************************\n");
             if (correctSentiWordNetCount + incorrectSentiWordNetCount != sizeOfTestDataSet) throw new IllegalArgumentException("SentiWordNet calculations are inconsistent");
         }
     }

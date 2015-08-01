@@ -362,6 +362,10 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         }
     }
 
+    /**
+     * iterates through the text in the twitter corpus and filters out words that do not appear in our reference spelling dictionary.
+     * @param spellingDict
+     */
     public void checkSpelling(DictionaryTranslator spellingDict){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
