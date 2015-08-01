@@ -1,12 +1,22 @@
 package twittercorpus;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Andrew on 25/07/15.
  */
 public class TwitterForecastSystem {
+
+    private List<Tweet> trainingData = null;
+    private List<Tweet> testData = null;
+    private Classifier classifier = null;
 
     public static final String TWITTER_CORPUS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt";
     public static final String PRICE_DATA_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
@@ -18,11 +28,29 @@ public class TwitterForecastSystem {
     public static final int NGRAM_COUNT = 1;                        // set to 1 to use unigrams or 2 to use bigrams as features for the classifier
     public static final int CLASSIFIER_STORAGE_LIMIT = 1000;        // set storage limit to adjust for forgetful learning effect
     public static final ZoneOffset TIME_ZONE = ZoneOffset.of("Z");  // set time zone for date information used in the TFS to GMT/UTC
-    public static final int MILLENIUM = 0;                          // needs to be changed to 2000 if the date format of input data is 23/11/15
+    public static final int MILLENNIUM = 0;                          // needs to be changed to 2000 if the date format of input data is 23/11/15
+    public static final int THIS_YEAR = 2015;
 
-    private List<Tweet> trainingData = null;
-    private List<Tweet> testData = null;
-    private Classifier classifier = null;
+    // initialise set of local market holidays at the exchange on which the stock is traded
+    public static final LocalDate[] SET_VALUES = new LocalDate[]{
+            LocalDate.of(THIS_YEAR,1,1),
+            LocalDate.of(THIS_YEAR,4,3),
+            LocalDate.of(THIS_YEAR,4,6),
+            LocalDate.of(THIS_YEAR,5,1),
+            LocalDate.of(THIS_YEAR,5,25),
+            LocalDate.of(THIS_YEAR,12,24),
+            LocalDate.of(THIS_YEAR,12,25),
+            LocalDate.of(THIS_YEAR,12,31)
+    };
+    public static final Set<LocalDate> MARKET_HOLIDAY = new HashSet<>(Arrays.asList(SET_VALUES));
+
+    // set the market open and close times in GMT - *** AS AN EXTENSION IF TIME PERMITS CHANGE THIS TO THE LOCAL TIME VALUE FOR BMW WHICH IS FRANKFURT TIME - THIS WILL REQUIRE REFACTORING OF THE CODE ***
+    public static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);
+    public static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);
+
+    // set date range of the Twitter corpus at our disposal
+    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 1, 1, 0, 0, 0, 0,TIME_ZONE);
+    public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 3, 24, 0, 0, 0, 0, TIME_ZONE);
 
     public static void main(String[] args) {
         TwitterForecastSystem tfs = new TwitterForecastSystem();
@@ -54,7 +82,7 @@ public class TwitterForecastSystem {
         System.out.println("--> Number of tweets remaining in corpus after filtering process: " + tCorpus.getCorpus().size());
 
         // Label the entire data set
-        PriceLabelCorpus pCorpus = new PriceLabelCorpusImpl(PRICE_DATA_FILENAME,TIME_ZONE,MILLENIUM);
+        PriceLabelCorpus pCorpus = new PriceLabelCorpusImpl(PRICE_DATA_FILENAME,TIME_ZONE,MILLENNIUM);
         pCorpus.extractPriceDataFromFile(PRICE_DATA_FILENAME);
         tCorpus.labelCorpus(pCorpus);
         System.out.println("\n******************************************************************************************");
