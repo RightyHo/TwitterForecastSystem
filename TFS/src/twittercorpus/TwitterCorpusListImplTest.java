@@ -24,7 +24,7 @@ public class TwitterCorpusListImplTest {
 
     @Before
     public void setUp() throws Exception {
-        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt";
+        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample - New Date Format.txt";
         abbDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
         spellDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
         stopWordFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
@@ -78,7 +78,7 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testGetFileName() throws Exception {
-        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt", tCorpus.getFileName());
+        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample - New Date Format.txt", tCorpus.getFileName());
     }
 
     @Test
