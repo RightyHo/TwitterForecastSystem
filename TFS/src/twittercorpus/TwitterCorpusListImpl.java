@@ -78,32 +78,32 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 Scanner s = new Scanner(currentLine);
 
 // *** Parser designed for new Twitter Corpus text format ***
-//
-//                String dateString = s.next().trim();
-//                String timeString = s.next().trim();
-//
-//                Scanner splitDate = new Scanner(dateString).useDelimiter("/");
-//                int dayNum = splitDate.nextInt();
-//                int month = splitDate.nextInt();
-//                int year = splitDate.nextInt() + millennium;
-//
-//                Scanner splitTime = new Scanner(timeString).useDelimiter(":");
-//                int hour =  splitTime.nextInt();
-//                int min =  splitTime.nextInt();
-//                int sec = splitTime.nextInt();
 
-// *** Parser designed for old Twitter Corpus text format ***
-
-                String dayOfTheWeek = s.next().trim();
-                int month = getMonthNum(s.next());
-                int dayNum = s.nextInt();
+                String dateString = s.next().trim();
                 String timeString = s.next().trim();
-                int year =  s.nextInt();
+
+                Scanner splitDate = new Scanner(dateString).useDelimiter("/");
+                int dayNum = splitDate.nextInt();
+                int month = splitDate.nextInt();
+                int year = splitDate.nextInt() + millennium;
 
                 Scanner splitTime = new Scanner(timeString).useDelimiter(":");
-                int hour = splitTime.nextInt();
-                int min = splitTime.nextInt();
+                int hour =  splitTime.nextInt();
+                int min =  splitTime.nextInt();
                 int sec = splitTime.nextInt();
+
+// *** Parser designed for old Twitter Corpus text format ***
+//
+//                String dayOfTheWeek = s.next().trim();
+//                int month = getMonthNum(s.next());
+//                int dayNum = s.nextInt();
+//                String timeString = s.next().trim();
+//                int year =  s.nextInt();
+//
+//                Scanner splitTime = new Scanner(timeString).useDelimiter(":");
+//                int hour = splitTime.nextInt();
+//                int min = splitTime.nextInt();
+//                int sec = splitTime.nextInt();
 
                 s.useDelimiter("\\z");                                          // sets scanner delimiter to ignore all spaces
                 String tweet =  s.next().trim();                                // reads in the rest of the current line
