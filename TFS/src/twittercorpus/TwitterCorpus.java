@@ -34,6 +34,10 @@ public interface TwitterCorpus {
 
      void removeRetweets();
 
+     void removeLinks();
+
+     void removeUsernames();
+
      void replaceLinks();
 
      void replaceUsernames();

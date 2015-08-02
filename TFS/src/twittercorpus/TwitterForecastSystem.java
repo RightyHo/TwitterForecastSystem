@@ -70,8 +70,8 @@ public class TwitterForecastSystem {
         tCorpus.removeRetweets();
         System.out.println("Removed Retweets from the Twitter corpus.");
         System.out.println("--> Number of tweets remaining in corpus: " + tCorpus.getCorpus().size());
-        tCorpus.replaceLinks();     // *** CONSIDER DELETING LINKS FROM THE TWEET TEXT INSTEAD OF SUBSTITUTING IT FOR A TOKEN AS WE DO CURRENTLY ***
-        tCorpus.replaceUsernames(); // *** CONSIDER DELETING LINKS FROM THE TWEET TEXT INSTEAD OF SUBSTITUTING IT FOR A TOKEN AS WE DO CURRENTLY ***
+        tCorpus.removeLinks();
+        tCorpus.removeUsernames();
         tCorpus.translateAbbreviations(new AbbreviationDictionary(ABBREVIATION_DICTIONARY_FILENAME));
         tCorpus.checkSpelling(new SpellingDictionary(SPELLING_DICTIONARY_FILENAME));
         tCorpus.filterOutStopWords(STOP_WORDS_FILENAME);
@@ -99,7 +99,7 @@ public class TwitterForecastSystem {
         setTestDataSentimentToUnclassified();
         classifyTestData();
         System.out.println("\n******************************************************************************************");
-        System.out.println("\nClassified the test data corpus tweets of tweets using the knoweldge base of the TFS.");
+        System.out.println("\nClassified the test data corpus of tweets using the knoweldge base of the TFS.");
 
         // Analyse Results
         PredictionStatistics pStats = new PredictionStatisticsImpl();

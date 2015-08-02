@@ -269,7 +269,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         } else if(tweetTimeStamp.toLocalTime().compareTo(stockMarketCloseTime) > 0){
 
             // time stamp of the tweet occurs after the market close --> return today's closing price
-            return ZonedDateTime.of(stockMarketCloseTime.atDate(tweetTimeStamp.toLocalDate()),timeZone);
+            return ZonedDateTime.of(stockMarketCloseTime.atDate(tweetTimeStamp.toLocalDate()), timeZone);
 
         } else {
 
@@ -294,7 +294,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         } else if(tweetTimeStamp.plusMinutes(20).toLocalTime().compareTo(stockMarketCloseTime) > 0){
 
             // time stamp of the tweet occurs at a time later than 20 minutes before the market close --> return the next day's open price
-            return ZonedDateTime.of(stockMarketOpenTime.atDate(tweetTimeStamp.toLocalDate().plusDays(1)),timeZone);
+            return ZonedDateTime.of(stockMarketOpenTime.atDate(tweetTimeStamp.toLocalDate().plusDays(1)), timeZone);
 
         } else {
 
@@ -312,6 +312,40 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             if(tText.charAt(0) == 'r' && tText.charAt(1) == 't'){
                 corpusIterator.remove();
             }
+        }
+    }
+
+    public void removeLinks(){
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            Scanner scanText = new Scanner(tText);
+            String replacementText = "";
+            while (scanText.hasNext()){
+                String focusWord = scanText.next();
+                if(!focusWord.startsWith("http://")){
+                    replacementText += focusWord + " ";
+                }
+            }
+            focus.setTweetText(replacementText);
+        }
+    }
+
+    public void removeUsernames(){
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            Scanner scanText = new Scanner(tText);
+            String replacementText = "";
+            while (scanText.hasNext()){
+                String focusWord = scanText.next();
+                if(!focusWord.startsWith("@")){
+                    replacementText += focusWord + " ";
+                }
+            }
+            focus.setTweetText(replacementText);
         }
     }
 
