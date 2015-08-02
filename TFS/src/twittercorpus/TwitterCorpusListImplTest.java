@@ -50,7 +50,7 @@ public class TwitterCorpusListImplTest {
         LocalTime bmwClosingTime = LocalTime.of(16,35,0);
         ZonedDateTime earliestCorpusTimeStamp = ZonedDateTime.of(thisYear, 1, 1, 0, 0, 0, 0,timeZone);
         ZonedDateTime latestCorpusTimeStamp = ZonedDateTime.of(thisYear, 3, 24, 0, 0, 0, 0, timeZone);
-        tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime);
+        tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime,millennium);
         tCorpus.extractTweetsFromFile(tFilename);
         plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
     }
