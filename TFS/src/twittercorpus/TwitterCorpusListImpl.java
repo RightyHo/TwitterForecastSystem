@@ -241,13 +241,13 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             return labels.getPriceMap().get(postTweetTime);
         } else if(marketHoliday.contains(postTweetTime.toLocalDate())){
             // timestamp key does not exist in map because it falls on a market holiday --> try the next days opening price
-            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(1), stockMarketOpenTime.minusMinutes(30)),timeZone));
+            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(1), stockMarketOpenTime.minusMinutes(30)), timeZone));
         } else if (postTweetTime.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
             // timestamp key does not exist in map because it falls on a Saturday  --> try the opening price in two days time
-            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(2), stockMarketOpenTime.minusMinutes(30)),timeZone));
+            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(2), stockMarketOpenTime.minusMinutes(30)), timeZone));
         } else if (postTweetTime.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
             // timestamp key does not exist in map because it falls on a Sunday  --> try the next days opening price
-            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(1), stockMarketOpenTime.minusMinutes(30)),timeZone));
+            return getPrice20MinsAfterTweet(labels, ZonedDateTime.of(LocalDateTime.of(postTweetTime.toLocalDate().plusDays(1), stockMarketOpenTime.minusMinutes(30)), timeZone));
         } else {
             // exception situation in which timestamp does not appear in priceLabel corpus but should be in the corpus --> try the next minute
             return getPriorPrices(labels, postTweetTime.minusMinutes(19));
@@ -332,23 +332,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         }
     }
 
-    public void removeUsernames(){
-        Iterator<Tweet> corpusIterator = corpus.iterator();
-        while(corpusIterator.hasNext()){
-            Tweet focus = corpusIterator.next();
-            String tText = focus.getTweetText();
-            Scanner scanText = new Scanner(tText);
-            String replacementText = "";
-            while (scanText.hasNext()){
-                String focusWord = scanText.next();
-                if(!focusWord.startsWith("@")){
-                    replacementText += focusWord + " ";
-                }
-            }
-            focus.setTweetText(replacementText);
-        }
-    }
-
     public void replaceLinks(){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
@@ -361,6 +344,23 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 if(focusWord.startsWith("http://")){
                     replacementText += LINK_EQUIVALENCE_TOKEN + " ";
                 } else {
+                    replacementText += focusWord + " ";
+                }
+            }
+            focus.setTweetText(replacementText);
+        }
+    }
+
+    public void removeUsernames(){
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()){
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            Scanner scanText = new Scanner(tText);
+            String replacementText = "";
+            while (scanText.hasNext()){
+                String focusWord = scanText.next();
+                if(!focusWord.startsWith("@")){
                     replacementText += focusWord + " ";
                 }
             }

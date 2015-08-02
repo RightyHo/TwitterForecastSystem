@@ -78,7 +78,7 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testGetFileName() throws Exception {
-        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt",tCorpus.getFileName());
+        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample.txt", tCorpus.getFileName());
     }
 
     @Test
@@ -222,6 +222,43 @@ public class TwitterCorpusListImplTest {
     }
 
     @Test
+    public void testRemoveLinks() throws Exception {
+
+        // test that tweets contain URL links prior to running the replaceLinks method:
+
+        // Fri Jan 16 01:58:00 2015	rt @bmw: packed with innovations ? the #bmwi8 and #bmwi3: gorilla-glas, ologic-technology and bmw laserlight. @bmwi http://t.co/yshqauivo9
+        Tweet urlTweetA = tCorpus.getCorpus().get(4);
+
+        // Fri Jan 16 02:31:00 2015	rt @johnspatricc: ? http://t.co/iivulyxuc5 674 designed to resist ak-47s: tony abbotts new bulletproof bmw #tonyabbott deputy prime mi? htt?
+        Tweet urlTweetB = tCorpus.getCorpus().get(9);
+
+        // Fri Jan 16 02:55:00 2015	led angel eye halo light bmw 3-series e90 e91 06-08 oem http://t.co/ewij4o6ecf http://t.co/efjsry3q66
+        Tweet urlTweetC = tCorpus.getCorpus().get(11);
+
+        assertTrue(urlTweetA.getTweetText().contains("http://"));
+        assertTrue(urlTweetB.getTweetText().contains("http://"));
+        assertTrue(urlTweetC.getTweetText().contains("http://"));
+
+        // test that tweet does not contain URL links prior to running the replaceLinks method as a control:
+
+        // Fri Jan 16 03:23:00 2015	rt @khalidkarim: 2014...audi, bmw &amp; merc sold 0.7 cars for every 1000 citizens of the world.malaysia lagged the global average with only 0.?
+        Tweet unlinkedTweet = tCorpus.getCorpus().get(13);
+
+        assertFalse(unlinkedTweet.getTweetText().contains("http://"));
+
+        // replace links found in the corpus with an equivalence token
+        tCorpus.removeLinks();
+
+        // test that the URL links have been removed in the tweets that previously contained links:
+        assertFalse(urlTweetA.getTweetText().contains("http://"));
+        assertFalse(urlTweetB.getTweetText().contains("http://"));
+        assertFalse(urlTweetC.getTweetText().contains("http://"));
+
+        // test that tweet which originally did not contain URL links prior to running the replaceLinks method is unchanged as a control:
+        assertFalse(unlinkedTweet.getTweetText().contains("http://"));
+    }
+
+    @Test
     public void testReplaceLinks() throws Exception {
 
         // test that tweets contain URL links prior to running the replaceLinks method:
@@ -263,6 +300,44 @@ public class TwitterCorpusListImplTest {
     }
 
     @Test
+    public void testRemoveUsernames() throws Exception {
+
+        // test that tweets contain "usernames" prior to running the replaceUsernames method:
+
+        // Fri Jan 16 01:58:00 2015	rt @bmw: packed with innovations ? the #bmwi8 and #bmwi3: gorilla-glas, ologic-technology and bmw laserlight. @bmwi http://t.co/yshqauivo9
+        Tweet usernameTweetA = tCorpus.getCorpus().get(4);
+
+        // Fri Jan 16 02:31:00 2015	rt @johnspatricc: ? http://t.co/iivulyxuc5 674 designed to resist ak-47s: tony abbotts new bulletproof bmw #tonyabbott deputy prime mi? htt?
+        Tweet usernameTweetB = tCorpus.getCorpus().get(9);
+
+        // Fri Jan 16 03:23:00 2015	rt @khalidkarim: 2014...audi, bmw &amp; merc sold 0.7 cars for every 1000 citizens of the world.malaysia lagged the global average with only 0.?
+        Tweet usernameTweetC = tCorpus.getCorpus().get(13);
+
+        assertTrue(usernameTweetA.getTweetText().contains("@"));
+        assertTrue(usernameTweetB.getTweetText().contains("@"));
+        assertTrue(usernameTweetC.getTweetText().contains("@"));
+
+        // test that tweet does not contain a "username" prior to running the replaceUsernames method as a control:
+
+        // Fri Jan 16 02:55:00 2015	led angel eye halo light bmw 3-series e90 e91 06-08 oem http://t.co/ewij4o6ecf http://t.co/efjsry3q66
+        Tweet noNameTweet = tCorpus.getCorpus().get(11);
+
+        assertFalse(noNameTweet.getTweetText().contains("@"));
+
+        // replace links found in the corpus with an equivalence token
+        tCorpus.removeUsernames();
+
+        // test that the usernames have been removed in the tweets that previously contained usernames:
+        assertFalse(usernameTweetA.getTweetText().contains("@"));
+        assertFalse(usernameTweetB.getTweetText().contains("@"));
+        assertFalse(usernameTweetC.getTweetText().contains("@"));
+
+        // test that tweet which originally did not contain a username prior to running the removeUsernames method is unchanged as a control:
+        assertFalse(noNameTweet.getTweetText().contains("USERNAME"));
+        assertFalse(noNameTweet.getTweetText().contains("@"));
+    }
+
+    @Test
     public void testReplaceUsernames() throws Exception {
 
         // test that tweets contain "usernames" prior to running the replaceUsernames method:
@@ -290,7 +365,7 @@ public class TwitterCorpusListImplTest {
         // replace links found in the corpus with an equivalence token
         tCorpus.replaceUsernames();
 
-        // test that the URL links have been replaced by the equivalence token in the tweets that previously contained links:
+        // test that the usernames have been replaced by the equivalence token in the tweets that previously contained usernames:
         assertTrue(usernameTweetA.getTweetText().contains("USERNAME"));
         assertFalse(usernameTweetA.getTweetText().contains("@"));
         assertTrue(usernameTweetB.getTweetText().contains("USERNAME"));
@@ -298,7 +373,7 @@ public class TwitterCorpusListImplTest {
         assertTrue(usernameTweetC.getTweetText().contains("USERNAME"));
         assertFalse(usernameTweetC.getTweetText().contains("@"));
 
-        // test that tweet which originally did not contain URL links prior to running the replaceLinks method is unchanged as a control:
+        // test that tweet which originally did not contain a username prior to running the replaceUsernames method is unchanged as a control:
         assertFalse(noNameTweet.getTweetText().contains("USERNAME"));
         assertFalse(noNameTweet.getTweetText().contains("@"));
     }
