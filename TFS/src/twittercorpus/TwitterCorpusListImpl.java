@@ -13,12 +13,13 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
     private List<Tweet> corpus;
     private String fileName;
-    private static ZoneOffset timeZone;
-    private static Set<LocalDate> marketHoliday;
-    private static ZonedDateTime earliestCorpusTimeStamp;
-    private static ZonedDateTime latestCorpusTimeStamp;
-    private static LocalTime stockMarketOpenTime;
-    private static LocalTime stockMarketCloseTime;
+    private ZoneOffset timeZone;
+    private Set<LocalDate> marketHoliday;
+    private ZonedDateTime earliestCorpusTimeStamp;
+    private ZonedDateTime latestCorpusTimeStamp;
+    private LocalTime stockMarketOpenTime;
+    private LocalTime stockMarketCloseTime;
+    private int millennium;
 
     public static final String USERNAME_EQUIVALENCE_TOKEN = "USERNAME";
     public static final String LINK_EQUIVALENCE_TOKEN = "LINK";
@@ -31,7 +32,8 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                                  ZonedDateTime earliestCorpusTimeStamp,
                                  ZonedDateTime latestCorpusTimeStamp,
                                  LocalTime stockMarketOpenTime,
-                                 LocalTime stockMarketCloseTime) {
+                                 LocalTime stockMarketCloseTime,
+                                 int millennium) {
         this.corpus = new ArrayList<>();
         this.fileName = fileName;
         this.timeZone = timeZone;
@@ -40,6 +42,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         this.latestCorpusTimeStamp = latestCorpusTimeStamp;
         this.stockMarketOpenTime = stockMarketOpenTime;
         this.stockMarketCloseTime = stockMarketCloseTime;
+        this.millennium = millennium;
     }
 
     public String getUsernameEquivalenceToken() {
@@ -73,23 +76,41 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
                 // divide current line into its individual constituents
                 Scanner s = new Scanner(currentLine);
-                String dayOfTheWeek = s.next().trim();
-                int month = getMonthNum(s.next());
-                int dayNum = s.nextInt();
+
+                String dateString = s.next().trim();
                 String timeString = s.next().trim();
-                int year =  s.nextInt();
+
+                Scanner splitDate = new Scanner(dateString).useDelimiter("/");
+                int dayNum = splitDate.nextInt();
+                int month = splitDate.nextInt();
+                int year = splitDate.nextInt() + millennium;
+
+                Scanner splitTime = new Scanner(timeString).useDelimiter(":");
+                int hour =  splitTime.nextInt();
+                int min =  splitTime.nextInt();
+                int sec = splitTime.nextInt();
+
+// *** Parser designed for old Twitter Corpus text format ***
+//
+//                String dayOfTheWeek = s.next().trim();
+//                int month = getMonthNum(s.next());
+//                int dayNum = s.nextInt();
+//                String timeString = s.next().trim();
+//                int year =  s.nextInt();
+//
+//                Scanner splitTime = new Scanner(timeString).useDelimiter(":");
+//                int hour = splitTime.nextInt();
+//                int min = splitTime.nextInt();
+//                int sec = splitTime.nextInt();
+
                 s.useDelimiter("\\z");                                          // sets scanner delimiter to ignore all spaces
                 String tweet =  s.next().trim();                                // reads in the rest of the current line
-                Scanner splitTime = new Scanner(timeString).useDelimiter(":");
-                int hour = splitTime.nextInt();
-                int min = splitTime.nextInt();
-                int sec = splitTime.nextInt();
 
                 // create new ZonedDateTime object for each row in the file
                 LocalDateTime localTS = LocalDateTime.of(year, month, dayNum, hour, min, sec);
                 ZonedDateTime ts = ZonedDateTime.of(localTS,timeZone);
 
-                // check if the tweet was published during BMW stock market trading hours...not 100% sure if this is flag is necessary?
+                // check if the tweet was published during BMW stock market trading hours...*** not 100% sure if this is flag is necessary? ***
                 boolean tsOutOfXetraMarketHours = (ts.toLocalTime().compareTo(stockMarketOpenTime) < 0
                         || ts.toLocalTime().compareTo(stockMarketCloseTime) > 0);
 

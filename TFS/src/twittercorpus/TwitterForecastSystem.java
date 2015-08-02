@@ -60,7 +60,7 @@ public class TwitterForecastSystem {
     public void launchSystem() {
         // Build corpus of tweets
 
-        TwitterCorpus tCorpus = new TwitterCorpusListImpl(TWITTER_CORPUS_FILENAME,TIME_ZONE,MARKET_HOLIDAY,EARLIEST_CORPUS_TIME_STAMP,LATEST_CORPUS_TIME_STAMP,BMW_XETRA_OPEN,BMW_XETRA_CLOSE);
+        TwitterCorpus tCorpus = new TwitterCorpusListImpl(TWITTER_CORPUS_FILENAME,TIME_ZONE,MARKET_HOLIDAY,EARLIEST_CORPUS_TIME_STAMP,LATEST_CORPUS_TIME_STAMP,BMW_XETRA_OPEN,BMW_XETRA_CLOSE,MILLENNIUM);
         tCorpus.extractTweetsFromFile(TWITTER_CORPUS_FILENAME);
         System.out.println("\n******************************************************************************************");
         System.out.println("\nExtracted Twitter corpus from file.");
@@ -77,7 +77,7 @@ public class TwitterForecastSystem {
         tCorpus.filterOutStopWords(STOP_WORDS_FILENAME);
         tCorpus.extractFeatures(NGRAM_COUNT);         // extract uni-grams as features change to 2 for bi-grams
         tCorpus.removeFilteredTweetsWithNoFeatures(); // if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
-        System.out.println("Removed mispelled words and 'stop' words.");
+        System.out.println("Removed URL links, usernames, mispelled words and 'stop' words.");
         System.out.println("Removed tweets with no features remaining from the Twitter corpus.");
         System.out.println("--> Number of tweets remaining in corpus after filtering process: " + tCorpus.getCorpus().size());
 
