@@ -23,14 +23,14 @@ public class SpellingDictionaryTest {
 
         // processes strings as expected
         String actual = testDT.processString("you bettr recognize aav or iss it recognise?");
-        assertEquals("you or it recognise?",actual);
+        assertEquals("you or it recognise",actual);
 
         String actualSecond = testDT.processString("it's tough bng a ttalg legggend take tz from moi");
-        assertEquals("it's tough a take from moi",actualSecond);
+        assertEquals("its tough a take from moi",actualSecond);
 
-        // process leaves numbers unchanged
+        // process removes numbers
         String actualThird = testDT.processString("345 455 55 73");
-        assertEquals("345 455 55 73",actualThird);
+        assertEquals("",actualThird);
 
         // process leaves #hashtags unchanged
         String actualFourth = testDT.processString("i want a BMW #greatcar");
@@ -38,6 +38,6 @@ public class SpellingDictionaryTest {
 
         // process leaves #hashtags unchanged with multiple #hashtags in the text while still removing misspelt words
         String actualFifth = testDT.processString("i want a BMW #greatcar it's a nehgt of a car #birthdayprezzyforme");
-        assertEquals("i want a BMW #greatcar it's a of a car #birthdayprezzyforme",actualFifth);
+        assertEquals("i want a BMW #greatcar its a of a car #birthdayprezzyforme",actualFifth);
     }
 }

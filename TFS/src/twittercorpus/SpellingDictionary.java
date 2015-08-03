@@ -73,8 +73,8 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
         String result = "";
         if(input.contains("#")){
             String[] strParts = input.split("#");
-            // process words before the hashtag normally
-            result = getCorrectlySpeltWords(strParts[0]);
+            // process words before the hashtag normally after removing non letters/spaces from the string
+            result = getCorrectlySpeltWords(retainLettersOnly(strParts[0]));
             // keep the hashtag message even though it is likely spelt incorrectly
             for(int i=1;i < strParts.length;i++){
                 Scanner sc = new Scanner(strParts[i]);
@@ -83,16 +83,27 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
                     result = result + " #" + sc.next();
                 }
                 // process the rest of the message (if any) after the hashtag and before the next hashtag (if any)
-                String restOfLine = "";
+                String restOfPassage = "";
                 while(sc.hasNext()){
-                    restOfLine = restOfLine + " " + sc.next();
+                    restOfPassage = restOfPassage + " " + sc.next();
                 }
-                result = result + " " + getCorrectlySpeltWords(restOfLine);
+                result = result + " " + getCorrectlySpeltWords(retainLettersOnly(restOfPassage));
             }
         } else {
-            result = getCorrectlySpeltWords(input);
+            // run spell check after removing non letters/spaces from the string
+            result = getCorrectlySpeltWords(retainLettersOnly(input));
         }
         return result.replaceAll("\\s+", " ").trim();
+    }
+
+    private String retainLettersOnly(String str){
+        String result = "";
+        for(int i=0;i<str.length();i++){
+            if(Character.isLetter(str.charAt(i)) || Character.isSpaceChar(str.charAt(i))){
+                result += str.charAt(i);
+            }
+        }
+        return result;
     }
 
     private String getCorrectlySpeltWords(String str){
