@@ -24,7 +24,7 @@ public class TweetImpl implements Tweet {
     private Sentiment sentiWordNetClassification;
     private List<String> features;
 
-    // constructors
+    // constructor
 
     public TweetImpl(ZonedDateTime timeStamp, String tweetText) {
         this.timeStamp = timeStamp;
@@ -35,19 +35,6 @@ public class TweetImpl implements Tweet {
         postTweetSnapshot = null;
         nextTweet = null;
         sentiment = Sentiment.UNCLASSIFIED;
-        sentiWordNetClassification = Sentiment.UNCLASSIFIED;
-        features = new ArrayList<>();
-    }
-
-    public TweetImpl(ZonedDateTime timeStamp, boolean isRetweet, boolean isLabelled, String tweetText,PriceSnapshot initialSnapshot, PriceSnapshot postTweetSnapshot, Tweet nextTweet, Sentiment sentiment) {
-        this.timeStamp = timeStamp;
-        this.isRetweet = isRetweet;
-        this.isLabelled = isLabelled;
-        this.tweetText = tweetText;
-        this.initialSnapshot = initialSnapshot;
-        this.postTweetSnapshot = postTweetSnapshot;
-        this.nextTweet = nextTweet;
-        this.sentiment = sentiment;
         sentiWordNetClassification = Sentiment.UNCLASSIFIED;
         features = new ArrayList<>();
     }
