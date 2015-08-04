@@ -96,7 +96,7 @@ public class TwitterCorpusListImplTest {
     public void testExtractTweetsFromFile() throws Exception {
 
         // test first tweet in list
-        assertEquals(tCorpus.getCorpus().get(0).getTweetText(),"#usedcars used 2003 bmw z4 2.5i in gainesville, fl 32601 for sale at autoflex llc http://t.co/fxbqiiu6rr http://t.co/rok2iyoh0c");
+        assertEquals(tCorpus.getCorpus().get(0).getTweetText(),("#usedcars used 2003 bmw z4 2.5i in gainesville, fl 32601 for sale at autoflex llc http://t.co/fxbqiiu6rr http://t.co/rok2iyoh0c").trim());
 
         // test second tweet in list
         LocalDateTime localExpectedTS = LocalDateTime.of(2015,1,16,0,18,0);
@@ -408,7 +408,7 @@ public class TwitterCorpusListImplTest {
 
         // check the tweet of the text is as expected before we run the checkSpelling method on the corpus
         // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
-        assertEquals("check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
+        assertEquals("check out tools (2) waterpump hub fan holder repair parts for bmw http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
 
         // check the tweet of the text is as expected before we run the checkSpelling method on the corpus
         // Tweet #588 Tue Jan 20 01:50:00 2015	lol ceo yako bmw ko facebook be posting status like: grade 8 here i come :d
@@ -416,18 +416,21 @@ public class TwitterCorpusListImplTest {
 
         // check the tweet of the text is as expected before we run the checkSpelling method on the corpus
         // Tweet #178 Sat Jan 17 04:48:00 2015	i wish i could ride around that westheimer with lester aka  @settle4les  in his lac or bimmer just jamming
-        assertEquals("i wish i could ride around that westheimer with lester aka  @settle4les  in his lac or bimmer just jamming",tCorpus.getCorpus().get(177).getTweetText());
+        assertEquals("i wish i could ride around that westheimer with lester aka @settle4les in his lac or bimmer just jamming",tCorpus.getCorpus().get(177).getTweetText());
 
         // check the tweet of the text is as expected before we run the checkSpelling method on the corpus
         // Tweet #37 Fri Jan 16 07:37:00 2015	#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?
-        assertEquals("#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?",tCorpus.getCorpus().get(36).getTweetText());
+        assertEquals("#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp. what is his govt /sacp time audit?",tCorpus.getCorpus().get(36).getTweetText());
 
         // check the tweet of the text is as expected before we run the checkSpelling method on the corpus
         // Tweet #223 Sat Jan 17 12:07:00 2015	i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari
         assertEquals("i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari", tCorpus.getCorpus().get(222).getTweetText());
 
+        System.out.println(tCorpus.getCorpus().get(222).getTweetText());
         tCorpus.removeLinks();
+        System.out.println(tCorpus.getCorpus().get(222).getTweetText());
         tCorpus.removeUsernames();
+        System.out.println(tCorpus.getCorpus().get(222).getTweetText());
         DictionaryTranslator testSpell = new SpellingDictionary(spellDicFile);
         tCorpus.checkSpelling(testSpell);
 
@@ -448,11 +451,12 @@ public class TwitterCorpusListImplTest {
 
         // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
         // Tweet #37 Fri Jan 16 07:37:00 2015	#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?
-//        assertEquals("#safmradio. bought a r1.5m bmw when he became min of higher ed. not after years at . what is his govt / time audit?",tCorpus.getCorpus().get(36).getTweetText());
+//        assertEquals("#safmradio. bought a rm bmw when he became min of higher ed. not after years at . what is his govt time audit",tCorpus.getCorpus().get(36).getTweetText());
 
         // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
         // Tweet #223 Sat Jan 17 12:07:00 2015	i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari
-//        assertEquals("i will legit get more excited seeing a 25year old plus bmw or rather than a or",tCorpus.getCorpus().get(222).getTweetText());
+        System.out.println(tCorpus.getCorpus().get(222).getTweetText());
+        assertEquals("i will legit get more excited seeing a year old plus bmw or rather than a or",tCorpus.getCorpus().get(222).getTweetText());
     }
 
     @Test
@@ -462,11 +466,11 @@ public class TwitterCorpusListImplTest {
 
         // check the tweet of the text is as expected before we run the filterOutStopWords method on the corpus
         // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
-        assertEquals("check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
+        assertEquals("check out tools (2) waterpump hub fan holder repair parts for bmw http://t.co/2jnm2xddhe via @ebay #bmw #tools",tCorpus.getCorpus().get(350).getTweetText());
 
         // check the tweet of the text is as expected before we run the filterOutStopWords method on the corpus
         // Tweet #37 Fri Jan 16 07:37:00 2015	#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?
-        assertEquals("#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?",tCorpus.getCorpus().get(36).getTweetText());
+        assertEquals("#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp. what is his govt /sacp time audit?",tCorpus.getCorpus().get(36).getTweetText());
 
         tCorpus.filterOutStopWords(stopWordFile);
 

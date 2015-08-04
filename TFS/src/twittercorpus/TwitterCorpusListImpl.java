@@ -78,9 +78,18 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 Scanner s = new Scanner(currentLine);
 
 // *** Parser designed for new Twitter Corpus text format ***
-
+                // read date and time strings
                 String dateString = s.next().trim();
                 String timeString = s.next().trim();
+
+                // read in the rest of the current line
+                String tweet = "";
+                while(s.hasNext()) {
+                    tweet += s.next();
+                    if(s.hasNext()){
+                        tweet += " ";
+                    }
+                }
 
                 Scanner splitDate = new Scanner(dateString).useDelimiter("/");
                 int dayNum = splitDate.nextInt();
@@ -104,9 +113,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 //                int hour = splitTime.nextInt();
 //                int min = splitTime.nextInt();
 //                int sec = splitTime.nextInt();
-
-                s.useDelimiter("\\z");                                          // sets scanner delimiter to ignore all spaces
-                String tweet =  s.next().trim();                                // reads in the rest of the current line
 
                 // create new ZonedDateTime object for each row in the file
                 LocalDateTime localTS = LocalDateTime.of(year, month, dayNum, hour, min, sec);

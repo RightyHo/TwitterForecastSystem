@@ -19,7 +19,7 @@ public class TwitterForecastSystem {
     private Classifier classifier = null;
 
     public static final String TWITTER_CORPUS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/FirstBusinessWeekOfFeb2015BmwTwitterCorpus.txt";
-    public static final String PRICE_DATA_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/BMW GY and MACD Minute Price Bars in GMT February 2015.txt";
+    public static final String PRICE_DATA_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/BMWGYAndMACDMinutePriceBarsInGMTFirstBusinessWeekOfFebruary2015.txt";
     public static final String SENTIWORDNET_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/SentiWordNet_3.0.txt";
     public static final String ABBREVIATION_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
     public static final String SPELLING_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";

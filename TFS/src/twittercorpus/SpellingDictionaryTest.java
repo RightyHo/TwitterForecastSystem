@@ -39,5 +39,7 @@ public class SpellingDictionaryTest {
         // process leaves #hashtags unchanged with multiple #hashtags in the text while still removing misspelt words
         String actualFifth = testDT.processString("i want a BMW #greatcar it's a nehgt of a car #birthdayprezzyforme");
         assertEquals("i want a BMW #greatcar its a of a car #birthdayprezzyforme",actualFifth);
+
+        assertEquals("i will legit get more excited seeing a year old plus bmw or rather than a or",testDT.processString("i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari"));
     }
 }
