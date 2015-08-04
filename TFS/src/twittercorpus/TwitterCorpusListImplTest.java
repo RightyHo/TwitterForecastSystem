@@ -426,11 +426,6 @@ public class TwitterCorpusListImplTest {
         // Tweet #223 Sat Jan 17 12:07:00 2015	i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari
         assertEquals("i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari", tCorpus.getCorpus().get(222).getTweetText());
 
-        System.out.println(tCorpus.getCorpus().get(222).getTweetText());
-        tCorpus.removeLinks();
-        System.out.println(tCorpus.getCorpus().get(222).getTweetText());
-        tCorpus.removeUsernames();
-        System.out.println(tCorpus.getCorpus().get(222).getTweetText());
         DictionaryTranslator testSpell = new SpellingDictionary(spellDicFile);
         tCorpus.checkSpelling(testSpell);
 
