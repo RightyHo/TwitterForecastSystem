@@ -33,6 +33,22 @@ public class PriceLabelCorpusImplTest {
     @Test
     public void testGetPriceMap() throws Exception {
         assertFalse(plCorpus.getPriceMap().isEmpty());
+
+        // test that the first line of the input file has been copied to the corpus map
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/BMWGYAndMACDMinutePriceBarsInGMTFirstBusinessWeekOfFebruary2015.txt";
+        timeZone = ZoneOffset.of("Z");
+        int millennium = 0;
+        PriceLabelCorpus differentCorpus = new PriceLabelCorpusImpl(plFilename,timeZone,millennium);
+        differentCorpus.extractPriceDataFromFile(plFilename);
+        LocalDateTime localTS = LocalDateTime.of(15,1,30,16,35,0);
+        ZonedDateTime searchTS = ZonedDateTime.of(localTS,timeZone);
+        assertTrue(differentCorpus.getPriceMap().containsKey(searchTS));
+//        Iterator keySetIt = differentCorpus.getPriceMap().keySet().iterator();
+//        while (keySetIt.hasNext()) {
+//            System.out.println(keySetIt.next().toString());
+//        }
+        // test that the size of the corpus is as expected
+        assertEquals(2317, differentCorpus.getPriceMap().size());
     }
 
     @Test

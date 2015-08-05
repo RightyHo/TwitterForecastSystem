@@ -49,8 +49,8 @@ public class TwitterForecastSystem {
     public static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);
 
     // set date range of the Twitter corpus at our disposal
-    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 1, 1, 0, 0, 0, 0,TIME_ZONE);
-    public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 3, 24, 0, 0, 0, 0, TIME_ZONE);
+    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 1, 30, 0, 0, 0, 0,TIME_ZONE);
+    public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 2, 9, 23, 59, 0, 0, TIME_ZONE);
 
     public static void main(String[] args) {
         TwitterForecastSystem tfs = new TwitterForecastSystem();

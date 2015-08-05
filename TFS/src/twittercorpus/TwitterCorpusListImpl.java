@@ -205,13 +205,9 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
             // compare the two market price snapshots to discern the implied sentiment of the tweet from the change in price
 
-            // *** DOES IT MAKE MORE SENSE TO USE THE focus.getPostTweetSnapshot().getOpeningSharePrice() FOR THIS COMPARISON? ***
-            // *** IT DEFINITELY SEEMS TO BE MORE APPROPRIATE IN THE CASE WHERE THE postTweetSnapshot HAS BEEN ADJUSTED TO BE ***
-            // *** THE FIRST TIME STAMP OF THE DAY BECAUSE THE TWEET WAS PUBLISHED OVERNIGHT OR DURING A WEEKEND ***
-
-            if(focus.getInitialSnapshot().getClosingSharePrice() > focus.getPostTweetSnapshot().getClosingSharePrice()){
+            if(focus.getInitialSnapshot().getOpeningSharePrice() > focus.getPostTweetSnapshot().getOpeningSharePrice()){
                 focus.setSentiment(Sentiment.NEGATIVE);
-            } else if(focus.getInitialSnapshot().getClosingSharePrice() < focus.getPostTweetSnapshot().getClosingSharePrice()) {
+            } else if(focus.getInitialSnapshot().getOpeningSharePrice() < focus.getPostTweetSnapshot().getOpeningSharePrice()) {
                 focus.setSentiment(Sentiment.POSITIVE);
             } else {
                 focus.setSentiment(Sentiment.NEUTRAL);
@@ -238,15 +234,19 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             return labels.getPriceMap().get(preTweetTime);
         } else if(marketHoliday.contains(preTweetTime.toLocalDate())){
             // timestamp key does not exist in map because it falls on a market holiday --> try the previous days closing price
+            System.out.println("Market Holiday on: "+ preTweetTime.toString());
             return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(30)),timeZone));
         } else if (preTweetTime.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
             // timestamp key does not exist in map because it falls on a Saturday  --> try the previous days closing price
+            System.out.println("Saturday: " + preTweetTime.toString());
             return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(30)),timeZone));
         } else if (preTweetTime.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
             // timestamp key does not exist in map because it falls on a Sunday  --> try the closing price two days previous
+            System.out.println("Sunday: "+ preTweetTime);
             return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(2), stockMarketCloseTime.plusMinutes(30)),timeZone));
         } else {
             // exception situation in which timestamp does not appear in priceLabel corpus but should be in the corpus --> try the previous minute
+            System.out.println("exception situation - timestamp does not appear in priceLabel corpus but should be in the corpus --> try the previous minute: "+preTweetTime.toString());
             return getPriorPrices(labels, preTweetTime);
         }
     }
@@ -303,7 +303,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         } else {
 
             // timestamp of the tweet occurs during normal market hours
-            return tweetTimeStamp.minusMinutes(1);
+            return tweetTimeStamp;
 
         }
     }
@@ -435,7 +435,9 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
+//            System.out.println("PRE-PROCESS: "+tText);
             String replacementText = spellingDict.processString(tText);
+//            System.out.println("POST-PROCESS:"+ replacementText);
             focus.setTweetText(replacementText);
         }
     }
