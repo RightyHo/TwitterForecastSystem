@@ -29,7 +29,7 @@ public class TwitterCorpusListImplTest {
         spellDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
         stopWordFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
         timeZone = ZoneOffset.of("Z");              // set time zone for date information used in the TFS to GMT/UTC
-        millennium = 0;                             // needs to be changed to 2000 if the date format of input data is 23/11/15
+        millennium = 2000;                             // needs to be set to 2000 if the date format of input data is 23/11/15 or 0 if date format is 23/11/2015
         int thisYear = 2015;
 
         // initialise set of local market holidays at the exchange on which the stock is traded
@@ -50,7 +50,7 @@ public class TwitterCorpusListImplTest {
         LocalTime bmwClosingTime = LocalTime.of(16,35,0);
         ZonedDateTime earliestCorpusTimeStamp = ZonedDateTime.of(thisYear, 1, 1, 0, 0, 0, 0,timeZone);
         ZonedDateTime latestCorpusTimeStamp = ZonedDateTime.of(thisYear, 3, 24, 0, 0, 0, 0, timeZone);
-        tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime,millennium);
+        tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime);
         tCorpus.extractTweetsFromFile(tFilename);
         plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
     }

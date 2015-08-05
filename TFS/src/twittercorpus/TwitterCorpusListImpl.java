@@ -19,7 +19,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     private ZonedDateTime latestCorpusTimeStamp;
     private LocalTime stockMarketOpenTime;
     private LocalTime stockMarketCloseTime;
-    private int millennium;
 
     public static final String USERNAME_EQUIVALENCE_TOKEN = "USERNAME";
     public static final String LINK_EQUIVALENCE_TOKEN = "LINK";
@@ -32,8 +31,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                                  ZonedDateTime earliestCorpusTimeStamp,
                                  ZonedDateTime latestCorpusTimeStamp,
                                  LocalTime stockMarketOpenTime,
-                                 LocalTime stockMarketCloseTime,
-                                 int millennium) {
+                                 LocalTime stockMarketCloseTime){
         this.corpus = new ArrayList<>();
         this.fileName = fileName;
         this.timeZone = timeZone;
@@ -42,7 +40,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         this.latestCorpusTimeStamp = latestCorpusTimeStamp;
         this.stockMarketOpenTime = stockMarketOpenTime;
         this.stockMarketCloseTime = stockMarketCloseTime;
-        this.millennium = millennium;
     }
 
     public String getUsernameEquivalenceToken() {
@@ -94,7 +91,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 Scanner splitDate = new Scanner(dateString).useDelimiter("/");
                 int dayNum = splitDate.nextInt();
                 int month = splitDate.nextInt();
-                int year = splitDate.nextInt() + millennium;
+                int year = splitDate.nextInt();
 
                 Scanner splitTime = new Scanner(timeString).useDelimiter(":");
                 int hour =  splitTime.nextInt();

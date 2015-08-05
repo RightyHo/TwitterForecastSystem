@@ -28,7 +28,7 @@ public class TwitterForecastSystem {
     public static final int NGRAM_COUNT = 1;                        // set to 1 to use unigrams or 2 to use bigrams as features for the classifier
     public static final int CLASSIFIER_STORAGE_LIMIT = 1000;        // set storage limit to adjust for forgetful learning effect
     public static final ZoneOffset TIME_ZONE = ZoneOffset.of("Z");  // set time zone for date information used in the TFS to GMT/UTC
-    public static final int MILLENNIUM = 0;                          // needs to be changed to 2000 if the date format of input data is 23/11/15
+    public static final int MILLENNIUM = 2000;                      // ad this constant to year fields if the date format of input data is 23/11/15
     public static final int THIS_YEAR = 2015;
 
     // initialise set of local market holidays at the exchange on which the stock is traded
@@ -60,7 +60,7 @@ public class TwitterForecastSystem {
     public void launchSystem() {
         // Build corpus of tweets
 
-        TwitterCorpus tCorpus = new TwitterCorpusListImpl(TWITTER_CORPUS_FILENAME,TIME_ZONE,MARKET_HOLIDAY,EARLIEST_CORPUS_TIME_STAMP,LATEST_CORPUS_TIME_STAMP,BMW_XETRA_OPEN,BMW_XETRA_CLOSE,MILLENNIUM);
+        TwitterCorpus tCorpus = new TwitterCorpusListImpl(TWITTER_CORPUS_FILENAME,TIME_ZONE,MARKET_HOLIDAY,EARLIEST_CORPUS_TIME_STAMP,LATEST_CORPUS_TIME_STAMP,BMW_XETRA_OPEN,BMW_XETRA_CLOSE);
         tCorpus.extractTweetsFromFile(TWITTER_CORPUS_FILENAME);
         System.out.println("\n******************************************************************************************");
         System.out.println("\nExtracted Twitter corpus from file.");
