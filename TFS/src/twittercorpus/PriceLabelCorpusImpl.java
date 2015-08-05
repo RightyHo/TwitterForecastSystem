@@ -70,7 +70,7 @@ public class PriceLabelCorpusImpl implements PriceLabelCorpus {
                 Scanner splitDate = new Scanner(dateString).useDelimiter("/");
                 int day = splitDate.nextInt();
                 int month = splitDate.nextInt();
-                int year = splitDate.nextInt() + millennium;
+                int year = splitDate.nextInt() + millennium;     // *** ADD MILLENNIUM CONSTANT FOR TRAINING/TEST DATA (02/02/15 DATE FORMAT).  REMOVE FOR SAMPLE TEST DATA (02/02/2015 DATE FORMAT).
 
                 Scanner splitTime = new Scanner(timeString).useDelimiter(":");
                 int hour =  splitTime.nextInt();

@@ -222,6 +222,10 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     private PriceSnapshot getPriorPrices(PriceLabelCorpus labels,ZonedDateTime tweetTime){
 
         ZonedDateTime preTweetTime = lastTimePrintBeforeTweet(tweetTime);
+//        Set<ZonedDateTime> keyS= labels.getPriceMap().keySet();
+//        for(ZonedDateTime k : keyS) {
+//            System.out.println("PriceLabelCorpus Key: " + k);
+//        }
 
         if (preTweetTime.compareTo(earliestCorpusTimeStamp) < 0){
             // error situation
@@ -244,7 +248,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         } else {
             // exception situation in which timestamp does not appear in priceLabel corpus but should be in the corpus --> try the previous minute
             System.out.println("exception situation - timestamp does not appear in priceLabel corpus but should be in the corpus --> try the previous minute: "+preTweetTime.toString());
-            return getPriorPrices(labels, preTweetTime);
+            return getPriorPrices(labels, preTweetTime.minusMinutes(1));
         }
     }
 

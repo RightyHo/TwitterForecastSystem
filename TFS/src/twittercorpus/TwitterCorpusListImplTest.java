@@ -19,12 +19,12 @@ public class TwitterCorpusListImplTest {
     private String abbDicFile;
     private String spellDicFile;
     private String stopWordFile;
-    private int millennium;                          // needs to be changed to 2000 if the date format of input data is 23/11/15
+    private int millennium;                          // needs to be set to 2000 if the date format of input data is 23/11/15 or set to 0 if year format is 23/11/2015
     private ZoneOffset timeZone;
 
     @Before
     public void setUp() throws Exception {
-        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample - New Date Format.txt";
+        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample - New Date Format.txt";       // year format 2015
         abbDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
         spellDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
         stopWordFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
@@ -52,7 +52,7 @@ public class TwitterCorpusListImplTest {
         ZonedDateTime latestCorpusTimeStamp = ZonedDateTime.of(thisYear, 3, 24, 0, 0, 0, 0, timeZone);
         tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime);
         tCorpus.extractTweetsFromFile(tFilename);
-        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";        // year format 2015
     }
 
     @Test
@@ -118,7 +118,7 @@ public class TwitterCorpusListImplTest {
      */
     @Test
     public void testLabelCorpus() throws Exception {
-        PriceLabelCorpus plCorpus = new PriceLabelCorpusImpl(plFilename,timeZone,millennium);
+        PriceLabelCorpus plCorpus = new PriceLabelCorpusImpl(plFilename,timeZone,0);
         plCorpus.extractPriceDataFromFile(plFilename);
         tCorpus.labelCorpus(plCorpus);
 
@@ -133,11 +133,12 @@ public class TwitterCorpusListImplTest {
 
         // SCENARIO 2: TWEET IS PUBLISHED DURING MARKET HOURS - test the 50th tweet in the corpus is labelled correctly:
         // Fri Jan 16 09:58:00 2015	i posted 11 photos on facebook in the album "2015 bmw i8 coupe" http://t.co/4mtrbecs7c
-        // so initial snapshot should be Fri Jan 16 09:57
-        // 16/01/2015 09:57	91.2	91.25	91.2	91.23	0.0169	-0.0102	0.0271
+        // so initial snapshot should be Fri Jan 16 09:58
+        // 16/01/2015 09:58	91.22	91.22	91.17	91.17	0.0205	-0.004	0.0245
         // and post Tweet snapshot should be Fri Jan 16 10:18
         // 16/01/2015 10:18	91.32	91.35	91.32	91.35	0.037	0.0366	0.0004
-        assertTrue(Math.abs(tCorpus.getCorpus().get(49).getInitialSnapshot().getClosingSharePrice() - 91.23) < 0.0000000000000001);
+        assertTrue(Math.abs(tCorpus.getCorpus().get(49).getInitialSnapshot().getClosingSharePrice() - 91.17) < 0.0000000000000001);
+        System.out.println("is closing snap close to 91.35? " + tCorpus.getCorpus().get(49).getPostTweetSnapshot().getClosingSharePrice());
         assertTrue(Math.abs(tCorpus.getCorpus().get(49).getPostTweetSnapshot().getClosingSharePrice() - 91.35) < 0.0000000000000001);
 
         // SCENARIO 3: TWEET IS PUBLISHED DURING WEEKEND - test a tweet published on a Saturday in the corpus is labelled correctly:
