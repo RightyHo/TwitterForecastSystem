@@ -340,7 +340,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
-            if(tText.charAt(0) == 'r' && tText.charAt(1) == 't'){
+            if(tText.toLowerCase().charAt(0) == 'r' && tText.toLowerCase().charAt(1) == 't'){
                 corpusIterator.remove();
             }
         }
