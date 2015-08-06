@@ -74,7 +74,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 // divide current line into its individual constituents
                 Scanner s = new Scanner(currentLine);
 
-// *** Parser designed for new Twitter Corpus text format ***
                 // read date and time strings
                 String dateString = s.next().trim();
                 String timeString = s.next().trim();
@@ -98,19 +97,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 int min =  splitTime.nextInt();
                 int sec = splitTime.nextInt();
                 sec = 0;    // *** DO NOT ADD SECONDS TO THE TWITTER CORPUS TIME IN ORDER TO MAP CORRECTLY WITH MINUTE PRICE BARS ***
-
-// *** Parser designed for old Twitter Corpus text format ***
-//
-//                String dayOfTheWeek = s.next().trim();
-//                int month = getMonthNum(s.next());
-//                int dayNum = s.nextInt();
-//                String timeString = s.next().trim();
-//                int year =  s.nextInt();
-//
-//                Scanner splitTime = new Scanner(timeString).useDelimiter(":");
-//                int hour = splitTime.nextInt();
-//                int min = splitTime.nextInt();
-//                int sec = splitTime.nextInt();
 
                 // create new ZonedDateTime object for each row in the file
                 LocalDateTime localTS = LocalDateTime.of(year, month, dayNum, hour, min, sec);
@@ -223,6 +209,8 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     private PriceSnapshot getPriorPrices(PriceLabelCorpus labels,ZonedDateTime tweetTime){
 
         ZonedDateTime preTweetTime = lastTimePrintBeforeTweet(tweetTime);
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        Set<ZonedDateTime> keyS= labels.getPriceMap().keySet();
 //        for(ZonedDateTime k : keyS) {
 //            System.out.println("PriceLabelCorpus Key: " + k);
@@ -437,9 +425,15 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
+
+            // *** OPTIONAL TRACE FOR DEBUGGING ***
 //            System.out.println("PRE-PROCESS: "+tText);
+
             String replacementText = spellingDict.processString(tText);
+
+            // *** OPTIONAL TRACE FOR DEBUGGING ***
 //            System.out.println("POST-PROCESS:"+ replacementText);
+
             focus.setTweetText(replacementText);
         }
     }
