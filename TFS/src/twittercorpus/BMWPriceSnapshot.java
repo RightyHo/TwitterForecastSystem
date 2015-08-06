@@ -8,7 +8,7 @@ import java.time.ZonedDateTime;
 public class BMWPriceSnapshot implements PriceSnapshot {
 
     private ZonedDateTime timeStamp;
-    private double openingSharePrice;           // *** THIS VARIABLE MAY BE SURPLUS TO REQUIREMENTS AS WE USE THE CLOSING SHARE PRICE FOR ALL OPERATIONS AT PRESENT ***
+    private double openingSharePrice;
     private double openingMACDDirectionSignal;  // MACD Level minus Signal Level.  A positive signal indicates upward price momentum and vice versa
     private double closingSharePrice;
 

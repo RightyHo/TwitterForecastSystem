@@ -269,6 +269,8 @@ public class NaiveBayesClassifierTest {
         double actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         double expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
 //        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
 
@@ -279,6 +281,8 @@ public class NaiveBayesClassifierTest {
         actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
 //        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
 
@@ -289,6 +293,8 @@ public class NaiveBayesClassifierTest {
         actualWAProb = tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb);
         expectedWAProb = (assumeProb * weighting + numOccurrencesOfFeature * tLikelihood) / (numOccurrencesOfFeature + weighting);
         assertTrue(Math.abs(expectedWAProb - tClassifier.calcFeatureWeightedAverage(tFeature, tSenti, weighting, assumeProb)) < 0.000000001);
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        System.out.println("The likelihood of feature - " + tFeature + " given the probability of category " + tSenti + " is: " + tLikelihood);
 //        System.out.println("Feature - " + tFeature + " has a weighted average probability that it belongs in the " + tSenti + " category of: " + actualWAProb);
     }

@@ -43,10 +43,13 @@ public class PriceLabelCorpusImplTest {
         LocalDateTime localTS = LocalDateTime.of(15 + millennium,1,30,16,35,0);
         ZonedDateTime searchTS = ZonedDateTime.of(localTS,timeZone);
         assertTrue(differentCorpus.getPriceMap().containsKey(searchTS));
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        Iterator keySetIt = differentCorpus.getPriceMap().keySet().iterator();
 //        while (keySetIt.hasNext()) {
 //            System.out.println(keySetIt.next().toString());
 //        }
+
         // test that the size of the corpus is as expected
         assertEquals(2317, differentCorpus.getPriceMap().size());
     }
@@ -75,6 +78,7 @@ public class PriceLabelCorpusImplTest {
     @Test
     public void testExtractPriceDataFromFile() throws Exception {
 
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        Iterator<ZonedDateTime> it = plCorpus.getPriceMap().keySet().iterator();
 //        if(it.hasNext()){
 //            ZonedDateTime zKey = it.next();
