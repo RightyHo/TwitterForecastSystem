@@ -69,17 +69,72 @@ public class TwitterForecastSystem {
         System.out.println("\nExtracted Twitter corpus from file.");
         System.out.println("--> Corpus contains a total of " + tCorpus.getCorpus().size() + " tweets.");
 
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            System.out.println("PRE-CLEANING:  " + t.getTweetText());
+        }
+
         // Tweets cleaning process
         tCorpus.removeRetweets();
         System.out.println("Removed Retweets from the Twitter corpus.");
         System.out.println("--> Number of tweets remaining in corpus: " + tCorpus.getCorpus().size());
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            System.out.println("AFTER REMOVING RETWEETS:  " + t.getTweetText());
+        }
+
         tCorpus.removeLinks();
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            System.out.println("AFTER REMOVING LINKS:  " + t.getTweetText());
+        }
+
         tCorpus.removeUsernames();
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            System.out.println("AFTER REMOVING USERNAMES:  " + t.getTweetText());
+        }
+
         tCorpus.translateAbbreviations(new AbbreviationDictionary(ABBREVIATION_DICTIONARY_FILENAME));
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            System.out.println("AFTER TRANSLATING ABBREVIATIONS:  " + t.getTweetText());
+        }
+
         tCorpus.checkSpelling(new SpellingDictionary(SPELLING_DICTIONARY_FILENAME));
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            System.out.println("AFTER CHECKING SPELLING:  " + t.getTweetText());
+        }
+
         tCorpus.filterOutStopWords(STOP_WORDS_FILENAME);
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            System.out.println("AFTER FILTERING OUT STOP WORDS:  " + t.getTweetText());
+        }
+
         tCorpus.extractFeatures(NGRAM_COUNT);         // extract uni-grams as features change to 2 for bi-grams
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            for(String s : t.getFeatures()) {
+                System.out.println("AFTER EXTRACTING FEATURES:  " + s);
+            }
+        }
+
         tCorpus.removeFilteredTweetsWithNoFeatures(); // if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+        for(Tweet t : tCorpus.getCorpus()) {
+            System.out.println("AFTER FILTERING OUT TWEETS WITH NO FEATURES:  " + t.getTweetText());
+        }
+
         System.out.println("Removed URL links, usernames, mispelled words and 'stop' words.");
         System.out.println("Removed tweets with no features remaining from the Twitter corpus.");
         System.out.println("--> Number of tweets remaining in corpus after filtering process: " + tCorpus.getCorpus().size());
