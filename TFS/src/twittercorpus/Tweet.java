@@ -10,12 +10,6 @@ public interface Tweet {
 
      ZonedDateTime getTimeStamp();
 
-     void setTimeStamp(ZonedDateTime timeStamp);
-
-     boolean isRetweet();
-
-     void setIsRetweet(boolean isRetweet);
-
      boolean isLabelled();
 
      void setIsLabelled(boolean isLabelled);
@@ -31,10 +25,6 @@ public interface Tweet {
      PriceSnapshot getPostTweetSnapshot();
 
      void setPostTweetSnapshot(PriceSnapshot postTweetSnapshot);
-
-     Tweet getNextTweet();
-
-     void setNextTweet(Tweet nextTweet);
 
      Sentiment getSentiment();
 

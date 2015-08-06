@@ -45,18 +45,6 @@ public class TweetImpl implements Tweet {
         return timeStamp;
     }
 
-    public void setTimeStamp(ZonedDateTime timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-    public boolean isRetweet() {
-        return isRetweet;
-    }
-
-    public void setIsRetweet(boolean isRetweet) {
-        this.isRetweet = isRetweet;
-    }
-
     public boolean isLabelled() {
         return isLabelled;
     }
@@ -81,21 +69,9 @@ public class TweetImpl implements Tweet {
         this.initialSnapshot = initialSnapshot;
     }
 
-    public PriceSnapshot getPostTweetSnapshot() {
-        return postTweetSnapshot;
-    }
+    public PriceSnapshot getPostTweetSnapshot() { return postTweetSnapshot; }
 
-    public void setPostTweetSnapshot(PriceSnapshot postTweetSnapshot) {
-        this.postTweetSnapshot = postTweetSnapshot;
-    }
-
-    public Tweet getNextTweet() {
-        return nextTweet;
-    }
-
-    public void setNextTweet(Tweet nextTweet) {
-        this.nextTweet = nextTweet;
-    }
+    public void setPostTweetSnapshot(PriceSnapshot postTweetSnapshot) { this.postTweetSnapshot = postTweetSnapshot; }
 
     public Sentiment getSentiment() {
         return sentiment;
