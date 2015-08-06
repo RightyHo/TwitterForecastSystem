@@ -18,15 +18,7 @@ public class TwitterForecastSystem {
     private List<Tweet> testData = null;
     private Classifier classifier = null;
 
-    public static final String TWITTER_CORPUS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/FirstBusinessWeekOfFeb2015BmwTwitterCorpus.txt";
-    public static final String PRICE_DATA_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/BMWGYAndMACDMinutePriceBarsInGMTFirstBusinessWeekOfFebruary2015.txt";
-    public static final String SENTIWORDNET_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/SentiWordNet_3.0.txt";
-    public static final String ABBREVIATION_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
-    public static final String SPELLING_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
-    public static final String STOP_WORDS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
-
-    public static final int NGRAM_COUNT = 1;                        // set to 1 to use unigrams or 2 to use bigrams as features for the classifier
-    public static final int CLASSIFIER_STORAGE_LIMIT = 1000;        // set storage limit to adjust for forgetful learning effect
+    // time constants
     public static final ZoneOffset TIME_ZONE = ZoneOffset.of("Z");  // set time zone for date information used in the TFS to GMT/UTC
     public static final int MILLENNIUM = 2000;                      // ad this constant to year fields if the date format of input data is 23/11/15
     public static final int THIS_YEAR = 2015;
@@ -48,9 +40,20 @@ public class TwitterForecastSystem {
     public static final LocalTime BMW_XETRA_OPEN = LocalTime.of(8,0,0);
     public static final LocalTime BMW_XETRA_CLOSE = LocalTime.of(16,35,0);
 
-    // set date range of the Twitter corpus at our disposal
-    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 1, 30, 0, 0, 0, 0,TIME_ZONE);
-    public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 2, 9, 23, 59, 0, 0, TIME_ZONE);
+    // *** EXPERIMENTATION VARIABLES TO BE CHANGED MANUALLY ***
+
+    public static final String TWITTER_CORPUS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/20TweetsOn17Feb2015BmwTwitterCorpusInGMT.txt";
+    public static final String PRICE_DATA_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/20TweetsOn17Feb2015BmwShareAndMacdMinutePriceBarsInGmt.txt";
+    public static final String SENTIWORDNET_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/SentiWordNet_3.0.txt";
+    public static final String ABBREVIATION_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
+    public static final String SPELLING_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
+    public static final String STOP_WORDS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
+
+    public static final int NGRAM_COUNT = 1;                        // *** SET TO 1 TO USE UNIGRAMS OR 2 TO USE BIGRAMS AS FEATURES FOR THE CLASSIFIER ***
+    public static final int CLASSIFIER_STORAGE_LIMIT = 1000;        // *** SET STORAGE LIMIT TO ADJUST FOR FORGETFUL LEARNING EFFECT ***
+
+    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 2, 17, 0, 0, 0, 0,TIME_ZONE);    // *** RESET EVERY TIME TWITTER CORPUS IS CHANGED ***
+    public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 2, 17, 23, 59, 0, 0, TIME_ZONE);   // *** RESET EVERY TIME TWITTER CORPUS IS CHANGED ***
 
     public static void main(String[] args) {
         TwitterForecastSystem tfs = new TwitterForecastSystem();
