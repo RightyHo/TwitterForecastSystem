@@ -97,6 +97,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 int hour =  splitTime.nextInt();
                 int min =  splitTime.nextInt();
                 int sec = splitTime.nextInt();
+                sec = 0;    // *** DO NOT ADD SECONDS TO THE TWITTER CORPUS TIME IN ORDER TO MAP CORRECTLY WITH MINUTE PRICE BARS ***
 
 // *** Parser designed for old Twitter Corpus text format ***
 //
