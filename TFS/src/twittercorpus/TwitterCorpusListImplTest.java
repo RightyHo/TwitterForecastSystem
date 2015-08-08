@@ -138,7 +138,6 @@ public class TwitterCorpusListImplTest {
         // and post Tweet snapshot should be Fri Jan 16 10:18
         // 16/01/2015 10:18	91.32	91.35	91.32	91.35	0.037	0.0366	0.0004
         assertTrue(Math.abs(tCorpus.getCorpus().get(49).getInitialSnapshot().getClosingSharePrice() - 91.17) < 0.0000000000000001);
-        System.out.println("is closing snap close to 91.35? " + tCorpus.getCorpus().get(49).getPostTweetSnapshot().getClosingSharePrice());
         assertTrue(Math.abs(tCorpus.getCorpus().get(49).getPostTweetSnapshot().getClosingSharePrice() - 91.35) < 0.0000000000000001);
 
         // SCENARIO 3: TWEET IS PUBLISHED DURING WEEKEND - test a tweet published on a Saturday in the corpus is labelled correctly:

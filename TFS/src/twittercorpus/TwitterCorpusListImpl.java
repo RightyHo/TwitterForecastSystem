@@ -235,7 +235,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 //            System.out.println("Market Holiday on: "+ preTweetTime.toString());
 
             // timestamp key does not exist in map because it falls on a market holiday --> try the previous days closing price
-            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(1)),timeZone));
+            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(1)), timeZone));
 
         } else if (preTweetTime.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
 
@@ -243,7 +243,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 //            System.out.println("Saturday: " + preTweetTime.toString());
 
             // timestamp key does not exist in map because it falls on a Saturday  --> try the previous days closing price
-            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(1)),timeZone));
+            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(1)), timeZone));
 
         } else if (preTweetTime.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
 
@@ -251,7 +251,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 //            System.out.println("Sunday: "+ preTweetTime);
 
             // timestamp key does not exist in map because it falls on a Sunday  --> try the closing price two days previous
-            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(2), stockMarketCloseTime.plusMinutes(1)),timeZone));
+            return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(2), stockMarketCloseTime.plusMinutes(1)), timeZone));
 
         } else {
 
@@ -366,8 +366,10 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
-            if(tText.toLowerCase().charAt(0) == 'r' && tText.toLowerCase().charAt(1) == 't'){
-                corpusIterator.remove();
+            if(!tText.isEmpty()) {
+                if (tText.toLowerCase().charAt(0) == 'r' && tText.toLowerCase().charAt(1) == 't') {
+                    corpusIterator.remove();
+                }
             }
         }
     }
@@ -377,15 +379,17 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
-            Scanner scanText = new Scanner(tText);
-            String replacementText = "";
-            while (scanText.hasNext()){
-                String focusWord = scanText.next();
-                if(!focusWord.startsWith("http://") && !focusWord.startsWith("https://")){
-                    replacementText += focusWord + " ";
+            if(!tText.isEmpty()) {
+                Scanner scanText = new Scanner(tText);
+                String replacementText = "";
+                while (scanText.hasNext()) {
+                    String focusWord = scanText.next();
+                    if (!focusWord.startsWith("http://") && !focusWord.startsWith("https://")) {
+                        replacementText += focusWord + " ";
+                    }
                 }
+                focus.setTweetText(replacementText);
             }
-            focus.setTweetText(replacementText);
         }
     }
 
@@ -394,17 +398,19 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
-            Scanner scanText = new Scanner(tText);
-            String replacementText = "";
-            while (scanText.hasNext()){
-                String focusWord = scanText.next();
-                if(focusWord.startsWith("http://")){
-                    replacementText += LINK_EQUIVALENCE_TOKEN + " ";
-                } else {
-                    replacementText += focusWord + " ";
+            if(!tText.isEmpty()) {
+                Scanner scanText = new Scanner(tText);
+                String replacementText = "";
+                while (scanText.hasNext()) {
+                    String focusWord = scanText.next();
+                    if (focusWord.startsWith("http://")) {
+                        replacementText += LINK_EQUIVALENCE_TOKEN + " ";
+                    } else {
+                        replacementText += focusWord + " ";
+                    }
                 }
+                focus.setTweetText(replacementText);
             }
-            focus.setTweetText(replacementText);
         }
     }
 
@@ -413,15 +419,17 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
-            Scanner scanText = new Scanner(tText);
-            String replacementText = "";
-            while (scanText.hasNext()){
-                String focusWord = scanText.next();
-                if(!focusWord.startsWith("@")){
-                    replacementText += focusWord + " ";
+            if(!tText.isEmpty()) {
+                Scanner scanText = new Scanner(tText);
+                String replacementText = "";
+                while (scanText.hasNext()) {
+                    String focusWord = scanText.next();
+                    if (!focusWord.startsWith("@")) {
+                        replacementText += focusWord + " ";
+                    }
                 }
+                focus.setTweetText(replacementText);
             }
-            focus.setTweetText(replacementText);
         }
     }
 
@@ -430,17 +438,19 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
-            Scanner scanText = new Scanner(tText);
-            String replacementText = "";
-            while (scanText.hasNext()){
-                String focusWord = scanText.next();
-                if(focusWord.startsWith("@")){
-                    replacementText += USERNAME_EQUIVALENCE_TOKEN + " ";
-                } else {
-                    replacementText += focusWord + " ";
+            if(!tText.isEmpty()) {
+                Scanner scanText = new Scanner(tText);
+                String replacementText = "";
+                while (scanText.hasNext()) {
+                    String focusWord = scanText.next();
+                    if (focusWord.startsWith("@")) {
+                        replacementText += USERNAME_EQUIVALENCE_TOKEN + " ";
+                    } else {
+                        replacementText += focusWord + " ";
+                    }
                 }
+                focus.setTweetText(replacementText);
             }
-            focus.setTweetText(replacementText);
         }
     }
 
@@ -449,8 +459,10 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
-            String replacementText = abbreviationDict.processString(tText);
-            focus.setTweetText(replacementText);
+            if(!tText.isEmpty()) {
+                String replacementText = abbreviationDict.processString(tText);
+                focus.setTweetText(replacementText);
+            }
         }
     }
 
@@ -467,12 +479,14 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             // *** OPTIONAL TRACE FOR DEBUGGING ***
 //            System.out.println("PRE-PROCESS: "+tText);
 
-            String replacementText = spellingDict.processString(tText);
+            if(!tText.isEmpty()) {
+                String replacementText = spellingDict.processString(tText);
 
-            // *** OPTIONAL TRACE FOR DEBUGGING ***
-//            System.out.println("POST-PROCESS:"+ replacementText);
+                // *** OPTIONAL TRACE FOR DEBUGGING ***
+//                System.out.println("POST-PROCESS:"+ replacementText);
 
-            focus.setTweetText(replacementText);
+                focus.setTweetText(replacementText);
+            }
         }
     }
 
@@ -509,8 +523,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
-            System.out.println("FEATURE COUNT"+ focus.getFeatures().size());
-            if(focus.getFeatures().size() == 0){
+            if(focus.getFeatures().isEmpty()){
                 corpusIterator.remove();
             }
         }
