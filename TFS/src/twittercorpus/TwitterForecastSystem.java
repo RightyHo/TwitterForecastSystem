@@ -157,7 +157,7 @@ public class TwitterForecastSystem {
         setTestDataSentimentToUnclassified();
         classifyTestData();
         System.out.println("\n******************************************************************************************");
-        System.out.println("\nClassified the test data corpus of tweets using the knoweldge base of the TFS.");
+        System.out.println("\nClassified the test data corpus of tweets using the knowledge base of the TFS.");
 
         // Analyse Results
         PredictionStatistics pStats = new PredictionStatisticsImpl();
