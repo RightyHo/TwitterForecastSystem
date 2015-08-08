@@ -33,21 +33,21 @@ public class SpellingDictionaryTest {
         assertEquals("",actualThird);
 
         // process leaves #hashtags unchanged
-        String actualFourth = testDT.processString("i want a BMW #greatcar");
-        assertEquals("i want a BMW #greatcar",actualFourth);
+//        String actualFourth = testDT.processString("i want a BMW #greatcar");
+//        assertEquals("i want a BMW #greatcar",actualFourth);
 
         // process leaves #hashtags unchanged with multiple #hashtags in the text while still removing misspelt words
-        String actualFifth = testDT.processString("i want a BMW #greatcar it's a nehgt of a car #birthdayprezzyforme");
-        assertEquals("i want a BMW #greatcar its a of a car #birthdayprezzyforme",actualFifth);
+//        String actualFifth = testDT.processString("i want a BMW #greatcar it's a nehgt of a car #birthdayprezzyforme");
+//        assertEquals("i want a BMW #greatcar its a of a car #birthdayprezzyforme",actualFifth);
 
         // additional test strings
-        assertEquals("check out tools hub fan holder repair parts for bmw via #bmw #tools",testDT.processString("check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools"));
+        assertEquals("check out tools hub fan holder repair parts for bmw via bmw tools",testDT.processString("check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools"));
 
         assertEquals("ceo bmw ko be posting status like grade here i come d",testDT.processString("lol ceo yako bmw ko facebook be posting status like: grade 8 here i come :d"));
 
         assertEquals("i wish i could ride around that with lester aka in his lac or bimmer just jamming",testDT.processString("i wish i could ride around that westheimer with lester aka  @settle4les  in his lac or bimmer just jamming"));
 
-        assertEquals("#safmradio. bought a rm bmw when he became min of higher ed not after years at what is his govt time audit",testDT.processString("#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?"));
+        assertEquals("bought a rm bmw when he became min of higher ed not after years at what is his govt time audit",testDT.processString("#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?"));
 
         assertEquals("i will legit get more excited seeing a year old plus bmw or rather than a or",testDT.processString("i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari"));
     }

@@ -431,30 +431,42 @@ public class TwitterCorpusListImplTest {
 
 //        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
 //        // Tweet #351 Sun Jan 18 13:09:00 2015	check out tools (2) waterpump hub fan holder repair parts for bmw  http://t.co/2jnm2xddhe via @ebay #bmw #tools
-//        assertEquals("check out tools hub fan holder repair parts for bmw via #bmw #tools", tCorpus.getCorpus().get(350).getTweetText());
+//        assertEquals("check out tools hub fan holder repair parts for bmw via bmw tools", tCorpus.getCorpus().get(350).getTweetText());
 //        // POST-PROCESS:check out tools watpump hub fan hold repair parts for bmw ptcojnmxddhe via #bmw #tools
 //
 //        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
 //        // Tweet #588 Tue Jan 20 01:50:00 2015	lol ceo yako bmw ko facebook be posting status like: grade 8 here i come :d
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        System.out.println("after tCorpus.checkSpelling: "+ tCorpus.getCorpus().get(587).getTweetText());
+
 //        assertEquals("ceo bmw ko be posting status like grade here i come d",tCorpus.getCorpus().get(587).getTweetText());
 //        // POST-PROCESS:ceo bmw ko be posting status like grade he i come d
 //
 //        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
 //        // Tweet #178 Sat Jan 17 04:48:00 2015	i wish i could ride around that westheimer with lester aka  @settle4les  in his lac or bimmer just jamming
-//        System.out.println("after tCorpus.checkSpelling: "+ tCorpus.getCorpus().get(177).getTweetText());
+//
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+//          System.out.println("after tCorpus.checkSpelling: "+ tCorpus.getCorpus().get(177).getTweetText());
+
 //        assertEquals("i wish i could ride around that with lester aka in his lac or bimmer just jamming",tCorpus.getCorpus().get(177).getTweetText());
 //        // POST-PROCESS:i wish i could ride around that with lester aka in his lac or bimmer just jamming
 //
 //        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
 //        // Tweet #37 Fri Jan 16 07:37:00 2015	#safmradio. nzimande bought a r1.5m bmw when he became min of higher ed. not after years at sacp.  what is his govt /sacp time audit?
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        System.out.println("after tCorpus.checkSpelling: "+ tCorpus.getCorpus().get(36).getTweetText());
-//        assertEquals("#safmradio. bought a rm bmw when he became min of higher ed not after years at what is his govt time audit",tCorpus.getCorpus().get(36).getTweetText());
+
+//        assertEquals("bought a rm bmw when he became min of higher ed not after years at what is his govt time audit",tCorpus.getCorpus().get(36).getTweetText());
 //        // POST-PROCESS:#safmradio. bought a rm bmw when he became min of higher ed not after years at what is his govt time t
 //
 //        // check the tweet of the text is as expected after we run the translateAbbreviations method on the corpus
 //        // Tweet #223 Sat Jan 17 12:07:00 2015	i will legit get more excited seeing a 25year old plus bmw or vw rather than a lambo or ferrari
+
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        System.out.println("after tCorpus.checkSpelling: "+ tCorpus.getCorpus().get(222).getTweetText());
+
 //        assertEquals("i will legit get more excited seeing a year old plus bmw or rather than a or",tCorpus.getCorpus().get(222).getTweetText());
 //        //POST-PROCESS:i will legit t more excited seeing a year old plus bmw or rather than a or feari
     }
