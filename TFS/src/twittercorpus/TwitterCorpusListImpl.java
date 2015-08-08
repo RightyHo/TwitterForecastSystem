@@ -381,7 +381,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             String replacementText = "";
             while (scanText.hasNext()){
                 String focusWord = scanText.next();
-                if(!focusWord.startsWith("http://")){
+                if(!focusWord.startsWith("http://") && !focusWord.startsWith("https://")){
                     replacementText += focusWord + " ";
                 }
             }
