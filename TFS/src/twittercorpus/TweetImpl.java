@@ -117,20 +117,22 @@ public class TweetImpl implements Tweet {
      */
     public void extractNGramFeatures(int numGrams){
         features.clear();
-        String[] tokens = tokenizeString(tweetText);
-        int len = tokens.length;
-        int focus = 0;
-        while(focus + numGrams <= len) {
-            StringBuilder s = new StringBuilder();
-            for (int i = focus; i < focus + numGrams; i++) {
-                if (i > focus) {
-                    s.append("," + tokens[i]);
-                } else {
-                    s.append(tokens[i]);
+        if(!this.tweetText.isEmpty()) {
+            String[] tokens = tokenizeString(tweetText);
+            int len = tokens.length;
+            int focus = 0;
+            while (focus + numGrams <= len) {
+                StringBuilder s = new StringBuilder();
+                for (int i = focus; i < focus + numGrams; i++) {
+                    if (i > focus) {
+                        s.append("," + tokens[i]);
+                    } else {
+                        s.append(tokens[i]);
+                    }
                 }
+                features.add(s.toString());
+                focus++;
             }
-            features.add(s.toString());
-            focus++;
         }
     }
 

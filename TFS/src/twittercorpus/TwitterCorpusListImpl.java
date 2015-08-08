@@ -509,6 +509,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
             Tweet focus = corpusIterator.next();
+            System.out.println("FEATURE COUNT"+ focus.getFeatures().size());
             if(focus.getFeatures().size() == 0){
                 corpusIterator.remove();
             }
