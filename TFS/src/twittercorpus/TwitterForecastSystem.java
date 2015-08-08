@@ -52,7 +52,7 @@ public class TwitterForecastSystem {
     public static final int NGRAM_COUNT = 1;                        // *** SET TO 1 TO USE UNIGRAMS OR 2 TO USE BIGRAMS AS FEATURES FOR THE CLASSIFIER ***
     public static final int CLASSIFIER_STORAGE_LIMIT = 1000;        // *** SET STORAGE LIMIT TO ADJUST FOR FORGETFUL LEARNING EFFECT ***
 
-    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 2, 17, 0, 0, 0, 0,TIME_ZONE);    // *** RESET EVERY TIME TWITTER CORPUS IS CHANGED ***
+    public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 2, 16, 0, 0, 0, 0,TIME_ZONE);    // *** RESET EVERY TIME TWITTER CORPUS IS CHANGED ***
     public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 2, 18, 0, 0, 0, 0, TIME_ZONE);   // *** RESET EVERY TIME TWITTER CORPUS IS CHANGED ***
 
     public static void main(String[] args) {
