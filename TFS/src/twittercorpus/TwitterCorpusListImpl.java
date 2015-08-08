@@ -495,11 +495,45 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
      * filter out the most common (and least informative) English words from the
      * text of each tweet.  This should help reduce noise when extracting features for classification.
      */
+//    public void filterOutStopWords(String stopWordsList){
+//        Iterator<Tweet> corpusIterator = corpus.iterator();
+//        while(corpusIterator.hasNext()){
+//            Tweet focus = corpusIterator.next();
+//            focus.removeStopWords(stopWordsList);
+//        }
+//    }
     public void filterOutStopWords(String stopWordsList){
+        List<String> stopWords = new ArrayList<>();
+
+        // extract list of stop words from file
+        try(BufferedReader br = new BufferedReader(new FileReader(stopWordsList))){
+            String currentLine;
+            while ((currentLine = br.readLine()) != null) {
+                Scanner s = new Scanner(currentLine);
+                s.useDelimiter(",");
+                while(s.hasNext()){
+                    stopWords.add(s.next());
+                }
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        // iterate through all tweets and filter out words that appear in the stop words list
         Iterator<Tweet> corpusIterator = corpus.iterator();
-        while(corpusIterator.hasNext()){
+        while(corpusIterator.hasNext()) {
             Tweet focus = corpusIterator.next();
-            focus.removeStopWords(stopWordsList);
+            String tText = focus.getTweetText();
+            StringBuilder revisedTweetText = new StringBuilder();
+
+            Scanner textScan = new Scanner(tText);
+            while (textScan.hasNext()) {
+                String word = textScan.next();
+                if (!stopWords.contains(word)) {
+                    revisedTweetText.append(" " + word);
+                }
+            }
+            focus.setTweetText(revisedTweetText.toString().trim());
         }
     }
 

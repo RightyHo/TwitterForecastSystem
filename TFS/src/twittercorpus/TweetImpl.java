@@ -85,30 +85,30 @@ public class TweetImpl implements Tweet {
 
     public void setSentiWordNetClassification(Sentiment sentiWordNetClassification) { this.sentiWordNetClassification = sentiWordNetClassification; }
 
-    public void removeStopWords(String fileName){
-        List<String> stopWords = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
-            String currentLine;
-            while ((currentLine = br.readLine()) != null) {
-                Scanner s = new Scanner(currentLine);
-                s.useDelimiter(",");
-                while(s.hasNext()){
-                    stopWords.add(s.next());
-                }
-            }
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        Scanner textScan = new Scanner(tweetText);
-        StringBuilder revisedTweetText = new StringBuilder();
-        while (textScan.hasNext()){
-            String focus = textScan.next();
-            if(!stopWords.contains(focus)){
-                revisedTweetText.append(" " + focus);
-            }
-        }
-        tweetText = revisedTweetText.toString().trim();
-    }
+//    public void removeStopWords(String fileName){
+//        List<String> stopWords = new ArrayList<>();
+//        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
+//            String currentLine;
+//            while ((currentLine = br.readLine()) != null) {
+//                Scanner s = new Scanner(currentLine);
+//                s.useDelimiter(",");
+//                while(s.hasNext()){
+//                    stopWords.add(s.next());
+//                }
+//            }
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }
+//        Scanner textScan = new Scanner(tweetText);
+//        StringBuilder revisedTweetText = new StringBuilder();
+//        while (textScan.hasNext()){
+//            String focus = textScan.next();
+//            if(!stopWords.contains(focus)){
+//                revisedTweetText.append(" " + focus);
+//            }
+//        }
+//        tweetText = revisedTweetText.toString().trim();
+//    }
 
     /**
      * takes the number of ngrams and draws in a tokenized form of the tweet text as input and returns a list of features separated by comma's

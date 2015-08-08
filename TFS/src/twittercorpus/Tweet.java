@@ -34,7 +34,7 @@ public interface Tweet {
 
      void setSentiWordNetClassification(Sentiment sentiWordNetClassification);
 
-     void removeStopWords(String fileName);
+//     void removeStopWords(String fileName);
 
      void extractNGramFeatures(int numGrams);
 
