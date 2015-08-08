@@ -219,7 +219,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         if (preTweetTime.compareTo(earliestCorpusTimeStamp) < 0){
 
             // *** OPTIONAL TRACE FOR DEBUGGING ***
-            System.out.println("LAST TIME CHECKED: " + preTweetTime.toString());
+//            System.out.println("LAST TIME CHECKED: " + preTweetTime.toString());
 
             // error situation
             throw new IllegalArgumentException("We have reached the start of the price label corpus without finding any relevant timestamp to match up with this particular tweet!");
@@ -231,26 +231,34 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
         } else if(marketHoliday.contains(preTweetTime.toLocalDate())){
 
+            // *** OPTIONAL TRACE FOR DEBUGGING ***
+//            System.out.println("Market Holiday on: "+ preTweetTime.toString());
+
             // timestamp key does not exist in map because it falls on a market holiday --> try the previous days closing price
-            System.out.println("Market Holiday on: "+ preTweetTime.toString());
             return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(1)),timeZone));
 
         } else if (preTweetTime.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
 
+            // *** OPTIONAL TRACE FOR DEBUGGING ***
+//            System.out.println("Saturday: " + preTweetTime.toString());
+
             // timestamp key does not exist in map because it falls on a Saturday  --> try the previous days closing price
-            System.out.println("Saturday: " + preTweetTime.toString());
             return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(1), stockMarketCloseTime.plusMinutes(1)),timeZone));
 
         } else if (preTweetTime.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
 
+            // *** OPTIONAL TRACE FOR DEBUGGING ***
+//            System.out.println("Sunday: "+ preTweetTime);
+
             // timestamp key does not exist in map because it falls on a Sunday  --> try the closing price two days previous
-            System.out.println("Sunday: "+ preTweetTime);
             return getPriorPrices(labels, ZonedDateTime.of(LocalDateTime.of(preTweetTime.toLocalDate().minusDays(2), stockMarketCloseTime.plusMinutes(1)),timeZone));
 
         } else {
 
+            // *** OPTIONAL TRACE FOR DEBUGGING ***
+//            System.out.println("exception situation - timestamp does not appear in priceLabel corpus but should be in the corpus --> try the previous minute: "+preTweetTime.toString());
+
             // exception situation in which timestamp does not appear in priceLabel corpus but should be in the corpus --> try the previous minute
-            System.out.println("exception situation - timestamp does not appear in priceLabel corpus but should be in the corpus --> try the previous minute: "+preTweetTime.toString());
             return getPriorPrices(labels, preTweetTime.minusMinutes(1));
 
         }
@@ -270,7 +278,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         if (postTweetTime.compareTo(latestCorpusTimeStamp) > 0){
 
             // *** OPTIONAL TRACE FOR DEBUGGING ***
-            System.out.println("LAST TIME CHECKED: " + postTweetTime.toString());
+//            System.out.println("LAST TIME CHECKED: " + postTweetTime.toString());
 
             // error situation
             throw new IllegalArgumentException("We have reached the end of the price label corpus without finding any relevant timestamp to match up with this particular tweet!");
