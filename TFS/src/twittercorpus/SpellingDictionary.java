@@ -109,7 +109,6 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
     }
 
     private String getCorrectlySpeltWords(String str){
-//        String result = str;
 
         // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        System.out.println("PRE-MISSPELLEDWORDS: "+result);
@@ -124,19 +123,13 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
             }
         }
 
-//        Iterator<String> poorSpelling = misspelled.iterator();
-//        while (poorSpelling.hasNext()){
-//            String focus = poorSpelling.next();
-
             // *** OPTIONAL TRACE FOR DEBUGGING ***
 //            System.out.println("MISSPELT: "+ focus);
 
-//            result = result.replace(focus, "").replaceAll("\\s+", " ");
-//        }
-
+        return replacementText.trim();
+        
         // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        System.out.println("POST-MISSPELLEDWORDS: "+result);
 
-        return replacementText.trim();
     }
 }

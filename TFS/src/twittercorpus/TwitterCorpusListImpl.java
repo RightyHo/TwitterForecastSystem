@@ -495,13 +495,6 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
      * filter out the most common (and least informative) English words from the
      * text of each tweet.  This should help reduce noise when extracting features for classification.
      */
-//    public void filterOutStopWords(String stopWordsList){
-//        Iterator<Tweet> corpusIterator = corpus.iterator();
-//        while(corpusIterator.hasNext()){
-//            Tweet focus = corpusIterator.next();
-//            focus.removeStopWords(stopWordsList);
-//        }
-//    }
     public void filterOutStopWords(String stopWordsList){
         List<String> stopWords = new ArrayList<>();
 
