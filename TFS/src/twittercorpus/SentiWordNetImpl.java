@@ -190,4 +190,8 @@ public class SentiWordNetImpl implements SentiWordNet {
         }
         return totalScore / (double) nonZeroCount;
     }
+
+    public Map<String, Double> getSwnDictionary() {
+        return swnDictionary;
+    }
 }
