@@ -23,7 +23,7 @@ public class PriceLabelCorpusImplTest {
 
     @Before
     public void setUp() throws Exception {
-        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";    // 2015 year format
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/Test Price Data Sample.txt";    // 2015 year format
         timeZone = ZoneOffset.of("Z");              // set time zone for date information used in the TFS to GMT/UTC
         int millennium = 0;                         // needs to be changed to 2000 if the date format of input data is 23/11/15 or 0 for 23/11/2015
         plCorpus = new PriceLabelCorpusImpl(plFilename,timeZone,millennium);
@@ -35,7 +35,7 @@ public class PriceLabelCorpusImplTest {
         assertFalse(plCorpus.getPriceMap().isEmpty());
 
         // test that the first line of the input file has been copied to the corpus map
-        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/BMWGYAndMACDMinutePriceBarsInGMTFirstBusinessWeekOfFebruary2015.txt";   // 15 year format
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/BMWGYAndMACDMinutePriceBarsInGMTFirstBusinessWeekOfFebruary2015.txt";   // 15 year format
         timeZone = ZoneOffset.of("Z");
         int millennium = 2000;
         PriceLabelCorpus differentCorpus = new PriceLabelCorpusImpl(plFilename,timeZone,millennium);
@@ -62,7 +62,7 @@ public class PriceLabelCorpusImplTest {
 
     @Test
     public void testGetFileName() throws Exception {
-        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt",plCorpus.getFileName());
+        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/Test Price Data Sample.txt",plCorpus.getFileName());
     }
 
     @Test

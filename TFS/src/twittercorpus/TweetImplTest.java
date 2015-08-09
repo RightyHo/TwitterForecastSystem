@@ -26,7 +26,6 @@ public class TweetImplTest {
         LocalDateTime lDateT = LocalDateTime.of(2015,1,16,7,26,0);
         ZonedDateTime tTime = ZonedDateTime.of(lDateT, ZoneId.of("Europe/London"));
         testTw = new TweetImpl(tTime,"my family doesn't own a car that's not a beemer.");
-        stopWordsFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
     }
 
     @Rule

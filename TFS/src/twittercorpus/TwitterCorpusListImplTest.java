@@ -24,7 +24,7 @@ public class TwitterCorpusListImplTest {
 
     @Before
     public void setUp() throws Exception {
-        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample - New Date Format.txt";       // year format 2015
+        tFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/Test Twitter Corpus Sample - New Date Format.txt";       // year format 2015
         abbDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
         spellDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
         stopWordFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
@@ -52,7 +52,7 @@ public class TwitterCorpusListImplTest {
         ZonedDateTime latestCorpusTimeStamp = ZonedDateTime.of(thisYear, 3, 24, 0, 0, 0, 0, timeZone);
         tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime);
         tCorpus.extractTweetsFromFile(tFilename);
-        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Price Data Sample.txt";        // year format 2015
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/Test Price Data Sample.txt";        // year format 2015
     }
 
     @Test
@@ -78,7 +78,7 @@ public class TwitterCorpusListImplTest {
 
     @Test
     public void testGetFileName() throws Exception {
-        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Test Twitter Corpus Sample - New Date Format.txt", tCorpus.getFileName());
+        assertEquals("/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/Test Twitter Corpus Sample - New Date Format.txt", tCorpus.getFileName());
     }
 
     @Test
