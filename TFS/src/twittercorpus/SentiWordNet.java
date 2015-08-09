@@ -10,7 +10,7 @@ public interface SentiWordNet {
 
     void buildDictionary();
 
-    Sentiment classifySentiment(List<String> features);
+    Sentiment classifySentiment(String text);
 
     double getFeatureSentimentScore(String word);
 

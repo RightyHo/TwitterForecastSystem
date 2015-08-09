@@ -98,18 +98,22 @@ public class SentiWordNetImpl implements SentiWordNet {
 
     /**
      * Get the sentiment classification attributed to this list of features by SentiWordNet3.0
-     * @param features
+     * @param text
      * @return
      */
-    public Sentiment classifySentiment(List<String> features){
+    public Sentiment classifySentiment(String text){
+
+        if(text == null) throw new IllegalArgumentException("Received null string as argument");
+
         double overallSentiScore = 0.0;
-        for(String ngram : features){
-            String[] featureWords = ngram.split(" ");
-            for(String word : featureWords) {
-                double ngramScore = getFeatureSentimentScore(word);
-                overallSentiScore += ngramScore;
-            }
+        String[] words = text.split(" ");
+
+        // add up sentiment scores for each word
+        for(String w : words){
+            overallSentiScore += getFeatureSentimentScore(w);
         }
+
+        // classify the text as per the total sentiment score of all of its words
         if(overallSentiScore > 0){
             return Sentiment.POSITIVE;
         } else if(overallSentiScore < 0){
