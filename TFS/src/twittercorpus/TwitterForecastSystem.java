@@ -217,7 +217,7 @@ public class TwitterForecastSystem {
 
     public void getSentiWordNetPredictions(SentiWordNet swn){
         for(Tweet t : testData){
-            t.setSentiWordNetClassification(swn.classifySentiment(t.getFeatures()));
+            t.setSentiWordNetClassification(swn.classifySentiment(t.getTweetText()));
         }
     }
 }

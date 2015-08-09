@@ -55,7 +55,7 @@ public class SentiWordNetImplTest {
 
 
 
-        Sentiment actualSenti = swnTest.classifySentiment(testTw.getFeatures());
+        Sentiment actualSenti = swnTest.classifySentiment(testTw.getTweetText());
 //        assertEquals(expectedSenti,actualSenti);
     }
 
