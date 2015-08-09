@@ -364,43 +364,52 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     /**
      * iterate through the entire twitter corpus and run the various pre-processing cleaning steps on each tweet
      */
-    public void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,StopWordsDictionary stopWords){
+    public void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,StopWordsDictionary stopWords,int numGrams){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()) {
             Tweet focus = corpusIterator.next();
             String tText = focus.getTweetText();
             if (!tText.isEmpty()) {
-                removeLinks(focus);
-                removeUsernames(focus);
-                translateAbbreviations(abbreviationDict, focus);
-                checkSpelling(spellingDict, focus);
-                filterOutStopWords(stopWords,focus);
+
+                if(tText.toLowerCase().charAt(0) == 'r' && tText.toLowerCase().charAt(1) == 't') {
+
+                    // the focus tweet is a Retweet so remove it from the corpus
+                    corpusIterator.remove();
+                    continue;
+
+                } else {
+
+                    // pre-process the tweet
+                    removeLinks(focus);
+                    removeUsernames(focus);
+                    translateAbbreviations(abbreviationDict, focus);
+                    checkSpelling(spellingDict, focus);
+                    filterOutStopWords(stopWords, focus);
+                    extractFeatures(numGrams, focus);
+                }
+            }
+
+            // if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
+            if (focus.getFeatures().isEmpty()) {
+                corpusIterator.remove();
             }
         }
     }
 
-    public void filterOutStopWords(StopWordsDictionary stopWordsDict,Tweet tw){
-
-        tw.setTweetText(stopWordsDict.processString(tw.getTweetText()).trim());
-    }
-
     /**
      * helper function to be called by cleanInputTweetData()
-     * @param spellingDict
      * @param tw
      */
-    public void checkSpelling(DictionaryTranslator spellingDict,Tweet tw){
-        String replacementText = spellingDict.processString(tw.getTweetText());
-        tw.setTweetText(replacementText.trim());
-    }
-
-    /**
-     * helper function to be called by cleanInputTweetData()
-     * @param abbreviationDict
-     * @param tw
-     */
-    public void translateAbbreviations(DictionaryTranslator abbreviationDict,Tweet tw){
-        String replacementText = abbreviationDict.processString(tw.getTweetText());
+    public void removeLinks(Tweet tw){
+        if(tw == null) throw new IllegalArgumentException("Passed a null Tweet as a parameter");
+        Scanner scanText = new Scanner(tw.getTweetText());
+        String replacementText = "";
+        while (scanText.hasNext()) {
+            String focusWord = scanText.next();
+            if (!focusWord.startsWith("http://") && !focusWord.startsWith("https://")) {
+                replacementText += focusWord + " ";
+            }
+        }
         tw.setTweetText(replacementText.trim());
     }
 
@@ -409,6 +418,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
      * @param tw
      */
     public void removeUsernames(Tweet tw){
+        if(tw == null) throw new IllegalArgumentException("Passed a null Tweet as a parameter");
         Scanner scanText = new Scanner(tw.getTweetText());
         String replacementText = "";
         while (scanText.hasNext()) {
@@ -422,19 +432,63 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
 
     /**
      * helper function to be called by cleanInputTweetData()
+     * @param abbreviationDict
      * @param tw
      */
-    public void removeLinks(Tweet tw){
-        Scanner scanText = new Scanner(tw.getTweetText());
-        String replacementText = "";
-        while (scanText.hasNext()) {
-            String focusWord = scanText.next();
-            if (!focusWord.startsWith("http://") && !focusWord.startsWith("https://")) {
-                replacementText += focusWord + " ";
-            }
-        }
+    public void translateAbbreviations(DictionaryTranslator abbreviationDict,Tweet tw){
+        if(abbreviationDict == null) throw new IllegalArgumentException("Passed a null abbreviations dictionary as a parameter");
+        if(tw == null) throw new IllegalArgumentException("Passed a null Tweet as a parameter");
+        String replacementText = abbreviationDict.processString(tw.getTweetText());
         tw.setTweetText(replacementText.trim());
     }
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * filters out words that do not appear in our reference spelling dictionary.
+     * @param spellingDict
+     * @param tw
+     */
+    public void checkSpelling(DictionaryTranslator spellingDict,Tweet tw){
+        if(spellingDict == null) throw new IllegalArgumentException("Passed a null spelling dictionary as a parameter");
+        if(tw == null) throw new IllegalArgumentException("Passed a null Tweet as a parameter");
+        String replacementText = spellingDict.processString(tw.getTweetText());
+        tw.setTweetText(replacementText.trim());
+    }
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * filters out the most common (and least informative) English words from the
+     * text of each tweet.  This should help reduce noise when extracting features for classification.
+     * @param stopWordsDict
+     * @param tw
+     */
+    public void filterOutStopWords(DictionaryTranslator stopWordsDict,Tweet tw){
+        if(stopWordsDict == null) throw new IllegalArgumentException("Passed a null stop words dictionary as a parameter");
+        if(tw == null) throw new IllegalArgumentException("Passed a null Tweet as a parameter");
+        String replacementText = stopWordsDict.processString(tw.getTweetText());
+        tw.setTweetText(replacementText.trim());
+    }
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * calls the extractNGramFeatures() method to
+     * initialize the tweet ready for classification
+     * @param numGrams
+     * @param tw
+     */
+    public void extractFeatures(int numGrams,Tweet tw){
+        if(tw == null) throw new IllegalArgumentException("Passed a null Tweet as a parameter");
+        tw.extractNGramFeatures(numGrams);
+    }
+
+
+
+
+
+
+// *************************************************************************************************************************************
+// *** THE FOLLOWING METHODS HAVE BEEN REPLACED AND ARE JUST BEING KEPT FOR THE TIME BEING WHILE THEIR REPLACEMENTS ARE BEING TESTED ***
+// *************************************************************************************************************************************
 
     public void removeRetweets(){
         Iterator<Tweet> corpusIterator = corpus.iterator();
