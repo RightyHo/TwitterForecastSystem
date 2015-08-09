@@ -70,6 +70,9 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
      * @return
      */
     public String processString(String input){
+
+        // *** ADD BLOCK BACK IF WE WANT TO ANALYSE HASH TAGS IN THE STUDY
+
 //        String result = "";
 //        if(input.contains("#")){
 //            String[] strParts = input.split("#");
@@ -93,6 +96,7 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
 //            // run spell check after removing non letters/spaces from the string
 //            result = getCorrectlySpeltWords(retainLettersOnly(input));
 //        }
+
         // run spell check after removing non letters/spaces from the string
         String result = getCorrectlySpeltWords(retainLettersOnly(input));
         return result.replaceAll("\\s+", " ").trim();
@@ -111,7 +115,7 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
     private String getCorrectlySpeltWords(String str){
 
         // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        System.out.println("PRE-MISSPELLEDWORDS: "+result);
+//        System.out.println("PRE-MISSPELLEDWORDS: " + str);
 
         String replacementText = "";
         List<String> misspelled = getMisspelledWords(str);
@@ -123,13 +127,9 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
             }
         }
 
-            // *** OPTIONAL TRACE FOR DEBUGGING ***
-//            System.out.println("MISSPELT: "+ focus);
-
         return replacementText.trim();
-        
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        System.out.println("POST-MISSPELLEDWORDS: "+result);
 
+        // *** OPTIONAL TRACE FOR DEBUGGING ***
+//        System.out.println("POST-MISSPELLEDWORDS: "+ replacementText);
     }
 }
