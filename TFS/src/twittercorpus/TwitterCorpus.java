@@ -32,6 +32,8 @@ public interface TwitterCorpus {
 
      void labelCorpus(PriceLabelCorpus labels);
 
+     void cleanInputTweetData();
+
      void removeRetweets();
 
      void removeLinks();

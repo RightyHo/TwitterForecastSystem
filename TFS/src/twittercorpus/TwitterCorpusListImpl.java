@@ -361,6 +361,75 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
         }
     }
 
+    /**
+     * iterate through the entire twitter corpus and run the various pre-processing cleaning steps on each tweet
+     */
+    public void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict){
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()) {
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            if (!tText.isEmpty()) {
+                removeLinks(focus);
+                removeUsernames(focus);
+                translateAbbreviations(abbreviationDict,focus);
+                checkSpelling(spellingDict,focus);
+            }
+        }
+    }
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * @param spellingDict
+     * @param tw
+     */
+    public void checkSpelling(DictionaryTranslator spellingDict,Tweet tw){
+        String replacementText = spellingDict.processString(tw.getTweetText());
+        tw.setTweetText(replacementText.trim());
+    }
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * @param abbreviationDict
+     * @param tw
+     */
+    public void translateAbbreviations(DictionaryTranslator abbreviationDict,Tweet tw){
+        String replacementText = abbreviationDict.processString(tw.getTweetText());
+        tw.setTweetText(replacementText.trim());
+    }
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * @param tw
+     */
+    public void removeUsernames(Tweet tw){
+        Scanner scanText = new Scanner(tw.getTweetText());
+        String replacementText = "";
+        while (scanText.hasNext()) {
+            String focusWord = scanText.next();
+            if (!focusWord.startsWith("@")) {
+                replacementText += focusWord + " ";
+            }
+        }
+        tw.setTweetText(replacementText.trim());
+    }
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * @param tw
+     */
+    public void removeLinks(Tweet tw){
+        Scanner scanText = new Scanner(tw.getTweetText());
+        String replacementText = "";
+        while (scanText.hasNext()) {
+            String focusWord = scanText.next();
+            if (!focusWord.startsWith("http://") && !focusWord.startsWith("https://")) {
+                replacementText += focusWord + " ";
+            }
+        }
+        tw.setTweetText(replacementText.trim());
+    }
+
     public void removeRetweets(){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()){
@@ -388,7 +457,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                         replacementText += focusWord + " ";
                     }
                 }
-                focus.setTweetText(replacementText);
+                focus.setTweetText(replacementText.trim());
             }
         }
     }
@@ -409,7 +478,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                         replacementText += focusWord + " ";
                     }
                 }
-                focus.setTweetText(replacementText);
+                focus.setTweetText(replacementText.trim());
             }
         }
     }
@@ -428,7 +497,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                         replacementText += focusWord + " ";
                     }
                 }
-                focus.setTweetText(replacementText);
+                focus.setTweetText(replacementText.trim());
             }
         }
     }
@@ -449,7 +518,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                         replacementText += focusWord + " ";
                     }
                 }
-                focus.setTweetText(replacementText);
+                focus.setTweetText(replacementText.trim());
             }
         }
     }
@@ -461,7 +530,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             String tText = focus.getTweetText();
             if(!tText.isEmpty()) {
                 String replacementText = abbreviationDict.processString(tText);
-                focus.setTweetText(replacementText);
+                focus.setTweetText(replacementText.trim());
             }
         }
     }
@@ -485,7 +554,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
                 // *** OPTIONAL TRACE FOR DEBUGGING ***
 //                System.out.println("POST-PROCESS:"+ replacementText);
 
-                focus.setTweetText(replacementText);
+                focus.setTweetText(replacementText.trim());
             }
         }
     }
