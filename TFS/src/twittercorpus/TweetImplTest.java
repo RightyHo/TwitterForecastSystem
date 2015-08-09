@@ -32,12 +32,6 @@ public class TweetImplTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-//    @Test
-//    public void testRemoveStopWords() throws Exception {
-//        testTw.removeStopWords(stopWordsFilename);
-//        assertEquals("family doesn't car that's beemer.",testTw.getTweetText());
-//    }
-
     @Test
     public void testExtractNGramFeatures() throws Exception {
 
