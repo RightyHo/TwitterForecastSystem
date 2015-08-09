@@ -12,18 +12,18 @@ import java.util.Scanner;
  */
 public class StopWordsDictionary implements DictionaryTranslator {
     List<String> stopWords;
-    String stopWordsList;
+    String stopWordsListFile;
 
-    StopWordsDictionary(String stopWordsList){
+    StopWordsDictionary(String stopWordsListFile){
         List<String> stopWords = new ArrayList<>();
-        this.stopWordsList = stopWordsList;
+        this.stopWordsListFile = stopWordsListFile;
         extractStopWords();
     }
 
     public void extractStopWords(){
 
         // extract list of stop words from file
-        try(BufferedReader br = new BufferedReader(new FileReader(stopWordsList))){
+        try(BufferedReader br = new BufferedReader(new FileReader(stopWordsListFile))){
             String currentLine;
             while ((currentLine = br.readLine()) != null) {
                 Scanner s = new Scanner(currentLine);
@@ -42,6 +42,15 @@ public class StopWordsDictionary implements DictionaryTranslator {
      * @param input
      * @return
      */
-    String processString(String input){
-
+    public String processString(String input) {
+        StringBuilder revisedTweetText = new StringBuilder();
+        Scanner textScan = new Scanner(input);
+        while (textScan.hasNext()) {
+            String word = textScan.next();
+            if (!stopWords.contains(word)) {
+                revisedTweetText.append(word + " ");
+            }
+        }
+        return revisedTweetText.toString().trim();
+    }
 }

@@ -112,7 +112,7 @@ public class TwitterForecastSystem {
 //            System.out.println("AFTER CHECKING SPELLING:  " + t.getTweetText());
 //        }
 
-        tCorpus.filterOutStopWords(STOP_WORDS_FILENAME);
+        tCorpus.filterOutStopWords(new StopWordsDictionary(STOP_WORDS_FILENAME));
 
         // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        for(Tweet t : tCorpus.getCorpus()) {

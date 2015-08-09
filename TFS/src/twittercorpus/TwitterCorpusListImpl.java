@@ -364,7 +364,7 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     /**
      * iterate through the entire twitter corpus and run the various pre-processing cleaning steps on each tweet
      */
-    public void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict){
+    public void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,StopWordsDictionary stopWords){
         Iterator<Tweet> corpusIterator = corpus.iterator();
         while(corpusIterator.hasNext()) {
             Tweet focus = corpusIterator.next();
@@ -372,10 +372,16 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
             if (!tText.isEmpty()) {
                 removeLinks(focus);
                 removeUsernames(focus);
-                translateAbbreviations(abbreviationDict,focus);
-                checkSpelling(spellingDict,focus);
+                translateAbbreviations(abbreviationDict, focus);
+                checkSpelling(spellingDict, focus);
+                filterOutStopWords(stopWords,focus);
             }
         }
+    }
+
+    public void filterOutStopWords(StopWordsDictionary stopWordsDict,Tweet tw){
+
+        tw.setTweetText(stopWordsDict.processString(tw.getTweetText()).trim());
     }
 
     /**
