@@ -32,7 +32,7 @@ public interface TwitterCorpus {
 
      void labelCorpus(PriceLabelCorpus labels);
 
-     void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,StopWordsDictionary stopWords,int numGrams);
+    void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,StopWordsDictionary stopWordsDict,int numGrams);
 
      void removeRetweets();
 
