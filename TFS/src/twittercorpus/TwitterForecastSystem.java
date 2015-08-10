@@ -69,7 +69,18 @@ public class TwitterForecastSystem {
         System.out.println("\nExtracted Twitter corpus from file.");
         System.out.println("--> Corpus contains a total of " + tCorpus.getCorpus().size() + " tweets.");
 
-        tCorpus.cleanInputTweetData(new AbbreviationDictionary(ABBREVIATION_DICTIONARY_FILENAME),new SpellingDictionary(SPELLING_DICTIONARY_FILENAME),new StopWordsDictionary(STOP_WORDS_FILENAME),NGRAM_COUNT);
+        // Build corpus of price labels
+        PriceLabelCorpus pCorpus = new PriceLabelCorpusImpl(PRICE_DATA_FILENAME,TIME_ZONE,MILLENNIUM);
+        pCorpus.extractPriceDataFromFile(PRICE_DATA_FILENAME);
+        System.out.println("\n******************************************************************************************");
+        System.out.println("\nExtracted price data from file.");
+
+        // Run pre-classification cleaning process on the twitter corpus
+        tCorpus.preProcessTwitterCorpus(new AbbreviationDictionary(ABBREVIATION_DICTIONARY_FILENAME),
+                                        new SpellingDictionary(SPELLING_DICTIONARY_FILENAME),
+                                        new StopWordsDictionary(STOP_WORDS_FILENAME),
+                                        NGRAM_COUNT,
+                                        pCorpus);
 
         // *** OPTIONAL TRACE FOR DEBUGGING ***
 //        for(Tweet t : tCorpus.getCorpus()) {
@@ -140,11 +151,6 @@ public class TwitterForecastSystem {
         System.out.println("Removed URL links, usernames, mispelled words and 'stop' words.");
         System.out.println("Removed retweets and tweets with no features remaining after the filtering process from the Twitter corpus.");
         System.out.println("--> Number of tweets remaining in corpus after filtering process: " + tCorpus.getCorpus().size());
-
-        // Label the entire data set
-        PriceLabelCorpus pCorpus = new PriceLabelCorpusImpl(PRICE_DATA_FILENAME,TIME_ZONE,MILLENNIUM);
-        pCorpus.extractPriceDataFromFile(PRICE_DATA_FILENAME);
-        tCorpus.labelCorpus(pCorpus);
         System.out.println("\n******************************************************************************************");
         System.out.println("\nLabelled the Twitter corpus with stock market price data.");
 

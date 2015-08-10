@@ -30,9 +30,9 @@ public interface TwitterCorpus {
      */
      int getMonthNum(String mth);
 
-     void labelCorpus(PriceLabelCorpus labels);
+    void preProcessTwitterCorpus(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,DictionaryTranslator stopWordsDict,int numGrams,PriceLabelCorpus labels);
 
-    void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,DictionaryTranslator stopWordsDict,int numGrams);
+    void labelCorpus(PriceLabelCorpus labels,Tweet tw);
 
     void removeLinks(Tweet tw);
 

@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 public class TwitterCorpusListImplTest {
 
     private TwitterCorpus tCorpus;
+    PriceLabelCorpus plCorpus;
     private String tFilename;
     private String plFilename;
     private String abbDicFile;
@@ -32,6 +33,7 @@ public class TwitterCorpusListImplTest {
         abbDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
         spellDicFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
         stopWordFile = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
+        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/Test Price Data Sample.txt";        // year format 2015
         timeZone = ZoneOffset.of("Z");              // set time zone for date information used in the TFS to GMT/UTC
         millennium = 2000;                             // needs to be set to 2000 if the date format of input data is 23/11/15 or 0 if date format is 23/11/2015
         int thisYear = 2015;
@@ -57,7 +59,8 @@ public class TwitterCorpusListImplTest {
         ZonedDateTime latestCorpusTimeStamp = ZonedDateTime.of(thisYear, 3, 24, 0, 0, 0, 0, timeZone);
         tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime);
         tCorpus.extractTweetsFromFile(tFilename);
-        plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/Test Price Data Sample.txt";        // year format 2015
+        plCorpus = new PriceLabelCorpusImpl(plFilename,timeZone,0);
+        plCorpus.extractPriceDataFromFile(plFilename);
 
         aDict = new AbbreviationDictionary(abbDicFile);
         sDict = new SpellingDictionary(spellDicFile);
@@ -127,9 +130,11 @@ public class TwitterCorpusListImplTest {
      */
     @Test
     public void testLabelCorpus() throws Exception {
-        PriceLabelCorpus plCorpus = new PriceLabelCorpusImpl(plFilename,timeZone,0);
-        plCorpus.extractPriceDataFromFile(plFilename);
-        tCorpus.labelCorpus(plCorpus);
+        tCorpus.labelCorpus(plCorpus, tCorpus.getCorpus().get(0));
+        tCorpus.labelCorpus(plCorpus, tCorpus.getCorpus().get(49));
+        tCorpus.labelCorpus(plCorpus, tCorpus.getCorpus().get(238));
+        tCorpus.labelCorpus(plCorpus, tCorpus.getCorpus().get(343));
+        tCorpus.labelCorpus(plCorpus, tCorpus.getCorpus().get(663));
 
         // SCENARIO 1: TWEET IS PUBLISHED OUTSIDE OF MARKET HOURS - test the first tweet in the corpus is labelled correctly:
         // Fri Jan 16 00:04:00 2015	#usedcars used 2003 bmw z4 2.5i in gainesville, fl 32601 for sale at autoflex llc http://t.co/fxbqiiu6rr http://t.co/rok2iyoh0c
@@ -209,7 +214,7 @@ public class TwitterCorpusListImplTest {
 
         // remove retweets from the corpus
         int totalBeforeRemoval = tCorpus.getCorpus().size();
-        tCorpus.cleanInputTweetData(aDict, sDict, stopDict, ngrams);
+        tCorpus.preProcessTwitterCorpus(aDict, sDict, stopDict, ngrams,plCorpus);
         int totalAfterRemoval = tCorpus.getCorpus().size();
 
         // test that the corpus of tweets reduces in size when we remove retweets from the corpus
@@ -473,7 +478,7 @@ public class TwitterCorpusListImplTest {
         assertEquals(expectedFeaturesTwoBi,actualFeaturesTwoBi);
 
         // test using unigrams as features
-        tCorpus.extractFeatures(1,tCorpus.getCorpus().get(173));
+        tCorpus.extractFeatures(1, tCorpus.getCorpus().get(173));
         tCorpus.extractFeatures(1,tCorpus.getCorpus().get(290));
 
         // check the features list held by the tweet matches expectations after we run the extractFeatures(1) method on the corpus

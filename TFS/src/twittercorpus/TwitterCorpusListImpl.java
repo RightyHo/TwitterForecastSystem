@@ -168,34 +168,65 @@ public class TwitterCorpusListImpl implements TwitterCorpus {
     }
 
     /**
+     * iterate through the entire twitter corpus and run the various pre-processing cleaning steps on each tweet
+     */
+    public void preProcessTwitterCorpus(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,DictionaryTranslator stopWordsDict,int numGrams,PriceLabelCorpus labels){
+        Iterator<Tweet> corpusIterator = corpus.iterator();
+        while(corpusIterator.hasNext()) {
+            Tweet focus = corpusIterator.next();
+            String tText = focus.getTweetText();
+            if (!tText.isEmpty()) {
+
+                if(tText.toLowerCase().charAt(0) == 'r' && tText.toLowerCase().charAt(1) == 't') {
+
+                    // the focus tweet is a Retweet so remove it from the corpus
+                    corpusIterator.remove();
+                    continue;
+
+                } else {
+
+                    // pre-process the tweet
+                    removeLinks(focus);
+                    removeUsernames(focus);
+                    translateAbbreviations(abbreviationDict, focus);
+                    checkSpelling(spellingDict, focus);
+                    filterOutStopWords(stopWordsDict, focus);
+                    extractFeatures(numGrams, focus);
+                }
+            }
+
+            // if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus otherwise label the tweet
+            if (focus.getFeatures().isEmpty()) {
+                corpusIterator.remove();
+            } else {
+                labelCorpus(labels,focus);
+            }
+        }
+    }
+    /**
      * labels the tweet by setting the price snapshot that corresponds to the timestamp of the tweet as well as
      * setting the sentiment value of the tweet and marking the isLabelled flag as true.
      * @param labels
      */
-    public void labelCorpus(PriceLabelCorpus labels){
+    public void labelCorpus(PriceLabelCorpus labels,Tweet tw){
+        ZonedDateTime focusTS = tw.getTimeStamp();
+        PriceSnapshot openingSnap = getPriorPrices(labels,focusTS);
+        PriceSnapshot closingSnap = getPrice20MinsAfterTweet(labels, focusTS);
 
-        Iterator<Tweet> corpusIterator = corpus.iterator();
-        while(corpusIterator.hasNext()){
-            Tweet focus = corpusIterator.next();
-            ZonedDateTime focusTS = focus.getTimeStamp();
-            PriceSnapshot openingSnap = getPriorPrices(labels,focusTS);
-            PriceSnapshot closingSnap = getPrice20MinsAfterTweet(labels, focusTS);
+        // set the two price snapshots and labelled flag for the tweet
 
-            // set the two price snapshots and labelled flag for the tweet
+        tw.setInitialSnapshot(openingSnap);
+        tw.setPostTweetSnapshot(closingSnap);
+        tw.setIsLabelled(true);
 
-            focus.setInitialSnapshot(openingSnap);
-            focus.setPostTweetSnapshot(closingSnap);
-            focus.setIsLabelled(true);
+        // compare the two market price snapshots to discern the implied sentiment of the tweet from the change in price
 
-            // compare the two market price snapshots to discern the implied sentiment of the tweet from the change in price
-
-            if(focus.getInitialSnapshot().getOpeningSharePrice() > focus.getPostTweetSnapshot().getOpeningSharePrice()){
-                focus.setSentiment(Sentiment.NEGATIVE);
-            } else if(focus.getInitialSnapshot().getOpeningSharePrice() < focus.getPostTweetSnapshot().getOpeningSharePrice()) {
-                focus.setSentiment(Sentiment.POSITIVE);
-            } else {
-                focus.setSentiment(Sentiment.NEUTRAL);
-            }
+        if(tw.getInitialSnapshot().getOpeningSharePrice() > tw.getPostTweetSnapshot().getOpeningSharePrice()){
+            tw.setSentiment(Sentiment.NEGATIVE);
+        } else if(tw.getInitialSnapshot().getOpeningSharePrice() < tw.getPostTweetSnapshot().getOpeningSharePrice()) {
+            tw.setSentiment(Sentiment.POSITIVE);
+        } else {
+            tw.setSentiment(Sentiment.NEUTRAL);
         }
     }
 
