@@ -32,9 +32,54 @@ public interface TwitterCorpus {
 
      void labelCorpus(PriceLabelCorpus labels);
 
-    void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,StopWordsDictionary stopWordsDict,int numGrams);
+    void cleanInputTweetData(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,DictionaryTranslator stopWordsDict,int numGrams);
 
-     void removeRetweets();
+    void removeLinks(Tweet tw);
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * @param tw
+     */
+    void removeUsernames(Tweet tw);
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * @param abbreviationDict
+     * @param tw
+     */
+    void translateAbbreviations(DictionaryTranslator abbreviationDict,Tweet tw);
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * filters out words that do not appear in our reference spelling dictionary.
+     * @param spellingDict
+     * @param tw
+     */
+    void checkSpelling(DictionaryTranslator spellingDict,Tweet tw);
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * filters out the most common (and least informative) English words from the
+     * text of each tweet.  This should help reduce noise when extracting features for classification.
+     * @param stopWordsDict
+     * @param tw
+     */
+    void filterOutStopWords(DictionaryTranslator stopWordsDict,Tweet tw);
+
+    /**
+     * helper function to be called by cleanInputTweetData()
+     * calls the extractNGramFeatures() method to
+     * initialize the tweet ready for classification
+     * @param numGrams
+     * @param tw
+     */
+    void extractFeatures(int numGrams,Tweet tw);
+
+// *************************************************************************************************************************************
+// *** THE FOLLOWING METHODS HAVE BEEN REPLACED AND ARE JUST BEING KEPT FOR THE TIME BEING WHILE THEIR REPLACEMENTS ARE BEING TESTED ***
+// *************************************************************************************************************************************
+
+    void removeRetweets();
 
      void removeLinks();
 

@@ -21,6 +21,10 @@ public class TwitterCorpusListImplTest {
     private String stopWordFile;
     private int millennium;                          // needs to be set to 2000 if the date format of input data is 23/11/15 or set to 0 if year format is 23/11/2015
     private ZoneOffset timeZone;
+    private int ngrams;
+    private DictionaryTranslator aDict;
+    private DictionaryTranslator sDict;
+    private DictionaryTranslator stopDict;
 
     @Before
     public void setUp() throws Exception {
@@ -31,6 +35,7 @@ public class TwitterCorpusListImplTest {
         timeZone = ZoneOffset.of("Z");              // set time zone for date information used in the TFS to GMT/UTC
         millennium = 2000;                             // needs to be set to 2000 if the date format of input data is 23/11/15 or 0 if date format is 23/11/2015
         int thisYear = 2015;
+        ngrams = 1;
 
         // initialise set of local market holidays at the exchange on which the stock is traded
         LocalDate[] setValues = new LocalDate[]{
@@ -53,6 +58,10 @@ public class TwitterCorpusListImplTest {
         tCorpus = new TwitterCorpusListImpl(tFilename,timeZone,marketHoliday,earliestCorpusTimeStamp,latestCorpusTimeStamp,bmwOpenTime,bmwClosingTime);
         tCorpus.extractTweetsFromFile(tFilename);
         plFilename = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/JUnit Test Data/Test Price Data Sample.txt";        // year format 2015
+
+        aDict = new AbbreviationDictionary(abbDicFile);
+        sDict = new SpellingDictionary(spellDicFile);
+        stopDict = new StopWordsDictionary(stopWordFile);
     }
 
     @Test
@@ -200,7 +209,7 @@ public class TwitterCorpusListImplTest {
 
         // remove retweets from the corpus
         int totalBeforeRemoval = tCorpus.getCorpus().size();
-        tCorpus.removeRetweets();
+        tCorpus.cleanInputTweetData(aDict,sDict,stopDict,ngrams);
         int totalAfterRemoval = tCorpus.getCorpus().size();
 
         // test that the corpus of tweets reduces in size when we remove retweets from the corpus
@@ -327,7 +336,7 @@ public class TwitterCorpusListImplTest {
         assertFalse(noNameTweet.getTweetText().contains("@"));
 
         // replace links found in the corpus with an equivalence token
-        tCorpus.removeUsernames();
+        tCorpus.cleanInputTweetData(aDict,sDict,stopDict,ngrams);
 
         // test that the usernames have been removed in the tweets that previously contained usernames:
         assertFalse(usernameTweetA.getTweetText().contains("@"));
