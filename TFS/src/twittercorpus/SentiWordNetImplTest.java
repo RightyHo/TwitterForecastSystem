@@ -32,32 +32,32 @@ public class SentiWordNetImplTest {
 
         Map<String,Double> testDict = swnTest.getSwnDictionary();
         assertFalse(testDict.isEmpty());
-        System.out.println("SIZE OF SWN3.0 DICTIONARY IS: " + testDict.size());
+        System.out.println("SIZE OF SWN3.0 DICTIONARY IS: " + testDict.size() + ".  NUMBER OF LINES IN SWN FILE: 117,659");
         Iterator<String> keyWords = testDict.keySet().iterator();
         int count = 0;
         while(keyWords.hasNext() && count < 3){
             String word = keyWords.next();
             count++;
-            System.out.println("FIRST ELEMENT IN SWN3.0 MAP: " + word + ".  WORD SCORE: " + testDict.get(word));
+            System.out.println("FIRST THREE ELEMENTS IN SWN3.0 MAP: " + word + ".  WORD SCORE: " + testDict.get(word));
         }
     }
 
-    @Test
-    public void testClassifySentiment() throws Exception {
-
-        // Tweet example Fri Jan 16 07:26:00 2015	I made up the text for this tweet.
-        LocalDateTime lDateT = LocalDateTime.of(2015,1,16,7,26,0);
-        ZonedDateTime tTime = ZonedDateTime.of(lDateT, ZoneOffset.of("Z"));
-        Tweet testTw = new TweetImpl(tTime,"obscure masked versatility");
-        testTw.extractNGramFeatures(1);
-
-        // calculate expected SentiWordNet3.0 score
-
-
-
-        Sentiment actualSenti = swnTest.classifySentiment(testTw.getTweetText());
-//        assertEquals(expectedSenti,actualSenti);
-    }
+//    @Test
+//    public void testClassifySentiment() throws Exception {
+//
+//        // Tweet example Fri Jan 16 07:26:00 2015	I made up the text for this tweet.
+//        LocalDateTime lDateT = LocalDateTime.of(2015,1,16,7,26,0);
+//        ZonedDateTime tTime = ZonedDateTime.of(lDateT, ZoneOffset.of("Z"));
+//        Tweet testTw = new TweetImpl(tTime,"obscure masked versatility");
+//        testTw.extractNGramFeatures(1);
+//
+//        // calculate expected SentiWordNet3.0 score
+//
+//
+//
+//        Sentiment actualSenti = swnTest.classifySentiment(testTw.getTweetText());
+////        assertEquals(expectedSenti,actualSenti);
+//    }
 
     // totalScore = sentiScore1 / 1 + sentiScore2 / 2 + sentiScore3 / 3 + ...
     // totalScore += sentiScore / (double) wordDefinitionRank;
@@ -73,6 +73,8 @@ public class SentiWordNetImplTest {
         // n	05641834	0.375	0	versatility#1	having a wide variety of skills
         double expectedA = ((0.375 - 0) / 1) / 1;
         double actualA = swnTest.getFeatureSentimentScore("versatility");
+        System.out.println("expectedA value is: " + expectedA);
+        System.out.println("actualA value is: " + actualA);
         assert(Math.abs(expectedA - actualA) < 0.000000001);
 
         // calculate expected SentiWordNet3.0 score for masked
@@ -82,6 +84,12 @@ public class SentiWordNetImplTest {
         // a	01481014	0	0.625	masked#2	having markings suggestive of a mask; "the masked face of a raccoon"
         double expectedB = ((0.25 - 0.375) / 1 + (0 - 0.625) / 2) / (1 + 1/2);
         double actualB = swnTest.getFeatureSentimentScore("masked");
+
+        // current trace values:
+        // expectedB value is: -0.4375
+        // actualB value is: -0.2916666666666667
+        System.out.println("expectedB value is: " + expectedB);
+        System.out.println("actualB value is: " + actualB);
         assert(Math.abs(expectedB - actualB) < 0.000000001);
 
         // calculate expected SentiWordNet3.0 score for obscure
@@ -103,6 +111,12 @@ public class SentiWordNetImplTest {
         double expectedVerbScore = ((0 - 0.125) / 1 + (0.25 - 0.375) / 2 + (0 - 0.25) / 3 + (0 - 0) / 4 + (0 - 0.25) / 5) / (1 + 1/2 + 1/3 + 1/4 + 1/5);
         double expectedC = (expectedAdjectiveScore + expectedVerbScore) / 2;
         double actualC = swnTest.getFeatureSentimentScore("obscure");
+
+        // current trace values:
+        // expectedC value is: -0.53125
+        // actualC value is: -0.22161601867024183
+        System.out.println("expectedC value is: " + expectedC);
+        System.out.println("actualC value is: " + actualC);
         assert(Math.abs(expectedC - actualC) < 0.000000001);
     }
 }
