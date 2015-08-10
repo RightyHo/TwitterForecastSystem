@@ -15,7 +15,7 @@ public class StopWordsDictionary implements DictionaryTranslator {
     String stopWordsListFile;
 
     StopWordsDictionary(String stopWordsListFile){
-        List<String> stopWords = new ArrayList<>();
+        stopWords = new ArrayList<>();
         this.stopWordsListFile = stopWordsListFile;
         extractStopWords();
     }
