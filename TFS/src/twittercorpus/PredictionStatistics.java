@@ -9,7 +9,7 @@ public interface PredictionStatistics {
 
     void calculateTFSAccuracy(List<Tweet> testData);
 
-    void calculateMACDAccuracy(List<Tweet> testData);
+//    void calculateMACDAccuracy(List<Tweet> testData);
 
     void calculateSentiWordNetAccuracy(List<Tweet> testData);
 

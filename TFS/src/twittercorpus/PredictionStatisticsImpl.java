@@ -16,6 +16,8 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
     private int incorrectMACDCount;
     private int correctSentiWordNetCount;
     private int incorrectSentiWordNetCount;
+    private int correctMatchingTfsAndMacdCount;
+    private int incorrectMatchingTfsAndMacdCount;
 
     public PredictionStatisticsImpl(){
         sizeOfTestDataSet = 0;
@@ -28,6 +30,8 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         incorrectMACDCount = 0;
         correctSentiWordNetCount = 0;
         incorrectSentiWordNetCount = 0;
+        correctMatchingTfsAndMacdCount = 0;
+        incorrectMatchingTfsAndMacdCount = 0;
     }
 
     public void calculateTFSAccuracy(List<Tweet> testData){
@@ -37,71 +41,328 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         // reset counts
         correctTFSCount = 0;
         incorrectTFSCount = 0;
+        correctMACDCount = 0;
+        incorrectMACDCount = 0;
+        correctMatchingTfsAndMacdCount = 0;
+        incorrectMatchingTfsAndMacdCount = 0;
 
         // compare each tweets classification with the actual price move during the twenty minutes after the tweet is published
         for(Tweet t : testData){
+
+            boolean bothAgree = false;
+            int tfsSentimentPrediction = 0;      // 0 for neutral, 1 for positive
+
             if(t == null) throw new NullPointerException("testData is returning null tweets!");
-            if(t.getSentiment() == Sentiment.NEGATIVE){
-                if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
+
+//            if(t.getSentiment() == Sentiment.NEGATIVE){
+//                if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
+//                    correctTFSCount++;
+//                } else {
+//                    incorrectTFSCount++;
+//                }
+//            } else if(t.getSentiment() == Sentiment.POSITIVE){
+//                if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()){
+//                    correctTFSCount++;
+//                } else {
+//                    incorrectTFSCount++;
+//                }
+//            } else if(t.getSentiment() == Sentiment.NEUTRAL){
+//                // If time permits it may be worth experimenting by widening a range of prices to fall under neutral category
+//                if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
+//                    correctTFSCount++;
+//                } else {
+//                    incorrectTFSCount++;
+//                }
+//            } else {
+//                throw new IllegalArgumentException("The test data has not been correctly classified");
+//            }
+
+            if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()) {
+
+                // price went up after tweet was published
+
+                if (t.getSentiment() == Sentiment.POSITIVE) {
+
+                    // TFS prediction was correct
                     correctTFSCount++;
-                } else {
+
+                    // A positive MACD signal indicates upward price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+                        // both TFS and MACD predictions were correct and matching
+                        correctMatchingTfsAndMacdCount++;
+
+                    } else {
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    }
+
+                } else if (t.getSentiment() == Sentiment.NEGATIVE) {
+
+                    // TFS prediction was wrong
                     incorrectTFSCount++;
+
+                    // A positive MACD signal indicates upward price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+                    } else if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0) {
+                        //A negative MACD signal indicates downward price momentum
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                        // both TFS and MACD predictions were wrong and matching
+                        incorrectMatchingTfsAndMacdCount++;
+
+                    } else {    // MACD signal was NEUTRAL
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    }
+
+                } else {    // TFS predicted NEUTRAL
+
+                    // TFS prediction was wrong
+                    incorrectTFSCount++;
+
+                    // A positive MACD signal indicates upward price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+
+                    } else if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0) {
+
+                        // A negative MACD signal indicates downward price momentum
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    } else {    // MACD signal was NEUTRAL
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                        // both TFS and MACD predictions were wrong and matching
+                        incorrectMatchingTfsAndMacdCount++;
+
+                    }
                 }
-            } else if(t.getSentiment() == Sentiment.POSITIVE){
-                if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()){
+
+            } else if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
+
+                // price went down after tweet was published
+
+                if (t.getSentiment() == Sentiment.NEGATIVE) {
+
+                    // TFS prediction was correct
                     correctTFSCount++;
-                } else {
+
+                    // A negative MACD signal indicates downward price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+                        // both TFS and MACD predictions were correct and matching
+                        correctMatchingTfsAndMacdCount++;
+
+                    } else {
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    }
+
+                } else if (t.getSentiment() == Sentiment.POSITIVE) {
+
+                    // TFS prediction was wrong
                     incorrectTFSCount++;
-                }
-            } else if(t.getSentiment() == Sentiment.NEUTRAL){
-                // If time permits it may be worth experimenting by widening a range of prices to fall under neutral category
-                if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
-                    correctTFSCount++;
-                } else {
+
+                    // A negative MACD signal indicates downward price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+                    } else if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
+                        //A positive MACD signal indicates upward price momentum
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                        // both TFS and MACD predictions were wrong and matching
+                        incorrectMatchingTfsAndMacdCount++;
+
+                    } else {    // MACD signal was NEUTRAL
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    }
+
+                } else {    // TFS predicted NEUTRAL
+
+                    // TFS prediction was wrong
                     incorrectTFSCount++;
+
+                    // A negative value MACD signal indicates downward price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+
+                    } else if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
+
+                        // A positive MACD signal indicates upward price momentum
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    } else {    // MACD signal was NEUTRAL
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                        // both TFS and MACD predictions were wrong and matching
+                        incorrectMatchingTfsAndMacdCount++;
+
+                    }
                 }
+
             } else {
-                throw new IllegalArgumentException("The test data has not been correctly classified");
+
+                // price was unchanged after tweet was published
+
+                if (t.getSentiment() == Sentiment.NEUTRAL) {
+
+                    // TFS prediction was correct
+                    correctTFSCount++;
+
+                    // A zero value MACD signal indicates neutral price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() == 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+                        // both TFS and MACD predictions were correct and matching
+                        correctMatchingTfsAndMacdCount++;
+
+                    } else {
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    }
+
+                } else if (t.getSentiment() == Sentiment.POSITIVE) {
+
+                    // TFS prediction was wrong
+                    incorrectTFSCount++;
+
+                    // A zero value MACD signal indicates neutral price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() == 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+                    } else if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
+                        //A positive MACD signal indicates upward price momentum
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                        // both TFS and MACD predictions were wrong and matching
+                        incorrectMatchingTfsAndMacdCount++;
+
+                    } else {    //A negative MACD signal indicates downward price momentum
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    }
+
+                } else {    // TFS predicted NEGATIVE
+
+                    // TFS prediction was wrong
+                    incorrectTFSCount++;
+
+                    // A zero value MACD signal indicates neutral price momentum
+                    if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() == 0) {
+
+                        // MACD prediction was correct
+                        correctMACDCount++;
+
+
+                    } else if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
+
+                        // A positive MACD signal indicates upward price momentum
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                    } else {    // A negative MACD signal indicates downward price momentum
+
+                        // MACD prediction was wrong
+                        incorrectMACDCount++;
+
+                        // both TFS and MACD predictions were wrong and matching
+                        incorrectMatchingTfsAndMacdCount++;
+
+                    }
+                }
             }
         }
         madeTFSCalcs = true;
-    }
-
-    public void calculateMACDAccuracy(List<Tweet> testData){
-        if(testData == null) throw new IllegalArgumentException("Test data list is null!");
-        sizeOfTestDataSet = testData.size();
-
-        // reset counts
-        correctMACDCount = 0;
-        incorrectMACDCount = 0;
-
-        // compare the MACD direction indicator prior to the release of each tweet with the actual price move during the twenty minutes after the tweet is published
-        for(Tweet t : testData){
-            if(t == null) throw new NullPointerException("testData is returning null tweets!");
-            // Signal Line Crossovers:  MACD Level minus Signal Level.  A positive signal indicates upward price momentum and vice versa
-            if(t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0){
-                if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()){
-                    correctMACDCount++;
-                } else {
-                    incorrectMACDCount++;
-                }
-            } else if(t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0){
-                if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
-                    correctMACDCount++;
-                } else {
-                    incorrectMACDCount++;
-                }
-            } else {
-                // Sentiment is NEUTRAL - if time permits it may be worth experimenting by widening a range of prices to fall under neutral category
-                if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
-                    correctMACDCount++;
-                } else {
-                    incorrectMACDCount++;
-                }
-            }
-        }
         madeMACDCalcs = true;
     }
+
+//    public void calculateMACDAccuracy(List<Tweet> testData){
+//        if(testData == null) throw new IllegalArgumentException("Test data list is null!");
+//        sizeOfTestDataSet = testData.size();
+//
+//        // reset counts
+//        correctMACDCount = 0;
+//        incorrectMACDCount = 0;
+//
+//        // compare the MACD direction indicator prior to the release of each tweet with the actual price move during the twenty minutes after the tweet is published
+//        for(Tweet t : testData){
+//            if(t == null) throw new NullPointerException("testData is returning null tweets!");
+//            // Signal Line Crossovers:  MACD Level minus Signal Level.  A positive signal indicates upward price momentum and vice versa
+//            if(t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0){
+//                if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()){
+//                    correctMACDCount++;
+//                } else {
+//                    incorrectMACDCount++;
+//                }
+//            } else if(t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0){
+//                if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
+//                    correctMACDCount++;
+//                } else {
+//                    incorrectMACDCount++;
+//                }
+//            } else {
+//                // Sentiment is NEUTRAL - if time permits it may be worth experimenting by widening a range of prices to fall under neutral category
+//                if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
+//                    correctMACDCount++;
+//                } else {
+//                    incorrectMACDCount++;
+//                }
+//            }
+//        }
+//        madeMACDCalcs = true;
+//    }
 
     public void calculateSentiWordNetAccuracy(List<Tweet> testData){
         if(testData == null) throw new IllegalArgumentException("Test data list is null!");
@@ -161,6 +422,13 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
             System.out.printf("Overall Accuracy of MACD Predictions - Proportion of correct predictions: %.2f\n",successRate);
             System.out.println("\n******************************************************************************************\n");
             if (correctMACDCount + incorrectMACDCount != sizeOfTestDataSet) throw new IllegalArgumentException("MACD calculations are inconsistent");
+        }
+        if(madeTFSCalcs && madeMACDCalcs) {
+            System.out.println("Number of Correct Predictions when the TFS & MACD Indicators Both Agreed on the Direction : " + correctMatchingTfsAndMacdCount);
+            System.out.println("Number of Incorrect Predictions when the TFS & MACD Indicators Both Agreed on the Direction : " + incorrectMatchingTfsAndMacdCount);
+            double successRate = (double) correctMatchingTfsAndMacdCount / (double) (correctMatchingTfsAndMacdCount + incorrectMatchingTfsAndMacdCount);
+            System.out.printf("Overall Accuracy of Predictions when TFS & MACD Indicators Both Agreed on the Direction: %.2f\n",successRate);
+            System.out.println("\n******************************************************************************************\n");
         }
         if(madeSentiWordNetCalcs) {
             System.out.println("Number of Correct SentiWordNet Predictions: " + correctSentiWordNetCount);
