@@ -170,7 +170,7 @@ public class TwitterForecastSystem {
         // Analyse Results
         PredictionStatistics pStats = new PredictionStatisticsImpl();
         pStats.calculateTFSAccuracy(testData);
-        pStats.calculateMACDAccuracy(testData);
+//        pStats.calculateMACDAccuracy(testData);
 
         // Run SentiWordNet comparison
 //        SentiWordNet swn = new SentiWordNetImpl(SENTIWORDNET_FILENAME);
