@@ -42,22 +42,53 @@ public class SentiWordNetImplTest {
         }
     }
 
-//    @Test
-//    public void testClassifySentiment() throws Exception {
-//
-//        // Tweet example Fri Jan 16 07:26:00 2015	I made up the text for this tweet.
-//        LocalDateTime lDateT = LocalDateTime.of(2015,1,16,7,26,0);
-//        ZonedDateTime tTime = ZonedDateTime.of(lDateT, ZoneOffset.of("Z"));
-//        Tweet testTw = new TweetImpl(tTime,"obscure masked versatility");
-//        testTw.extractNGramFeatures(1);
-//
-//        // calculate expected SentiWordNet3.0 score
-//
-//
-//
-//        Sentiment actualSenti = swnTest.classifySentiment(testTw.getTweetText());
-////        assertEquals(expectedSenti,actualSenti);
-//    }
+    @Test
+    public void testClassifySentiment() throws Exception {
+
+        // Tweet example Fri Jan 16 07:26:00 2015	I made up the text for this tweet.
+        LocalDateTime lDateT = LocalDateTime.of(2015,1,16,7,26,0);
+        ZonedDateTime tTime = ZonedDateTime.of(lDateT, ZoneOffset.of("Z"));
+        Tweet testTw = new TweetImpl(tTime,"versatility masked obscure bondable");
+        testTw.extractNGramFeatures(1);
+
+        // calculate expected SentiWordNet3.0 score
+        double expectedA = ((0.375 - 0.0) / 1.0) / 1.0;
+
+        double totalScoreB = ((0.25 - 0.375) / 1.0)  + ((0.0 - 0.625) / 2.0);
+        double sumB = 1.0 / 1.0 + 1.0 /2.0;
+        double expectedB = totalScoreB / sumB;
+
+        double adjectiveTotalScoreC = ((0.25 - 0.375) / 1.0)  + ((0.0 -	0.375) / 2.0) + ((0.0 -	0.75) / 3.0)
+                + ((0.0 - 0.75) / 4.0) + ((0.0 - 0.375) / 5.0)  + ((0.5 - 0.0) / 6.0);
+        double adjectiveSumC = 1.0 / 1.0 + 1.0 /2.0 + 1.0 /3.0 + 1.0 /4.0 + 1.0 /5.0 + 1.0 /6.0;
+        double adjectiveExpectedC = adjectiveTotalScoreC / adjectiveSumC;
+
+        double verbTotalScoreC = ((0.0 - 0.125) / 1.0)  + ((0.25 - 0.375) / 2.0) + ((0.0 - 0.25) / 3.0)
+                + ((0.0 - 0.0) / 4.0) + ((0.0 - 0.25) / 5.0);
+        double verbSumC = 1.0 / 1.0 + 1.0 /2.0 + 1.0 /3.0 + 1.0 /4.0 + 1.0 /5.0;
+        double verbExpectedC = verbTotalScoreC / verbSumC;
+
+        double expectedC = (adjectiveExpectedC + verbExpectedC) / 2.0;
+
+        double totalScoreD = ((0.5 - 0.0) / 1.0)  + ((0.25 - 0) / 2.0);
+        double sumD = 1.0 / 1.0 + 1.0 / 2.0;
+        double expectedD = totalScoreD / sumD;
+
+        double expectedTotal = expectedA + expectedB + expectedC + expectedD;
+        Sentiment actualSenti = swnTest.classifySentiment(testTw.getTweetText());
+        System.out.println("Expected Tweet Sentiment Score: " + expectedTotal);
+
+        Sentiment expectedSenti;
+        if(expectedTotal > 0){
+            expectedSenti =  Sentiment.POSITIVE;
+        } else if(expectedTotal < 0){
+            expectedSenti = Sentiment.NEGATIVE;
+        } else {
+            expectedSenti = Sentiment.NEUTRAL;
+        }
+
+        assertEquals(expectedSenti,actualSenti);
+    }
 
     // totalScore = sentiScore1 / 1 + sentiScore2 / 2 + sentiScore3 / 3 + ...
     // totalScore += sentiScore / (double) wordDefinitionRank;
@@ -67,31 +98,33 @@ public class SentiWordNetImplTest {
     @Test
     public void testGetFeatureSentimentScore() throws Exception {
 
+        // test that a word with one SWN record generates the expected sentiment score
         // calculate expected SentiWordNet3.0 score for versatility
         // List of all definitions for versatility in SentiWordNet3.0:
         //
         // n	05641834	0.375	0	versatility#1	having a wide variety of skills
-        double expectedA = ((0.375 - 0) / 1) / 1;
+        double expectedA = ((0.375 - 0.0) / 1.0) / 1.0;
         double actualA = swnTest.getFeatureSentimentScore("versatility");
         System.out.println("expectedA value is: " + expectedA);
         System.out.println("actualA value is: " + actualA);
         assert(Math.abs(expectedA - actualA) < 0.000000001);
 
+        // test that a word with two SWN records generates the expected sentiment score
         // calculate expected SentiWordNet3.0 score for masked
         // List of all definitions for masked in SentiWordNet3.0:
         //
         // a	01707230	0.25	0.375	masked#1 disguised#1 cloaked#1	having its true character concealed with the intent of misleading; "hidden agenda"; "masked threat"
         // a	01481014	0	0.625	masked#2	having markings suggestive of a mask; "the masked face of a raccoon"
-        double expectedB = ((0.25 - 0.375) / 1 + (0 - 0.625) / 2) / (1 + 1/2);
+        double totalScoreB = ((0.25 - 0.375) / 1.0)  + ((0.0 - 0.625) / 2.0);
+        double sumB = 1.0 / 1.0 + 1.0 /2.0;
+        double expectedB = totalScoreB / sumB;
         double actualB = swnTest.getFeatureSentimentScore("masked");
 
-        // current trace values:
-        // expectedB value is: -0.4375
-        // actualB value is: -0.2916666666666667
         System.out.println("expectedB value is: " + expectedB);
         System.out.println("actualB value is: " + actualB);
         assert(Math.abs(expectedB - actualB) < 0.000000001);
 
+        // test that a word with eleven SWN records generates the expected sentiment score
         // calculate expected SentiWordNet3.0 score for obscure
         // List of all definitions for masked in SentiWordNet3.0:
         //
@@ -107,16 +140,36 @@ public class SentiWordNetImplTest {
         // v	00587390	0	0	obscure#4	reduce a vowel to a neutral one, such as a schwa
         // v	00313987	0	0.25	veil#2 obscure#5 obliterate#2 hide#4 blot_out#1	make undecipherable or imperceptible by obscuring or concealing; "a hidden message"; "a veiled threat"
 
-        double expectedAdjectiveScore = ((0.25 - 0.375) / 1 + (0 - 0.375) / 2 + (0 - 0.75) / 3 + (0 - 0.75) / 4 + (0 - 0.375) / 5 + (0.5 - 0) / 6) / (1 + 1/2 + 1/3 + 1/4 + 1/5 + 1/6);
-        double expectedVerbScore = ((0 - 0.125) / 1 + (0.25 - 0.375) / 2 + (0 - 0.25) / 3 + (0 - 0) / 4 + (0 - 0.25) / 5) / (1 + 1/2 + 1/3 + 1/4 + 1/5);
-        double expectedC = (expectedAdjectiveScore + expectedVerbScore) / 2;
+        double adjectiveTotalScoreC = ((0.25 - 0.375) / 1.0)  + ((0.0 -	0.375) / 2.0) + ((0.0 -	0.75) / 3.0)
+                                    + ((0.0 - 0.75) / 4.0) + ((0.0 - 0.375) / 5.0)  + ((0.5 - 0.0) / 6.0);
+        double adjectiveSumC = 1.0 / 1.0 + 1.0 /2.0 + 1.0 /3.0 + 1.0 /4.0 + 1.0 /5.0 + 1.0 /6.0;
+        double adjectiveExpectedC = adjectiveTotalScoreC / adjectiveSumC;
+
+        double verbTotalScoreC = ((0.0 - 0.125) / 1.0)  + ((0.25 - 0.375) / 2.0) + ((0.0 - 0.25) / 3.0)
+                                + ((0.0 - 0.0) / 4.0) + ((0.0 - 0.25) / 5.0);
+        double verbSumC = 1.0 / 1.0 + 1.0 /2.0 + 1.0 /3.0 + 1.0 /4.0 + 1.0 /5.0;
+        double verbExpectedC = verbTotalScoreC / verbSumC;
+
+        double expectedC = (adjectiveExpectedC + verbExpectedC) / 2.0;
         double actualC = swnTest.getFeatureSentimentScore("obscure");
 
-        // current trace values:
-        // expectedC value is: -0.53125
-        // actualC value is: -0.22161601867024183
         System.out.println("expectedC value is: " + expectedC);
         System.out.println("actualC value is: " + actualC);
         assert(Math.abs(expectedC - actualC) < 0.000000001);
+
+
+        // test that a word with two SWN records generates the expected sentiment score
+        // calculate expected SentiWordNet3.0 score for bondable
+        // List of all definitions for bondable in SentiWordNet3.0:
+        //
+        // a	00161684	0.5	0	bondable#1 bindable#1	capable of being fastened or secured with a rope or bond
+        // a	00053248	0.25	0	bondable#2	capable of holding together or cohering; as particles in a mass
+        double totalScoreD = ((0.5 - 0.0) / 1.0)  + ((0.25 - 0) / 2.0);
+        double sumD = 1.0 / 1.0 + 1.0 / 2.0;
+        double expectedD = totalScoreD / sumD;
+        double actualD = swnTest.getFeatureSentimentScore("bondable");
+        System.out.println("expectedD value is: " + expectedD);
+        System.out.println("actualD value is: " + actualD);
+        assert(Math.abs(expectedD - actualD) < 0.000000001);
     }
 }
