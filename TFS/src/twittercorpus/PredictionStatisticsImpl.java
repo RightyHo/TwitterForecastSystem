@@ -19,6 +19,8 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
     private int correctMatchingTfsAndMacdCount;
     private int incorrectMatchingTfsAndMacdCount;
     private int sentiNeutralCount;
+    private int correctNeutralSentiWordNetCount;
+    private int incorrectNeutralSentiWordNetCount;
 
     public PredictionStatisticsImpl(){
         sizeOfTestDataSet = 0;
@@ -34,6 +36,8 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         correctMatchingTfsAndMacdCount = 0;
         incorrectMatchingTfsAndMacdCount = 0;
         sentiNeutralCount = 0;
+        correctNeutralSentiWordNetCount = 0;
+        incorrectNeutralSentiWordNetCount = 0;
     }
 
     public void calculateTFSAccuracy(List<Tweet> testData){
@@ -338,9 +342,9 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
                 sentiNeutralCount++;
 
                 if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
-                    correctSentiWordNetCount++;
+                    correctNeutralSentiWordNetCount++;
                 } else {
-                    incorrectSentiWordNetCount++;
+                    incorrectNeutralSentiWordNetCount++;
                 }
             } else {
                 throw new IllegalArgumentException("The test data has not been correctly classified");
@@ -381,6 +385,8 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
             System.out.println("Number of Correct SentiWordNet Predictions: " + correctSentiWordNetCount);
             System.out.println("Number of Incorrect SentiWordNet Predictions: " + incorrectSentiWordNetCount);
             System.out.println("Number of Neutral SentiWordNet Predictions: " + sentiNeutralCount);
+            System.out.println("Number of Neutral SentiWordNet Predictions that were correct: " + correctNeutralSentiWordNetCount);
+            System.out.println("Number of Neutral SentiWordNet Predictions that were correct: " + incorrectNeutralSentiWordNetCount);
             double successRate = (double) correctSentiWordNetCount / (double) sizeOfTestDataSet;
             System.out.printf("Overall Accuracy of SentiWordNet Predictions - Proportion of correct predictions: %.2f\n", successRate);
             System.out.println("\n******************************************************************************************\n");

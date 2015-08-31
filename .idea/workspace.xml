@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2d5d3ff5-7989-48bc-ad3b-9c8fa5091209" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/PredictionStatisticsImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/PredictionStatisticsImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionary.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionaryTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionaryTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterForecastSystem.java" afterPath="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterForecastSystem.java" />
     </list>
     <ignored path="TwitterForecastSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,11 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TwitterForecastSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TwitterForecastSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterForecastSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.88235295">
-              <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PredictionStatisticsImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PredictionStatisticsImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.88352275">
+              <caret line="388" column="131" selection-start-line="388" selection-start-column="131" selection-end-line="388" selection-end-column="131" />
               <folding />
             </state>
           </provider>
@@ -99,7 +102,6 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PredictionStatistics.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/SentiWordNetImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/SentiWordNetImpl.java" />
-        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PredictionStatisticsImpl.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionary.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/SpellingDictionaryTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/Tweet.java" />
@@ -107,6 +109,7 @@
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpus.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterCorpusListImplTest.java" />
         <option value="$PROJECT_DIR$/TFS/src/twittercorpus/TwitterForecastSystem.java" />
+        <option value="$PROJECT_DIR$/TFS/src/twittercorpus/PredictionStatisticsImpl.java" />
       </list>
     </option>
   </component>
@@ -743,12 +746,12 @@
       <workItem from="1439724781975" duration="15745000" />
       <workItem from="1440246988814" duration="5074000" />
       <workItem from="1440327318272" duration="8677000" />
-      <workItem from="1440959109602" duration="19105000" />
+      <workItem from="1440959109602" duration="20785000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="378082000" />
+    <option name="totallyTimeSpent" value="379762000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -781,7 +784,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47457626" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6830601" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5108434" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1072,14 +1075,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PredictionStatisticsImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49426934">
-          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PriceLabelCorpus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3653295">
@@ -1218,8 +1213,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/TwitterForecastSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.88235295">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFS/src/twittercorpus/PredictionStatisticsImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88352275">
+          <caret line="388" column="131" selection-start-line="388" selection-start-column="131" selection-end-line="388" selection-end-column="131" />
           <folding />
         </state>
       </provider>
