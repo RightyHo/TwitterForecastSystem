@@ -9,96 +9,75 @@ import java.util.Map;
  */
 public interface TwitterCorpus {
 
-     String getUsernameEquivalenceToken();
+    String getUsernameEquivalenceToken();
 
-     String getLinkEquivalenceToken();
+    String getLinkEquivalenceToken();
 
-     List<Tweet> getCorpus();
+    List<Tweet> getCorpus();
 
-     void setCorpus(List<Tweet> corpus);
+    void setCorpus(List<Tweet> corpus);
 
-     String getFileName();
+    String getFileName();
 
-     void setFileName(String fileName);
+    void setFileName(String fileName);
 
-     void extractTweetsFromFile(String fileName);
+    void extractTweetsFromFile(String fileName);
 
     /**
      * takes a string depicting a calendar month and returns the corresponding month number
+     *
      * @param mth
      * @return
      */
-     int getMonthNum(String mth);
+    int getMonthNum(String mth);
 
-    void preProcessTwitterCorpus(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict,DictionaryTranslator stopWordsDict,int numGrams,PriceLabelCorpus labels);
+    void preProcessTwitterCorpus(DictionaryTranslator abbreviationDict, DictionaryTranslator spellingDict, DictionaryTranslator stopWordsDict, int numGrams, PriceLabelCorpus labels);
 
-    void labelCorpus(PriceLabelCorpus labels,Tweet tw);
+    void labelCorpus(PriceLabelCorpus labels, Tweet tw);
 
     void removeLinks(Tweet tw);
 
     /**
      * helper function to be called by cleanInputTweetData()
+     *
      * @param tw
      */
     void removeUsernames(Tweet tw);
 
     /**
      * helper function to be called by cleanInputTweetData()
+     *
      * @param abbreviationDict
      * @param tw
      */
-    void translateAbbreviations(DictionaryTranslator abbreviationDict,Tweet tw);
+    void translateAbbreviations(DictionaryTranslator abbreviationDict, Tweet tw);
 
     /**
      * helper function to be called by cleanInputTweetData()
      * filters out words that do not appear in our reference spelling dictionary.
+     *
      * @param spellingDict
      * @param tw
      */
-    void checkSpelling(DictionaryTranslator spellingDict,Tweet tw);
+    void checkSpelling(DictionaryTranslator spellingDict, Tweet tw);
 
     /**
      * helper function to be called by cleanInputTweetData()
      * filters out the most common (and least informative) English words from the
      * text of each tweet.  This should help reduce noise when extracting features for classification.
+     *
      * @param stopWordsDict
      * @param tw
      */
-    void filterOutStopWords(DictionaryTranslator stopWordsDict,Tweet tw);
+    void filterOutStopWords(DictionaryTranslator stopWordsDict, Tweet tw);
 
     /**
      * helper function to be called by cleanInputTweetData()
      * calls the extractNGramFeatures() method to
      * initialize the tweet ready for classification
+     *
      * @param numGrams
      * @param tw
      */
-    void extractFeatures(int numGrams,Tweet tw);
-
-// *************************************************************************************************************************************
-// *** THE FOLLOWING METHODS HAVE BEEN REPLACED AND ARE JUST BEING KEPT FOR THE TIME BEING WHILE THEIR REPLACEMENTS ARE BEING TESTED ***
-// *************************************************************************************************************************************
-
-    void removeRetweets();
-
-     void removeLinks();
-
-     void removeUsernames();
-
-     void replaceLinks();
-
-     void replaceUsernames();
-
-     void translateAbbreviations(DictionaryTranslator abbreviationDict);
-
-     void checkSpelling(DictionaryTranslator spellingDict);
-
-     void filterOutStopWords(String stopWordsList);
-
-     void extractFeatures(int numGrams);
-
-     /**
-     *  if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
-     */
-     void removeFilteredTweetsWithNoFeatures();
+    void extractFeatures(int numGrams, Tweet tw);
 }

@@ -50,7 +50,7 @@ public class TwitterForecastSystem {
     public static final String STOP_WORDS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/English Stop Words.txt";
 
     public static final int NGRAM_COUNT = 2;                        // *** SET TO 1 TO USE UNIGRAMS OR 2 TO USE BIGRAMS AS FEATURES FOR THE CLASSIFIER ***
-    public static final int CLASSIFIER_STORAGE_LIMIT = 160000;        // *** SET STORAGE LIMIT TO ADJUST FOR FORGETFUL LEARNING EFFECT ***
+    public static final int CLASSIFIER_STORAGE_LIMIT = 10000;        // *** SET STORAGE LIMIT TO ADJUST FOR FORGETFUL LEARNING EFFECT ***
 
     public static final ZonedDateTime EARLIEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR - 1, 12, 30, 16, 34, 0, 0,TIME_ZONE);    // *** RESET EVERY TIME TWITTER CORPUS IS CHANGED ***
     public static final ZonedDateTime LATEST_CORPUS_TIME_STAMP = ZonedDateTime.of(THIS_YEAR, 3, 2, 8, 1, 0, 0, TIME_ZONE);   // *** RESET EVERY TIME TWITTER CORPUS IS CHANGED ***
@@ -82,72 +82,6 @@ public class TwitterForecastSystem {
                                         NGRAM_COUNT,
                                         pCorpus);
 
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            System.out.println("PRE-CLEANING:  " + t.getTweetText());
-//        }
-
-//         Tweets cleaning process
-//        tCorpus.removeRetweets();
-//        System.out.println("Removed Retweets from the Twitter corpus.");
-//        System.out.println("--> Number of tweets remaining in corpus: " + tCorpus.getCorpus().size());
-
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            System.out.println("AFTER REMOVING RETWEETS:  " + t.getTweetText());
-//        }
-
-//        tCorpus.removeLinks();
-
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            System.out.println("AFTER REMOVING LINKS:  " + t.getTweetText());
-//        }
-
-//        tCorpus.removeUsernames();
-
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            System.out.println("AFTER REMOVING USERNAMES:  " + t.getTweetText());
-//        }
-
-//        tCorpus.translateAbbreviations(new AbbreviationDictionary(ABBREVIATION_DICTIONARY_FILENAME));
-
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            System.out.println("AFTER TRANSLATING ABBREVIATIONS:  " + t.getTweetText());
-//        }
-
-//        tCorpus.checkSpelling(new SpellingDictionary(SPELLING_DICTIONARY_FILENAME));
-
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            System.out.println("AFTER CHECKING SPELLING:  " + t.getTweetText());
-//        }
-
-//        tCorpus.filterOutStopWords(new StopWordsDictionary(STOP_WORDS_FILENAME));
-
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            System.out.println("AFTER FILTERING OUT STOP WORDS:  " + t.getTweetText());
-//        }
-
-//        tCorpus.extractFeatures(NGRAM_COUNT);         // extract uni-grams as features change to 2 for bi-grams
-
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            for(String s : t.getFeatures()) {
-//                System.out.println("AFTER EXTRACTING FEATURES:  " + s);
-//            }
-//        }
-
-//        tCorpus.removeFilteredTweetsWithNoFeatures(); // if the tweet cleaning and filter process results in a tweet with no features, remove the tweet from the corpus
-
-        // *** OPTIONAL TRACE FOR DEBUGGING ***
-//        for(Tweet t : tCorpus.getCorpus()) {
-//            System.out.println("AFTER FILTERING OUT TWEETS WITH NO FEATURES:  " + t.getTweetText());
-//        }
-
         System.out.println("Removed URL links, usernames, mispelled words and 'stop' words.");
         System.out.println("Removed retweets and tweets with no features remaining after the filtering process from the Twitter corpus.");
         System.out.println("--> Number of tweets remaining in corpus after filtering process: " + tCorpus.getCorpus().size());
@@ -170,7 +104,6 @@ public class TwitterForecastSystem {
         // Analyse Results
         PredictionStatistics pStats = new PredictionStatisticsImpl();
         pStats.calculateTFSAccuracy(testData);
-//        pStats.calculateMACDAccuracy(testData);
 
         // Run SentiWordNet comparison
         SentiWordNet swn = new SentiWordNetImpl(SENTIWORDNET_FILENAME);

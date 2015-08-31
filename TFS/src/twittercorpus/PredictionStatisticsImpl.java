@@ -18,6 +18,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
     private int incorrectSentiWordNetCount;
     private int correctMatchingTfsAndMacdCount;
     private int incorrectMatchingTfsAndMacdCount;
+    private int sentiNeutralCount;
 
     public PredictionStatisticsImpl(){
         sizeOfTestDataSet = 0;
@@ -32,6 +33,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         incorrectSentiWordNetCount = 0;
         correctMatchingTfsAndMacdCount = 0;
         incorrectMatchingTfsAndMacdCount = 0;
+        sentiNeutralCount = 0;
     }
 
     public void calculateTFSAccuracy(List<Tweet> testData){
@@ -53,29 +55,6 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
             int tfsSentimentPrediction = 0;      // 0 for neutral, 1 for positive
 
             if(t == null) throw new NullPointerException("testData is returning null tweets!");
-
-//            if(t.getSentiment() == Sentiment.NEGATIVE){
-//                if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
-//                    correctTFSCount++;
-//                } else {
-//                    incorrectTFSCount++;
-//                }
-//            } else if(t.getSentiment() == Sentiment.POSITIVE){
-//                if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()){
-//                    correctTFSCount++;
-//                } else {
-//                    incorrectTFSCount++;
-//                }
-//            } else if(t.getSentiment() == Sentiment.NEUTRAL){
-//                // If time permits it may be worth experimenting by widening a range of prices to fall under neutral category
-//                if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
-//                    correctTFSCount++;
-//                } else {
-//                    incorrectTFSCount++;
-//                }
-//            } else {
-//                throw new IllegalArgumentException("The test data has not been correctly classified");
-//            }
 
             if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()) {
 
@@ -328,42 +307,6 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         madeMACDCalcs = true;
     }
 
-//    public void calculateMACDAccuracy(List<Tweet> testData){
-//        if(testData == null) throw new IllegalArgumentException("Test data list is null!");
-//        sizeOfTestDataSet = testData.size();
-//
-//        // reset counts
-//        correctMACDCount = 0;
-//        incorrectMACDCount = 0;
-//
-//        // compare the MACD direction indicator prior to the release of each tweet with the actual price move during the twenty minutes after the tweet is published
-//        for(Tweet t : testData){
-//            if(t == null) throw new NullPointerException("testData is returning null tweets!");
-//            // Signal Line Crossovers:  MACD Level minus Signal Level.  A positive signal indicates upward price momentum and vice versa
-//            if(t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0){
-//                if(t.getPostTweetSnapshot().getClosingSharePrice() > t.getInitialSnapshot().getClosingSharePrice()){
-//                    correctMACDCount++;
-//                } else {
-//                    incorrectMACDCount++;
-//                }
-//            } else if(t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0){
-//                if(t.getPostTweetSnapshot().getClosingSharePrice() < t.getInitialSnapshot().getClosingSharePrice()){
-//                    correctMACDCount++;
-//                } else {
-//                    incorrectMACDCount++;
-//                }
-//            } else {
-//                // Sentiment is NEUTRAL - if time permits it may be worth experimenting by widening a range of prices to fall under neutral category
-//                if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
-//                    correctMACDCount++;
-//                } else {
-//                    incorrectMACDCount++;
-//                }
-//            }
-//        }
-//        madeMACDCalcs = true;
-//    }
-
     public void calculateSentiWordNetAccuracy(List<Tweet> testData){
         if(testData == null) throw new IllegalArgumentException("Test data list is null!");
         sizeOfTestDataSet = testData.size();
@@ -390,6 +333,10 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
                 }
             } else if(t.getSentiWordNetClassification() == Sentiment.NEUTRAL){
                 // If time permits it may be worth experimenting by widening a range of prices to fall under neutral category
+
+                // for debugging
+                sentiNeutralCount++;
+
                 if(t.getPostTweetSnapshot().getClosingSharePrice() == t.getInitialSnapshot().getClosingSharePrice()){
                     correctSentiWordNetCount++;
                 } else {
@@ -433,6 +380,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         if(madeSentiWordNetCalcs) {
             System.out.println("Number of Correct SentiWordNet Predictions: " + correctSentiWordNetCount);
             System.out.println("Number of Incorrect SentiWordNet Predictions: " + incorrectSentiWordNetCount);
+            System.out.println("Number of Neutral SentiWordNet Predictions: " + sentiNeutralCount);
             double successRate = (double) correctSentiWordNetCount / (double) sizeOfTestDataSet;
             System.out.printf("Overall Accuracy of SentiWordNet Predictions - Proportion of correct predictions: %.2f\n", successRate);
             System.out.println("\n******************************************************************************************\n");

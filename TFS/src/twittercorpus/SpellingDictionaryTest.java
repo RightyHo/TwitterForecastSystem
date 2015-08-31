@@ -32,7 +32,7 @@ public class SpellingDictionaryTest {
         String actualThird = testDT.processString("345 455 55 73");
         assertEquals("",actualThird);
 
-        // *** ADD BLOCK BACK IF WE WANT TO ANALYSE HASH TAGS IN THE STUDY
+        // *** ADD BLOCK BACK IF WE WANT TO ANALYSE HASH TAGS IN THE STUDY ***
 
         // process leaves #hashtags unchanged
 //        String actualFourth = testDT.processString("i want a BMW #greatcar");

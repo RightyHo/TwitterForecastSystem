@@ -71,7 +71,7 @@ public class SpellingDictionary implements DictionaryTranslator, SpellCheckListe
      */
     public String processString(String input){
 
-        // *** ADD BLOCK BACK IF WE WANT TO ANALYSE HASH TAGS IN THE STUDY
+        // *** ADD BLOCK BACK IF WE WANT TO ANALYSE HASH TAGS IN THE STUDY ***
 
 //        String result = "";
 //        if(input.contains("#")){
