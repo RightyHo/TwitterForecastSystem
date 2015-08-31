@@ -113,7 +113,8 @@ public class SentiWordNetImpl implements SentiWordNet {
             overallSentiScore += getFeatureSentimentScore(w);
         }
 
-        System.out.println("Overall Actual sentiment score: " + overallSentiScore);
+        // optional debugging print trace
+//        System.out.println("Overall Actual sentiment score: " + overallSentiScore);
 
         // classify the text as per the total sentiment score of all of its words
         if(overallSentiScore > 0){
