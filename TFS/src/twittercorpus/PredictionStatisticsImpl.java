@@ -21,6 +21,10 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
     private int sentiNeutralCount;
     private int correctNeutralSentiWordNetCount;
     private int incorrectNeutralSentiWordNetCount;
+    private int upMoveAndCorrectTFSCount;
+    private int upMoveAndIncorrectTFSCount;
+    private int downMoveAndCorrectTFSCount;
+    private int downMoveAndIncorrectTFSCount;
 
     public PredictionStatisticsImpl(){
         sizeOfTestDataSet = 0;
@@ -38,6 +42,10 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         sentiNeutralCount = 0;
         correctNeutralSentiWordNetCount = 0;
         incorrectNeutralSentiWordNetCount = 0;
+        upMoveAndCorrectTFSCount = 0;
+        upMoveAndIncorrectTFSCount = 0;
+        downMoveAndCorrectTFSCount = 0;
+        downMoveAndIncorrectTFSCount = 0;
     }
 
     public void calculateTFSAccuracy(List<Tweet> testData){
@@ -51,6 +59,10 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         incorrectMACDCount = 0;
         correctMatchingTfsAndMacdCount = 0;
         incorrectMatchingTfsAndMacdCount = 0;
+        upMoveAndCorrectTFSCount = 0;
+        upMoveAndIncorrectTFSCount = 0;
+        downMoveAndCorrectTFSCount = 0;
+        downMoveAndIncorrectTFSCount = 0;
 
         // compare each tweets classification with the actual price move during the twenty minutes after the tweet is published
         for(Tweet t : testData){
@@ -68,6 +80,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was correct
                     correctTFSCount++;
+                    upMoveAndCorrectTFSCount++;
 
                     // A positive MACD signal indicates upward price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
@@ -89,6 +102,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was wrong
                     incorrectTFSCount++;
+                    upMoveAndIncorrectTFSCount++;
 
                     // A positive MACD signal indicates upward price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
@@ -116,6 +130,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was wrong
                     incorrectTFSCount++;
+                    upMoveAndIncorrectTFSCount++;
 
                     // A positive MACD signal indicates upward price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() > 0) {
@@ -150,6 +165,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was correct
                     correctTFSCount++;
+                    downMoveAndCorrectTFSCount++;
 
                     // A negative MACD signal indicates downward price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0) {
@@ -171,6 +187,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was wrong
                     incorrectTFSCount++;
+                    downMoveAndIncorrectTFSCount++;
 
                     // A negative MACD signal indicates downward price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0) {
@@ -198,6 +215,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was wrong
                     incorrectTFSCount++;
+                    downMoveAndIncorrectTFSCount++;
 
                     // A negative value MACD signal indicates downward price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() < 0) {
@@ -384,13 +402,22 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         if(madeSentiWordNetCalcs) {
             System.out.println("Number of Correct SentiWordNet Predictions: " + correctSentiWordNetCount);
             System.out.println("Number of Incorrect SentiWordNet Predictions: " + incorrectSentiWordNetCount);
-            System.out.println("Number of Neutral SentiWordNet Predictions: " + sentiNeutralCount);
-            System.out.println("Number of Neutral SentiWordNet Predictions that were correct: " + correctNeutralSentiWordNetCount);
-            System.out.println("Number of Neutral SentiWordNet Predictions that were correct: " + incorrectNeutralSentiWordNetCount);
-            double successRate = (double) correctSentiWordNetCount / (double) sizeOfTestDataSet;
+            double successRate = (double) correctSentiWordNetCount / ((double) correctSentiWordNetCount + (double) incorrectSentiWordNetCount);
             System.out.printf("Overall Accuracy of SentiWordNet Predictions - Proportion of correct predictions: %.2f\n", successRate);
             System.out.println("\n******************************************************************************************\n");
-            if (correctSentiWordNetCount + incorrectSentiWordNetCount != sizeOfTestDataSet) throw new IllegalArgumentException("SentiWordNet calculations are inconsistent");
+            System.out.println("Number of Neutral SentiWordNet Predictions: " + sentiNeutralCount);
+            System.out.println("Number of Neutral SentiWordNet Predictions that were correct: " + correctNeutralSentiWordNetCount);
+            System.out.println("Number of Neutral SentiWordNet Predictions that were incorrect: " + incorrectNeutralSentiWordNetCount);
+            System.out.println("\n******************************************************************************************\n");
+            System.out.println("Number of Upward Moves that the TFS Correctly Predicted: " + upMoveAndCorrectTFSCount);
+            System.out.println("Number of Upward Moves that the TFS did Not Predict correctly: " + upMoveAndIncorrectTFSCount);
+            double upSuccess = (double) upMoveAndCorrectTFSCount / ((double) upMoveAndCorrectTFSCount + (double) upMoveAndIncorrectTFSCount);
+            System.out.println("Proportion of Upward Moves that the TFS Correctly Predicted: " + upSuccess);
+            System.out.println("Number of Downward Moves that the TFS Correctly Predicted: " + downMoveAndCorrectTFSCount);
+            System.out.println("Number of Downward Moves that the TFS did Not Predict correctly: " + downMoveAndIncorrectTFSCount);
+            double downSuccess = (double) downMoveAndCorrectTFSCount / ((double) downMoveAndCorrectTFSCount + (double) downMoveAndIncorrectTFSCount);
+            System.out.println("Proportion of Upward Moves that the TFS Correctly Predicted: " + downSuccess);
+            System.out.println("\n******************************************************************************************\n");
         }
     }
 }
