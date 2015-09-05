@@ -412,11 +412,11 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
             System.out.println("Number of Upward Moves that the TFS Correctly Predicted: " + upMoveAndCorrectTFSCount);
             System.out.println("Number of Upward Moves that the TFS did Not Predict correctly: " + upMoveAndIncorrectTFSCount);
             double upSuccess = (double) upMoveAndCorrectTFSCount / ((double) upMoveAndCorrectTFSCount + (double) upMoveAndIncorrectTFSCount);
-            System.out.println("Proportion of Upward Moves that the TFS Correctly Predicted: " + upSuccess);
+            System.out.printf("Proportion of Upward Moves that the TFS Correctly Predicted: %.2f\n", upSuccess);
             System.out.println("Number of Downward Moves that the TFS Correctly Predicted: " + downMoveAndCorrectTFSCount);
             System.out.println("Number of Downward Moves that the TFS did Not Predict correctly: " + downMoveAndIncorrectTFSCount);
             double downSuccess = (double) downMoveAndCorrectTFSCount / ((double) downMoveAndCorrectTFSCount + (double) downMoveAndIncorrectTFSCount);
-            System.out.println("Proportion of Upward Moves that the TFS Correctly Predicted: " + downSuccess);
+            System.out.printf("Proportion of Upward Moves that the TFS Correctly Predicted: %.2f\n", downSuccess);
             System.out.println("\n******************************************************************************************\n");
         }
     }
