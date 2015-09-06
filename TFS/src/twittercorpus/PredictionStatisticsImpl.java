@@ -25,6 +25,8 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
     private int upMoveAndIncorrectTFSCount;
     private int downMoveAndCorrectTFSCount;
     private int downMoveAndIncorrectTFSCount;
+    private int noMoveAndCorrectTFSCount;
+    private int noMoveAndIncorrectTFSCount;
 
     public PredictionStatisticsImpl(){
         sizeOfTestDataSet = 0;
@@ -46,6 +48,8 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         upMoveAndIncorrectTFSCount = 0;
         downMoveAndCorrectTFSCount = 0;
         downMoveAndIncorrectTFSCount = 0;
+        noMoveAndCorrectTFSCount = 0;
+        noMoveAndIncorrectTFSCount = 0;
     }
 
     public void calculateTFSAccuracy(List<Tweet> testData){
@@ -63,6 +67,8 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
         upMoveAndIncorrectTFSCount = 0;
         downMoveAndCorrectTFSCount = 0;
         downMoveAndIncorrectTFSCount = 0;
+        noMoveAndCorrectTFSCount = 0;
+        noMoveAndIncorrectTFSCount = 0;
 
         // compare each tweets classification with the actual price move during the twenty minutes after the tweet is published
         for(Tweet t : testData){
@@ -250,6 +256,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was correct
                     correctTFSCount++;
+                    noMoveAndCorrectTFSCount++;
 
                     // A zero value MACD signal indicates neutral price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() == 0) {
@@ -271,6 +278,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was wrong
                     incorrectTFSCount++;
+                    noMoveAndIncorrectTFSCount++;
 
                     // A zero value MACD signal indicates neutral price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() == 0) {
@@ -298,6 +306,7 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
 
                     // TFS prediction was wrong
                     incorrectTFSCount++;
+                    noMoveAndIncorrectTFSCount++;
 
                     // A zero value MACD signal indicates neutral price momentum
                     if (t.getInitialSnapshot().getOpeningMACDDirectionSignal() == 0) {
@@ -416,7 +425,11 @@ public class PredictionStatisticsImpl implements PredictionStatistics {
             System.out.println("Number of Downward Moves that the TFS Correctly Predicted: " + downMoveAndCorrectTFSCount);
             System.out.println("Number of Downward Moves that the TFS did Not Predict correctly: " + downMoveAndIncorrectTFSCount);
             double downSuccess = (double) downMoveAndCorrectTFSCount / ((double) downMoveAndCorrectTFSCount + (double) downMoveAndIncorrectTFSCount);
-            System.out.printf("Proportion of Upward Moves that the TFS Correctly Predicted: %.2f\n", downSuccess);
+            System.out.printf("Proportion of Downward Moves that the TFS Correctly Predicted: %.2f\n", downSuccess);
+            System.out.println("Number of Unmoved prices that the TFS Correctly Predicted: " + noMoveAndCorrectTFSCount);
+            System.out.println("Number of Unmoved prices that the TFS did Not Predict correctly: " + noMoveAndIncorrectTFSCount);
+            double noMoveSuccess = (double) noMoveAndCorrectTFSCount / ((double) noMoveAndCorrectTFSCount + (double) noMoveAndIncorrectTFSCount);
+            System.out.printf("Proportion of Unmoved prices that the TFS Correctly Predicted: %.2f\n", noMoveSuccess);
             System.out.println("\n******************************************************************************************\n");
         }
     }
