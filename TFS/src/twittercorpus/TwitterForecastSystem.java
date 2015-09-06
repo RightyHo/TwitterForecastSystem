@@ -42,8 +42,8 @@ public class TwitterForecastSystem {
 
     // *** EXPERIMENTATION VARIABLES TO BE CHANGED MANUALLY ***
 
-    public static final String TWITTER_CORPUS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/February2015BmwTwitterCorpus.txt";
-    public static final String PRICE_DATA_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/February2015BmwShareAndMacdMinutePriceBarsInGMT.txt";
+    public static final String TWITTER_CORPUS_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/January2015BmwTwitterCorpus.txt";
+    public static final String PRICE_DATA_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/January2015BmwShareAndMacdMinutePriceBarsInGMT.txt";
     public static final String SENTIWORDNET_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/SentiWordNet_3.0.txt";
     public static final String ABBREVIATION_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/Twerminology - 100 Twitter Slang Words & Abbreviations.txt";
     public static final String SPELLING_DICTIONARY_FILENAME = "/Users/Andrew/Documents/Programming/MSc Project/Natural Language Processing/Project Data Sets/dictionary.txt";
